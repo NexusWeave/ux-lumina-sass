@@ -1,17 +1,13 @@
 // Flexbox centering mixin
-=flex-center
+@mixin flex-center
   display: flex
   justify-content: center
   align-items: center
 
-// Responsive breakpoint mixin
-=respond-to($breakpoint)
-  @if $breakpoint == 'small'
-    @media (max-width: 600px)
-      @content
-  @else if $breakpoint == 'medium'
-    @media (max-width: 900px)
-      @content
-  @else if $breakpoint == 'large'
-    @media (max-width: 1200px)
-      @content
+@mixin text-wrap-safe()
+    p, h1, h2, h3, h4, h5, h6, figcaption, a, li
+        hyphens: auto
+        min-inline-size: 0
+        word-wrap: anywhere
+        white-space: pre-wrap
+        overflow-wrap: anywhere

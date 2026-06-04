@@ -1,4 +1,5 @@
 @use 'sass:map' as map
+@use './mixins' as mix
 
 @use '../map/icons' as icon-map
 @use '../map/flexbox' as flexbox-mapping
@@ -24,15 +25,3 @@
             #{$property}: $value
     @else
         @error '"#{$name}" not found in flexbox mapping.'
-
-@mixin base-button($base-color: #007bff, $text-color: #fff, $padding: 0.5rem 1rem, $border-radius: 0.25rem)
-    display: inline-block
-    padding: $padding
-    border-radius: $border-radius
-    background-color: $base-color
-    color: $text-color
-    text-decoration: none
-    cursor: pointer
-    border: none
-    &:hover
-        filter: brightness(0.9)

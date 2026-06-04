@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/Krigjo25/lumina-sass/compare/v1.0.6...v1.1.0) (2026-06-04)
+
+
+### Features
+
+* **mixins:** implement dynamic media query mixin with breakpoint map. ([97eb57b](https://github.com/Krigjo25/lumina-sass/commit/97eb57b6dfdb56039e423fe0e04c1357b60ae8aa))
+
 ### [1.0.5](https://github.com/Krigjo25/lumina-sass/compare/v1.0.4...v1.0.5) (2026-06-04)
 
 ### [1.0.4](https://github.com/Krigjo25/lumina-sass/compare/v1.0.3...v1.0.4) (2026-06-04)

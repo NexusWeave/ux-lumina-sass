@@ -1,11 +1,7 @@
 @use 'sass:map' as map
 @use './mixins' as mix
-@use './button-mixins' as btn
-@use '../colors/colors' as color
 
-@use '../mappings/tags' as tag-map
 @use '../mappings/icons' as icon-map
-@use '../mappings/tech-icons' as tech-map
 @use '../mappings/flexbox' as flexbox-mapping
 
 @mixin icon-generator()
@@ -18,7 +14,6 @@
                 color: map.get($props, icon-color)
 
 @mixin flexbox-generator($name)
-
     $props: map.get(flexbox-mapping.$flexbox, $name)
 
     @if $props
@@ -27,4 +22,14 @@
     @else
         @error '"#{$name}" not found in flexbox mapping.'
 
-
+@mixin base-button($base-color: #007bff, $text-color: #fff, $padding: 0.5rem 1rem, $border-radius: 0.25rem)
+    display: inline-block
+    padding: $padding
+    border-radius: $border-radius
+    background-color: $base-color
+    color: $text-color
+    text-decoration: none
+    cursor: pointer
+    border: none
+    &:hover
+        filter: brightness(0.9)

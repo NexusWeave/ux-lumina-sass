@@ -1,11 +1,5 @@
 @use '../mix/generators' as mix
 
-.flex-row-align-items-center
-    align-items: center
-    @include mix.flexbox-generator('flex-wrap-row')
-
-//  Flexbox row with wrap
-//  Justify content
 .flex-wrap-row-justify-center
     justify-content: center
     @include mix.flexbox-generator('flex-wrap-row')
@@ -31,6 +25,7 @@
     @include mix.flexbox-generator('flex-wrap-row')
 
 //  Align items
+
 .flex-wrap-row-align-items-end
     align-items: flex-end
     @include mix.flexbox-generator('flex-wrap-row')

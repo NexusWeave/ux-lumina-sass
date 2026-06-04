@@ -1,19 +1,20 @@
-$flex: ('display': flex);
-$inline-flex: ('display': inline-flex);
-$flex-center: ('display': flex, 'justify-content': center, 'align-items': center);
-$flex-column: ('display': flex, 'flex-wrap': nowrap, 'flex-direction': column);
-$inline-flex-column: ('flex-wrap': nowrap, 'display': inline-flex, 'flex-direction': column);
-$flex-row: ('display': flex, 'flex-wrap': nowrap, 'flex-direction': row);
-$inline-flex-row: ('flex-wrap': nowrap, 'flex-direction': row, 'display': inline-flex);
-$flex-wrap-column: ('display': flex, 'flex-wrap': wrap, 'flex-direction': column);
-$flex-wrap-row: ('display': flex, 'flex-wrap': wrap, 'flex-direction': row);
-$flex-wrap-reversed-column: ('display': flex, 'flex-wrap': wrap, 'flex-direction': column-reverse);
-$flex-wrap-reversed-row: ('display': flex, 'flex-wrap': wrap, 'flex-direction': row-reverse);
+$flex: ('display': flex)
+$inline-flex: ('display': inline-flex)
+$flex-row: ('display': flex, 'flex-wrap': nowrap, 'flex-direction': row)
+$flex-wrap-row: ('display': flex, 'flex-wrap': wrap, 'flex-direction': row)
+$flex-column: ('display': flex, 'flex-wrap': nowrap, 'flex-direction': column)
+$flex-wrap-column: ('display': flex, 'flex-wrap': wrap, 'flex-direction': column)
+$flex-center: ('display': flex, 'justify-content': center, 'align-items': center)
+$inline-flex-row: ('flex-wrap': nowrap, 'flex-direction': row, 'display': inline-flex)
+$inline-flex-column: ('flex-wrap': nowrap, 'display': inline-flex, 'flex-direction': column)
+$flex-wrap-reversed-row: ('display': flex, 'flex-wrap': wrap, 'flex-direction': row-reverse)
+$flex-wrap-reversed-column: ('display': flex, 'flex-wrap': wrap, 'flex-direction': column-reverse)
+
 
 $flexbox:(
     'flex': $flex,
-    'flex-center': $flex-center,
     'flex-row': $flex-row,
+    'flex-center': $flex-center,
     'flex-column': $flex-column,
     'inline-flex': $inline-flex,
     'flex-wrap-row': $flex-wrap-row,

@@ -1,28 +1,14 @@
-//  Devices breakpoints mapping
 @use 'sass:map'
 
 $breakpoints:(
-    'xs': 30rem,    // 480px / 16
-    'sm': 48rem,    // 768px / 16
-    'md': 64rem,    // 1024px / 16
-    'lg': 80rem,    // 1280px / 16
-    'xl': 90rem,    // 1440px / 16
-    'S': 12.5rem,
-    'M': 31.25rem,
-    'L': 50rem,
-    'XL': 64rem,
-    '2XL': 80rem,
-    '3XL': 81.25rem,
+    'xs': 30rem, 'sm': 48rem, 'md': 64rem,
+    'lg': 80rem, 'xl': 90rem, 'S': 12.5rem,
+    'M': 31.25rem, 'L': 50rem, 'XL': 64rem,
+    '2XL': 80rem, '3XL': 81.25rem,
 )
 $amazon:(
-    'kindle-fire':(
-        inline-size: 37.5rem,
-        block-size: map.get($breakpoints, 'XL'),
-    ),
-    'kindle-fire-hd':(
-        inline-size: 50rem,
-        block-size: map.get($breakpoints, '2XL'),
-    ),
+    'kindle-fire':( inline-size: 37.5rem, block-size: map.get($breakpoints, 'XL') ),
+    'kindle-fire-hd':( inline-size: 50rem, block-size: map.get($breakpoints, '2XL') ),
 )
 
 $apple:(

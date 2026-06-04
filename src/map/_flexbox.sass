@@ -1,6 +1,12 @@
 $flex:( 'display': flex )
 $inline-flex:( 'display': inline-flex )
 
+$flex-center:(
+    'display': flex,
+    'justify-content': center,
+    'align-items': center
+)
+
 $flex-column:(
     'display': flex,
     'flex-wrap': nowrap,
@@ -51,6 +57,7 @@ $flex-wrap-reversed-row:(
 
 $flexbox:(
     'flex': $flex,
+    'flex-center': $flex-center,
     'flex-row': $flex-row,
     'flex-column': $flex-column,
     'inline-flex': $inline-flex,

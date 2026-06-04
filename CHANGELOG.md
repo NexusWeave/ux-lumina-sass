@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/Krigjo25/lumina-sass/compare/v1.1.0...v1.2.0) (2026-06-04)
+
+
+### Features
+
+* **mixins:** add figure-and-image mixin for consistent media styling. ([8174dcc](https://github.com/Krigjo25/lumina-sass/commit/8174dcc748ed80d4425807d3396f8ab72f248e94))
+
 ## [1.1.0](https://github.com/Krigjo25/lumina-sass/compare/v1.0.6...v1.1.0) (2026-06-04)
 
 

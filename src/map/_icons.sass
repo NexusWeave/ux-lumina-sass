@@ -1,37 +1,56 @@
-$documents: (
-    'pdf': (icon:"\F63F", icon-color: color.$pdf),
-    'default': (icon:"", icon-color: color.$files),
-    'word': (icon:"\F641", icon-color: color.$blue),
-    'excel': (icon:"\F642", icon-color: color.$green),
-)
+// Combined and structured icons map
+@use '../color/_index' as color
 
-$communication: (
-    'mail': (icon:"\F32F", icon-color: color.$email),
-    'github': (icon:"\F3ED", icon-color: color.$github),
-    'ytube': (icon:"\F62B", icon-color: color.$youtube),
-    'facebook': (icon:"\F344", icon-color: color.$facebook),
-    'linkedin': (icon:"\F472", icon-color: color.$linked-in),
-    'instagram': (icon:"\F437", icon-color: color.$instagram),
-    'twitter': (icon:"\F519", icon-color: color.$blue),
-    )
+$misc: (
+    'pdf': (icon: "\F63D", icon-color: color.$icon-pdf),
+    'dot': (icon: "\F309"),
+    'email': (icon: "\F84B", icon-color: color.$icon-white),
+    'default': (icon: "\F82E", icon-color: color.$icon-white),
+    'calendar': (icon: "\F1F6"),
+    'telephone': (icon: "\F5C1", icon-color: color.$icon-white),
+    'external-link': (icon: "\F35D", icon-color: color.$icon-white)
+);
 
-$academic: (
-    'school': (icon:"\F62F", icon-color: color.$light-blue),
-    'diploma': (icon:"\F153", icon-color: color.$light-blue),
-)
+$input-controls: (
+    'tel': (icon: '\F5BB'),
+    'url': (icon: '\F882'),
+    'text': (icon: '\F435'),
+    'search': (icon: '\F52A'),
+    'number': (icon: ' \F67F'),
+    'password': (icon: '\F44E')
+);
 
-$misc-icons: (
-    'dir': (icon:"\F3D7"),
-    'globe': (icon:"\F882", icon-color: color.$light-blue),
-    'map-pin': (icon:"\F64B", icon-color: color.$light-blue),
-    'calendar': (icon:"\F1E7", icon-color: color.$light-blue),
-    'internship': (icon:"\F0E7", icon-color: color.$light-blue),
-    'collaborator': (icon:"\F4D0", icon-color: color.$light-blue),
-)
+$boolean-controls: (
+    'radio': (icon: '\F1D0'),
+    'checkbox': (icon: '\F272')
+);
+
+$datetime-pickers: (
+    'date': (icon: '\F073'),
+    'time': (icon: '\F017'),
+    'week': (icon: '\F4C0'),
+    'month': (icon: '\F4C1'),
+    'datetime-local': (icon: '\F017')
+);
+
+$buttons: (
+    'file': (icon: '\F0E7'),
+    'submit': (icon: '\F0E7'),
+    'reset': (icon: '\F0E7'),
+    'button': (icon: '\F0E7')
+);
+
+$utility-inputs: (
+    'range': (icon: '\F0E7'),
+    'color': (icon: '\F4B0'),
+    'hidden': (icon: '\F0E7')
+);
 
 $icons: (
-    'misc': $misc-icons,
-    'academic': $academic,
-    'document': $documents,
-    'communication': $communication
-)
+    'misc': $misc,
+    'buttons': $buttons,
+    'utility-inputs': $utility-inputs,
+    'input-controls': $input-controls,
+    'boolean-controls': $boolean-controls,
+    'datetime-pickers': $datetime-pickers
+);

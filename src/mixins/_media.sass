@@ -6,3 +6,19 @@
 
   @media (max-width: $value)
     @content
+
+@mixin figure-and-image($object-fit: cover, $size: null, $style: null)
+    figure
+        picture, img
+          inline-size: 100%
+          object-fit: $object-fit
+
+        picture
+          img
+            inline-size: 100%
+            object-fit: $object-fit
+        figcaption
+          @if $size != null & $style != null
+            @include mix.font($size, $style)
+        
+            

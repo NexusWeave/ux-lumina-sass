@@ -4,14 +4,18 @@
 @use '../mappings/icons' as icon-map
 @use '../mappings/flexbox' as flexbox-mapping
 
-@mixin icon-generator()
-    @each $category, $maps in icon-map.$icons
-        @each $icon, $props in $maps
-            .#{$icon}
-                &:before
-                    content: map.get($props, icon)
-
-                color: map.get($props, icon-color)
+@mixin icon-generator($color: null, $font-family: 'bootstrap-icons')
+    @if icon-map.$icons
+        @each $category, $maps in icon-map.$icons
+            @each $icon, $props in $maps
+                .#{$icon}
+                    font-family: $font-family
+                    &:before
+                        content: map.get($props, icon)
+                    @if $color
+                        color: $color
+    @else
+        @error 'Icon mapping not found.'
 
 @mixin flexbox-generator($name)
     $props: map.get(flexbox-mapping.$flexbox, $name)

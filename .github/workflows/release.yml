@@ -1,4 +1,4 @@
-name: Release and Publish
+name: Release
 
 on:
   push:
@@ -7,14 +7,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  github-release:
+  release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    outputs:
-      new_tag: ${{ steps.get_version.outputs.VERSION }}
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -27,15 +25,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Configure Git
+      - name: Configure Git identity
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Bump Version and Generate Changelog
+      - name: Bump Version, Generate Changelog, and Tag
         run: npm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push Changes and Tags
+      - name: Push changes and tags
         run: git push --follow-tags origin master
 
       - name: Get Latest Tag
@@ -49,27 +49,3 @@ jobs:
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  npm-publish:
-    needs: github-release
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ needs.github-release.outputs.new_tag }}
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 'lts/*'
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Publish to NPM
-        run: npm publish --provenance --access public

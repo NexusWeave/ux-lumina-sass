@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/Krigjo25/lumina-sass/compare/v1.3.1...v1.4.0) (2026-06-04)
+
+
+### Features
+
+* **icons:** add word, excel, and twitter icons. ([455c27f](https://github.com/Krigjo25/lumina-sass/commit/455c27f3c11f9a3757c00e22c1c43d6e04fa6a17))
+
 ### [1.3.1](https://github.com/Krigjo25/lumina-sass/compare/v1.3.0...v1.3.1) (2026-06-04)
 
 ## [1.3.0](https://github.com/Krigjo25/lumina-sass/compare/v1.2.4...v1.3.0) (2026-06-04)

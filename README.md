@@ -11,8 +11,8 @@ Lumina SASS provides a comprehensive set of standardized color variables and uti
 - **Standardized Color Naming:** Uses a consistent `[brand]-[color]` or `[category]-[color]` pattern.
 - **Brand Colors:** Pre-defined colors for social media platforms and operating systems.
 - **Tech Colors:** Specifically curated colors for programming languages and development categories.
-- **Flexbox Utilities:** Comprehensive set of flexbox mixins and generated classes.
-- **Utility Mixins:** Includes flexbox centering, responsive breakpoints, and more.
+- **Flexbox Utilities:** Comprehensive set of flexbox maps and utility classes.
+- **Utility Mixins:** Includes media query breakpoints, font handling, typography, figure/image styling, and button generation.
 
 ## Installation
 
@@ -93,16 +93,9 @@ npm run serve
 ## Directory Structure
 
 - `src/color/`: Contains all color definitions.
-  - `_index.sass`: Entry point for all color modules.
-  - `_base.sass`: Basic palette colors (white, grey, etc.).
-  - `_accents.sass`: Supplemental accent colors.
-  - `_brands.sass`: Brand colors for social media and platforms.
-  - `_tags.sass`: Operating system and specialized tag colors.
-  - `_stacks.sass`: Colors for various technology stacks and categories.
-  - `_icons.sass`: Colors associated with specific file types and UI icons.
-- `src/flexbox/`: Comprehensive flexbox mixins.
-- `src/mixins/`: Utility mixins for layout and responsiveness.
-- `src/map/`: SASS maps for configuration.
+- `src/flexbox/`: Comprehensive flexbox utilities and mappings.
+- `src/mixins/`: Utility mixins (layout, media queries, typography, buttons).
+- `src/map/`: SASS maps for configuration (icons, devices, flexbox).
 - `src/_index.sass`: Main entry point for the entire library.
 - `src/_variables.sass`: Global configuration variables.
 

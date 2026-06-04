@@ -31,7 +31,8 @@
     "build:demo": "sass demo/style.sass demo/style.css",
     "build:demo:watch": "sass demo/style.sass demo/style.css --watch",
     "serve": "http-server demo",
-    "start": "npm run build:demo && npm run serve"
+    "start": "npm run build:demo && npm run serve",
+    "release": "standard-version"
   },
   "files": [
     "src"
@@ -40,7 +41,7 @@
   "license": "MIT",
   "devDependencies": {
     "http-server": "^14.1.1",
-    "sass": "^1.85.1"
+    "sass": "^1.85.1",
+    "standard-version": "^9.5.0"
   }
 }
-

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/Krigjo25/lumina-sass/compare/v1.5.0...v1.6.0) (2026-06-04)
+
+
+### Features
+
+* **mixins:** combine icon-generator updates and base-button mixin. ([c422e4e](https://github.com/Krigjo25/lumina-sass/commit/c422e4e0e1254caa980e844b7e555ea24d8f43bc))
+
 ## [1.5.0](https://github.com/Krigjo25/lumina-sass/compare/v1.4.0...v1.5.0) (2026-06-04)
 
 

@@ -4,6 +4,10 @@
   "description": "Lumina Sass design tokens and mixins",
   "main": "src/_index.sass",
   "sass": "src/_index.sass",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Krigjo25/lumina-sass.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:demo": "sass demo/style.sass demo/style.css",
@@ -18,6 +22,7 @@
   "license": "MIT",
   "devDependencies": {
     "http-server": "^14.1.1",
-    "sass": "^1.100.0"
+    "sass": "^1.85.1"
   }
 }
+

@@ -107,7 +107,7 @@ Colors are named using the following patterns:
 
 ## Releases & Publishing
 
-This project uses GitHub Actions to automate releases and publishing to NPM.
+This project uses GitHub Actions to automate releases and publishing to NPM via **Trusted Publishing (OIDC)**.
 
 ### Dependency Updates
 Dependabot is configured to check for npm and GitHub Action updates **monthly**.
@@ -121,9 +121,15 @@ Dependabot is configured to check for npm and GitHub Action updates **monthly**.
    ```
 3. The GitHub Action will automatically:
    - Create a GitHub Release with generated release notes.
-   - Publish the package to NPM.
+   - Publish the package to NPM with **SLSA Provenance**.
 
-> **Note:** Ensure you have added `NPM_TOKEN` to your GitHub Repository Secrets for the publishing to succeed.
+### Trusted Publishing Setup
+To enable secretless publishing, you must configure **Trusted Publishers** on npmjs.com:
+1. Go to your package settings on npm.
+2. Under **Publishing access**, add **GitHub Actions** as a Trusted Publisher.
+3. Link your repository (`Krigjo25/lumina-sass`) and the workflow file (`.github/workflows/release.yml`).
+
+> **Benefits:** This setup eliminates the need for manual `NPM_TOKEN` management and provides a "Provenance" badge on npm, allowing users to verify that the package was built directly from this repository.
 
 ## License
 

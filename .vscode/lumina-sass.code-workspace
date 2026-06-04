@@ -1,12 +1,12 @@
 {
   "folders": [
     {
-      "path": "."
+      "path": "../"
     }
   ],
   "settings": {
     "files.exclude": {
-      "**/.git": true,
+      "**/.github": true,
       "**/.DS_Store": true,
       "**/node_modules": true
     },

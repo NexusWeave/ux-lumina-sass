@@ -4,18 +4,16 @@
 @use '../mappings/icons' as icon-map
 @use '../mappings/flexbox' as flexbox-mapping
 
-@mixin icon-generator($color: null, $font-family: 'bootstrap-icons')
-    @if icon-map.$icons
-        @each $category, $maps in icon-map.$icons
-            @each $icon, $props in $maps
-                .#{$icon}
-                    font-family: $font-family
-                    &:before
-                        content: map.get($props, icon)
-                    @if $color
-                        color: $color
-    @else
-        @error 'Icon mapping not found.'
+@mixin icon-generator($name: null, $color: null, $font-family: 'bootstrap-icons')
+    @each $category, $maps in icon-map.$icons
+        @each $icon, $props in $maps
+            .#{$icon}
+                &:before
+                    content: map.get($props, icon)
+                @if $color
+                    color: $color
+
+                font-family: $font-family
 
 @mixin flexbox-generator($name)
     $props: map.get(flexbox-mapping.$flexbox, $name)
@@ -25,15 +23,3 @@
             #{$property}: $value
     @else
         @error '"#{$name}" not found in flexbox mapping.'
-
-@mixin base-button($base-color: #007bff, $text-color: #fff, $padding: 0.5rem 1rem, $border-radius: 0.25rem)
-    display: inline-block
-    padding: $padding
-    border-radius: $border-radius
-    background-color: $base-color
-    color: $text-color
-    text-decoration: none
-    cursor: pointer
-    border: none
-    &:hover
-        filter: brightness(0.9)

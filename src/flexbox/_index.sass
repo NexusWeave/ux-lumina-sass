@@ -1,5 +1,32 @@
-@forward 'flexbox-row'
-@forward 'flexbox-column'
-@forward 'flexbox-wrap-row'
-@forward 'flexbox-reversed-row'
-@forward 'row-align-justify-mix/flexbox-wrap-row-align-justify'
+@use '../mix/generators' as mix
+
+@forward '../flexbox/flexbox-row'
+@forward '../flexbox/flexbox-column'
+@forward '../flexbox/flexbox-wrap-row'
+@forward '../flexbox/flexbox-reversed-row'
+@forward '../flexbox/row-align-justify-mix/flexbox-wrap-row-align-justify'
+
+.flex-inline
+    @include mix.flexbox-generator('inline-flex')
+
+.flex
+    @include mix.flexbox-generator('flex')
+
+.flex-row
+    @include mix.flexbox-generator('flex-row')
+
+.flex-wrap-row
+    @include mix.flexbox-generator('flex-wrap-row')
+
+.flex-wrap-reversed-row
+    @include mix.flexbox-generator('flex-wrap-reversed-row')
+
+.flex-column
+    @include mix.flexbox-generator('flex-column')
+
+.flex-wrap-column
+    @include mix.flexbox-generator('flex-wrap-column')
+
+.flex-wrap-reversed-column
+    @include mix.flexbox-generator('flex-wrap-reversed-column')
+

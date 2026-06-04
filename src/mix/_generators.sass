@@ -25,8 +25,14 @@
     @else
         @error '"#{$name}" not found in flexbox mapping.'
 
-@mixin flexbox-map-generator($flexbox-map)
-    @each $name, $props in $flexbox-map
-        .#{$name}
-            @each $property, $value in $props
-                #{$property}: $value
+@mixin base-button($base-color: #007bff, $text-color: #fff, $padding: 0.5rem 1rem, $border-radius: 0.25rem)
+    display: inline-block
+    padding: $padding
+    border-radius: $border-radius
+    background-color: $base-color
+    color: $text-color
+    text-decoration: none
+    cursor: pointer
+    border: none
+    &:hover
+        filter: brightness(0.9)

@@ -1,5 +1,4 @@
 @use '../mix/generators' as mix
-@use '../map/flexbox' as flexbox-map
 
 @forward '../flexbox/flexbox-row'
 @forward '../flexbox/flexbox-column'
@@ -7,4 +6,35 @@
 @forward '../flexbox/flexbox-reversed-row'
 @forward '../flexbox/row-align-justify-mix/flexbox-wrap-row-align-justify'
 
-@include mix.flexbox-map-generator(flexbox-map.$flexbox)
+.flex
+    @include mix.flexbox-generator('flex')
+
+.flex-center
+    @include mix.flexbox-generator('flex-center')
+
+.flex-row
+    @include mix.flexbox-generator('flex-row')
+
+.flex-column
+    @include mix.flexbox-generator('flex-column')
+
+.flex-wrap-row
+    @include mix.flexbox-generator('flex-wrap-row')
+
+.flex-wrap-column
+    @include mix.flexbox-generator('flex-wrap-column')
+
+.flex-wrap-reversed-row
+    @include mix.flexbox-generator('flex-wrap-reversed-row')
+
+.flex-wrap-reversed-column
+    @include mix.flexbox-generator('flex-wrap-reversed-column')
+
+.inline-flex
+    @include mix.flexbox-generator('inline-flex')
+
+.inline-flex-row
+    @include mix.flexbox-generator('inline-flex-row')
+
+.inline-flex-column
+    @include mix.flexbox-generator('inline-flex-column')

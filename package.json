@@ -1,0 +1,15 @@
+{
+  "name": "lumina-sass",
+  "version": "1.0.0",
+  "description": "Lumina Sass design tokens and mixins",
+  "main": "sass/_index.sass",
+  "sass": "sass/_index.sass",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "sass"
+  ],
+  "author": "",
+  "license": "MIT"
+}

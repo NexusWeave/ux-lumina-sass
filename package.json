@@ -4,6 +4,24 @@
   "description": "Lumina Sass design tokens and mixins",
   "main": "src/_index.sass",
   "sass": "src/_index.sass",
+  "exports": {
+    ".": {
+      "sass": "./src/_index.sass",
+      "default": "./src/_index.sass"
+    },
+    "./flexbox": {
+      "sass": "./src/flexbox/_index.sass",
+      "default": "./src/flexbox/_index.sass"
+    },
+    "./color": {
+      "sass": "./src/color/_index.sass",
+      "default": "./src/color/_index.sass"
+    },
+    "./mixins": {
+      "sass": "./src/mixins/_index.sass",
+      "default": "./src/mixins/_index.sass"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Krigjo25/lumina-sass.git"

@@ -2,14 +2,22 @@
   "name": "lumina-sass",
   "version": "1.0.0",
   "description": "Lumina Sass design tokens and mixins",
-  "main": "sass/_index.sass",
-  "sass": "sass/_index.sass",
+  "main": "src/_index.sass",
+  "sass": "src/_index.sass",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:demo": "sass demo/style.sass demo/style.css",
+    "build:demo:watch": "sass demo/style.sass demo/style.css --watch",
+    "serve": "http-server demo",
+    "start": "npm run build:demo && npm run serve"
   },
   "files": [
-    "sass"
+    "src"
   ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "sass": "^1.100.0"
+  }
 }

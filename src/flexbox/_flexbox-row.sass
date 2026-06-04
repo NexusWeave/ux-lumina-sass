@@ -1,0 +1,34 @@
+//  Flexbox styles for rows
+@use '../mix/generators' as mix
+.flex-row
+    @include mix.flexbox-generator('flex-row')
+
+.flex-row-align-items-center
+    align-items: center
+    @include mix.flexbox-generator('flex-row')
+
+.inline-flex-row
+    @include mix.flexbox-generator('inline-flex-row')
+
+.inline-flex-center
+    align-items: center
+    justify-content: center
+    @include mix.flexbox-generator('inline-flex')
+
+.flex-row-justify-space-between
+    justify-content: space-between
+    @include mix.flexbox-generator('flex-row')
+
+.flex-row-align-items-flex-end-justify-center
+    align-items: flex-end 
+    justify-content: center
+    @include mix.flexbox-generator('flex-row')
+
+.flex-row-align-items-center-justify-content-space-between
+    justify-content: space-between
+    @include mix.flexbox-generator('flex-row')
+
+.flex-row-justify-center
+    justify-content: center
+    @include mix.flexbox-generator('flex-row')
+    

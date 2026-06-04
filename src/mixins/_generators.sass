@@ -1,0 +1,58 @@
+@use 'sass:map' as map
+@use './mixins' as mix
+@use './button-mixins' as btn
+@use '../colors/colors' as color
+
+@use '../mappings/tags' as tag-map
+@use '../mappings/icons' as icon-map
+@use '../mappings/tech-icons' as tech-map
+@use '../mappings/flexbox' as flexbox-mapping
+
+    @each $category, $maps in tag-map.$tags
+        @each $tag, $props in $maps
+            $icon: map.get($props, icon)
+            $color: map.get($props, color)
+            $hover-color: map.get($props, hover)
+            $background-color: map.get($props, background)
+            
+            @if not $color
+                $color: color.$off-white
+            @if not $hover-color
+                $hover-color: $background-color
+    
+            // Using high specificity to ensure tag colors win over base button styles
+            button.#{$tag}, .button.#{$tag}, a.#{$tag}
+                @include btn.colored-button-neumorphism($background-color)
+                
+                background-color: $background-color !important
+                color: $color !important
+
+                .icon
+                    @include mix.font($size: .8rem)
+
+                text-align: center
+                padding: .5rem 1.2rem
+                border-radius: 0.75rem
+
+@mixin icon-generator()
+    @each $category, $maps in icon-map.$icons
+        @each $icon, $props in $maps
+            .#{$icon}
+                &:before
+                    content: map.get($props, icon)
+
+                color: map.get($props, icon-color)
+
+@mixin flexbox-generator($name)
+
+    $props: map.get(flexbox-mapping.$flexbox, $name)
+
+    @if $props
+        @each $property, $value in $props
+            #{$property}: $value
+    @else
+        @error '"#{$name}" not found in flexbox mapping.'
+
+
+@include icon-generator()
+

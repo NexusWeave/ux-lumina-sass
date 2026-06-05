@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.14](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.6.13...v1.6.14) (2026-06-05)
+
+
+### Bug Fixes
+
+* resolve Sass import errors and variable dependency issues ([d8e8a44](https://github.com/NexusWeave/ux-lumina-sass/commit/d8e8a44cf01f8e9528614ef8a916284224f601e6))
+
 ### [1.6.13](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.6.12...v1.6.13) (2026-06-05)
 
 ### [1.6.12](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.6.11...v1.6.12) (2026-06-05)

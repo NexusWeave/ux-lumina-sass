@@ -1,4 +1,5 @@
 @use 'sass:map'
+@use 'typography' as typo
 @use '../map/devices-breakpoints' as bp
 
 
@@ -20,6 +21,6 @@
             object-fit: $object-fit
         figcaption
           @if $size != null & $style != null
-            @include mix.font($size, $style)
+            @include typo.font($size, $style)
         
             

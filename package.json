@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Krigjo25/lumina-sass.git"
+    "url": "https://github.com/NexusWeave/ux-lumina-sass.git"
   },
   "scripts": {
     "serve": "http-server demo",

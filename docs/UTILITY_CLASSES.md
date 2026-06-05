@@ -35,7 +35,7 @@ These classes provide consistent layout behavior by leveraging internal flexbox 
 | `.flex-wrap-row` | Row layout with wrapping enabled. |
 | `.flex-wrap-col` | Column layout with wrapping enabled. |
 | `.flex-wrap-reversed-row` | Reversed row layout with wrapping. |
-| `.flex-wrap-reversed-column` | Reversed column layout with wrapping. |
+| `.flex-wrap-reversed-col` | Reversed column layout with wrapping. |
 
 ### Alignment & Justification (Pre-configured)
 These classes combine direction, alignment, and justification for common layout patterns.
@@ -54,9 +54,9 @@ These classes combine direction, alignment, and justification for common layout 
 #### Column Patterns
 - `.flex-col-justify-center`
 - `.flex-col-align-items-end`
-- `.flex-col-align-items-center`
+- `.flex-col-align-center`
 - `.flex-col-justify-space-evenly`
-- `.flex-col-align-items-center-justify-center`
+- `.flex-col-align-center-justify-center`
 - `.flex-col-justify-space-evenly-items-center`
 
 #### Wrap Patterns

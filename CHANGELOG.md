@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.6.17...v1.7.0) (2026-06-05)
+
+
+### Features
+
+* **flexbox:** export missing utilities and add alignment class. ([c38369a](https://github.com/NexusWeave/ux-lumina-sass/commit/c38369a43912e8f7b3cf703be2a82da8eb3fe3c4))
+
 ### [1.6.17](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.6.16...v1.6.17) (2026-06-05)
 
 

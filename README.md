@@ -17,11 +17,7 @@ Lumina SASS provides a comprehensive set of standardized color variables and uti
 ## Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/lumina-sass.git
-
-# Navigate to the project
-cd lumina-sass
+npm install lumina-sass
 ```
 
 ## Usage
@@ -31,7 +27,7 @@ cd lumina-sass
 All color variables follow a descriptive naming convention:
 
 ```sass
-@use 'src/color' as *
+@use 'lumina-sass/color' as *
 
 .social-button
   background-color: $discord-blue
@@ -49,11 +45,11 @@ You can import the entire library or specific modules:
 
 ```sass
 // Import everything
-@use 'src' as *
+@use 'lumina-sass' as *
 
 // Or import specific modules
-@use 'src/flexbox' as flex
-@use 'src/mixins' as mix
+@use 'lumina-sass/flexbox' as flex
+@use 'lumina-sass/mixins' as mix
 
 .container
   +mix.flex-center

@@ -7,27 +7,6 @@
 @forward '../flexbox/row-align-justify-mix/flexbox-wrap-row-align-justify'
 @forward '../flexbox/column-align-justify-mix/column-justify-items'
 
-.flex-inline
-    @include mix.flexbox-generator('inline-flex')
-
-.flex
-    @include mix.flexbox-generator('flex')
-
-.flex-row
-    @include mix.flexbox-generator('flex-row')
-
-.flex-wrap-row
-    @include mix.flexbox-generator('flex-wrap-row')
-
-.flex-wrap-reversed-row
-    @include mix.flexbox-generator('flex-wrap-reversed-row')
-
-.flex-col
-    @include mix.flexbox-generator('flex-col')
-
-.flex-wrap-col
-    @include mix.flexbox-generator('flex-wrap-col')
-
 .flex
     @include mix.flexbox-generator('flex')
 
@@ -44,14 +23,11 @@
     @include mix.flexbox-generator('flex-col-wrap')
 
 .flex-col-center-center
-    display: flex
     justify-content: center
     align-items: center
-    flex-direction: column
+    @include mix.flexbox-generator('flex-col-center-center')
 
 .flex-row-center-center
-    display: flex
     justify-content: center
     align-items: center
-    flex-direction: row
-
+    @include mix.flexbox-generator('flex-row-center-center')

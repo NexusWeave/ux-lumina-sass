@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.6](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.6.5...v1.6.6) (2026-06-05)
+
+
+### Bug Fixes
+
+* resolve issue with stylesheet not found. ([8ae2c15](https://github.com/NexusWeave/ux-lumina-sass/commit/8ae2c155d0ea4910ed388d0853b0f5e4e4e19d92))
+
 ### [1.6.5](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.6.4...v1.6.5) (2026-06-05)
 
 ### [1.6.4](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.6.3...v1.6.4) (2026-06-05)

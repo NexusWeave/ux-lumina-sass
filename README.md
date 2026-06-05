@@ -1,16 +1,10 @@
 # Lumina SASS
 
-Lumina Sass design tokens and mixins.
+Lumina Sass design tokens and mixins for modern web development.
 
 ## Overview
 
-Lumina SASS provides a comprehensive set of standardized color variables and utility mixins designed for modern web development. The library focuses on descriptive naming conventions and easy integration.
-
-## Features
-
-- **Standardized Color Naming:** Uses a consistent `[brand]-[color]` pattern.
-- **Flexbox Utilities:** Comprehensive set of flexbox maps and utility classes.
-- **Utility Mixins:** Includes media query breakpoints, typography, and button generation.
+Lumina SASS provides a comprehensive set of standardized color variables and utility mixins. The library focuses on descriptive naming conventions and easy integration into any SASS-based project.
 
 ## Installation
 
@@ -20,17 +14,11 @@ npm install lumina-sass
 
 ## Usage
 
-### Colors
+### Importing the Library
 
-```sass
-@use 'lumina-sass/color' as *
+You can import the entire library or specific modules depending on your needs.
 
-.social-button
-  background-color: $discord-blue
-```
-
-### Flexbox & Mixins
-
+#### 1. Import Everything
 ```sass
 @use 'lumina-sass' as *
 
@@ -38,21 +26,42 @@ npm install lumina-sass
   +flex-center
 ```
 
-## Documentation
+#### 2. Import Specific Modules
+```sass
+@use 'lumina-sass/color' as *
+@use 'lumina-sass/mixins' as mix
+@use 'lumina-sass/flexbox' as flex
 
-For more detailed information, please refer to the following guides:
+.social-button
+  background-color: $discord-blue
 
-- **[Developer Guide](docs/DEVELOPMENT.md):** Information on setting up the development environment, project structure, and how to contribute.
-- **[Releasing & Publishing](docs/RELEASING.md):** Details on the automated release process and how to configure NPM Trusted Publishing.
-
-## Demo
-
-A live demo is available in the `demo/` directory. You can run it locally with:
-
-```bash
-npm install
-npm start
+.row
+  +flex.flex-row
 ```
+
+## Features
+
+### Standardized Colors
+Uses a consistent `$[brand]-[color]` pattern for easy discovery and maintenance.
+- **Brand Colors:** Social media platforms, operating systems, and tech brands.
+- **UI States:** Hover and active states for major brand colors.
+
+### Flexbox Utilities
+A comprehensive set of flexbox mixins and mapping for quick layout development.
+
+### Utility Mixins
+- **Responsive Design:** Media query breakpoints.
+- **Typography:** Font handling and text styling.
+- **Elements:** Button generation, figure/image styling, and more.
+
+---
+
+## Contributing & Internal Docs
+
+If you want to contribute to the project or learn about the release process, please see:
+
+- [**Development Guide**](docs/DEVELOPMENT.md) - Project structure, local setup, and contribution rules.
+- [**Releasing & Publishing**](docs/RELEASING.md) - Details on the automated release pipeline.
 
 ## License
 

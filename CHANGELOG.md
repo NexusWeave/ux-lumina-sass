@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.5](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.7.4...v1.7.5) (2026-06-05)
+
+
+### Bug Fixes
+
+* **import:** update internal imports to use mix index. ([2ad8417](https://github.com/NexusWeave/ux-lumina-sass/commit/2ad841780a0f82119aca765a32a4a57b0855cb3c))
+
 ### [1.7.4](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.7.3...v1.7.4) (2026-06-05)
 
 ### [1.7.3](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.7.2...v1.7.3) (2026-06-05)

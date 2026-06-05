@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.7.10...v1.8.0) (2026-06-05)
+
+
+### Features
+
+* add responsive media queries and iPhone device entry. ([8246420](https://github.com/NexusWeave/ux-lumina-sass/commit/824642020c0956983b525b9114f6de0182356996))
+
 ### [1.7.10](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.7.9...v1.7.10) (2026-06-05)
 
 ### [1.7.9](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.7.8...v1.7.9) (2026-06-05)

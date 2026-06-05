@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.4](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.6.3...v1.6.4) (2026-06-05)
+
+
+### Bug Fixes
+
+* update repository URL to match actual remote ([4351ab3](https://github.com/NexusWeave/ux-lumina-sass/commit/4351ab3ec8c1154675e18e87ab2f7738288e1f25))
+
 ### [1.6.3](https://github.com/Krigjo25/lumina-sass/compare/v1.6.0...v1.6.3) (2026-06-05)
 
 

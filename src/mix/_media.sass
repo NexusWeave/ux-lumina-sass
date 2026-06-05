@@ -1,28 +1,73 @@
 @use 'sass:map'
 @use 'typography' as typo
+
 @use '../map/devices-breakpoints' as bp
 
+// Base mixin – low‑level implementation of media queries.
+// This is the core logic; other mixins delegate to it.
+@mixin media-queries-base($breakpoint, $value: null)
+  @if $value != null
+    @media (#{$breakpoint}: #{$value})
+      @content
+  @else if map.has-key(bp.$breakpoints, $breakpoint)
+    $breakpoint-value: map.get(bp.$breakpoints, $breakpoint)
+    @media (max-width: $breakpoint-value)
+      @content
+  @else
+    @media #{$breakpoint}
+      @content
 
-@mixin media-queries($breakpoint)
-  $value: $breakpoint
-  @if map.has-key(bp.$breakpoints, $breakpoint)
-    $value: map.get(bp.$breakpoints, $breakpoint)
-
-  @media (max-width: $value)
+// Public dispatcher – thin wrapper around the base mixin.
+// Keeps the original API name for backward compatibility.
+@mixin media-queries($feature, $value: null)
+  @include media-queries-base($feature, $value)
     @content
 
-@mixin figure-and-image($object-fit: cover, $size: null, $style: null)
-    figure
-        picture, img
-          inline-size: 100%
-          object-fit: $object-fit
+/* Semantic Media Query Helpers – delegate through the base mixin */
+@mixin prefers-color-scheme($mode)
+  @include media-queries-base('(prefers-color-scheme: #{$mode})')
 
-        picture
-          img
-            inline-size: 100%
-            object-fit: $object-fit
-        figcaption
-          @if $size != null & $style != null
-            @include typo.font($size, $style)
-        
-            
+@mixin prefers-orientation($orientation)
+  @include media-queries-base('orientation', $orientation)
+
+@mixin media-breakpoint($name, $value)
+  @include media-queries-base($name, $value)
+    @content
+
+// Device media query helper – generates a media query for a single device
+@mixin device-media($device, $orientation: portrait)
+  $data: map.get(bp.$devices, $device)
+
+  @if $data == null
+    @error "Device `#{$device}` not found in $devices map."
+
+  $width: map.get($data, inline-size)
+  $height: map.get($data, block-size)
+
+  @if $orientation == portrait
+    $max-width: $width + 0.125rem
+    $max-height: $height + 0.125rem
+    @media only screen and (min-width: $width) and (max-width: $max-width) and (min-height: $height) and (max-height: $max-height) and (orientation: portrait)
+      @content
+  @else if $orientation == landscape
+    $max-height: $height + 0.125rem
+    $max-width: $width + 0.125rem
+    @media only screen and (min-width: $height) and (max-width: $max-height) and (min-height: $width) and (max-height: $max-width) and (orientation: landscape)
+      @content
+  @else
+    @error "Invalid orientation `#{$orientation}` – use portrait or landscape."
+
+/* Figure and image helper – unchanged */
+@mixin figure-and-image($object-fit: cover, $size: null, $style: null)
+  figure
+    picture, img
+      inline-size: 100%
+      object-fit: $object-fit
+
+    picture
+      img
+        inline-size: 100%
+        object-fit: $object-fit
+      figcaption
+        @if $size != null and $style != null
+          @include typo.font($size, $style)

@@ -51,27 +51,7 @@ You can import the entire library or specific modules depending on your needs.
 
 ### Utility Classes
 
-If you prefer to use pre-made CSS classes directly in your HTML, you can do so by importing the library or the utils module. This will inject the utility classes into your compiled CSS.
-
-```sass
-// This will generate utility classes like .flex, .flex-center, .flex-row, etc.
-@use 'lumina-sass'
-```
-
-**Example HTML usage:**
-```html
-<div class="flex-center flex-row">
-  <div class="social-button">...</div>
-</div>
-```
-
-| Class | Description |
-| :--- | :--- |
-| `.flex` | Sets `display: flex`. |
-| `.flex-center` | Centers content using flexbox. |
-| `.flex-row` | Sets `flex-direction: row`. |
-| `.flex-column` | Sets `flex-direction: column`. |
-| `.flex-inline` | Sets `display: inline-flex`. |
+If you prefer to use pre-made CSS classes directly in your HTML (like `.flex-center` or `.flex-row`), please refer to our [**Utility Classes Guide**](docs/UTILITY_CLASSES.md).
 
 ## Features
 

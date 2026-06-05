@@ -7,7 +7,8 @@
   box-sizing: border-box
 
 body
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif
+  @include font($font: 'Roboto')
+  @include text-wrap-safe
   background-color: $soft-white
   color: $text-light-1
   line-height: 1.6
@@ -20,14 +21,47 @@ header
   padding-bottom: 1rem
   
   h1
-    color: $deep-midnight-blue
-    font-size: 2.5rem
+    @include font($size: 2.5rem, $weight: 800)
+    color: $accent-salmon
+    text-transform: uppercase
+    letter-spacing: 0.1rem
+    margin-bottom: 1rem
+
+  nav
+    gap: 1rem
+
+    a
+      display: inline-block
+      padding: 0.6rem 1.2rem
+      border-radius: 0.5rem
+      text-decoration: none
+      @include font($weight: 600)
+      background-color: $accent-slate-blue
+      color: $white
+      transition: all 0.3s ease-in-out
+      box-shadow: 0 0.25rem 0.375rem rgba(0,0,0,0.1)
+
+      &:hover
+        background-color: $accent-salmon
+        transform: translateY(-0.125rem)
+        box-shadow: 0 0.375rem 0.5rem rgba(0,0,0,0.15)
+      
+      &.active
+        background-color: $accent-salmon
+        cursor: default
+        pointer-events: none
+        box-shadow: inset 0 0.125rem 0.25rem rgba(0,0,0,0.2)
 
 h2
   margin-bottom: 1rem
   border-left: 0.3125rem solid $accent-salmon // 5px
   padding-left: 0.5rem
-  color: $deep-midnight-blue
+  color: $accent-slate-blue
+  @include font($size: 1.5rem)
+
+h3
+  color: $sea-green
+  margin-bottom: 0.5rem
 
 .section
   margin-bottom: 1.5rem
@@ -42,95 +76,147 @@ h2
   border-radius: 0.5rem // 8px
   text-align: center
   font-weight: bold
-  color: white
+  color: #404040
   box-shadow: 0 0.25rem 0.375rem rgba(0,0,0,0.1) // 4px, 6px
   font-size: 0.9rem
 
 // Brand Colors Swatches
-.brand-github
-  background-color: $github-gray
-.brand-discord
-  background-color: $discord-blue
-.brand-facebook
-  background-color: $facebook-blue
-.brand-instagram
-  background-color: $instagram-purple
-.brand-messenger
-  background-color: $messenger-blue
-.brand-youtube
-  background-color: $youtube-red
-.brand-linkedin
-  background-color: $linked-in-blue
+.github-gray
+  background-color: $github-gray !important
+  color: white !important
+.discord-blue
+  background-color: $discord-blue !important
+  color: white !important
+.facebook-blue
+  background-color: $facebook-blue !important
+  color: white !important
+.instagram-purple
+  background-color: $instagram-purple !important
+  color: white !important
+.messenger-blue
+  background-color: $messenger-blue !important
+  color: white !important
+.youtube-red
+  background-color: $youtube-red !important
+  color: white !important
+.linkedin-blue
+  background-color: $linked-in-blue !important
+  color: white !important
 
 // Stacks Swatches
-.stack-typescript
-  background-color: $typescript-blue
-.stack-go
-  background-color: $go-teal
-.stack-javascript
-  background-color: $javascript-yellow
-  color: #333
-.stack-compiled
-  background-color: $compiled-orange
-.stack-db
-  background-color: $db-red
-.stack-workflow
-  background-color: $workflow-blue
-.stack-powershell
-  background-color: $powershell-blue
+.typescript-blue
+  background-color: $typescript-blue !important
+  color: white !important
+.go-teal
+  background-color: $go-teal !important
+  color: white !important
+.javascript-yellow
+  background-color: $javascript-yellow !important
+  color: #333 !important
+.compiled-orange
+  background-color: $compiled-orange !important
+  color: white !important
+.db-red
+  background-color: $db-red !important
+  color: white !important
+.workflow-blue
+  background-color: $workflow-blue !important
+  color: white !important
+.powershell-blue
+  background-color: $powershell-blue !important
+  color: white !important
 
 // Tags Swatches
-.tag-linux
-  background-color: $linux-orange
-.tag-windows
-  background-color: $windows-blue
-.tag-macos
-  background-color: $macos-silver
-  color: #333
-.tag-fullstack
-  background-color: $fullstack-vibrant-orange
-
-// Icons Swatches
-.icon-pdf
-  background-color: $pdf-red
-.icon-code
-  background-color: $code-blue
-.icon-globe
-  background-color: $globe-green
-.icon-email
-  background-color: $email-red
+.linux-orange
+  background-color: $linux-orange !important
+  color: white !important
+.windows-blue
+  background-color: $windows-blue !important
+  color: white !important
+.macos-silver
+  background-color: $macos-silver !important
+  color: #333 !important
+.fullstack-vibrant-orange
+  background-color: $fullstack-vibrant-orange !important
+  color: white !important
 
 // Accents Swatches
 .accent-salmon
-  background-color: $accent-salmon
+  background-color: $accent-salmon !important
+  color: white !important
 .accent-slate-blue
-  background-color: $accent-slate-blue
+  background-color: $accent-slate-blue !important
+  color: white !important
 .accent-lavender
-  background-color: $accent-lavender
-  color: $deep-midnight-blue
+  background-color: $accent-lavender !important
+  color: $deep-midnight-blue !important
 
 // Base Swatches
-.base-midnight
-  background-color: $deep-midnight-blue
-.base-sea-green
-  background-color: $sea-green
-.base-logo-red
-  background-color: $logo-red
+.deep-midnight-blue
+  background-color: $deep-midnight-blue !important
+  color: white !important
+.sea-green
+  background-color: $sea-green !important
+  color: white !important
+.logo-red
+  background-color: $logo-red !important
+  color: white !important
 
-// Mixin Testing
-.flex-test-box
-  height: 12.5rem // 200px
-  background-color: $white
-  border: 0.125rem dashed $dark-grey // 2px
-  border-radius: 0.75rem // 12px
+// Icons Swatches (formerly part of .icons-gallery)
+.card
+  &::before
+    display: block
+    font-size: 2rem
+    margin-bottom: 0.5rem
 
-.flex-child
-  background-color: $accent-slate-blue
-  color: white
-  padding: 1rem
-  margin: 0.5rem
-  border-radius: 0.25rem // 4px
-  box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.2) // 2px, 4px
+// Generate Icon Classes
+@include icon-generator
+
+// Colorful Icons
+.mail::before
+  color: $email-red
+.github::before
+  color: $github-gray !important
+.ytube::before
+  color: #ff0000
+.facebook::before
+  color: $facebook-blue
+.linkedin::before
+  color: $linked-in-blue
+.instagram::before
+  color: $instagram-purple
+.twitter::before
+  color: #1da1f2 !important
+  content: "\F5EF"
+
+.pdf::before
+  color: $pdf-red
+
+.radio::before, .checkbox::before
+  color: $accent-salmon
+.globe::before
+  color: $globe-green
+.map-pin::before
+  color: #e74c3c
+.calendar::before
+  color: $accent-slate-blue
+.search::before
+  color: $dark-grey
+
+.school::before, .diploma::before, .collaborator::before
+  color: $deep-midnight-blue !important
+
+.tel::before
+  color: $sea-green
+.alarm::before
+  color: $logo-red
+.cloud::before
+  color: $typescript-blue !important
+  content: "\F2C1"
+.code::before
+  color: $code-blue !important
+  content: "\F2C8"
+
 
 footer
   text-align: center

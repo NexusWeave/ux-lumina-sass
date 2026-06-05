@@ -3,93 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumina SASS - Visual Testing Page</title>
+    <title>Lumina SASS - Documentation</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Lumina SASS Testing Suite</h1>
-        <p>Visual verification for all standardized design tokens.</p>
+        <h1>Lumina SASS Documentation</h1>
+        <nav class="flex-center">
+            <a href="index.html" class="active">Home</a>
+            <a href="colors.html">Colors</a>
+            <a href="bootstrap-icons.html">Bootstrap Icons</a>
+        </nav>
     </header>
 
     <main>
-        <!-- Brand Colors -->
+        <h2>Documentation</h2>
         <section class="section">
-            <h2>Brands</h2>
-            <div class="grid">
-                <div class="card brand-github">Github Gray</div>
-                <div class="card brand-discord">Discord Blue</div>
-                <div class="card brand-facebook">Facebook Blue</div>
-                <div class="card brand-instagram">Instagram Purple</div>
-                <div class="card brand-messenger">Messenger Blue</div>
-                <div class="card brand-youtube">YouTube Red</div>
-                <div class="card brand-linkedin">LinkedIn Blue</div>
-            </div>
+            <p>Lumina SASS is a modular, design-token-driven styling library built for modern web applications. It provides standardized colors, flexbox utilities, and powerful mixins to streamline your development process.</p>
         </section>
 
-        <!-- Tech Stacks -->
         <section class="section">
-            <h2>Stacks</h2>
-            <div class="grid">
-                <div class="card stack-typescript">TypeScript Blue</div>
-                <div class="card stack-go">Go Teal</div>
-                <div class="card stack-javascript">JS Yellow</div>
-                <div class="card stack-compiled">Compiled Orange</div>
-                <div class="card stack-db">DB Red</div>
-                <div class="card stack-workflow">Workflow Blue</div>
-                <div class="card stack-powershell">PowerShell Blue</div>
-            </div>
-        </section>
+            <h3>Quick Usage</h3>
+            <pre><code>@use 'lumina-sass' as *
 
-        <!-- Tags & OS -->
-        <section class="section">
-            <h2>Tags & OS</h2>
-            <div class="grid">
-                <div class="card tag-linux">Linux Orange</div>
-                <div class="card tag-windows">Windows Blue</div>
-                <div class="card tag-macos">MacOS Silver</div>
-                <div class="card tag-fullstack">Fullstack Orange</div>
-            </div>
-        </section>
-
-        <!-- UI Icons -->
-        <section class="section">
-            <h2>Icons</h2>
-            <div class="grid">
-                <div class="card icon-pdf">PDF Red</div>
-                <div class="card icon-code">Code Blue</div>
-                <div class="card icon-globe">Globe Green</div>
-                <div class="card icon-email">Email Red</div>
-            </div>
-        </section>
-
-        <!-- Accents -->
-        <section class="section">
-            <h2>Accents</h2>
-            <div class="grid">
-                <div class="card accent-salmon">Salmon</div>
-                <div class="card accent-slate-blue">Slate Blue</div>
-                <div class="card accent-lavender">Lavender</div>
-            </div>
-        </section>
-
-        <!-- Base Colors -->
-        <section class="section">
-            <h2>Base Colors</h2>
-            <div class="grid">
-                <div class="card base-midnight">Midnight Blue</div>
-                <div class="card base-sea-green">Sea Green</div>
-                <div class="card base-logo-red">Logo Red</div>
-            </div>
-        </section>
-
-        <!-- Mixin Test -->
-        <section class="section">
-            <h2>Mixin Verification</h2>
-            <div class="flex-test-box flex-center">
-                <div class="flex-child">Child 1</div>
-                <div class="flex-child">Child 2</div>
-            </div>
+.container
+  @include flex-center
+  background-color: $deep-midnight-blue
+  padding: 1rem
+            </code></pre>
         </section>
     </main>
 

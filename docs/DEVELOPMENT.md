@@ -20,7 +20,7 @@ npm install
 
 The following scripts are available for development:
 
-- `npm start`: Compiles the demo styles and starts a local development server at `http://localhost:8080`.
+- `npm dev`: Compiles the demo styles and starts a local development server at `http://localhost:8080`.
 - `npm run build:demo`: Compiles the `demo/style.sass` to `demo/style.css`.
 - `npm run build:demo:watch`: Watches for changes in the demo SASS files and recompiles automatically.
 - `npm run serve`: Starts the `http-server` to serve the `demo/` directory.

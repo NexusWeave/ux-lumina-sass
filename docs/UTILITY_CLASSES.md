@@ -21,16 +21,16 @@ These classes provide consistent layout behavior by leveraging internal flexbox 
 | :--- | :--- |
 | `.flex` | Sets `display: flex`. |
 | `.flex-inline` | Sets `display: inline-flex`. |
-| `.flex-center` | Centers content both horizontally and vertically. |
 | `.inline-flex` | Sets `display: inline-flex`. |
 | `.inline-flex-center` | Inline flexbox with centered content. |
+| `.flex-center` | Centers content both horizontally and vertically. |
 
 ### Directional Classes
 | Class | Description |
 | :--- | :--- |
 | `.flex-row` | Standard row layout. |
-| `.flex-column` | Standard column layout. |
 | `.inline-flex-row` | Inline row layout. |
+| `.flex-column` | Standard column layout. |
 | `.inline-flex-column` | Inline column layout. |
 | `.flex-wrap-row` | Row layout with wrapping enabled. |
 | `.flex-wrap-column` | Column layout with wrapping enabled. |
@@ -41,42 +41,42 @@ These classes provide consistent layout behavior by leveraging internal flexbox 
 These classes combine direction, alignment, and justification for common layout patterns.
 
 #### Row Patterns
-- `.flex-row-align-items-center`
 - `.flex-row-justify-center`
+- `.flex-row-align-items-center`
 - `.flex-row-justify-space-between`
-- `.flex-row-align-items-center-justify-content-space-between`
 - `.flex-row-align-items-flex-end-justify-center`
 - `.flex-row-reversed-justify-center-align-content-center`
+- `.flex-row-align-items-center-justify-content-space-between`
 - `.flex-row-reversed-justify-space-around-align-content-center`
 - `.flex-row-reversed-justify-space-between-align-content-center`
 - `.flex-row-reversed-justify-space-evenly-align-content-center`
 
 #### Column Patterns
-- `.flex-column-align-items-center`
 - `.flex-column-justify-center`
-- `.flex-column-justify-space-evenly`
 - `.flex-column-align-items-end`
+- `.flex-column-align-items-center`
+- `.flex-column-justify-space-evenly`
 - `.flex-column-align-items-center-justify-center`
 - `.flex-column-justify-space-evenly-items-center`
 
 #### Wrap Patterns
 - `.flex-wrap-row-justify-center`
-- `.flex-wrap-row-justify-flex-start`
 - `.flex-wrap-row-justify-flex-end`
+- `.flex-wrap-row-align-items-end`
+- `.flex-wrap-row-justify-flex-start`
+- `.flex-wrap-row-align-items-center`
+- `.flex-wrap-row-justify-space-evenly`
 - `.flex-wrap-row-justify-space-around`
 - `.flex-wrap-row-justify-space-between`
-- `.flex-wrap-row-justify-space-evenly`
-- `.flex-wrap-row-align-items-center`
-- `.flex-wrap-row-align-items-end`
-- `.flex-wrap-row-align-items-center-justify-center`
-- `.flex-wrap-row-align-items-center-justify-space-around`
-- `.flex-wrap-row-align-items-center-justify-space-between`
-- `.flex-wrap-row-align-items-center-justify-space-evenly`
-- `.flex-wrap-row-align-content-start-justify-space-evenly`
-- `.flex-wrap-row-align-items-end-justify-space-between`
-- `.flex-wrap-row-align-items-end-justify-space-evenly`
 - `.flex-wrap-column-align-content-center`
+- `.flex-wrap-row-align-items-center-justify-center`
 - `.flex-wrap-column-align-center-justify-space-evenly`
+- `.flex-wrap-row-align-items-end-justify-space-evenly`
+- `.flex-wrap-row-align-items-end-justify-space-between`
+- `.flex-wrap-row-align-items-center-justify-space-around`
+- `.flex-wrap-row-align-items-center-justify-space-evenly`
+- `.flex-wrap-row-align-items-center-justify-space-between`
+- `.flex-wrap-row-align-content-start-justify-space-evenly`
 
 ## Example Usage
 

@@ -29,7 +29,7 @@ The following scripts are available for development:
 
 - `src/`: Core SASS library source files.
   - `color/`: Standardized color variables.
-  - `flexbox/`: Flexbox utility mixins and maps.
+  - `flexbox/`: Flexbox utility mixins and maps, including subdirectories for alignment and justification mixins.
   - `mixins/`: General utility mixins (layout, typography, buttons).
   - `map/`: SASS configuration maps.
   - `_index.sass`: Main entry point.

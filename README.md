@@ -63,6 +63,33 @@ If you only need certain parts, you can import them individually:
 
 If you prefer to use CSS classes directly in your HTML (like `.flex-center` or `.flex-row`), please check our [**Utility Classes Guide**](docs/UTILITY_CLASSES.md).
 
+### Semantic Media Queries
+For common media queries, you can use these simple helper mixins to make your code more readable.
+
+```scss
+.my-component {
+  // Base styles
+  background: white;
+
+  // Applies styles for medium screens and smaller
+  @include on-breakpoint(md) {
+    font-size: 0.9rem;
+  }
+
+  // Applies styles when the user prefers dark mode
+  @include on-dark-mode {
+    background: black;
+  }
+}
+```
+
+Available helpers:
+- `@include on-breakpoint($name)`
+- `@include on-dark-mode`
+- `@include on-light-mode`
+- `@include on-landscape`
+- `@include on-portrait`
+
 ## Features
 
 ### Standardized Colors
@@ -75,6 +102,7 @@ A complete set of flexbox mixins and maps to help you build layouts quickly.
 
 ### Utility Mixins
 - **Responsive Design:** Media query breakpoints.
+- **Responsive Media Queries:** Added `media-queries` mixin usage in demo and `device-media` support for iPhone.
 - **Typography:** Font handling and text styling.
 - **Elements:** Button generation and image styling.
 

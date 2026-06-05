@@ -1,12 +1,15 @@
 name: Publish to NPM
 
 on:
-  release:
-    types: [published]
+  workflow_run:
+    workflows: ["Release"]
+    types:
+      - completed
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     environment: npm-release
     permissions:
       contents: read

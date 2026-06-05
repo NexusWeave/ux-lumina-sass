@@ -1,6 +1,6 @@
 {
   "name": "lumina-sass",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Lumina Sass design tokens and mixins",
   "main": "src/_index.sass",
   "sass": "src/_index.sass",
@@ -36,7 +36,6 @@
     "start": "npm run build && npm run serve",
     "build": "sass demo/style.sass demo/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
-    
   },
   "files": [
     "src"

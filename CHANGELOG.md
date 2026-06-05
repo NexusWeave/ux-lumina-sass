@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.1](https://github.com/Krigjo25/lumina-sass/compare/v1.6.0...v1.6.1) (2026-06-05)
+
+
+### Bug Fixes
+
+* **map:** reorder breakpoint maps to resolve circular dependencies and restore variables. ([38998b3](https://github.com/Krigjo25/lumina-sass/commit/38998b31751c8b05af810adb8e1b0100804e9dc5))
+
 ## [1.6.0](https://github.com/Krigjo25/lumina-sass/compare/v1.5.0...v1.6.0) (2026-06-04)
 
 

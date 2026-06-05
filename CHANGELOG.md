@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.3](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.7.2...v1.7.3) (2026-06-05)
+
+
+### Bug Fixes
+
+* **flexbox:** add missing utility class .flex-wrap-row-align-items-start ([510ac13](https://github.com/NexusWeave/ux-lumina-sass/commit/510ac13a317849aef29cbe4f82a59060061794aa))
+
 ### [1.7.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.7.1...v1.7.2) (2026-06-05)
 
 ### [1.7.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.7.0...v1.7.1) (2026-06-05)

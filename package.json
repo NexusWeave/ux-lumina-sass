@@ -1,6 +1,6 @@
 {
   "name": "lumina-sass",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "Lumina Sass design tokens and mixins",
   "main": "src/_index.sass",
   "sass": "src/_index.sass",

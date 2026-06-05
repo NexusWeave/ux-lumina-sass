@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.10.0...v1.11.0) (2026-06-05)
+
+
+### Features
+
+* replace rgba(..., 1) with rgb() in brand colour definitions. ([a9f1e15](https://github.com/NexusWeave/ux-lumina-sass/commit/a9f1e151df8acdd6e0707060f766a8600bbe09b1))
+
 ## [1.10.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.9.0...v1.10.0) (2026-06-05)
 
 

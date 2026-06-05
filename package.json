@@ -27,12 +27,12 @@
     "url": "https://github.com/Krigjo25/lumina-sass.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:demo": "sass demo/style.sass demo/style.css",
-    "build:demo:watch": "sass demo/style.sass demo/style.css --watch",
     "serve": "http-server demo",
-    "start": "npm run build:demo && npm run serve",
-    "release": "standard-version"
+    "release": "standard-version",
+    "start": "npm run build && npm run serve",
+    "build": "sass demo/style.sass demo/style.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "files": [
     "src"

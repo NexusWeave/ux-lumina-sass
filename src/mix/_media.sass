@@ -30,10 +30,6 @@
 @mixin prefers-orientation($orientation)
   @include media-queries-base('orientation', $orientation)
 
-@mixin media-breakpoint($name, $value)
-  @include media-queries-base($name, $value)
-    @content
-
 // Device media query helper – generates a media query for a single device
 @mixin device-media($device, $orientation: portrait)
   $data: map.get(bp.$devices, $device)

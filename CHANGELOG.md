@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.15](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.6.14...v1.6.15) (2026-06-05)
+
+
+### Bug Fixes
+
+* align demo with src and expose neutral colors ([ec8d8ed](https://github.com/NexusWeave/ux-lumina-sass/commit/ec8d8ed18c05d6f14b3367c8c6da5b9fb93948b2))
+
 ### [1.6.14](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.6.13...v1.6.14) (2026-06-05)
 
 

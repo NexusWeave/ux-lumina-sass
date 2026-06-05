@@ -1,5 +1,6 @@
-@use '../map/devices-breakpoints' as bp
 @use 'sass:map'
+@use '../map/devices-breakpoints' as bp
+
 
 @mixin media($breakpoint)
   $value: if(map.has-key(bp.$breakpoints, $breakpoint), map.get(bp.$breakpoints, $breakpoint), $breakpoint)

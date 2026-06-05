@@ -1,8 +1,8 @@
+@use './mix' as mix
 @use 'sass:map' as map
-@use './mixins' as mix
-
 @use '../map/icons' as icon-map
 @use '../map/flexbox' as flexbox-mapping
+
 
 @mixin icon-generator($color: null, $font-family: 'bootstrap-icons')
     @if icon-map.$icons

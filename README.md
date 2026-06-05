@@ -61,7 +61,7 @@ Uses a consistent `$[brand]-[color]` pattern for easy discovery and maintenance.
 - **UI States:** Hover and active states for major brand colors.
 
 ### Flexbox Utilities
-A comprehensive set of flexbox mixins and mapping for quick layout development.
+A comprehensive set of flexbox mixins and mapping for quick layout development, including various row, column, and alignment-based utility classes.
 
 ### Utility Mixins
 - **Responsive Design:** Media query breakpoints.

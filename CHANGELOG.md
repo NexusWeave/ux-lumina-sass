@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.16](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.6.15...v1.6.16) (2026-06-05)
+
+
+### Bug Fixes
+
+* remove word, excel, external-link and internship icons from source. ([babe3c3](https://github.com/NexusWeave/ux-lumina-sass/commit/babe3c3d97e5d5102958c9a14c4550c0556654f4))
+
 ### [1.6.15](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.6.14...v1.6.15) (2026-06-05)
 
 

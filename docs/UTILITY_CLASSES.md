@@ -14,21 +14,69 @@ To use these classes, simply import the library or the utils module in your main
 
 ## Flexbox Classes
 
-These classes use the internal flexbox generators to provide consistent layout behavior.
+These classes provide consistent layout behavior by leveraging internal flexbox generators.
 
+### Base Flex Classes
 | Class | Description |
 | :--- | :--- |
 | `.flex` | Sets `display: flex`. |
 | `.flex-inline` | Sets `display: inline-flex`. |
 | `.flex-center` | Centers content both horizontally and vertically. |
-| `.flex-row` | Sets `flex-direction: row`. |
-| `.flex-column` | Sets `flex-direction: column`. |
-| `.flex-wrap-row` | Sets `flex-direction: row` and `flex-wrap: wrap`. |
-| `.flex-wrap-column` | Sets `flex-direction: column` and `flex-wrap: wrap`. |
-| `.flex-wrap-reversed-row` | Sets `flex-direction: row-reverse` and `flex-wrap: wrap`. |
-| `.flex-wrap-reversed-column` | Sets `flex-direction: column-reverse` and `flex-wrap: wrap`. |
-| `.inline-flex-row` | Sets `display: inline-flex` and `flex-direction: row`. |
-| `.inline-flex-column` | Sets `display: inline-flex` and `flex-direction: column`. |
+| `.inline-flex` | Sets `display: inline-flex`. |
+| `.inline-flex-center` | Inline flexbox with centered content. |
+
+### Directional Classes
+| Class | Description |
+| :--- | :--- |
+| `.flex-row` | Standard row layout. |
+| `.flex-column` | Standard column layout. |
+| `.inline-flex-row` | Inline row layout. |
+| `.inline-flex-column` | Inline column layout. |
+| `.flex-wrap-row` | Row layout with wrapping enabled. |
+| `.flex-wrap-column` | Column layout with wrapping enabled. |
+| `.flex-wrap-reversed-row` | Reversed row layout with wrapping. |
+| `.flex-wrap-reversed-column` | Reversed column layout with wrapping. |
+
+### Alignment & Justification (Pre-configured)
+These classes combine direction, alignment, and justification for common layout patterns.
+
+#### Row Patterns
+- `.flex-row-align-items-center`
+- `.flex-row-justify-center`
+- `.flex-row-justify-space-between`
+- `.flex-row-align-items-center-justify-content-space-between`
+- `.flex-row-align-items-flex-end-justify-center`
+- `.flex-row-reversed-justify-center-align-content-center`
+- `.flex-row-reversed-justify-space-around-align-content-center`
+- `.flex-row-reversed-justify-space-between-align-content-center`
+- `.flex-row-reversed-justify-space-evenly-align-content-center`
+
+#### Column Patterns
+- `.flex-column-align-items-center`
+- `.flex-column-justify-center`
+- `.flex-column-justify-space-evenly`
+- `.flex-column-align-items-end`
+- `.flex-column-align-items-center-justify-center`
+- `.flex-column-justify-space-evenly-items-center`
+
+#### Wrap Patterns
+- `.flex-wrap-row-justify-center`
+- `.flex-wrap-row-justify-flex-start`
+- `.flex-wrap-row-justify-flex-end`
+- `.flex-wrap-row-justify-space-around`
+- `.flex-wrap-row-justify-space-between`
+- `.flex-wrap-row-justify-space-evenly`
+- `.flex-wrap-row-align-items-center`
+- `.flex-wrap-row-align-items-end`
+- `.flex-wrap-row-align-items-center-justify-center`
+- `.flex-wrap-row-align-items-center-justify-space-around`
+- `.flex-wrap-row-align-items-center-justify-space-between`
+- `.flex-wrap-row-align-items-center-justify-space-evenly`
+- `.flex-wrap-row-align-content-start-justify-space-evenly`
+- `.flex-wrap-row-align-items-end-justify-space-between`
+- `.flex-wrap-row-align-items-end-justify-space-evenly`
+- `.flex-wrap-column-align-content-center`
+- `.flex-wrap-column-align-center-justify-space-evenly`
 
 ## Example Usage
 
@@ -39,9 +87,10 @@ These classes use the internal flexbox generators to provide consistent layout b
   <div class="item">Item 2</div>
 </div>
 
-<!-- A wrapped column layout -->
-<div class="flex-wrap-column">
+<!-- A pre-configured wrapped row with specific alignment -->
+<div class="flex-wrap-row-align-items-center-justify-space-evenly">
   <div class="card">Card 1</div>
   <div class="card">Card 2</div>
+  <div class="card">Card 3</div>
 </div>
 ```

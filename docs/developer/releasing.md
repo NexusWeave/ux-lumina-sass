@@ -1,5 +1,5 @@
 # Releasing & Publishing
-
+*Last updated: 2026-06-05*
 This project uses an automated pipeline to handle versioning, changelogs, and publishing to NPM.
 
 ## Automated Workflow

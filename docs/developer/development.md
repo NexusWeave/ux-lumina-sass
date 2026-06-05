@@ -1,5 +1,5 @@
 # Development Guide
-
+*Last updated: 2026-06-05*
 This guide is for developers who want to contribute to Lumina SASS or understand how the project is organized.
 
 ## Getting Started

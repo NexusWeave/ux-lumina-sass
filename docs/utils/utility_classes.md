@@ -1,42 +1,43 @@
-# Utility Classes
+# utility classes
+*Last updated: 2026-06-05*
+this file explains the css utility‑class helpers that lumina sass provides.
 
-Lumina SASS includes CSS utility classes that are automatically included when you import the library. These classes allow you to style elements directly in your HTML.
+## how to enable
 
-## How to Enable
-
-Import the library or the utils module in your main SASS file:
+import the library or the utils module in your main sass file:
 
 ```sass
 @use 'lumina-sass'
-// OR
+// or
 @use 'lumina-sass/utils'
 ```
 
-## Flexbox Classes
+## flexbox classes
 
-These classes provide consistent layout behavior.
+these classes give consistent layout behavior.
 
-### Base Flex Classes
-| Class | Description |
+### base flex classes
+
+| class | description |
 | :--- | :--- |
-| `.flex` | Sets `display: flex`. |
-| `.inline-flex` | Sets `display: inline-flex`. |
-| `.flex-center` | Centers content horizontally and vertically. |
+| `.flex` | sets `display: flex`. |
+| `.inline-flex` | sets `display: inline-flex`. |
+| `.flex-center` | centers content horizontally and vertically. |
 
-### Directional Classes
-| Class | Description |
+### directional classes
+
+| class | description |
 | :--- | :--- |
-| `.flex-row` | Standard row layout. |
-| `.flex-col` | Standard column layout. |
-| `.flex-wrap-row` | Row layout with wrapping. |
-| `.flex-wrap-col` | Column layout with wrapping. |
-| `.flex-wrap-reversed-row` | Reversed row layout with wrapping. |
-| `.flex-wrap-reversed-col` | Reversed column layout with wrapping. |
+| `.flex-row` | standard row layout. |
+| `.flex-col` | standard column layout. |
+| `.flex-wrap-row` | row layout with wrapping. |
+| `.flex-wrap-col` | column layout with wrapping. |
+| `.flex-wrap-reversed-row` | reversed row layout with wrapping. |
+| `.flex-wrap-reversed-col` | reversed column layout with wrapping. |
 
-### Alignment & Justification
-These classes combine direction, alignment, and justification for common patterns.
+### alignment & justification
 
-#### Row Patterns
+#### row patterns
 - `.flex-row-justify-center`
 - `.flex-row-align-center`
 - `.flex-row-justify-space-between`
@@ -47,7 +48,7 @@ These classes combine direction, alignment, and justification for common pattern
 - `.flex-row-reversed-align-center-justify-space-between`
 - `.flex-row-reversed-align-center-justify-space-evenly`
 
-#### Column Patterns
+#### column patterns
 - `.flex-col-justify-center`
 - `.flex-col-align-end`
 - `.flex-col-align-center`
@@ -55,7 +56,7 @@ These classes combine direction, alignment, and justification for common pattern
 - `.flex-col-align-center-justify-center`
 - `.flex-col-justify-space-evenly-align-center`
 
-#### Wrap Patterns
+#### wrap patterns
 - `.flex-wrap-row-justify-center`
 - `.flex-wrap-row-justify-flex-end`
 - `.flex-wrap-row-align-end`
@@ -74,16 +75,16 @@ These classes combine direction, alignment, and justification for common pattern
 - `.flex-wrap-row-align-center-justify-space-between`
 - `.flex-wrap-row-align-content-start-justify-space-evenly`
 
-## Example Usage
+## example usage
 
 ```html
-<!-- A centered row of items -->
+<!-- a centered row of items -->
 <div class="flex-center flex-row">
   <div class="item">Item 1</div>
   <div class="item">Item 2</div>
 </div>
 
-<!-- A pre-configured wrapped row with alignment -->
+<!-- a wrapped row with alignment -->
 <div class="flex-wrap-row-align-center-justify-space-evenly">
   <div class="card">Card 1</div>
   <div class="card">Card 2</div>

@@ -1,5 +1,5 @@
 # Lumina SASS
-
+*Last updated: 2026-06-05*
 Lumina Sass provides design tokens and mixins to help you build modern web applications.
 
 ## Overview
@@ -45,7 +45,7 @@ If you only need certain parts, you can import them individually:
 // Example usage:
 .social-button
   background-color: $discord-blue
-
+// $youtube-red-hover now uses rgb(120, 6, 6)
 .container
   @include mix.flex-center // Using mixins
 ```
@@ -61,7 +61,7 @@ If you only need certain parts, you can import them individually:
 
 ### Utility Classes
 
-If you prefer to use CSS classes directly in your HTML (like `.flex-center` or `.flex-row`), please check our [**Utility Classes Guide**](docs/UTILITY_CLASSES.md).
+If you prefer to use CSS classes directly in your HTML (like `.flex-center`), please check our [**Utility Classes Guide**](docs/utils/utility_classes.md).
 
 ### Semantic Media Queries
 For common media queries, you can use these simple helper mixins to make your code more readable.
@@ -91,7 +91,9 @@ Available helpers:
 - `@include on-portrait`
 
 ## Features
+### Recent Changes
 
+- **RGB conversion:** All colour variables that previously used `rgba(..., 1)` are now simplified to `rgb(...)`; any hexadecimal literals have been converted to `rgb()`.
 ### Standardized Colors
 Uses a consistent `$[brand]-[color]` pattern for easy use and maintenance.
 - **Brand Colors:** Social media platforms, operating systems, and tech brands.
@@ -112,8 +114,8 @@ A complete set of flexbox mixins and maps to help you build layouts quickly.
 
 To learn how to contribute or understand the release process, please see:
 
-- [**Development Guide**](docs/DEVELOPMENT.md) - Project structure and setup rules.
-- [**Releasing & Publishing**](docs/RELEASING.md) - Details on the release process.
+- [**Development Guide**](docs/developer/development.md) - Project structure and setup rules.
+- [**Releasing & Publishing**](docs/developer/releasing.md) - Details on the release process.
 
 ## License
 

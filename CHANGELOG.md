@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.11.0...v1.12.0) (2026-06-05)
+
+
+### Features
+
+* update remaining Sass files after colour conversion., ([62a915e](https://github.com/NexusWeave/ux-lumina-sass/commit/62a915ebf8b28c861c30d4670aa62561a980923c))
+
 ## [1.11.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.10.0...v1.11.0) (2026-06-05)
 
 

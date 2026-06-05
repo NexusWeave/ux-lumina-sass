@@ -18,8 +18,8 @@
       "default": "./src/color/_index.sass"
     },
     "./mixins": {
-      "sass": "./src/mixins/_index.sass",
-      "default": "./src/mixins/_index.sass"
+      "sass": "./src/mix/_index.sass",
+      "default": "./src/mix/_index.sass"
     }
   },
   "repository": {

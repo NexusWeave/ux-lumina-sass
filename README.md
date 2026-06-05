@@ -27,6 +27,15 @@ You can import the entire library or specific modules depending on your needs.
 ```
 
 #### 2. Import Specific Modules
+
+| Module | Description |
+| :--- | :--- |
+| `lumina-sass/color` | Standardized color variables (Brands, Tech, UI States). |
+| `lumina-sass/flexbox` | Comprehensive flexbox layout mixins. |
+| `lumina-sass/mixins` | General utility mixins (Typography, Media Queries, Buttons). |
+| `lumina-sass/map` | Configuration maps (Device breakpoints, icons, flexbox settings). |
+| `lumina-sass/utils` | Internal helper functions and utilities. |
+
 ```sass
 @use 'lumina-sass/color' as *
 @use 'lumina-sass/mixins' as mix

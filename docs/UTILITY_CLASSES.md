@@ -30,10 +30,10 @@ These classes provide consistent layout behavior by leveraging internal flexbox 
 | :--- | :--- |
 | `.flex-row` | Standard row layout. |
 | `.inline-flex-row` | Inline row layout. |
-| `.flex-column` | Standard column layout. |
-| `.inline-flex-column` | Inline column layout. |
+| `.flex-col` | Standard column layout. |
+| `.inline-flex-col` | Inline column layout. |
 | `.flex-wrap-row` | Row layout with wrapping enabled. |
-| `.flex-wrap-column` | Column layout with wrapping enabled. |
+| `.flex-wrap-col` | Column layout with wrapping enabled. |
 | `.flex-wrap-reversed-row` | Reversed row layout with wrapping. |
 | `.flex-wrap-reversed-column` | Reversed column layout with wrapping. |
 
@@ -52,12 +52,12 @@ These classes combine direction, alignment, and justification for common layout 
 - `.flex-row-reversed-justify-space-evenly-align-content-center`
 
 #### Column Patterns
-- `.flex-column-justify-center`
-- `.flex-column-align-items-end`
-- `.flex-column-align-items-center`
-- `.flex-column-justify-space-evenly`
-- `.flex-column-align-items-center-justify-center`
-- `.flex-column-justify-space-evenly-items-center`
+- `.flex-col-justify-center`
+- `.flex-col-align-items-end`
+- `.flex-col-align-items-center`
+- `.flex-col-justify-space-evenly`
+- `.flex-col-align-items-center-justify-center`
+- `.flex-col-justify-space-evenly-items-center`
 
 #### Wrap Patterns
 - `.flex-wrap-row-justify-center`
@@ -68,9 +68,9 @@ These classes combine direction, alignment, and justification for common layout 
 - `.flex-wrap-row-justify-space-evenly`
 - `.flex-wrap-row-justify-space-around`
 - `.flex-wrap-row-justify-space-between`
-- `.flex-wrap-column-align-content-center`
+- `.flex-wrap-col-align-content-center`
 - `.flex-wrap-row-align-items-center-justify-center`
-- `.flex-wrap-column-align-center-justify-space-evenly`
+- `.flex-wrap-col-align-center-justify-space-evenly`
 - `.flex-wrap-row-align-items-end-justify-space-evenly`
 - `.flex-wrap-row-align-items-end-justify-space-between`
 - `.flex-wrap-row-align-items-center-justify-space-around`

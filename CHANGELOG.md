@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.9.0...v1.10.0) (2026-06-05)
+
+
+### Features
+
+* add tag-theme colour map for article-theme generator. ([2a8ed2b](https://github.com/NexusWeave/ux-lumina-sass/commit/2a8ed2ba11704dae93b69ebdabc291a6ca31f548))
+
 ## [1.9.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.8.0...v1.9.0) (2026-06-05)
 
 

@@ -1,15 +1,5 @@
 @use '../src' as *
 
-// Default Variables (Fallback)
-$font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default
-$background-color: #f8f9fa !default
-$text-color: #212529 !default
-$spacing-sm: 0.5rem !default
-$spacing-md: 1rem !default
-$spacing-lg: 1.5rem !default
-$secondary-color: #6c757d !default
-$white: #ffffff !default
-
 // Basic Reset
 *
   margin: 0
@@ -17,38 +7,38 @@ $white: #ffffff !default
   box-sizing: border-box
 
 body
-  font-family: $font-family-base
-  background-color: $background-color
-  color: $text-color
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif
+  background-color: $soft-white
+  color: $text-light-1
   line-height: 1.6
-  padding: $spacing-lg
+  padding: 1.5rem
 
 header
   text-align: center
-  margin-bottom: $spacing-lg
+  margin-bottom: 1.5rem
   border-bottom: 0.1875rem solid $accent-slate-blue // 3px
-  padding-bottom: $spacing-md
+  padding-bottom: 1rem
   
   h1
     color: $deep-midnight-blue
     font-size: 2.5rem
 
 h2
-  margin-bottom: $spacing-md
+  margin-bottom: 1rem
   border-left: 0.3125rem solid $accent-salmon // 5px
-  padding-left: $spacing-sm
+  padding-left: 0.5rem
   color: $deep-midnight-blue
 
 .section
-  margin-bottom: $spacing-lg
+  margin-bottom: 1.5rem
 
 .grid
   display: grid
   grid-template-columns: repeat(auto-fill, minmax(11.25rem, 1fr)) // 180px
-  gap: $spacing-md
+  gap: 1rem
 
 .card
-  padding: $spacing-lg $spacing-sm
+  padding: 1.5rem 0.5rem
   border-radius: 0.5rem // 8px
   text-align: center
   font-weight: bold
@@ -131,19 +121,19 @@ h2
 .flex-test-box
   height: 12.5rem // 200px
   background-color: $white
-  border: 0.125rem dashed $secondary-color // 2px
+  border: 0.125rem dashed $dark-grey // 2px
   border-radius: 0.75rem // 12px
 
 .flex-child
   background-color: $accent-slate-blue
   color: white
-  padding: $spacing-md
-  margin: $spacing-sm
+  padding: 1rem
+  margin: 0.5rem
   border-radius: 0.25rem // 4px
   box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.2) // 2px, 4px
 
 footer
   text-align: center
-  margin-top: $spacing-lg
-  color: $secondary-color
+  margin-top: 1.5rem
+  color: $text-light-2
   font-style: italic

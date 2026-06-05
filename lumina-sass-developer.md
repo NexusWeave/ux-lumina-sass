@@ -26,14 +26,14 @@ To ensure Vite can correctly find and compile the `lumina-sass` package, you nee
 The following files contain flexbox classes that need to be renamed to match the official `lumina-sass` naming conventions.
 
 1.  **File**: `frontend/pages/dev.vue`
-    -   **Line 6**: Change `flex-column-justify-center-align-center` to `flex-column-align-items-center-justify-center`
-    -   **Line 20**: Change `flex-column-justify-center-align-center` to `flex-column-align-items-center-justify-center`
+    -   **Line 6**: Change `flex-col-justify-center-align-center` to `flex-col-align-items-center-justify-center`
+    -   **Line 20**: Change `flex-col-justify-center-align-center` to `flex-col-align-items-center-justify-center`
 
 2.  **File**: `frontend/pages/personal.vue`
-    -   **Line 3**: Change `flex-column-justify-center-align-center` to `flex-column-align-items-center-justify-center`
+    -   **Line 3**: Change `flex-col-justify-center-align-center` to `flex-col-align-items-center-justify-center`
 
 3.  **File**: `frontend/components/repository/BusinessCard.vue`
-    -   **Line 10**: Change `flex-column-items-center` to `flex-column-align-items-center`
+    -   **Line 10**: Change `flex-col-items-center` to `flex-col-align-items-center`
 
 ### Step 3: Add Missing Utility Classes (Optional but Recommended)
 

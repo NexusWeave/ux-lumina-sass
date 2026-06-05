@@ -33,7 +33,7 @@
   "scripts": {
     "serve": "http-server demo",
     "release": "standard-version",
-    "start": "npm run build && npm run serve",
+    "dev": "npm run build && npm run serve",
     "build": "sass demo/style.sass demo/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

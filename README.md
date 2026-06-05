@@ -25,27 +25,28 @@ You can import the entire library or specific modules depending on your needs.
 .container
   +flex-center
 ```
-
 #### 2. Import Specific Modules
 
 | Module | Description |
 | :--- | :--- |
 | `lumina-sass/color` | Standardized color variables (Brands, Tech, UI States). |
-| `lumina-sass/flexbox` | Comprehensive flexbox layout mixins. |
 | `lumina-sass/mixins` | General utility mixins (Typography, Media Queries, Buttons). |
+| `lumina-sass/utils` | Flexbox utilities and helper classes. |
 | `lumina-sass/map` | Configuration maps (Device breakpoints, icons, flexbox settings). |
-| `lumina-sass/utils` | Internal helper functions and utilities. |
 
 ```sass
 @use 'lumina-sass/color' as *
 @use 'lumina-sass/mixins' as mix
-@use 'lumina-sass/flexbox' as flex
+@use 'lumina-sass/utils' as utils
 
 .social-button
   background-color: $discord-blue
 
+.container
+  @include mix.flex-center // Using mixins
+
 .row
-  +flex.flex-row
+  @extend .flex-row // Using utils classes
 ```
 
 ## Features

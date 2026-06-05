@@ -9,10 +9,6 @@
       "sass": "./src/_index.sass",
       "default": "./src/_index.sass"
     },
-    "./flexbox": {
-      "sass": "./src/flexbox/_index.sass",
-      "default": "./src/flexbox/_index.sass"
-    },
     "./color": {
       "sass": "./src/color/_index.sass",
       "default": "./src/color/_index.sass"
@@ -20,6 +16,14 @@
     "./mixins": {
       "sass": "./src/mix/_index.sass",
       "default": "./src/mix/_index.sass"
+    },
+    "./utils": {
+      "sass": "./src/utils/_flexbox.sass",
+      "default": "./src/utils/_flexbox.sass"
+    },
+    "./map": {
+      "sass": "./src/map/_index.sass",
+      "default": "./src/map/_index.sass"
     }
   },
   "repository": {

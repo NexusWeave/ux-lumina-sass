@@ -3,8 +3,10 @@
 @use '../map/devices-breakpoints' as bp
 
 
-@mixin media($breakpoint)
-  $value: if(map.has-key(bp.$breakpoints, $breakpoint), map.get(bp.$breakpoints, $breakpoint), $breakpoint)
+@mixin media-queries($breakpoint)
+  $value: $breakpoint
+  @if map.has-key(bp.$breakpoints, $breakpoint)
+    $value: map.get(bp.$breakpoints, $breakpoint)
 
   @media (max-width: $value)
     @content

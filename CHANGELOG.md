@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.0.1...v2.0.2) (2026-06-06)
+
+
+### Bug Fixes
+
+* adjust global wildcard reset in index.sass. ([fbd5f81](https://github.com/NexusWeave/ux-lumina-sass/commit/fbd5f8142a41523a8d2db552110fa35223951626))
+
 ### [2.0.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.0.0...v2.0.1) (2026-06-06)
 
 

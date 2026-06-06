@@ -1,34 +1,45 @@
+
+@use 'sass:map'
 @use 'sass:list'
+@use '../map/fonts' as fonts
 
+@mixin text-wrap-safe($inline: 0)
+  p, h1, h2, h3, h4, h5, h6, figcaption, a, li
+    hyphens: auto
+    word-wrap: anywhere
+    white-space: pre-wrap
+    overflow-wrap: anywhere
+    min-inline-size: $inline
 
-@mixin text-wrap-safe()
-    p, h1, h2, h3, h4, h5, h6, figcaption, a, li
-        hyphens: auto
-        min-inline-size: 0
-        word-wrap: anywhere
-        white-space: pre-wrap
-        overflow-wrap: anywhere
+@mixin font-style($font, $family: null, $line-height: null, $variant: null)
+  $detected-family: font-family-of($font)
+  @if $detected-family != null
+    $family: $detected-family
+  @if $line-height != null
+    line-height: $line-height
+  @if $variant != null
+    font-variant: $variant
+  // Always include a fallback family.
+  font-family: $font, $family
 
-@mixin font-style($font, $family: null)
-    $sans-serif: ('Roboto', 'Work Sans', 'Nunito')
+@mixin font( $font: null, $size: 1rem, $family: null, $style: normal, $weight: normal)
+  @if $font != null
+    @include font-style($font, $family)
 
-    @if list.index($sans-serif, $font)
-        $family: sans-serif
+  @else if $family != null
+    font-family: $family
 
-    font-family: $font, $family
+  @if $size != null
+    font-size: $size
 
-@mixin font($size: null, $weight: null, $font: null, $family: null, $style: null)
-    @if $font != null
-        @include font-style($font, $family)
-    @else if $family != null
-        font-family: $family
+  @if $weight != null
+    font-weight: $weight
 
-    @if $size != null
-        font-size: $size
+  @if $style != null
+    font-style: $style
 
-    @if $weight != null
-        font-weight: $weight
-
-    @if $style != null
-        font-style: $style
-
+// Helper: return the generic family for a given font name using the fonts map.
+@function font-family-of($font)
+  @if map.has-key(fonts.$font-family, $font)
+    @return map.get(fonts.$font-family, $font)
+  @return null

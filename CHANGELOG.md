@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.0.0...v2.0.1) (2026-06-06)
+
+
+### Bug Fixes
+
+* sync flexbox docs with new premade structure and update build scripts. ([a565e7b](https://github.com/NexusWeave/ux-lumina-sass/commit/a565e7be0678b10740206b72ecc31b936dd73f26))
+
 ## [2.0.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v1.13.0...v2.0.0) (2026-06-05)
 
 

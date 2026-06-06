@@ -5,11 +5,12 @@ This file explains how the documentation files are organized in the `docs` folde
 - **mixins** – Markdown files that describe each mixin API.
   - `media_queries.md` – Explains the media‑query mixins.
   - `typography.md` – Describes the typography mixins.
+- **colors** – Documentation for color variables and palettes.
+  - `colors.md` – Lists all color definitions and usage examples.
 - **generators** – Documentation for generator mixins.
   - `icons.md` – Details the icon‑generator mixin.
   - `flexbox.md` – Documents the flexbox‑generator mixin.
   - `generators.md` – Overview of both icon‑generator and flexbox‑generator mixins.
-- **media_queries** – Contains the `media_queries.md` file (kept separate for clarity).
 - **utils** – Contains the `utility_classes.md` file with documentation for utility‑class helpers exported by the library.
 - **developer** – Contains developer‑focused documents such as `development.md` and `releasing.md`.
 

@@ -1,33 +1,26 @@
 $flex: ('display': flex)
 $inline-flex: ('display': inline-flex)
 $flex-row: ('display': flex, 'flex-wrap': nowrap, 'flex-direction': row)
-$flex-row-wrap: ('display': flex, 'flex-wrap': wrap, 'flex-direction': row)
+$flex-wrap-row: ('display': flex, 'flex-wrap': wrap, 'flex-direction': row)
 $flex-col: ('display': flex, 'flex-wrap': nowrap, 'flex-direction': column)
-$flex-col-wrap: ('display': flex, 'flex-wrap': wrap, 'flex-direction': column)
-$flex-center: ('display': flex, 'justify-content': center, 'align-items': center)
+$flex-wrap-col: ('display': flex, 'flex-wrap': wrap, 'flex-direction': column)
 $inline-flex-row: ('flex-wrap': nowrap, 'flex-direction': row, 'display': inline-flex)
 $inline-flex-col: ('flex-wrap': nowrap, 'display': inline-flex, 'flex-direction': column)
 $flex-wrap-reversed-row: ('display': flex, 'flex-wrap': wrap, 'flex-direction': row-reverse)
 $flex-wrap-reversed-col: ('display': flex, 'flex-wrap': wrap, 'flex-direction': column-reverse)
 
-$flex-col-align-center-justify-center: ('display': flex, 'flex-direction': column, 'justify-content': center, 'align-items': center)
-$flex-row-align-center-justify-center: ('display': flex, 'flex-direction': row, 'justify-content': center, 'align-items': center)
+
 
 $flexbox:(
     'flex': $flex, 
     'flex-row': $flex-row, 
-    'flex-row-wrap': $flex-row-wrap,
-    'flex-wrap-row': $flex-row-wrap,
-    'flex-center': $flex-center,
-    'flex-col': $flex-col, 
-    'flex-col-wrap': $flex-col-wrap,
-    'flex-wrap-col': $flex-col-wrap,
-    'flex-wrap-reversed-col': $flex-wrap-reversed-col,
-    'flex-wrap-reversed-column': $flex-wrap-reversed-col,
-    'inline-flex': $inline-flex, 
+    'flex-col': $flex-col,
+    'inline-flex': $inline-flex,
+    'flex-wrap-row': $flex-wrap-row,
+    'flex-wrap-col': $flex-wrap-col,
     'inline-flex-row': $inline-flex-row,
     'inline-flex-col': $inline-flex-col,
     'flex-wrap-reversed-row': $flex-wrap-reversed-row,
-    'flex-col-align-center-justify-center': $flex-col-align-center-justify-center,
-    'flex-row-align-center-justify-center': $flex-row-align-center-justify-center,
+    'flex-wrap-reversed-col': $flex-wrap-reversed-col,
+    'flex-wrap-reversed-column': $flex-wrap-reversed-col,
 )

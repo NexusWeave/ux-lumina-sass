@@ -34,7 +34,8 @@
     "serve": "http-server demo",
     "release": "standard-version",
     "dev": "npm run build && npm run serve",
-    "build": "sass demo/style.sass demo/style.css",
+    "build:demo": "sass demo/style.sass demo/style.css",
+    "build": "sass src/_index.sass test/index.css && sass src/color/_index.sass test/color.css && sass src/mix/_index.sass test/mix.css && sass src/flexbox/_index.sass test/flexbox.css && sass src/flexbox/_index.sass test/flexbox.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "files": [

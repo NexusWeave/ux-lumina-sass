@@ -1,11 +1,11 @@
 //  Align-content and Justify-content gen
 @use '../../mix/index' as gen
 
-.flex-col-align-items-center
+.flex-col-items-center
     align-items: center
     @include gen.flexbox-generator('flex-col')
 
-.flex-col-justify-evenly-items-center
+.flex-col-items-center-justify-evenly
     align-items: center
     justify-content: space-evenly
     @include gen.flexbox-generator('flex-col')
@@ -14,4 +14,3 @@
     align-items: center
     justify-content: center
     @include gen.flexbox-generator('flex-col')
- 

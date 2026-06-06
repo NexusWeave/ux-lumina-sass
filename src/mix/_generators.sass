@@ -5,7 +5,7 @@
 @use '../map/inputs' as inputs
 @use "sass:list" as list
 
-@mixin icon-generator($name: null, $color: null, $font-family: 'bootstrap-icons')
+@mixin icon-generator($name: null, $color: black, $font-family: 'bootstrap-icons')
   @if icon-map.$icons
     @if $name == null
       @each $category, $maps in icon-map.$icons

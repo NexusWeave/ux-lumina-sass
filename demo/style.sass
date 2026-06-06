@@ -387,3 +387,12 @@ footer
   margin-top: 1.5rem
   color: $text-light-2
   font-style: italic
+// -------------------------------------------------------------------
+// Demo: Input generator showcase
+// -------------------------------------------------------------------
+
+.demo__inputs
+  @include input-generator(null)   // Generates styles for *all* inputs
+
+.demo__inputs--custom-outline
+  @include input-generator('text', $custom: ('focus-outline': rgb(255, 0, 0)))

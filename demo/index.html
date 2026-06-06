@@ -14,15 +14,118 @@
             <a href="#flex-tools">Flexbox</a>
             <a href="#color-tools">Colors</a>
             <a href="#icon-tools">Icons</a>
+            <a href="#input-demo">Input Generator</a>
+            <a href="#figures">Figures</a>
         </nav>
     </header>
 
     <main>
-        <h2>Documentation</h2>
-        <section class="section">
-            <p>Lumina SASS is a modular, design-token-driven styling library built for modern web applications. It provides standardized colors, flexbox utilities, and powerful mixins to streamline your development process.</p>
-        </section>
+        <details>
+  <summary><h2>Documentation</h2></summary>
+  <section class="section">
+    <p>Lumina SASS is a modular, design-token-driven styling library built for modern web applications. It provides standardized colors, flexbox utilities, and powerful mixins to streamline your development process.</p>
+    </section></details>
 
+  <summary><h2>Figures</h2></summary>
+  <section class="section">
+    <figure>
+        <img src="assets/figure_demo.png" alt="Sample figure"/>
+      <figcaption>Figure 1 – Demonstration of a styled figure with caption.</figcaption>
+    </figure>
+  </section>
+<details class="section">
+  <summary><h3>Quick Usage</h3></summary>
+  <pre><code>
+<details id="figures">
+  <summary><h2>Figures</h2></summary>
+  <section class="section">
+    <figure>
+      <img src="assets/figure_demo.png" alt="Sample figure"/>
+      <figcaption>Figure 1 – Demonstration of a styled figure with caption.</figcaption>
+    </figure>
+  </section>
+</details>
+  </code></pre>
+</details>
+  <details>
+    <summary><h2>Input Generator Demo</h2></summary>
+    <section id="input-demo" class="section">
+  <div class="demo__inputs">
+    <!-- Default styling for all input types defined in src/map/_inputs.sass -->
+    <label for="input-file">File:
+      <input type="file" id="input-file" placeholder="Choose file">
+    </label>
+    <label for="input-submit">Submit:
+      <input type="submit" id="input-submit" value="Submit">
+    </label>
+    <label for="input-reset">Reset:
+      <input type="reset" id="input-reset" value="Reset">
+    </label>
+    <label for="input-button">Button:
+      <input type="button" id="input-button" value="Button">
+    </label>
+    <label for="input-tel">Telephone:
+      <input type="tel" id="input-tel" placeholder="+47 12345678">
+    </label>
+    <label for="input-url">URL:
+      <input type="url" id="input-url" placeholder="https://example.com">
+    </label>
+    <label for="input-text">Text:
+      <input type="text" id="input-text" placeholder="Enter text">
+    </label>
+    <label for="input-email">Email:
+      <input type="email" id="input-email" placeholder="you@example.com">
+    </label>
+    <label for="input-search">Search:
+      <input type="search" id="input-search" placeholder="Search...">
+    </label>
+    <label for="input-number">Number:
+      <input type="number" id="input-number" placeholder="42">
+    </label>
+    <label for="input-password">Password:
+      <input type="password" id="input-password" placeholder="••••••">
+    </label>
+    <label for="input-range">Range:
+      <input type="range" id="input-range" min="0" max="100">
+    </label>
+    <label for="input-color">Color:
+      <input type="color" id="input-color" value="#ff0000">
+    </label>
+    <label for="input-hidden">Hidden:
+      <input type="hidden" id="input-hidden" value="secret">
+    </label>
+    <label for="input-radio">
+      <input type="radio" id="input-radio" name="demo-radio">
+      Radio
+    </label>
+    <label for="input-checkbox">
+      <input type="checkbox" id="input-checkbox" name="demo-checkbox">
+      Checkbox
+    </label>
+    <label for="input-date">Date:
+      <input type="date" id="input-date">
+    </label>
+    <label for="input-time">Time:
+      <input type="time" id="input-time">
+    </label>
+    <label for="input-week">Week:
+      <input type="week" id="input-week">
+    </label>
+    <label for="input-month">Month:
+      <input type="month" id="input-month">
+    </label>
+    <label for="input-datetime-local">Date & Time:
+      <input type="datetime-local" id="input-datetime-local">
+    </label>
+  </div>
+
+  <h3>Custom Outline Example (red focus)</h3>
+  <div class="demo__inputs--custom-outline">
+    <label for="custom-text">Custom Outline:
+      <input type="text" id="custom-text" placeholder="Focus me">
+    </label>
+  </div>
+</section></details>
         <!-- FLEXBOX TOOLS -->
         <details id="flex-tools">
             <summary><h2>Flexbox-utility tools</h2></summary>

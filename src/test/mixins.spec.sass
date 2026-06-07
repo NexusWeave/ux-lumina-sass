@@ -1,0 +1,186 @@
+@use 'sass:meta'
+@use '../../node_modules/sass-true' as true
+@use '../mix/_generators' as generators
+@use '../mix/_media' as media
+@use '../mix/_typography' as typo
+
+@include true.test-module('Icon Generator')
+  @include true.test('Generates school icon class')
+    @include true.assert
+      @include true.output
+        @include generators.icon-generator('school')
+      
+      @include true.expect
+        .school
+          font-family: 'bootstrap-icons'
+          color: rgb(64, 64, 64) !important
+          
+          &::before
+            content: "\F671"
+
+@include true.test-module('Flexbox Generator')
+  @include true.test('Generates flex-row properties')
+    @include true.assert
+      @include true.output
+        @include generators.flexbox-generator('flex-row')
+      
+      @include true.expect
+        display: flex
+        flex-wrap: nowrap
+        flex-direction: row
+
+@include true.test-module('Input Generator')
+  @include true.test('Generates text input type')
+    @include true.assert
+      @include true.output
+        @include generators.input-generator('text')
+      
+      @include true.expect
+        input[type="text"]
+          border: rgb(204, 204, 204) solid 1px
+          padding: 0.5rem 1rem
+          border-radius: 0.5rem
+          background-color: rgb(255, 255, 255)
+          font-size: 1rem
+          line-height: 1.5
+          box-sizing: border-box
+          outline: 1px solid rgb(0, 120, 215)
+          focus-outline: rgb(0, 120, 215)
+          cursor: text
+        
+        input[type="text"]::focus
+          outline: rgb(0, 120, 215)
+        
+        &::-webkit-slider-runnable-track
+          height: 0.4rem
+          background: #ddd
+          border-radius: 0.2rem
+        
+        &::-webkit-slider-thumb
+          -webkit-appearance: none
+          width: 1rem
+          height: 1rem
+          background: #0078d7
+          border-radius: 50%
+          margin-top: -0.3rem
+
+@include true.test-module('Media Queries')
+  @include true.test('Generates max-width media query for breakpoint md')
+    @include true.assert
+      @include true.output
+        @include media.media-queries('md')
+          color: blue
+      
+      @include true.expect
+        @media (max-width: 64rem)
+          color: blue
+
+  @include true.test('Generates prefers-color-scheme')
+    @include true.assert
+      @include true.output
+        @include media.prefers-color-scheme(dark)
+          background: black
+      
+      @include true.expect
+        @media (prefers-color-scheme: dark)
+          background: black
+
+  @include true.test('Generates device-media for iphone')
+    @include true.assert
+      @include true.output
+        @include media.device-media('iphone')
+          color: white
+      
+      @include true.expect
+        @media only screen and (min-width: 20rem) and (max-width: 20.125rem) and (min-height: 30rem) and (max-height: 30.125rem) and (orientation: portrait)
+          color: white
+
+@include true.test-module('Typography')
+  @include true.test('Generates font styles')
+    @include true.assert
+      @include true.output
+        @include typo.font($size: 2rem, $weight: bold)
+      
+      @include true.expect
+        font-size: 2rem
+        font-weight: bold
+        font-style: normal
+
+  @include true.test('Generates font-sans styles')
+    @include true.assert
+      @include true.output
+        @include typo.font-sans('Roboto', $size: 1.5rem)
+      
+      @include true.expect
+        font-family: "Roboto", sans-serif
+        font-size: 1.5rem
+        font-weight: normal
+        font-style: normal
+
+  @include true.test('Generates font-serif styles')
+    @include true.assert
+      @include true.output
+        @include typo.font-serif('Georgia', $size: 1.2rem)
+      
+      @include true.expect
+        font-family: "Georgia", serif
+        font-size: 1.2rem
+        font-weight: normal
+        font-style: normal
+
+  @include true.test('Generates font-mono styles')
+    @include true.assert
+      @include true.output
+        @include typo.font-mono('Fira Code', $weight: 500)
+      
+      @include true.expect
+        font-family: "Fira Code", monospace
+        font-size: 1rem
+        font-weight: 500
+        font-style: normal
+
+  @include true.test('Returns correct font-family for known font')
+    @include true.assert-equal(typo.font-family-of('Open Sans'), sans-serif)
+
+  @include true.test('Detects generic category names')
+    @include true.assert-equal(typo.font-family-of('mono'), monospace)
+    @include true.assert-equal(typo.font-family-of('serif'), serif)
+
+@include true.test-module('Layout Helpers')
+  @include true.test('Generates aspect-ratio')
+    @include true.assert
+      @include true.output
+        @include media.aspect-ratio(16, 9)
+      
+      @include true.expect
+        aspect-ratio: 16 / 9
+
+  @include true.test('Generates figure structure')
+    @include true.assert
+      @include true.output
+        @include media.figure()
+      
+      @include true.expect
+        figure video.portrait-media
+          max-inline-size: 20em !important
+          aspect-ratio: 9 / 16
+        
+        figure video.landscape-media
+          object-position: center 35%
+          aspect-ratio: 16 / 9
+        
+        figure picture, figure img
+          inline-size: 100%
+          object-fit: cover
+          aspect-ratio: 16 / 9
+        
+        figure picture img
+          inline-size: 100%
+          object-fit: cover
+          aspect-ratio: 16 / 9
+        
+        figure picture figcaption
+          font-weight: normal
+          font-style: italic
+
+@include true.report

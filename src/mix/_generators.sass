@@ -1,5 +1,6 @@
 @use 'sass:map' as map
 @use "sass:list" as list
+@use "sass:meta" as meta
 @use '../color/base' as base
 @use '../map/inputs' as inputs
 @use '../map/icons' as icon-map
@@ -39,7 +40,7 @@
             font-family: $font-family
     @else
       $names: $name
-      @if type-of($name) != 'list'
+      @if meta.type-of($name) != 'list'
         $names: ($name)
 
       @each $single in $names
@@ -78,7 +79,7 @@
       @if list.index($list, $name)
         $category: $cat
 
-    @if $category == null
+    @if $category == null and meta.type-of($name) == 'string'
       @warn "Input '#{$name}' not found in inputs map. Check inputs/_inputs.sass for valid names."
 
     input[type="#{$name}"]

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.4](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.1.3...v2.1.4) (2026-06-07)
+
+
+### Bug Fixes
+
+* resolve Sass deprecation warnings and improve input generator validation. ([e0b8dfd](https://github.com/NexusWeave/ux-lumina-sass/commit/e0b8dfde06e2ffad7b2791c284c5122307dc3928))
+
 ### [2.1.3](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.1.2...v2.1.3) (2026-06-07)
 
 

@@ -38,8 +38,23 @@
   @if $style != null
     font-style: $style
 
+@mixin font-sans($font, $size: 1rem, $weight: normal, $style: normal)
+  @include font($font, $size, sans-serif, $style, $weight)
+
+@mixin font-serif($font, $size: 1rem, $weight: normal, $style: normal)
+  @include font($font, $size, serif, $style, $weight)
+
+@mixin font-mono($font, $size: 1rem, $weight: normal, $style: normal)
+  @include font($font, $size, monospace, $style, $weight)
+
 // Helper: return the generic family for a given font name using the fonts map.
 @function font-family-of($font)
-  @if map.has-key(fonts.$font-family, $font)
-    @return map.get(fonts.$font-family, $font)
+  @if map.has-key(fonts.$fonts, $font)
+    @if $font == 'mono'
+      @return monospace
+    @return $font
+
+  @each $category, $map in fonts.$fonts
+    @if map.has-key($map, $font)
+      @return map.get($map, $font)
   @return null

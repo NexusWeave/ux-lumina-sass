@@ -1,105 +1,30 @@
-@use 'sass:list'
+@use 'sass:map'
 
-// Font family collections used throughout the project.
-// The lists are deliberately extensive to cover most common web‑safe and Google‑font families.
-
-// Sans‑serif fonts – primary list referenced by `fonts.$sans-serif`.
 $sans-serif: (
-  'Roboto',
-  'Helvetica',
-  'Arial',
-  'Work Sans',
-  'Nunito',
-  'Open Sans',
-  'Lato',
-  'Montserrat',
-  'Source Sans Pro',
-  'Inter',
-  'Tahoma',
-  'Verdana',
-  'Gill Sans',
-  'Futura',
-  'Ubuntu',
-  'Noto Sans',
-  'Noto Sans KR',
-  'Noto Sans JP',
-  'Noto Sans SC',
-  'Noto Sans Arabic',
-  'Noto Sans Hebrew'
+  'Roboto': sans-serif, 'Helvetica': sans-serif, 'Arial': sans-serif,
+  'Work Sans': sans-serif, 'Nunito': sans-serif, 'Open Sans': sans-serif,
+  'Lato': sans-serif, 'Montserrat': sans-serif, 'Source Sans Pro': sans-serif,
+  'Inter': sans-serif, 'Tahoma': sans-serif, 'Verdana': sans-serif,
+  'Gill Sans': sans-serif, 'Futura': sans-serif, 'Ubuntu': sans-serif,
+  'Noto Sans': sans-serif, 'Noto Sans KR': sans-serif, 'Noto Sans JP': sans-serif,
+  'Noto Sans SC': sans-serif, 'Noto Sans Arabic': sans-serif, 'Noto Sans Hebrew': sans-serif
 )
 
-// Serif fonts – provided for completeness, may be used elsewhere.
 $serif: (
-  'Georgia',
-  'Times New Roman',
-  'Palatino',
-  'Libre Baskerville',
-  'Merriweather',
-  'PT Serif',
-  'Noto Serif',
-  'Noto Serif KR',
-  'Noto Serif JP',
-  'Noto Serif SC'
+  'Georgia': serif, 'Times New Roman': serif, 'Palatino': serif,
+  'Libre Baskerville': serif, 'Merriweather': serif, 'PT Serif': serif,
+  'Noto Serif': serif, 'Noto Serif KR': serif, 'Noto Serif JP': serif,
+  'Noto Serif SC': serif
 )
 
-// Monospace fonts – useful for code blocks and UI elements.
 $mono: (
-  'Courier New',
-  'Consolas',
-  'Ubuntu Mono',
-  'Source Code Pro',
-  'Fira Code',
-  'Inconsolata',
-  'Menlo',
-  'Monaco',
-  'Noto Mono'
+  'Courier New': monospace, 'Consolas': monospace, 'Ubuntu Mono': monospace,
+  'Source Code Pro': monospace, 'Fira Code': monospace, 'Inconsolata': monospace,
+  'Menlo': monospace, 'Monaco': monospace, 'Noto Mono': monospace
 )
 
-// Map each font name to its generic family. This is used by `font-family-of()`.
-$font-family: (
-  // Sans‑serif
-  'Roboto': sans-serif,
-  'Helvetica': sans-serif,
-  'Arial': sans-serif,
-  'Work Sans': sans-serif,
-  'Nunito': sans-serif,
-  'Open Sans': sans-serif,
-  'Lato': sans-serif,
-  'Montserrat': sans-serif,
-  'Source Sans Pro': sans-serif,
-  'Inter': sans-serif,
-  'Tahoma': sans-serif,
-  'Verdana': sans-serif,
-  'Gill Sans': sans-serif,
-  'Futura': sans-serif,
-  'Ubuntu': sans-serif,
-  'Noto Sans': sans-serif,
-  'Noto Sans KR': sans-serif,
-  'Noto Sans JP': sans-serif,
-  'Noto Sans SC': sans-serif,
-  'Noto Sans Arabic': sans-serif,
-  'Noto Sans Hebrew': sans-serif,
-
-  // Serif
-  'Georgia': serif,
-  'Times New Roman': serif,
-  'Palatino': serif,
-  'Libre Baskerville': serif,
-  'Merriweather': serif,
-  'PT Serif': serif,
-  'Noto Serif': serif,
-  'Noto Serif KR': serif,
-  'Noto Serif JP': serif,
-  'Noto Serif SC': serif,
-
-  // Monospace
-  'Courier New': monospace,
-  'Consolas': monospace,
-  'Ubuntu Mono': monospace,
-  'Source Code Pro': monospace,
-  'Fira Code': monospace,
-  'Inconsolata': monospace,
-  'Menlo': monospace,
-  'Monaco': monospace,
-  'Noto Mono': monospace
+$fonts: (
+  'mono': $mono,
+  'serif': $serif,
+  'sans-serif': $sans-serif
 )

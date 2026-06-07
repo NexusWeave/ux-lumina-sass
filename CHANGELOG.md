@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.1.1...v2.1.2) (2026-06-07)
+
+
+### Bug Fixes
+
+* resolve build errors and synchronize icon documentation. ([c5cc963](https://github.com/NexusWeave/ux-lumina-sass/commit/c5cc96328112ffb416c0ec76d4a3792b55874cd7))
+* set default fallback colour to black for icon-generator mixin. ([8fb25c2](https://github.com/NexusWeave/ux-lumina-sass/commit/8fb25c2b817ac8ffa45f81afcf497931451ee31a))
+
 ### [2.1.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.1.0...v2.1.1) (2026-06-06)
 
 ## [2.1.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.0.2...v2.1.0) (2026-06-06)

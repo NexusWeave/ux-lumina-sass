@@ -22,54 +22,52 @@ This file explains the icon‑generator mixin provided by Lumina Sass.
 
 The mixin creates CSS classes you can apply directly in HTML, e.g. `<i class="search"></i>`.
 
+## Supported Icon Frameworks
+
+Lumina Sass currently supports the following icon frameworks:
+
+- **Bootstrap Icons**: The default framework (font-family: `'bootstrap-icons'`). The library is pre-configured with unicode mappings compatible with Bootstrap Icons.
+
 ## Icons Reference
 
-| Category | Icon name | Emoji |
-|----------|-----------|-------|
-| academic | school | 🎓 |
-| academic | diploma | 📜 |
-| boolean-controls | radio | 📻 |
-| boolean-controls | checkbox | ✅ |
-| utility-inputs | range | 🎚️ |
-| utility-inputs | color | 🎨 |
-| utility-inputs | hidden | 🙈 |
-| documents | pdf | 📄 |
-| documents | default | 📁 |
-| buttons | file | 📁 |
-| buttons | submit | 📤 |
-| buttons | reset | 🔄 |
-| buttons | button | 🔘 |
-| datetime-pickers | date | 📅 |
-| datetime-pickers | time | ⏰ |
-| datetime-pickers | week | 📅 |
-| datetime-pickers | month | 📅 |
-| datetime-pickers | datetime-local | 🗓️ |
-| input-controls | tel | 📞 |
-| input-controls | url | 🔗 |
-| input-controls | text | 📝 |
-| input-controls | search | 🔍 |
-| input-controls | number | 🔢 |
-| input-controls | password | 🔑 |
-| misc-icons | dir | 📁 |
-| misc-icons | globe | 🌐 |
-| misc-icons | map-pin | 📍 |
-| misc-icons | calendar | 📆 |
-| misc-icons | collaborator | 👥 |
-| misc-icons | alarm | ⏰ |
-| misc-icons | cloud | ☁️ |
-| misc | pdf | 📄 |
-| misc | dot | ⚫ |
-| misc | email | 📧 |
-| misc | default | ❓ |
-| misc | calendar | 📆 |
-| misc | telephone | 📞 |
-| misc | code | 💻 |
-| communication | mail | ✉️ |
-| communication | github | 🐙 |
-| communication | ytube | 📺 |
-| communication | facebook | 📘 |
-| communication | linkedin | 🔗 |
-| communication | instagram | 📸 |
-| communication | twitter | 🐦 |
+| Category | Icon name |
+|----------|-----------|
+| academic | school |
+| academic | diploma |
+| document | pdf |
+| document | dir |
+| document | default |
+| misc-icons | dir |
+| misc-icons | map-pin |
+| misc-icons | collaborator |
+| misc-icons | alarm |
+| misc-icons | cloud |
+| misc-icons | dot |
+| misc-icons | code |
+| misc-icons | default |
+| communication | email |
+| communication | mail |
+| communication | github |
+| communication | ytube |
+| communication | facebook |
+| communication | linkedin |
+| communication | instagram |
+| communication | twitter |
+| utility-inputs | color |
+| utility-inputs | hidden |
+| input-controls | tel |
+| input-controls | url |
+| input-controls | text |
+| input-controls | search |
+| input-controls | number |
+| input-controls | password |
+| video-controls | play-video |
+| video-controls | pause-video |
+| boolean-controls | radio |
+| boolean-controls | checkbox |
+| datetime-pickers | time |
+| datetime-pickers | week |
+| datetime-pickers | month |
+| datetime-pickers | calendar |
 
 ---

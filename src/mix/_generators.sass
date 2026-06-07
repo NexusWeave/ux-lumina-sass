@@ -1,35 +1,49 @@
 @use 'sass:map' as map
+@use "sass:list" as list
+@use '../color/base' as base
+@use '../map/inputs' as inputs
 @use '../map/icons' as icon-map
 @use '../map/tag-theme' as tag-map
 @use '../map/flexbox' as flexbox-mapping
-@use '../map/inputs' as inputs
-@use "sass:list" as list
 
-@mixin icon-generator($name: null, $color: black, $font-family: 'bootstrap-icons')
+@function _icon-find($name)
+  @each $category, $maps in icon-map.$icons
+    @if map.has-key($maps, $name)
+      @return map.get($maps, $name)
+  @return null
+
+@mixin _icon-base($name, $color, $font-family)
+  $props: _icon-find($name)
+  @if $props
+    .#{$name}
+      &::before
+        content: map.get($props, icon)
+      @if $color
+        color: $color !important
+
+    font-family: $font-family
+  @else
+    @warn "Icon #{$name} not found in icon mapping."
+
+@mixin icon-generator($name: null, $color: rgb(64, 64, 64), $font-family: 'bootstrap-icons')
   @if icon-map.$icons
     @if $name == null
       @each $category, $maps in icon-map.$icons
         @each $icon, $props in $maps
           .#{$icon}
-            font-family: $font-family
             &::before
               content: map.get($props, icon)
             @if $color
-              color: $color
+              color: $color !important
+
+            font-family: $font-family
     @else
-      $found: false
-      @each $category, $maps in icon-map.$icons
-        @if map.has-key($maps, $name)
-          $found: true
-          $props: map.get($maps, $name)
-          .#{$name}
-            font-family: $font-family
-            &::before
-              content: map.get($props, icon)
-            @if $color
-              color: $color
-      @if not $found
-        @warn "Icon #{$name} not found in icon mapping."
+      $names: $name
+      @if type-of($name) != 'list'
+        $names: ($name)
+
+      @each $single in $names
+        @include _icon-base($single, $color, $font-family)
   @else
     @error "Icon mapping not found."
 
@@ -56,27 +70,25 @@
           @if $placeholder-color != null
             &::placeholder
               color: $placeholder-color
-          &:focus
+          &::focus
             outline: $focus-outline
   @else
     $category: null
     @each $cat, $list in inputs.$inputs
       @if list.index($list, $name)
         $category: $cat
-  
+
     @if $category == null
       @warn "Input '#{$name}' not found in inputs map. Check inputs/_inputs.sass for valid names."
-  
+
     input[type="#{$name}"]
       @each $prop, $val in $props
         #{$prop}: $val
       @if $placeholder-color != null
         &::placeholder
           color: $placeholder-color
-    
-      &:focus
+      &::focus
         outline: $focus-outline
-
 
   // Range track styling
   &::-webkit-slider-runnable-track

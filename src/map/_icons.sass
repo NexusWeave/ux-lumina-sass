@@ -1,20 +1,20 @@
 @use '../color/_index' as color
 
+
 $academic: ('school': (icon: "\F62F"), 'diploma': (icon: "\F153"))
-$boolean-controls: ('radio': (icon: '\F1D0'), 'checkbox': (icon: '\F272'))
-$utility-inputs: ('range': (icon: '\F0E7'), 'color': (icon: '\F4B0'), 'hidden': (icon: '\F0E7'))
-$documents: ('pdf': (icon: "\F63F"), 'default': (icon: ""))
-$buttons: ('file': (icon: '\F0E7'), 'submit': (icon: '\F0E7'), 'reset': (icon: '\F0E7'), 'button': (icon: '\F0E7'))
-$datetime-pickers: ('date': (icon: '\F073'), 'time': (icon: '\F017'), 'week': (icon: '\F4C0'), 'month': (icon: '\F4C1'), 'datetime-local': (icon: '\F017'))
-$input-controls: ('tel': (icon: '\F5BB'), 'url': (icon: '\F882'), 'text': (icon: '\F435'), 'search': (icon: '\F52A'), 'number': (icon: ' \F67F'), 'password': (icon: '\F44E'))
-$misc-icons: ('dir': (icon: "\F3D7"), 'globe': (icon: "\F882"), 'map-pin': (icon: "\F64B"), 'calendar': (icon: "\F1E7"), 'collaborator': (icon: "\F4D0"), 'alarm': (icon: "\F102"), 'cloud': (icon: "\F2C1"))
-$misc: ('pdf': (icon: "\F63D"), 'dot': (icon: "\F309"), 'email': (icon: "\F84B"), 'default': (icon: "\F82E"), 'calendar': (icon: "\F1F6"), 'telephone': (icon: "\F5C1"), 'code': (icon: "\F2C8"))
-$communication: ('mail': (icon: "\F32F"), 'github': (icon: "\F3ED"), 'ytube': (icon: "\F62B"), 'facebook': (icon: "\F344"), 'linkedin': (icon: "\F472"), 'instagram': (icon: "\F437"), 'twitter': (icon: "\F5EF"))
+$utility-inputs: ('color': (icon: '\F4B0'), 'hidden': (icon: '\F0E7'))
+$boolean-controls: ('radio': (icon: '\F110'), 'checkbox': (icon: '\F272'))
+$video-controls: ('play-video': (icon: '\F4F4'), 'pause-video': (icon: '\F4C4'))
+$documents: ('pdf': (icon: "\F63D"), 'dir': (icon: "\F3D7"), 'default': (icon: "\F369"))
+$datetime-pickers: ( 'time': (icon: '\F3E5'), 'week': (icon: '\F1E6'), 'month': (icon: '\F1E7'),  'calendar': (icon: "\F1E7") )
+$input-controls: ('tel': (icon: '\F5BB'), 'url': (icon: '\F882'), 'text': (icon: '\F435'), 'search': (icon: '\F52A'), 'number': (icon: '\F67F'), 'password': (icon: '\F44E'))
+$misc-icons: ('dir': (icon: "\F3D7"), 'map-pin': (icon: "\F64B"), 'collaborator': (icon: "\F4D0"), 'alarm': (icon: "\F102"), 'cloud': (icon: "\F2C1"), 'dot': (icon: "\F309"),  'code': (icon: "\\F2C8"), 'default': (icon: "\F82E"))
+$communication: ('email': (icon: "\F84B"), 'mail': (icon: "\F32F"), 'github': (icon: "\F3ED"), 'ytube': (icon: "\F62B"), 'facebook': (icon: "\F344"), 'linkedin': (icon: "\F472"), 'instagram': (icon: "\\F437"), 'twitter': (icon: "\F5EF"))
 
 
 $icons: (
-    'misc': $misc, 'buttons': $buttons, 'utility-inputs': $utility-inputs,
-    'input-controls': $input-controls, 'boolean-controls': $boolean-controls,
-    'datetime-pickers': $datetime-pickers, 'document': $documents,
-    'communication': $communication, 'academic': $academic,
-    'misc-icons': $misc-icons)
+    'academic': $academic, 'document': $documents, 'misc-icons': $misc-icons,
+    'communication': $communication, 'utility-inputs': $utility-inputs,
+    'input-controls': $input-controls, 'video-controls': $video-controls,
+    'boolean-controls': $boolean-controls, 'datetime-pickers': $datetime-pickers,
+)

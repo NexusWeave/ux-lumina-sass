@@ -104,6 +104,7 @@ A complete set of flexbox mixins and maps to help you build layouts quickly.
 To learn how to contribute or understand the release process, please see:
 
 - [**Development Guide**](docs/developer/development.md) - Project structure and setup rules.
+- [**Testing Guide**](docs/developer/testing.md) - How to write and run Sass unit tests.
 - [**Releasing & Publishing**](docs/developer/releasing.md) - Details on the release process.
 
 ---
@@ -182,7 +183,11 @@ lumina-sass/
 ---
 
 ## 6️⃣ Testing & Verification Workflow
-1. **Local import test**
+1. **Run Unit Tests**
+   ```bash
+   npm test
+   ```
+2. **Local import test**
    ```bash
    node -e "import 'lumina-sass/flexbox'"   # should succeed
    node -e "import 'lumina-sass/utils'"     # should fail
@@ -217,6 +222,7 @@ lumina-sass/
 | Activate LTS Node | `fnm use lts` |
 | Install dependencies | `npm install` |
 | Build the package | `npm run build` |
+| Run tests | `npm test` |
 | Serve demo (optional) | `npm run serve` |
 | Stage a file | `git add <path>` |
 | Signed commit (example) | `git commit -S -m "feat: description of change."` |

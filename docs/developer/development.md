@@ -24,6 +24,7 @@ Use these scripts for development work:
 - `npm run build:demo`: Compiles `demo/style.sass` into `demo/style.css`.
 - `npm run build:demo:watch`: Monitors demo SASS files for changes and recompiles them automatically.
 - `npm run serve`: Starts the `http-server` to serve the `demo/` directory.
+- `npm test`: Runs the Sass unit tests using `sass-true`.
 
 ## Project Structure
 
@@ -46,5 +47,6 @@ To keep the library consistent, follow these patterns:
 ## Contributing
 
 1. Create a new branch for your feature or bug fix.
-2. Update the `demo/` files if your changes affect them.
-3. Submit a Pull Request to the `master` branch.
+2. Ensure all tests pass by running `npm test`. Refer to the [Testing Guide](testing.md) for details on writing and running tests.
+3. Update the `demo/` files if your changes affect them.
+4. Submit a Pull Request to the `master` branch.

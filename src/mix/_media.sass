@@ -26,9 +26,11 @@
 /* Semantic Media Query Helpers – delegate through the base mixin */
 @mixin prefers-color-scheme($mode)
   @include media-queries-base('(prefers-color-scheme: #{$mode})')
+    @content
 
 @mixin prefers-orientation($orientation)
   @include media-queries-base('orientation', $orientation)
+    @content
 
 // Device media query helper – generates a media query for a single device
 @mixin device-media($device, $orientation: portrait)
@@ -58,19 +60,19 @@
     // Portrait video – forced 9:16 ratio
     video.portrait-media
       max-inline-size: 20em !important
-      @include mix.aspect-ratio($width: 9, $length: 16)
+      @include aspect-ratio(9, 16)
 
     // Landscape video – default ratio
     video.landscape-media
       object-position: center 35%
-      @include mix.aspect-ratio()
+      @include aspect-ratio()
 
     // Image and picture handling
     picture,
     img
       inline-size: 100%
       object-fit: $object-fit
-      @include mix.aspect-ratio($width, $length)
+      @include aspect-ratio($width, $length)
       @if $position != null or $percentage != null
         object-position: $position $percentage
 
@@ -79,16 +81,13 @@
       img
         inline-size: 100%
         object-fit: $object-fit
-        @include mix.aspect-ratio($width, $length)
+        @include aspect-ratio($width, $length)
         @if $position != null or $percentage != null
           object-position: $position $percentage
 
       // Figcaption styling if size provided
       figcaption
-          @include typo.font($size, $style)
+          @include typo.font($size: $size, $style: $style)
 
 @mixin aspect-ratio($width: 16, $length: 9)
-    aspect-ratio: calc($width / $length)/ $length
-
-    @include aspect-ratio(9, 16)
-    aspect-ratio: calc($width / $length)/ $length
+  aspect-ratio: #{$width} / #{$length}

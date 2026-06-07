@@ -12,10 +12,9 @@
       
       @include true.expect
         .school
-          font-family: 'bootstrap-icons'
-          color: rgb(64, 64, 64) !important
-          
           &::before
+            color: rgb(64, 64, 64) !important
+            font-family: 'bootstrap-icons'
             content: "\F671"
 
 @include true.test-module('Flexbox Generator')

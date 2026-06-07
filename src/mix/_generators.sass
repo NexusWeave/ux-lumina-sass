@@ -17,11 +17,11 @@
   $props: _icon-find($name)
   @if $props
     .#{$name}
-      font-family: $font-family
-      @if $color
-        color: $color !important
-
       &::before
+        @if $color
+          color: $color !important
+
+        font-family: $font-family
         content: map.get($props, icon)
   @else
     @warn "Icon #{$name} not found in icon mapping."

@@ -47,6 +47,18 @@
 @mixin font-mono($font, $size: 1rem, $weight: normal, $style: normal)
   @include font($font, $size, monospace, $style, $weight)
 
+@mixin text-adjustments($alignment: null, $decoration: null)
+    
+    @if $alignment != null
+        text-align: $alignment
+
+    @if $decoration != null
+        text-decoration: $decoration
+
+    @if $alignment == null and $decoration == null
+        text-decoration: none
+        @warn "No parameters provided for text-adjustments mixin. Default value present"
+
 // Helper: return the generic family for a given font name using the fonts map.
 @function font-family-of($font)
   @if map.has-key(fonts.$fonts, $font)

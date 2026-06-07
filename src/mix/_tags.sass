@@ -1,0 +1,71 @@
+@use 'sass:color'
+@use 'typography' as typo
+@use '../color/palette/groovy-70s' as *
+@use '../color/alerts' as *
+
+@mixin background-color($bg-color, $text-color)
+    color: rgba($text-color, 1)
+    background-color: rgba($bg-color, 1)
+
+@mixin base-btn($bg-color: $groovy-70s-cream, $text-color: $groovy-70s-warm-white, $border-color: null, $size: 1em, $weight: bold)
+
+    @if $border-color == null
+        border: none
+    @else
+        border: 1px solid $border-color
+
+    margin: 0.5em
+    cursor: pointer
+    position: relative
+    padding: 0.5em 1.5em
+    border-radius: 0.5em
+    display: inline-block
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s
+    
+    @include background-color($bg-color, $text-color)
+    @include typo.font($size: $size, $weight: $weight)
+    
+
+    &:hover
+        transform: scale(1.05)
+        background-color: color.adjust($bg-color, $lightness: -5%)
+
+    &:active
+        transform: scale(0.95)
+        background-color: color.adjust($bg-color, $lightness: -10%)
+
+    &:disabled
+        opacity: 0.3
+        cursor: not-allowed
+
+@mixin link-color($color, $color-hover, $color-active, $color-visited)
+
+    a
+        [aria-disabled="true"]
+            color: $disabled
+            cursor: not-allowed
+            pointer-events: none
+            text-decoration: none
+
+        &:active
+            color: $color-active
+        
+        &.external-link
+            text-decoration: underline
+
+        @media (hover: hover)
+
+            &:hover
+                color: $color-hover
+                border-radius: 0.5em
+
+        &:visited
+            color: $color-visited
+        
+
+        h1, h2, h3, h4, h5, h6
+            color: $color !important
+
+        color: $color
+        cursor: pointer
+        @include typo.text-adjustments()

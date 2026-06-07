@@ -3,6 +3,7 @@
 @use '../mix/_generators' as generators
 @use '../mix/_media' as media
 @use '../mix/_typography' as typo
+@use '../mix/_tags' as tags
 
 @include true.test-module('Icon Generator')
   @include true.test('Generates school icon class')
@@ -182,4 +183,81 @@
           font-weight: normal
           font-style: italic
 
+@include true.test-module('Tags')
+  @include true.test('background-color mixin')
+    @include true.assert
+      @include true.output
+        @include tags.background-color(rgb(255, 0, 0), rgb(255, 255, 255))
+      
+      @include true.expect
+        color: rgba(255, 255, 255, 1)
+        background-color: rgba(255, 0, 0, 1)
+
+  @include true.test('base-btn mixin')
+    @include true.assert
+      @include true.output
+        @include tags.base-btn()
+      
+      @include true.expect
+        border: none
+        margin: 0.5em
+        cursor: pointer
+        position: relative
+        padding: 0.5em 1.5em
+        border-radius: 0.5em
+        display: inline-block
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s
+        color: rgb(255, 248, 241)
+        background-color: rgb(252, 245, 235)
+        font-size: 1em
+        font-weight: bold
+        font-style: normal
+
+        &:hover
+          transform: scale(1.05)
+          background-color: rgb(248.6739130435, 233.9130434783, 212.8260869565)
+
+        &:active
+          transform: scale(0.95)
+          background-color: rgb(245.347826087, 222.8260869565, 190.652173913)
+
+        &:disabled
+          opacity: 0.3
+          cursor: not-allowed
+
+  @include true.test('link-color mixin')
+    @include true.assert
+      @include true.output
+        @include tags.link-color(rgb(0, 0, 255), rgb(0, 0, 200), rgb(0, 0, 150), rgb(128, 0, 128))
+      
+      @include true.expect
+        a
+          color: rgb(0, 0, 255)
+          cursor: pointer
+          text-decoration: none
+
+          [aria-disabled="true"]
+            color: rgb(160, 160, 160)
+            cursor: not-allowed
+            pointer-events: none
+            text-decoration: none
+
+          &:active
+            color: rgb(0, 0, 150)
+          
+          &.external-link
+            text-decoration: underline
+
+          @media (hover: hover)
+            &:hover
+              color: rgb(0, 0, 200)
+              border-radius: 0.5em
+
+          &:visited
+            color: rgb(128, 0, 128)
+          
+          h1, h2, h3, h4, h5, h6
+            color: rgb(0, 0, 255) !important
+
 @include true.report
+

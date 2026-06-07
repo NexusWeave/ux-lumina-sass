@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.1.5...v2.3.0) (2026-06-07)
+
+
+### Features
+
+* add Sass unit testing framework with sass-true. ([fd6991e](https://github.com/NexusWeave/ux-lumina-sass/commit/fd6991e210643d5dbf6548eb4aa7701c2ac062e2))
+
+
+### Bug Fixes
+
+* move icon font-family and color inside pseudo-element for consistency. ([eaa81e4](https://github.com/NexusWeave/ux-lumina-sass/commit/eaa81e43882cc0f5b3304a48c1d3a32318d4613c))
+* resolve bugs in aspect-ratio, icon indentation, and media query helpers. ([007be92](https://github.com/NexusWeave/ux-lumina-sass/commit/007be92e21f0c78ad10b16c18659654e4723c962))
+
 ## [2.2.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.1.5...v2.2.0) (2026-06-07)
 
 

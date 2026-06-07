@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.3](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.1.2...v2.1.3) (2026-06-07)
+
+
+### Bug Fixes
+
+* correct indentation for font-family in icon-generator mixin. ([dce8815](https://github.com/NexusWeave/ux-lumina-sass/commit/dce881569cdbc29a18c2352584949fab084fffc7))
+
 ### [2.1.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.1.1...v2.1.2) (2026-06-07)
 
 

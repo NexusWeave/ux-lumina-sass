@@ -13,21 +13,21 @@
 
 @mixin font-style($font, $family: null, $line-height: null, $variant: null)
   $detected-family: font-family-of($font)
+
   @if $detected-family != null
     $family: $detected-family
+
   @if $line-height != null
     line-height: $line-height
+
   @if $variant != null
     font-variant: $variant
-  // Always include a fallback family.
+
   font-family: $font, $family
 
-@mixin font( $font: null, $size: 1rem, $family: null, $style: normal, $weight: normal)
+@mixin font( $font:null, $size: 1rem, $family: null, $style: null, $weight: null, $line-height: null, $variant: null)
   @if $font != null
-    @include font-style($font, $family)
-
-  @else if $family != null
-    font-family: $family
+    @include font-style($font, $family, $line-height, $variant)
 
   @if $size != null
     font-size: $size
@@ -37,14 +37,17 @@
 
   @if $style != null
     font-style: $style
+  
+  @if $variant != null
+    font-variant: $variant
 
-@mixin font-sans($font, $size: 1rem, $weight: normal, $style: normal)
+@mixin sans-serif($font, $size: 1rem, $weight: null, $style: null)
   @include font($font, $size, sans-serif, $style, $weight)
 
-@mixin font-serif($font, $size: 1rem, $weight: normal, $style: normal)
+@mixin serif($font, $size: 1rem, $weight: null, $style: null)
   @include font($font, $size, serif, $style, $weight)
 
-@mixin font-mono($font, $size: 1rem, $weight: normal, $style: normal)
+@mixin monospace($font, $size: 1rem, $weight: null, $style: null)
   @include font($font, $size, monospace, $style, $weight)
 
 // Helper: return the generic family for a given font name using the fonts map.

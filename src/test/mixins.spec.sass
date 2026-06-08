@@ -36,14 +36,14 @@
       
       @include true.expect
         input[type="text"]
-          border: rgb(204, 204, 204) solid 1px
+          border: rgb(204, 204, 204) solid 0.0625rem
           padding: 0.5rem 1rem
           border-radius: 0.5rem
           background-color: rgb(255, 255, 255)
           font-size: 1rem
           line-height: 1.5
           box-sizing: border-box
-          outline: 1px solid rgb(0, 120, 215)
+          outline: 0.0625rem solid rgb(0, 120, 215)
           focus-outline: rgb(0, 120, 215)
           cursor: text
         
@@ -151,16 +151,17 @@
   @include true.test('Generates figure structure')
     @include true.assert
       @include true.output
-        @include media.figure()
+        figure
+          @include media.figure()
       
       @include true.expect
         figure video.portrait-media
-          max-inline-size: 20em !important
-          aspect-ratio: 9 / 16
+          aspect-ratio: 16 / 9
+          max-inline-size: 20rem !important
         
         figure video.landscape-media
-          object-position: center 35%
           aspect-ratio: 16 / 9
+          object-position: center 35%
         
         figure picture, figure img
           inline-size: 100%
@@ -173,7 +174,6 @@
           aspect-ratio: 16 / 9
         
         figure picture figcaption
-          font-weight: normal
           font-style: italic
 
 @include true.report

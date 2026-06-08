@@ -56,36 +56,42 @@
     @error "Invalid orientation `#{$orientation}` – use portrait or landscape."
 
 @mixin figure($object-fit: cover, $size: null, $style: italic, $width: 16, $length: 9, $position: null, $percentage: null)
-  figure
-    // Portrait video – forced 9:16 ratio
+  &
     video.portrait-media
-      max-inline-size: 20em !important
-      @include aspect-ratio(9, 16)
+      @if $width != null and $length != null
+        @include aspect-ratio($width, $length)
+
+      max-inline-size: 20rem !important
 
     // Landscape video – default ratio
     video.landscape-media
+      @if $width != null and $length != null
+        @include aspect-ratio($width, $length)
       object-position: center 35%
-      @include aspect-ratio()
 
     // Image and picture handling
     picture,
     img
       inline-size: 100%
       object-fit: $object-fit
-      @include aspect-ratio($width, $length)
+      
+      @if $width != null and $length != null
+        @include aspect-ratio($width, $length)
+
       @if $position != null or $percentage != null
         object-position: $position $percentage
 
-    // Nested <picture><img> – duplicate settings for readability
     picture
       img
         inline-size: 100%
         object-fit: $object-fit
-        @include aspect-ratio($width, $length)
+
+        @if $width != null and $length != null
+          @include aspect-ratio($width, $length)
+
         @if $position != null or $percentage != null
           object-position: $position $percentage
 
-      // Figcaption styling if size provided
       figcaption
           @include typo.font($size: $size, $style: $style)
 

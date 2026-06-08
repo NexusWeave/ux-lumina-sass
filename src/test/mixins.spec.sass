@@ -103,40 +103,34 @@
       @include true.expect
         font-size: 2rem
         font-weight: bold
-        font-style: normal
 
-  @include true.test('Generates font-sans styles')
+  @include true.test('Generates sans-serif styles')
     @include true.assert
       @include true.output
-        @include typo.font-sans('Roboto', $size: 1.5rem)
+        @include typo.sans-serif('Roboto', $size: 1.5rem)
       
       @include true.expect
         font-family: "Roboto", sans-serif
         font-size: 1.5rem
-        font-weight: normal
-        font-style: normal
 
-  @include true.test('Generates font-serif styles')
+  @include true.test('Generates serif styles')
     @include true.assert
       @include true.output
-        @include typo.font-serif('Georgia', $size: 1.2rem)
+        @include typo.serif('Georgia', $size: 1.2rem)
       
       @include true.expect
         font-family: "Georgia", serif
         font-size: 1.2rem
-        font-weight: normal
-        font-style: normal
 
-  @include true.test('Generates font-mono styles')
+  @include true.test('Generates monospace styles')
     @include true.assert
       @include true.output
-        @include typo.font-mono('Fira Code', $weight: 500)
+        @include typo.monospace('Fira Code', $weight: 500)
       
       @include true.expect
         font-family: "Fira Code", monospace
         font-size: 1rem
         font-weight: 500
-        font-style: normal
 
   @include true.test('Returns correct font-family for known font')
     @include true.assert-equal(typo.font-family-of('Open Sans'), sans-serif)

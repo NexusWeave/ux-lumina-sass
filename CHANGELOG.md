@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.5.0...v2.6.0) (2026-06-09)
+
+
+### Features
+
+* **typo:** resolve fallback font stacks and default system fonts when none are provided. ([ca48b4a](https://github.com/NexusWeave/ux-lumina-sass/commit/ca48b4a58efdb3927232b2a072138e183a609721))
+
 ## [2.5.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.4.2...v2.5.0) (2026-06-09)
 
 

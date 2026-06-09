@@ -1,6 +1,6 @@
 {
   "name": "lumina-sass",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "description": "Lumina Sass design tokens, mixins and public sub-modules (flexbox, color, mix).",
   "main": "src/_index.sass",
   "sass": "src/_index.sass",
@@ -38,8 +38,6 @@
     "build:demo": "sass demo/style.sass demo/style.css",
     "test:sass": "sass src/test/index.spec.sass src/test/index.spec.css",
     "build": "sass src/_index.sass test/index.css && sass src/color/_index.sass test/color.css && sass src/mix/_index.sass test/mix.css && sass src/flexbox/_index.sass test/flexbox.css && sass src/map/_index.sass test/map.css"
-    
-    
   },
   "files": [
     "src"

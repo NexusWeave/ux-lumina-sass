@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.4.2...v2.5.0) (2026-06-09)
+
+
+### Features
+
+* **mix:** add buttons, elements, and misc-styling modules with typography helper. ([e32f487](https://github.com/NexusWeave/ux-lumina-sass/commit/e32f4876ab25aad7042789c3b1ef584cb5ce88c0))
+
+### [2.4.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.4.1...v2.4.2) (2026-06-09)
+
+### [2.4.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.3.2...v2.4.1) (2026-06-08)
+
+## [2.4.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.3.2...v2.4.0) (2026-06-08)
+
+### [2.3.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.3.1...v2.3.2) (2026-06-08)
+
+### [2.3.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.3.0...v2.3.1) (2026-06-08)
+
+
+### Bug Fixes
+
+* support optional typography parameters and rename generic font family mixins to match CSS keywords. ([fb3ec0e](https://github.com/NexusWeave/ux-lumina-sass/commit/fb3ec0e69aae9397528a6fc34e820b3dac31a9a6))
+
 ## [2.3.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.1.5...v2.3.0) (2026-06-07)
 
 

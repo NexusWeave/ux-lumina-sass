@@ -391,6 +391,29 @@ footer
 // Demo: Input generator showcase
 // -------------------------------------------------------------------
 
+figure
+  video.portrait-media
+    aspect-ratio: 9 / 16
+    max-inline-size: 20rem !important
+
+  video.landscape-media
+    aspect-ratio: 16 / 9
+    object-position: center 35%
+
+  picture,
+  img
+    inline-size: 100%
+    object-fit: cover
+    aspect-ratio: 16 / 9
+
+  picture img
+    inline-size: 100%
+    object-fit: cover
+    aspect-ratio: 16 / 9
+
+  figcaption
+    @include font($style: italic)
+
 .demo__inputs
   @include input-generator(null)   // Generates styles for *all* inputs
 

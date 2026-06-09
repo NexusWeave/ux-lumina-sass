@@ -1,6 +1,8 @@
 
 @use 'sass:map'
 @use 'sass:list'
+@use 'sass:meta'
+@use 'sass:string'
 @use '../map/fonts' as fonts
 
 @mixin text-wrap-safe($inline: 0)
@@ -13,21 +15,33 @@
 
 @mixin font-style($font, $family: null, $line-height: null, $variant: null)
   $detected-family: font-family-of($font)
-  @if $detected-family != null
+
+  @if is-known-font($font)
     $family: $detected-family
+  
+  @else if $family == null
+    $family: $detected-family
+    @if $font != null
+      @warn "Font '#{$font}' not found in configuration map. Defaulting to stack: '#{$font}', #{$family}."
+
+  @if meta.type-of($font) == 'list'
+    $last: list.nth($font, list.length($font))
+    @if $last == $family
+      $family: null
+
   @if $line-height != null
     line-height: $line-height
+
   @if $variant != null
     font-variant: $variant
-  // Always include a fallback family.
-  font-family: $font, $family
 
-@mixin font( $font: null, $size: 1rem, $family: null, $style: normal, $weight: normal)
   @if $font != null
-    @include font-style($font, $family)
-
-  @else if $family != null
+    font-family: $font, $family
+  @else
     font-family: $family
+
+@mixin font( $font:null, $size: 1rem, $family: null, $style: null, $weight: null, $line-height: null, $variant: null)
+  @include font-style($font, $family, $line-height, $variant)
 
   @if $size != null
     font-size: $size
@@ -37,30 +51,50 @@
 
   @if $style != null
     font-style: $style
+  
+  @if $variant != null
+    font-variant: $variant
 
-@mixin font-sans($font, $size: 1rem, $weight: normal, $style: normal)
+@function get-default-stack($category)
+  @if not map.has-key(fonts.$fonts, $category)
+    @return null
+  $map: map.get(fonts.$fonts, $category)
+  $keys: map.keys($map)
+  $generic: $category
+  @if $category == 'mono'
+    $generic: monospace
+  @return list.append($keys, $generic)
+
+@mixin sans-serif($font: null, $size: 1rem, $weight: null, $style: null)
+  @if $font == null
+    $font: get-default-stack('sans-serif')
   @include font($font, $size, sans-serif, $style, $weight)
 
-@mixin font-serif($font, $size: 1rem, $weight: normal, $style: normal)
+@mixin serif($font: null, $size: 1rem, $weight: null, $style: null)
+  @if $font == null
+    $font: get-default-stack('serif')
   @include font($font, $size, serif, $style, $weight)
 
-@mixin font-mono($font, $size: 1rem, $weight: normal, $style: normal)
+@mixin monospace($font: null, $size: 1rem, $weight: null, $style: null)
+  @if $font == null
+    $font: get-default-stack('mono')
   @include font($font, $size, monospace, $style, $weight)
 
-@mixin text-adjustments($alignment: null, $decoration: null)
-    
-    @if $alignment != null
-        text-align: $alignment
-
-    @if $decoration != null
-        text-decoration: $decoration
-
-    @if $alignment == null and $decoration == null
-        text-decoration: none
-        @warn "No parameters provided for text-adjustments mixin. Default value present"
+@function is-known-font($font)
+  @if $font == null
+    @return false
+  @if map.has-key(fonts.$fonts, $font)
+    @return true
+  @each $category, $map in fonts.$fonts
+    @if map.has-key($map, $font)
+      @return true
+  @return false
 
 // Helper: return the generic family for a given font name using the fonts map.
 @function font-family-of($font)
+  @if $font == null
+    @return ('Nunito', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif)
+
   @if map.has-key(fonts.$fonts, $font)
     @if $font == 'mono'
       @return monospace
@@ -69,4 +103,17 @@
   @each $category, $map in fonts.$fonts
     @if map.has-key($map, $font)
       @return map.get($map, $font)
-  @return null
+
+  // Default fallback stack when font is not found
+  @return ('Nunito', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif)
+
+@mixin text-adjustments($alignment: null, $decoration: null)
+  @if $alignment != null
+    text-align: $alignment
+
+  @if $decoration != null
+    text-decoration: $decoration
+
+  @if $alignment == null and $decoration == null
+    text-decoration: none
+    @warn "No parameters provided for text-adjustments mixin. Default value present."

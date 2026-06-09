@@ -10,10 +10,7 @@ This document describes the media‑query mixins provided by **Lumina Sass**.
 | `prefers-color-scheme($mode)` | Wraps `@media (prefers-color-scheme: $mode)` where `$mode` is `light` or `dark`. |
 | `prefers-orientation($orientation)` | Wraps `@media (orientation: $orientation)`. |
 | `device‑media($device, $orientation: portrait)` | Generates a precise media query for a single device (e.g. `iphone`). |
-| `figure-and-image($object-fit: cover, $size: null, $style: null)` | Helper for responsive images and figures. |
-| `text-wrap-safe()` | Enables hyphenation and safe line‑wrapping for block‑level text. |
-| `font-style($font, $family: null)` | Sets the `font-family` using a preferred font and optional fallback. |
-| `font($size: null, $weight: null, $font: null, $family: null, $style: null)` | Shortcut for setting `font-size`, `font-weight`, `font-family`, and `font-style`. |
+
 
 ## Reference Table
 

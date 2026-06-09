@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.6.4...v2.7.0) (2026-06-09)
+
+
+### Features
+
+* **modules:** expose map module publicly to enable direct imports of map utilities. ([87cbf69](https://github.com/NexusWeave/ux-lumina-sass/commit/87cbf698ee6ea22b7cc319118fea814cf917f6c6))
+
 ### [2.6.4](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.6.3...v2.6.4) (2026-06-09)
 
 ### [2.6.3](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.6.2...v2.6.3) (2026-06-09)

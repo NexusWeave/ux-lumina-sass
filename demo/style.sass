@@ -11,7 +11,7 @@ body
   @include text-wrap-safe
   background-color: $soft-white
   color: $text-light-1
-  line-height: 1.6
+  line-block-size: 1.6
   padding: 1.5rem
 
 header
@@ -117,8 +117,8 @@ details
     flex-direction: column
     align-items: stretch
   .demo-box
-    min-width: auto
-    width: 100%
+    min-inline-size: auto
+    inline-size: 100%
     align-items: stretch
 
     &.align-items-start
@@ -129,37 +129,37 @@ details
     border-radius: 8px
     border: 1px dashed #adb5bd
     flex: 1
-    min-width: 300px
+    min-inline-size: 300px
 
     &.min-w-auto
-      min-width: auto
+      min-inline-size: auto
     &.flex-1
 
       flex: 1
     &.flex-2
       flex: 2
     &.min-w200
-      min-width: 200px
+      min-inline-size: 200px
     &.min-w400
-      min-width: 400px
+      min-inline-size: 400px
     &.min-w500
-      min-width: 500px
+      min-inline-size: 500px
     &.min-h100
-      min-height: 100px
+      min-block-size: 100px
     &.min-h120
-      min-height: 120px
+      min-block-size: 120px
     &.min-h150
-      min-height: 150px
+      min-block-size: 150px
     &.min-h180
-      min-height: 180px
+      min-block-size: 180px
     &.min-h200
-      min-height: 200px
+      min-block-size: 200px
     &.min-h250
-      min-height: 250px
+      min-block-size: 250px
     &.min-h300
-      min-height: 300px
+      min-block-size: 300px
     &.min-h350
-      min-height: 350px
+      min-block-size: 350px
 // Device‑specific tweaks (portrait)
 @include device-media('iphone', portrait)
   body
@@ -173,7 +173,7 @@ details
     flex-direction: row
     justify-content: space-around
   .demo-box
-    min-width: 200px
+    min-inline-size: 200px
 
   .card
     padding: 1.5rem 0.5rem
@@ -187,24 +187,24 @@ details
     flex-direction: column
     justify-content: center
     gap: 0.5rem
-    min-height: 6.25rem
+    min-block-size: 6.25rem
 
     &.w100p
-      width: 100%
+      inline-size: 100%
     &.w200
-      width: 200px
+      inline-size: 200px
     &.w250
-      width: 250px
+      inline-size: 250px
     &.w400
-      width: 400px
+      inline-size: 400px
     &.h40
-      height: 40px
+      block-size: 40px
     &.h60
-      height: 60px
+      block-size: 60px
     &.h80
-      height: 80px
+      block-size: 80px
     &.h100
-      height: 100px
+      block-size: 100px
 
     code
       font-size: 0.75rem

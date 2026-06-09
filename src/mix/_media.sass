@@ -11,7 +11,7 @@
       @content
   @else if map.has-key(bp.$breakpoints, $breakpoint)
     $breakpoint-value: map.get(bp.$breakpoints, $breakpoint)
-    @media (max-width: $breakpoint-value)
+    @media (max-inline-size: $breakpoint-value)
       @content
   @else
     @media #{$breakpoint}
@@ -45,12 +45,12 @@
   @if $orientation == portrait
     $max-width: $width + 0.125rem
     $max-height: $height + 0.125rem
-    @media only screen and (min-width: $width) and (max-width: $max-width) and (min-height: $height) and (max-height: $max-height) and (orientation: portrait)
+    @media only screen and (min-inline-size: $width) and (max-inline-size: $max-width) and (min-block-size: $height) and (max-block-size: $max-height) and (orientation: portrait)
       @content
   @else if $orientation == landscape
     $max-height: $height + 0.125rem
     $max-width: $width + 0.125rem
-    @media only screen and (min-width: $height) and (max-width: $max-height) and (min-height: $width) and (max-height: $max-width) and (orientation: landscape)
+    @media only screen and (min-inline-size: $height) and (max-inline-size: $max-height) and (min-block-size: $width) and (max-block-size: $max-width) and (orientation: landscape)
       @content
   @else
     @error "Invalid orientation `#{$orientation}` – use portrait or landscape."

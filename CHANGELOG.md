@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.4.2...v2.5.0) (2026-06-09)
+
+
+### Features
+
+* **mix:** add buttons, elements, and misc-styling modules with typography helper. ([e32f487](https://github.com/NexusWeave/ux-lumina-sass/commit/e32f4876ab25aad7042789c3b1ef584cb5ce88c0))
+
 ### [2.4.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.4.1...v2.4.2) (2026-06-09)
 
 ### [2.4.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.3.2...v2.4.1) (2026-06-08)

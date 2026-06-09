@@ -153,6 +153,14 @@
       @include true.expect
         font-family: "MyCustomFont", "Nunito", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
 
+  @include true.test('Generates fallback for unknown font')
+    @include true.assert
+      @include true.output
+        @include typo.font()
+      
+      @include true.expect
+        font-family: "Nunito", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+
   @include true.test('Does not overwrite explicit fallback override for unknown font')
     @include true.assert
       @include true.output
@@ -160,6 +168,15 @@
       
       @include true.expect
         font-family: "MyCustomFont", serif
+
+  @include true.test('Generates default fallback stack when no font is provided')
+    @include true.assert
+      @include true.output
+        @include typo.font()
+      
+      @include true.expect
+        font-family: "Nunito", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+        font-size: 1rem
 
   @include true.test('Generates default system sans-serif stack when no font is provided')
     @include true.assert

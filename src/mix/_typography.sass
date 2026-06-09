@@ -18,9 +18,11 @@
 
   @if is-known-font($font)
     $family: $detected-family
+  
   @else if $family == null
     $family: $detected-family
-    @warn "Font '#{$font}' not found in configuration map. Defaulting to stack: '#{$font}', #{$family}."
+    @if $font != null
+      @warn "Font '#{$font}' not found in configuration map. Defaulting to stack: '#{$font}', #{$family}."
 
   @if meta.type-of($font) == 'list'
     $last: list.nth($font, list.length($font))
@@ -33,11 +35,13 @@
   @if $variant != null
     font-variant: $variant
 
-  font-family: $font, $family
+  @if $font != null
+    font-family: $font, $family
+  @else
+    font-family: $family
 
 @mixin font( $font:null, $size: 1rem, $family: null, $style: null, $weight: null, $line-height: null, $variant: null)
-  @if $font != null
-    @include font-style($font, $family, $line-height, $variant)
+  @include font-style($font, $family, $line-height, $variant)
 
   @if $size != null
     font-size: $size
@@ -89,7 +93,7 @@
 // Helper: return the generic family for a given font name using the fonts map.
 @function font-family-of($font)
   @if $font == null
-    @return null
+    @return ('Nunito', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif)
 
   @if map.has-key(fonts.$fonts, $font)
     @if $font == 'mono'

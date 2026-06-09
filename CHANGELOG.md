@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.6.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.5.0...v2.6.1) (2026-06-09)
+
+
+### Features
+
+* **flexbox:** export flex-items-center utility class to align flex container items to the center. ([6e67347](https://github.com/NexusWeave/ux-lumina-sass/commit/6e6734742e6a87dee0a7bb83b6d257665ac8c358))
+* **typo:** resolve fallback font stacks and default system fonts when none are provided. ([ca48b4a](https://github.com/NexusWeave/ux-lumina-sass/commit/ca48b4a58efdb3927232b2a072138e183a609721))
+
+
+### Bug Fixes
+
+* ensure standard fallback font stack is applied when base font mixin receives no arguments, providing a more consistent and predictable developer experience. ([6f80bec](https://github.com/NexusWeave/ux-lumina-sass/commit/6f80bec0e5241c6668229181389a2462b8616452))
+
 ## [2.5.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.4.2...v2.5.0) (2026-06-09)
 
 

@@ -32,7 +32,7 @@
     "dev": "npm run build && npm run serve",
     "build:demo": "sass demo/style.sass demo/style.css",
     "build": "sass src/_index.sass test/index.css && sass src/color/_index.sass test/color.css && sass src/mix/_index.sass test/mix.css && sass src/flexbox/_index.sass test/flexbox.css && sass src/flexbox/_index.sass test/flexbox.css",
-    "test:sass": "sass src/test/mixins.spec.sass src/test/mixins.spec.css",
+    "test:sass": "sass src/test/index.spec.sass src/test/index.spec.css",
     "test": "npm run test:sass"
   },
   "files": [

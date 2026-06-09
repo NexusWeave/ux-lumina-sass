@@ -1,0 +1,16 @@
+@use 'sass:meta'
+@use '../_misc-styling' as misc-styling
+@use '../../../node_modules/sass-true' as true
+
+@include true.test-module('Misc Styling')
+  @include true.test('Applies background and text color')
+    @include true.assert
+      @include true.output
+        .custom-bg
+          @include misc-styling.background-color(rgb(255, 0, 0), rgb(255, 255, 255))
+      
+      @include true.expect
+        .custom-bg
+          color: rgba(255, 255, 255, 1)
+          background-color: rgba(255, 0, 0, 1)
+

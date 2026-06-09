@@ -1,0 +1,35 @@
+@use 'sass:meta'
+@use '../_media' as media
+@use '../../../node_modules/sass-true' as true
+
+@include true.test-module('Media Queries')
+  @include true.test('Generates max-width media query for breakpoint md')
+    @include true.assert
+      @include true.output
+        @include media.media-queries('md')
+          color: blue
+      
+      @include true.expect
+        @media (max-inline-size: 64rem)
+          color: blue
+
+  @include true.test('Generates prefers-color-scheme')
+    @include true.assert
+      @include true.output
+        @include media.prefers-color-scheme(dark)
+          background: black
+      
+      @include true.expect
+        @media (prefers-color-scheme: dark)
+          background: black
+
+  @include true.test('Generates device-media for iphone')
+    @include true.assert
+      @include true.output
+        @include media.device-media('iphone')
+          color: white
+      
+      @include true.expect
+        @media only screen and (min-inline-size: 20rem) and (max-inline-size: 20.125rem) and (min-block-size: 30rem) and (max-block-size: 30.125rem) and (orientation: portrait)
+          color: white
+

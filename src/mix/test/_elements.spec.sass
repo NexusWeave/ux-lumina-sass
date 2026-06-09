@@ -1,0 +1,38 @@
+@use 'sass:meta'
+@use '../_elements' as elements
+@use '../../../node_modules/sass-true' as true
+
+@include true.test-module('Elements')
+  @include true.test('Applies link colors and properties')
+    @include true.assert
+      @include true.output
+        @include elements.link-color(rgb(0, 0, 255), rgb(0, 0, 200), rgb(0, 0, 150), rgb(128, 0, 128))
+      
+      @include true.expect
+        a
+          color: rgb(0, 0, 255)
+          cursor: pointer
+          text-decoration: none
+
+          [aria-disabled="true"]
+            color: rgb(160, 160, 160)
+            cursor: not-allowed
+            pointer-events: none
+            text-decoration: none
+
+          &:active
+            color: rgb(0, 0, 150)
+
+          &.external-link
+            text-decoration: underline
+
+          @media (hover: hover)
+            &:hover
+              color: rgb(0, 0, 200)
+              border-radius: 0.5em
+
+          &:visited
+            color: rgb(128, 0, 128)
+
+          h1, h2, h3, h4, h5, h6
+            color: rgb(0, 0, 255) !important

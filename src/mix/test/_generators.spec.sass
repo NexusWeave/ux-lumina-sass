@@ -1,0 +1,63 @@
+@use 'sass:meta'
+@use '../_generators' as generators
+@use '../../../node_modules/sass-true' as true
+
+@include true.test-module('Icon Generator')
+  @include true.test('Generates school icon class')
+    @include true.assert
+      @include true.output
+        @include generators.icon-generator('school')
+      
+      @include true.expect
+        .school
+          &::before
+            color: rgb(64, 64, 64) !important
+            font-family: 'bootstrap-icons'
+            content: "\F671"
+
+@include true.test-module('Flexbox Generator')
+  @include true.test('Generates flex-row properties')
+    @include true.assert
+      @include true.output
+        @include generators.flexbox-generator('flex-row')
+      
+      @include true.expect
+        display: flex
+        flex-wrap: nowrap
+        flex-direction: row
+
+@include true.test-module('Input Generator')
+  @include true.test('Generates text input type')
+    @include true.assert
+      @include true.output
+        @include generators.input-generator('text')
+      
+      @include true.expect
+        input[type="text"]
+          cursor: text
+          font-size: 1rem
+          line-height: 1.5
+          padding: 0.5rem 1rem
+          border-radius: 0.5rem
+          box-sizing: border-box
+          focus-outline: rgb(0, 120, 215)
+          background-color: rgb(255, 255, 255)
+          border: rgb(204, 204, 204) solid 0.0625rem
+          outline: 0.0625rem solid rgb(0, 120, 215)
+        
+        input[type="text"]::focus
+          outline: rgb(0, 120, 215)
+        
+        &::-webkit-slider-runnable-track
+          block-size: 0.4rem
+          background: #ddd
+          border-radius: 0.2rem
+        
+        &::-webkit-slider-thumb
+          -webkit-appearance: none
+          inline-size: 1rem
+          block-size: 1rem
+          background: #0078d7
+          border-radius: 50%
+          margin-top: -0.3rem
+

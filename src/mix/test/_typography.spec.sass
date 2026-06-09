@@ -1,0 +1,123 @@
+@use 'sass:meta'
+@use '../_typography' as typo
+@use '../../../node_modules/sass-true' as true
+
+@include true.test-module('Typography')
+  @include true.test('Generates font styles')
+    @include true.assert
+      @include true.output
+        @include typo.font($size: 2rem, $weight: bold)
+      
+      @include true.expect
+        font-size: 2rem
+        font-weight: bold
+
+  @include true.test('Generates sans-serif styles')
+    @include true.assert
+      @include true.output
+        @include typo.sans-serif('Roboto', $size: 1.5rem)
+      
+      @include true.expect
+        font-family: "Roboto", sans-serif
+        font-size: 1.5rem
+
+  @include true.test('Generates serif styles')
+    @include true.assert
+      @include true.output
+        @include typo.serif('Georgia', $size: 1.2rem)
+      
+      @include true.expect
+        font-family: "Georgia", serif
+        font-size: 1.2rem
+
+  @include true.test('Generates monospace styles')
+    @include true.assert
+      @include true.output
+        @include typo.monospace('Fira Code', $weight: 500)
+      
+      @include true.expect
+        font-family: "Fira Code", monospace
+        font-size: 1rem
+        font-weight: 500
+
+  @include true.test('Returns correct font-family for known font')
+    @include true.assert-equal(typo.font-family-of('Open Sans'), sans-serif)
+
+  @include true.test('Detects generic category names')
+    @include true.assert-equal(typo.font-family-of('mono'), monospace)
+    @include true.assert-equal(typo.font-family-of('serif'), serif)
+
+  @include true.test('Provides fallbacks for unknown fonts in font-family-of')
+    @include true.assert-equal(typo.font-family-of('MyCustomFont'), ('Nunito', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif))
+
+  @include true.test('Generates fallback for unknown font')
+    @include true.assert
+      @include true.output
+        @include typo.font('MyCustomFont')
+      
+      @include true.expect
+        font-family: "MyCustomFont", "Nunito", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+
+  @include true.test('Generates fallback for unknown font')
+    @include true.assert
+      @include true.output
+        @include typo.font()
+      
+      @include true.expect
+        font-family: "Nunito", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+
+  @include true.test('Does not overwrite explicit fallback override for unknown font')
+    @include true.assert
+      @include true.output
+        @include typo.font('MyCustomFont', $family: serif)
+      
+      @include true.expect
+        font-family: "MyCustomFont", serif
+
+  @include true.test('Generates default fallback stack when no font is provided')
+    @include true.assert
+      @include true.output
+        @include typo.font()
+      
+      @include true.expect
+        font-family: "Nunito", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+        font-size: 1rem
+
+  @include true.test('Generates default system sans-serif stack when no font is provided')
+    @include true.assert
+      @include true.output
+        @include typo.sans-serif()
+      
+      @include true.expect
+        font-family: "Roboto", "Helvetica", "Arial", "Work Sans", "Nunito", "Open Sans", "Lato", "Montserrat", "Source Sans Pro", "Inter", "Tahoma", "Verdana", "Gill Sans", "Futura", "Ubuntu", "Noto Sans", "Noto Sans KR", "Noto Sans JP", "Noto Sans SC", "Noto Sans Arabic", "Noto Sans Hebrew", "Bootstrap", "bootstrap-icons", sans-serif
+        font-size: 1rem
+
+  @include true.test('Generates default system serif stack when no font is provided')
+    @include true.assert
+      @include true.output
+        @include typo.serif()
+      
+      @include true.expect
+        font-family: "Georgia", "Times New Roman", "Palatino", "Libre Baskerville", "Merriweather", "PT Serif", "Noto Serif", "Noto Serif KR", "Noto Serif JP", "Noto Serif SC", serif
+        font-size: 1rem
+
+  @include true.test('Generates default system monospace stack when no font is provided')
+    @include true.assert
+      @include true.output
+        @include typo.monospace()
+      
+      @include true.expect
+        font-family: "Courier New", "Consolas", "Ubuntu Mono", "Source Code Pro", "Fira Code", "Inconsolata", "Menlo", "Monaco", "Noto Mono", monospace
+        font-size: 1rem
+
+@include true.test-module('Styling (Native)')
+  @include true.test('Applies typography font styling to figcaption')
+    @include true.assert
+      @include true.output
+        figure figcaption
+          @include typo.font($style: italic)
+      
+      @include true.expect
+        figure figcaption
+          font-style: italic
+

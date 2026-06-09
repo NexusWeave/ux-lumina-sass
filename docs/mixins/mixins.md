@@ -20,5 +20,9 @@ This documentation provides a **comprehensive reference** for the entire `lumina
 | `text-wrap-safe` | `src/mix/_typography.sass` | 4 | `@mixin text-wrap-safe()` |
 | `font-style` | `src/mix/_typography.sass` | 12 | `@mixin font-style($font, $family: null)` |
 | `font` | `src/mix/_typography.sass` | 20 | `@mixin font($size: null, $weight: null, $font: null, $family: null, $style: null)` |
+| `text-adjustments` | `src/mix/_typography.sass` | 66 | `@mixin text-adjustments($alignment: null, $decoration: null)` |
+| `base-btn` | `src/mix/_buttons.sass` | 6 | `@mixin base-btn($bg-color: $groovy-70s-cream, $text-color: $groovy-70s-warm-white, $border-color: null, $size: 1em, $weight: bold)` |
+| `link-color` | `src/mix/_elements.sass` | 4 | `@mixin link-color($color, $color-hover, $color-active, $color-visited)` |
+| `background-color` | `src/mix/_misc-styling.sass` | 1 | `@mixin background-color($bg-color, $text-color)` |
 
 *All mixins are written using the indented Sass syntax (`.sass`). The line numbers correspond to the first line of the `@mixin` declaration in the source file.*

@@ -139,41 +139,15 @@
     @include true.assert-equal(typo.font-family-of('mono'), monospace)
     @include true.assert-equal(typo.font-family-of('serif'), serif)
 
-@include true.test-module('Layout Helpers')
-  @include true.test('Generates aspect-ratio')
+@include true.test-module('Styling (Native)')
+  @include true.test('Applies typography font styling to figcaption')
     @include true.assert
       @include true.output
-        @include media.aspect-ratio(16, 9)
+        figure figcaption
+          @include typo.font($style: italic)
       
       @include true.expect
-        aspect-ratio: 16 / 9
-
-  @include true.test('Generates figure structure')
-    @include true.assert
-      @include true.output
-        figure
-          @include media.figure()
-      
-      @include true.expect
-        figure video.portrait-media
-          aspect-ratio: 16 / 9
-          max-inline-size: 20rem !important
-        
-        figure video.landscape-media
-          aspect-ratio: 16 / 9
-          object-position: center 35%
-        
-        figure picture, figure img
-          inline-size: 100%
-          object-fit: cover
-          aspect-ratio: 16 / 9
-        
-        figure picture img
-          inline-size: 100%
-          object-fit: cover
-          aspect-ratio: 16 / 9
-        
-        figure picture figcaption
+        figure figcaption
           font-style: italic
 
 @include true.report

@@ -61,3 +61,14 @@
     @if map.has-key($map, $font)
       @return map.get($map, $font)
   @return null
+
+@mixin text-adjustments($alignment: null, $decoration: null)
+  @if $alignment != null
+    text-align: $alignment
+
+  @if $decoration != null
+    text-decoration: $decoration
+
+  @if $alignment == null and $decoration == null
+    text-decoration: none
+    @warn "No parameters provided for text-adjustments mixin. Default value present."

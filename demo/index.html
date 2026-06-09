@@ -36,17 +36,19 @@
   </section>
   <details class="section">
     <summary><h3>Quick Usage</h3></summary>
-    <pre><code>
-&lt;details id="figures"&gt;
-  &lt;summary&gt;&lt;h2&gt;Figures&lt;/h2&gt;&lt;/summary&gt;
-  &lt;section class="section"&gt;
-    &lt;figure&gt;
-      &lt;img src="assets/figure_demo.png" alt="Sample figure"/&gt;
-      &lt;figcaption&gt;Figure 1 – Demonstration of a styled figure with caption.&lt;/figcaption&gt;
-    &lt;/figure&gt;
-  &lt;/section&gt;
-&lt;/details&gt;
-    </code></pre>
+    <pre><code>&lt;!-- HTML --&gt;
+&lt;figure&gt;
+  &lt;img src="assets/figure_demo.png" alt="Sample figure"/&gt;
+  &lt;figcaption&gt;Figure 1 – Demonstration of a styled figure with caption.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;!-- SASS --&gt;
+figure
+  img
+    aspect-ratio: 16 / 9
+    object-fit: cover
+  figcaption
+    @include font($style: italic)</code></pre>
   </details>
 </details>
   <details>

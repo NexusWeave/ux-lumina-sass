@@ -16,7 +16,7 @@ This documentation provides a **comprehensive reference** for the entire `lumina
 | `prefers-color-scheme` | `src/mix/_media.sass` | 27 | `@mixin prefers-color-scheme($mode)` |
 | `prefers-orientation` | `src/mix/_media.sass` | 30 | `@mixin prefers-orientation($orientation)` |
 | `device-media` | `src/mix/_media.sass` | 34 | `@mixin device-media($device, $orientation: portrait)` |
-| `figure-and-image` | `src/mix/_media.sass` | 57 | `@mixin figure-and-image($object-fit: cover, $size: null, $style: null)` |
+
 | `text-wrap-safe` | `src/mix/_typography.sass` | 4 | `@mixin text-wrap-safe()` |
 | `font-style` | `src/mix/_typography.sass` | 12 | `@mixin font-style($font, $family: null)` |
 | `font` | `src/mix/_typography.sass` | 20 | `@mixin font($size: null, $weight: null, $font: null, $family: null, $style: null)` |

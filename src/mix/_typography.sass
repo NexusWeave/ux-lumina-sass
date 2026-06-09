@@ -13,7 +13,7 @@
     overflow-wrap: anywhere
     min-inline-size: $inline
 
-@mixin font-style($font, $family: null, $line-height: null, $variant: null)
+@mixin font( $font:null, $size: 1rem, $family: null, $style: null, $weight: null, $line-height: null, $variant: null)
   $detected-family: font-family-of($font)
 
   @if is-known-font($font)
@@ -29,19 +29,10 @@
     @if $last == $family
       $family: null
 
-  @if $line-height != null
-    line-height: $line-height
-
-  @if $variant != null
-    font-variant: $variant
-
   @if $font != null
     font-family: $font, $family
   @else
     font-family: $family
-
-@mixin font( $font:null, $size: 1rem, $family: null, $style: null, $weight: null, $line-height: null, $variant: null)
-  @include font-style($font, $family, $line-height, $variant)
 
   @if $size != null
     font-size: $size
@@ -52,6 +43,9 @@
   @if $style != null
     font-style: $style
   
+  @if $line-height != null
+    line-height: $line-height
+
   @if $variant != null
     font-variant: $variant
 

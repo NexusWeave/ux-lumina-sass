@@ -1,7 +1,7 @@
 # Tags and Elements Mixins
 *Last updated: 2026-06-09*
 
-This document describes the mixins for buttons, links, and basic styling. These mixins help you style common HTML tags.
+This document provides details on the mixins available for styling buttons, links, and basic HTML elements. Please note that these mixins are divided across three separate files (`_buttons.sass`, `_elements.sass`, and `_misc-styling.sass`) to keep the codebase organized.
 
 ## Mixins
 

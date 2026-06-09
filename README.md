@@ -1,5 +1,5 @@
 # Lumina SASS
-*Last updated: 2026-06-05*
+*Last updated: 2026-06-09*
 Lumina Sass provides design tokens and mixins to help you build modern web applications.
 
 ## Overview
@@ -241,6 +241,10 @@ lumina-sass/
 *This guide is version‑controlled along with the rest of the repository, ensuring the AI always has an up‑to‑date reference when working on `lumina-sass`.*
 
 
+
+## Acknowledgements
+
+Please see our [Acknowledgements](docs/acknowledgements.md) page for a list of projects, libraries, and people who have inspired or contributed to this work.
 
 ## License
 

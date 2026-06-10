@@ -1,0 +1,24 @@
+@use 'sass:map'
+@use '../src/map' as map-module
+@use '../node_modules/sass-true' as true
+
+@include true.test-module('Configuration Maps')
+  @include true.test('Icons map contains expected categories')
+    @include true.assert-true(map.has-key(map-module.$icons, 'academic'))
+    @include true.assert-true(map.has-key(map-module.$icons, 'communication'))
+
+  @include true.test('Flexbox mapping contains base entries')
+    @include true.assert-true(map.has-key(map-module.$flexbox, 'flex'))
+    @include true.assert-true(map.has-key(map-module.$flexbox, 'flex-row'))
+
+  @include true.test('Breakpoints map contains standard devices')
+    @include true.assert-true(map.has-key(map-module.$breakpoints, 'md'))
+    @include true.assert-true(map.has-key(map-module.$breakpoints, 'lg'))
+
+  @include true.test('Fonts map contains primary categories')
+    @include true.assert-true(map.has-key(map-module.$fonts, 'mono'))
+    @include true.assert-true(map.has-key(map-module.$fonts, 'sans-serif'))
+
+  @include true.test('Inputs map contains control groups')
+    @include true.assert-true(map.has-key(map-module.$inputs, 'inputControls'))
+    @include true.assert-true(map.has-key(map-module.$inputs, 'booleanControls'))

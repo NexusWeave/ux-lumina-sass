@@ -1,0 +1,23 @@
+@use '../src/func/color' as func-color
+@use '../src/mix/contrast' as mix-contrast
+@use '../node_modules/sass-true' as true
+
+@include true.test-module('Color Contrast Utilities')
+  @include true.test('Calculates relative luminance of white as 1')
+    @include true.assert-equal(func-color.luminance(#fff), 1)
+
+  @include true.test('Calculates relative luminance of black as 0')
+    @include true.assert-equal(func-color.luminance(#000), 0)
+
+  @include true.test('Calculates contrast ratio of black and white as 21')
+    @include true.assert-equal(func-color.contrast-ratio(#000, #fff), 21)
+
+  @include true.test('Verifies that assert-contrast passes for compliant color combinations')
+    @include true.assert
+      @include true.output
+        .accessible-component
+          color: white
+          @include mix-contrast.assert-contrast(#000, #fff)
+      @include true.expect
+        .accessible-component
+          color: white

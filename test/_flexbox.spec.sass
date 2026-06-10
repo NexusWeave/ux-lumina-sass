@@ -1,0 +1,53 @@
+@use '../src/flexbox' as flex
+@use '../node_modules/sass-true' as true
+
+@include true.test-module('Flexbox Utility Classes')
+  @include true.test('Applies .flex-row utility properties')
+    @include true.assert
+      @include true.output
+        .test-row
+          @extend .flex-row
+      
+      @include true.expect
+        .test-row
+          display: flex
+          flex-wrap: nowrap
+          flex-direction: row
+
+  @include true.test('Applies .flex-col utility properties')
+    @include true.assert
+      @include true.output
+        .test-col
+          @extend .flex-col
+      
+      @include true.expect
+        .test-col
+          display: flex
+          flex-wrap: nowrap
+          flex-direction: column
+
+  @include true.test('Applies .flex-center utility properties')
+    @include true.assert
+      @include true.output
+        .test-center
+          @extend .flex-center
+      
+      @include true.expect
+        .test-center
+          display: flex
+          align-items: center
+          justify-content: center
+
+  @include true.test('Applies .flex-row-items-center-justify-center utility properties')
+    @include true.assert
+      @include true.output
+        .test-composite
+          @extend .flex-row-items-center-justify-center
+      
+      @include true.expect
+        .test-composite
+          display: flex
+          flex-wrap: nowrap
+          flex-direction: row
+          align-items: center
+          justify-content: center

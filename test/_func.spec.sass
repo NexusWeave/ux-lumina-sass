@@ -1,0 +1,36 @@
+@use 'sass:map'
+@use 'sass:meta'
+@use 'sass:list'
+@use '../src/func' as func-module
+@use '../node_modules/sass-true' as true
+
+@include true.test-module('Utility Functions')
+  @include true.test-module('Color Functions')
+    @include true.test('Calculates luminance correctly')
+      @include true.assert-equal(func-module.luminance(#fff), 1)
+      @include true.assert-equal(func-module.luminance(#000), 0)
+
+    @include true.test('Calculates contrast ratio correctly')
+      @include true.assert-equal(func-module.contrast-ratio(#fff, #000), 21)
+
+  @include true.test-module('Icon Functions')
+    @include true.test('Finds icon glyph by name')
+      $glyph: func-module.find('school')
+      @include true.assert-true(meta.type-of($glyph) == 'map')
+      @include true.assert-true(map.has-key($glyph, 'icon'))
+      @include true.assert-equal(map.get($glyph, 'icon'), "\F671")
+
+  @include true.test-module('Typography Functions')
+    @include true.test('Identifies known fonts')
+      @include true.assert-true(func-module.is-known-font('Nunito'))
+      @include true.assert-true(func-module.is-known-font('sans-serif'))
+      @include true.assert-false(func-module.is-known-font('NonExistentFont'))
+
+    @include true.test('Resolves generic family for known font')
+      @include true.assert-equal(func-module.font-family-of('Nunito'), sans-serif)
+      @include true.assert-equal(func-module.font-family-of('mono'), monospace)
+
+    @include true.test('Generates default stack for category')
+      $stack: func-module.get-default-stack('mono')
+      @include true.assert-true(meta.type-of($stack) == 'list')
+      @include true.assert-true(list.index($stack, 'monospace') != null)

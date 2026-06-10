@@ -1,6 +1,8 @@
 @use 'sass:meta'
-@use '../_typography' as typo
-@use '../../../node_modules/sass-true' as true
+@use '../../src/mix/_typography' as typo
+@use '../../node_modules/sass-true' as true
+@use '../../src/func/typography' as func-typo
+
 
 @include true.test-module('Typography')
   @include true.test('Generates font styles')
@@ -41,14 +43,14 @@
         font-weight: 500
 
   @include true.test('Returns correct font-family for known font')
-    @include true.assert-equal(typo.font-family-of('Open Sans'), sans-serif)
+    @include true.assert-equal(func-typo.font-family-of('Open Sans'), sans-serif)
 
   @include true.test('Detects generic category names')
-    @include true.assert-equal(typo.font-family-of('mono'), monospace)
-    @include true.assert-equal(typo.font-family-of('serif'), serif)
+    @include true.assert-equal(func-typo.font-family-of('mono'), monospace)
+    @include true.assert-equal(func-typo.font-family-of('serif'), serif)
 
   @include true.test('Provides fallbacks for unknown fonts in font-family-of')
-    @include true.assert-equal(typo.font-family-of('MyCustomFont'), ('Nunito', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif))
+    @include true.assert-equal(func-typo.font-family-of('MyCustomFont'), ('Nunito', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif))
 
   @include true.test('Generates fallback for unknown font')
     @include true.assert
@@ -120,4 +122,3 @@
       @include true.expect
         figure figcaption
           font-style: italic
-

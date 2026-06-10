@@ -2,9 +2,9 @@ import { execSync } from 'child_process';
 import { writeFileSync, mkdirSync, rmSync, existsSync } from 'fs';
 import path from 'path';
 
-const modules = ['func', 'flexbox', 'color', 'mix', 'map'];
-const rootDir = process.cwd();
-const tempDir = path.join(rootDir, 'test/temp-module-test');
+const modules: string[] = ['func', 'flexbox', 'color', 'mix', 'map'];
+const rootDir: string = process.cwd();
+const tempDir: string = path.join(rootDir, 'test/temp-module-test');
 
 console.log('Running: module test');
 
@@ -28,20 +28,20 @@ try {
 
     for (const mod of modules) {
         process.stdout.write(`Testing @use 'pkg:lumina-sass/${mod}'... `);
-        const testFile = path.join(tempDir, `test-${mod}.sass`);
+        const testFile: string = path.join(tempDir, `test-${mod}.sass`);
         writeFileSync(testFile, `@use 'pkg:lumina-sass/${mod}'\n.test\n  content: 'ok'`);
         
         try {
             // Using the node package importer which understands pkg: prefix and package.json exports
             execSync(`npx sass --pkg-importer=node ${testFile} ${testFile}.css`, { cwd: tempDir, stdio: 'pipe' });
             console.log('✅ PASS');
-        } catch (error) {
+        } catch (error: any) {
             console.log('❌ FAIL');
             console.error(error.stderr?.toString() || error.message);
         }
     }
 
-} catch (error) {
+} catch (error: any) {
     console.error('Environment preparation failed:', error.message);
 } finally {
     rmSync(tempDir, { recursive: true, force: true });

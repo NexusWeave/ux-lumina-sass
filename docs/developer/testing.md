@@ -3,6 +3,21 @@
 
 This document outlines the comprehensive testing strategy for Lumina Sass, ensuring adherence to rigorous quality standards. It provides practical examples and serves as a definitive guide for selecting appropriate testing methodologies across various scenarios.
 
+## Executing the Test Suite
+
+Lumina Sass utilizes a consolidated testing workflow that validates Sass logic, syntax integrity, and package exports in a single pass. To execute the entire suite, run:
+
+```bash
+npm test
+```
+
+This command sequentially executes:
+1.  **Sass Unit Tests** (Sass-True)
+2.  **Sass Syntax & Namespace Validation** (Custom TypeScript checker)
+3.  **Module Integration Testing** (Sub-module export verification)
+
+---
+
 ## Unit Testing with Sass-True
 
 We utilize [Sass-True](https://github.com/oddbird/true) to perform unit tests on our mixins and functions. This ensures that our Sass codebase compiles into the expected CSS output.
@@ -18,7 +33,7 @@ test/
     └── _buttons.spec.sass
 ```
 
-The primary test file (`test/index.spec.sass`) aggregates all individual test specifications, enabling the execution of the entire suite through a single command.
+The primary test file (`test/index.spec.sass`) aggregates all individual test specifications.
 
 ### Writing Sass-True Tests
 The following example demonstrates a test for a button mixin (located in `test/mix/_buttons.spec.sass`):
@@ -44,26 +59,21 @@ The following example demonstrates a test for a button mixin (located in `test/m
           // ... other expected CSS rules
 ```
 
-### Running Tests
-To initiate the unit testing suite, execute the following command:
-```bash
-npm run test
-```
+---
+
+## Sass Syntax & Namespace Validation
+
+Because modern Sass Module namespaces (e.g., `@use 'foo' as bar; @include bar.mixin()`) are not supported by legacy Stylelint parsers for indented syntax, we utilize a custom validation script (`test/ts/syntax-check.ts`).
+
+This script is written in TypeScript and utilizes the official Dart Sass compiler to programmatically verify that every `.sass` file in the `src/` directory is syntactically valid and that all namespace imports resolve correctly.
 
 ---
 
-## Code Analysis with Stylelint
+## Module Integration Testing
 
-We employ [Stylelint](https://stylelint.io/) to enforce stylistic consistency and identify potential errors within our Sass files during the early stages of development.
+To ensure that the published package structure and sub-module exports (defined in `package.json`) function correctly for end-users, we perform automated integration tests.
 
-### Configuration
-Stylelint is configured to support the Sass Indented Syntax, with specific rules defined in the `.stylelintrc.json` file.
-
-### Executing the Linter
-To identify linting discrepancies, run:
-```bash
-npm run lint:sass
-```
+The module test script (`test/ts/module-test.ts`) scaffolds a temporary project, installs the local `lumina-sass` package, and verifies that each public sub-module can be imported using the `pkg:` prefix.
 
 ---
 
@@ -107,7 +117,6 @@ describe('Button Component', () => {
   });
 });
 ```
-This practice ensures that no unintended design regressions are introduced.
 
 ---
 
@@ -136,6 +145,7 @@ To achieve an optimal balance between development velocity and software quality,
 | New component | **Manual Verification** | Demo (`npm run dev`) |
 | Interactive elements | **Visual / Manual** | Cypress / Demo |
 | Accessibility compliance | **Contrast Checks** | `assert-contrast` mixin |
-| Code quality standards | **Code Analysis** | Stylelint |
+| Code quality standards | **Syntax Validation** | `test/ts/syntax-check.ts` |
+| Package exports | **Integration Testing** | `test/ts/module-test.ts` |
 
 By integrating these methodologies, we establish a robust codebase free of logical discrepancies while maintaining a consistent user interface.

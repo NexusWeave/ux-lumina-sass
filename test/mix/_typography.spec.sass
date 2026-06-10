@@ -55,7 +55,7 @@
   @include true.test('Generates fallback for unknown font')
     @include true.assert
       @include true.output
-        @include typo.font('MyCustomFont')
+        @include typo.font('MyCustomFont', $quiet: true)
       
       @include true.expect
         font-family: "MyCustomFont", "Nunito", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
@@ -63,7 +63,7 @@
   @include true.test('Generates fallback for unknown font')
     @include true.assert
       @include true.output
-        @include typo.font()
+        @include typo.font($quiet: true)
       
       @include true.expect
         font-family: "Nunito", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif

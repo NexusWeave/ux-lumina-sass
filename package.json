@@ -1,66 +1,61 @@
 {
   "name": "lumina-sass",
   "version": "2.7.1",
+  "type": "module",
   "description": "Lumina Sass design tokens, mixins and public sub-modules (flexbox, color, mix).",
   "main": "src/_index.sass",
   "sass": "src/_index.sass",
   "exports": {
-  ".": {
-    "sass": "./src/_index.sass",
-    "default": "./src/_index.sass"
+    ".": {
+      "sass": "./src/_index.sass",
+      "default": "./src/_index.sass"
+    },
+    "./flexbox": {
+      "sass": "./src/flexbox/_index.sass",
+      "default": "./src/flexbox/_index.sass"
+    },
+    "./generators": {
+      "sass": "./src/mix/_generators.sass",
+      "default": "./src/mix/_generators.sass"
+    },
+    "./mixins": {
+      "sass": "./src/mix/_index.sass",
+      "default": "./src/mix/_index.sass"
+    },
+    "./color": {
+      "sass": "./src/color/_index.sass",
+      "default": "./src/color/_index.sass"
+    },
+    "./colors": {
+      "sass": "./src/color/_index.sass",
+      "default": "./src/color/_index.sass"
+    },
+    "./mix": {
+      "sass": "./src/mix/_index.sass",
+      "default": "./src/mix/_index.sass"
+    },
+    "./map": {
+      "sass": "./src/map/_index.sass",
+      "default": "./src/map/_index.sass"
+    },
+    "./contrast": {
+      "sass": "./src/mix/_contrast.sass",
+      "default": "./src/mix/_contrast.sass"
+    },
+    "./func": {
+      "sass": "./src/func/_index.sass",
+      "default": "./src/func/_index.sass"
+    }
   },
-  "./flexbox": {
-    "sass": "./src/flexbox/_index.sass",
-    "default": "./src/flexbox/_index.sass"
-  },
-  "./generators": {
-    "sass": "./src/mix/_generators.sass",
-    "default": "./src/mix/_generators.sass"
-  },
-  "./mixins": {
-    "sass": "./src/mix/_index.sass",
-    "default": "./src/mix/_index.sass"
-  },
-  "./color": {
-    "sass": "./src/color/_index.sass",
-    "default": "./src/color/_index.sass"
-  },
-  "./colors": {
-    "sass": "./src/color/_index.sass",
-    "default": "./src/color/_index.sass"
-  },
-  "./mix": {
-    "sass": "./src/mix/_index.sass",
-    "default": "./src/mix/_index.sass"
-  },
-  "./map": {
-    "sass": "./src/map/_index.sass",
-    "default": "./src/map/_index.sass"
-  },
-  "./contrast": {
-    "sass": "./src/mix/_contrast.sass",
-    "default": "./src/mix/_contrast.sass"
-  },
-  "./func": {
-    "sass": "./src/func/_index.sass",
-    "default": "./src/func/_index.sass"
-  }
-  },
-
   "repository": {
     "type": "git",
     "url": "https://github.com/NexusWeave/ux-lumina-sass.git"
   },
   "scripts": {
-    
     "serve": "http-server demo",
     "release": "standard-version",
-    "lint:sass": "stylelint '**/*.sass'",
-    "dev": "npm run build && npm run serve",
-    "module-test": "node test/module-test.js",
-    "build": "sass demo/style.sass demo/style.css",
     "test:sass": "sass test/index.spec.sass test/index.spec.css",
-    "test": "npm run test:sass && npm run lint:sass && npm run module-test"
+    "test": "npm run test:sass && tsx test/ts/syntax-check.ts && tsx test/ts/module-test.ts"
   },
   "files": [
     "src"
@@ -68,12 +63,15 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^25.9.2",
     "http-server": "^14.1.1",
     "postcss-sass": "^0.5.0",
     "sass": "^1.85.1",
     "sass-true": "^10.1.0",
     "standard-version": "^9.5.0",
     "stylelint": "^17.13.0",
-    "stylelint-config-standard-scss": "^17.0.0"
+    "stylelint-config-standard-scss": "^17.0.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
   }
 }

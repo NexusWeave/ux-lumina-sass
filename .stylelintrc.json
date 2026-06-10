@@ -1,27 +1,18 @@
 {
   "extends": "stylelint-config-standard-scss",
-  "overrides": [
-    {
-      "files": ["**/*.sass"],
-      "customSyntax": "postcss-sass"
-    }
-  ],
   "rules": {
-    "indentation": null,
     "no-empty-source": null,
     "alpha-value-notation": null,
-    "scss/at-mixin-pattern": null,
     "selector-class-pattern": null,
     "rule-empty-line-before": null,
     "color-function-notation": null,
     "no-descending-specificity": null,
     "property-no-vendor-prefix": null,
-    "scss/dollar-variable-pattern": null,
     "declaration-empty-line-before": null,
     "color-function-alias-notation": null,
-    "scss/dollar-variable-empty-line-before": null,
-    "scss/double-slash-comment-whitespace-inside": null,
-    "scss/double-slash-comment-empty-line-before": null,
+    "comment-empty-line-before": null,
+    "declaration-block-no-duplicate-properties": null,
+    "declaration-property-value-no-unknown": null,
     "property-no-unknown": [true, {
       "ignoreProperties": ["line-block-size"]
     }]

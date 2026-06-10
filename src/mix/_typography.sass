@@ -13,7 +13,7 @@
     overflow-wrap: anywhere
     min-inline-size: $inline
 
-@mixin font( $font:null, $size: 1rem, $family: null, $style: null, $weight: null, $line-height: null, $variant: null)
+@mixin font( $font:null, $size: 1rem, $family: null, $style: null, $weight: null, $line-height: null, $variant: null, $quiet: false)
   $detected-family: func-typo.font-family-of($font)
 
   @if func-typo.is-known-font($font)
@@ -21,7 +21,7 @@
   
   @else if $family == null
     $family: $detected-family
-    @if $font != null
+    @if $font != null and $quiet == false
       @warn "Font '#{$font}' not found in configuration map. Defaulting to stack: '#{$font}', #{$family}."
 
   @if meta.type-of($font) == 'list'
@@ -70,7 +70,7 @@
   -webkit-box-orient: vertical
   overflow: hidden
 
-@mixin text-adjustments($alignment: null, $decoration: null)
+@mixin text-adjustments($alignment: null, $decoration: null, $quiet: false)
   @if $alignment != null
     text-align: $alignment
 
@@ -79,4 +79,5 @@
 
   @if $alignment == null and $decoration == null
     text-decoration: none
-    @warn "No parameters provided for text-adjustments mixin. Default value present."
+    @if $quiet == false
+      @warn "No parameters provided for text-adjustments mixin. Default value present."

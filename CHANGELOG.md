@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.7.1...v2.8.0) (2026-06-10)
+
+
+### Features
+
+* **config:** modernize project infrastructure and exports. ([b2a6ed0](https://github.com/NexusWeave/ux-lumina-sass/commit/b2a6ed004daf5715b94e2b1681df944add4a156c))
+* **test:** modernize testing infrastructure with TypeScript and custom Sass validation. ([7afbcca](https://github.com/NexusWeave/ux-lumina-sass/commit/7afbccacda3f1a003777e5b205afd21fce422fde))
+
+
+### Bug Fixes
+
+* **config:** restore missing build and dev scripts. ([48d2ce1](https://github.com/NexusWeave/ux-lumina-sass/commit/48d2ce19267d7925341610906cf715c737688d2a))
+* **map:** resolve naming conflicts in design tokens. ([5de0eda](https://github.com/NexusWeave/ux-lumina-sass/commit/5de0edaccb780901352ac8328efee25ac4a15bbc))
+* **test:** establish robust verification method for public exports. ([e2de4f5](https://github.com/NexusWeave/ux-lumina-sass/commit/e2de4f5e4fb5e5c33d75222c8168eaee7496f95c))
+* **test:** remove non-existent .flex-center test and fix test script. ([08c3758](https://github.com/NexusWeave/ux-lumina-sass/commit/08c37583f242bfbac2ca1328c6f30c7d97a61b98))
+
 ### [2.7.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.7.0...v2.7.1) (2026-06-09)
 
 ## [2.7.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.6.4...v2.7.0) (2026-06-09)

@@ -60,7 +60,7 @@
     "module-test": "node test/module-test.js",
     "build": "sass demo/style.sass demo/style.css",
     "test:sass": "sass test/index.spec.sass test/index.spec.css",
-    "test": "npm run test:sass && lint:sass && npm run module-test && npm test:sass"
+    "test": "npm run test:sass && npm run lint:sass && npm run module-test"
   },
   "files": [
     "src"

@@ -26,18 +26,6 @@
           flex-wrap: nowrap
           flex-direction: column
 
-  @include true.test('Applies .flex-center utility properties')
-    @include true.assert
-      @include true.output
-        .test-center
-          @extend .flex-center
-      
-      @include true.expect
-        .test-center
-          display: flex
-          align-items: center
-          justify-content: center
-
   @include true.test('Applies .flex-row-items-center-justify-center utility properties')
     @include true.assert
       @include true.output

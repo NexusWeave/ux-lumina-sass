@@ -1,0 +1,8 @@
+@use 'sass:map' as map
+@use '../map/icons' as icon-map
+
+@function find($name)
+  @each $category, $maps in icon-map.$icons
+    @if map.has-key($maps, $name)
+      @return map.get($maps, $name)
+  @return null

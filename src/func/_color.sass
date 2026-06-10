@@ -1,0 +1,26 @@
+@use 'sass:math'
+@use 'sass:color'
+
+/// Calculates the relative luminance of a color
+/// @param {Color} $color - The color to calculate luminance for
+/// @return {Number} - The relative luminance (0 to 1)
+@function luminance($color)
+    $red: math.div(color.channel($color, "red", $space: rgb), 255)
+    $green: math.div(color.channel($color, "green", $space: rgb), 255)
+    $blue: math.div(color.channel($color, "blue", $space: rgb), 255)
+
+    $r: if($red <= 0.03928, math.div($red, 12.92), math.pow(math.div($red + 0.055, 1.055), 2.4))
+    $g: if($green <= 0.03928, math.div($green, 12.92), math.pow(math.div($green + 0.055, 1.055), 2.4))
+    $b: if($blue <= 0.03928, math.div($blue, 12.92), math.pow(math.div($blue + 0.055, 1.055), 2.4))
+
+    @return $r * 0.2126 + $g * 0.7152 + $b * 0.0722
+
+/// Calculates the contrast ratio between two colors
+/// @param {Color} $color1 - The first color
+/// @param {Color} $color2 - The second color
+/// @return {Number} - The contrast ratio (1 to 21)
+@function contrast-ratio($color1, $color2)
+    $l1: luminance($color1)
+    $l2: luminance($color2)
+
+    @return math.div(math.max($l1, $l2) + 0.05, math.min($l1, $l2) + 0.05)

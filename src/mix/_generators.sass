@@ -6,15 +6,10 @@
 @use '../map/icons' as icon-map
 @use '../map/tag-theme' as tag-map
 @use '../map/flexbox' as flexbox-mapping
-
-@function _icon-find($name)
-  @each $category, $maps in icon-map.$icons
-    @if map.has-key($maps, $name)
-      @return map.get($maps, $name)
-  @return null
+@use '../func/icons' as func-icons
 
 @mixin _icon-base($name, $color, $font-family)
-  $props: _icon-find($name)
+  $props: func-icons.find($name)
   @if $props
     .#{$name}
       &::before

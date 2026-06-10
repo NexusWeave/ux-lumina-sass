@@ -1,0 +1,11 @@
+@use '../func/color' as func-color
+
+/// Throws an architectural error if the contrast ratio between two colors fails to meet the specified threshold.
+/// This mixin ensures that color combinations adhere to WCAG accessibility standards during the compilation process.
+/// @param {Color} $foreground - The foreground color to be evaluated.
+/// @param {Color} $background - The background color against which contrast is measured.
+/// @param {Number} $threshold [4.5] - The minimum acceptable contrast ratio (standard WCAG AA compliance is 4.5:1).
+@mixin assert-contrast($foreground, $background, $threshold: 4.5)
+    $ratio: func-color.contrast-ratio($foreground, $background)
+    @if $ratio < $threshold
+        @error "Accessibility Failure: The contrast ratio of #{$ratio} between #{$foreground} and #{$background} does not meet the required threshold of #{$threshold}:1."

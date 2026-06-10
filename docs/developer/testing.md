@@ -1,103 +1,141 @@
 # Testing Guide
-*Last updated: 2026-06-09*
+*Last updated: 2026-06-10*
 
-This document explains how we test the code in Lumina Sass to ensure high quality. It also provides examples and a guide on what methods to use for different types of tests.
+This document outlines the comprehensive testing strategy for Lumina Sass, ensuring adherence to rigorous quality standards. It provides practical examples and serves as a definitive guide for selecting appropriate testing methodologies across various scenarios.
 
-## 1. Unit Testing with Sass-True
+## Unit Testing with Sass-True
 
-We use [Sass-True](https://github.com/oddbird/true) to unit test our mixins and functions. This ensures that our Sass code compiles into the correct CSS.
+We utilize [Sass-True](https://github.com/oddbird/true) to perform unit tests on our mixins and functions. This ensures that our Sass codebase compiles into the expected CSS output.
 
-### File Structure (Co-location)
-To keep tests organized and easy to find, we place our test files in the same folder as the source files they test. All test files use the `.spec.sass` extension.
+### Organization
+To maintain a clean production package, tests are isolated within the `test/` directory.
 
-**Example structure:**
+**Example Structure:**
 ```text
-src/
+test/
+├── index.spec.sass    # Main test file
 └── mix/
-    ├── _buttons.sass
     └── _buttons.spec.sass
 ```
 
-All of these individual test files are then imported into a central test runner file (`src/test/index.spec.sass`). This allows us to run all tests at the same time.
+The primary test file (`test/index.spec.sass`) aggregates all individual test specifications, enabling the execution of the entire suite through a single command.
 
-### How to Write a Sass-True Test
-Here is an example of how to write a test for a mixin (e.g., in `src/mix/_buttons.spec.sass`):
+### Writing Sass-True Tests
+The following example demonstrates a test for a button mixin (located in `test/mix/_buttons.spec.sass`):
 
 ```sass
 @use 'sass:meta'
-@use './_buttons' as buttons
+@use '../../src/mix/_buttons' as buttons
 @use '../../node_modules/sass-true' as true
 
 @include true.test-module('Buttons')
   @include true.test('Applies base button styling')
     @include true.assert
-      // What we output from our mixin
+      // The output from our mixin
       @include true.output
         button
           @include buttons.base-btn()
       
-      // The exact CSS we expect to see
+      // The expected CSS output
       @include true.expect
         button
           border: none
           margin: 0.5em
-          // ... the rest of the expected CSS
+          // ... other expected CSS rules
 ```
 
-### Running the Tests
-To run the unit tests, use this npm command in your terminal:
+### Running Tests
+To initiate the unit testing suite, execute the following command:
 ```bash
 npm run test
 ```
 
 ---
 
-## 2. Visual Regression Testing
+## Code Analysis with Stylelint
 
-Sass-True checks if the CSS code is correct, but it does not check how the website *looks* in a browser. To make sure our components look right and do not break visually, we can use visual regression testing.
+We employ [Stylelint](https://stylelint.io/) to enforce stylistic consistency and identify potential errors within our Sass files during the early stages of development.
 
-Tools like **Cypress Component Testing**, **Percy**, or **BackstopJS** take screenshots of your interface. They compare new screenshots pixel-by-pixel with older, approved screenshots.
+### Configuration
+Stylelint is configured to support the Sass Indented Syntax, with specific rules defined in the `.stylelintrc.json` file.
+
+### Executing the Linter
+To identify linting discrepancies, run:
+```bash
+npm run lint:sass
+```
+
+---
+
+## Accessibility (WCAG) Contrast Checks
+
+Lumina Sass incorporates automated utilities to verify that color combinations satisfy WCAG AA standards.
+
+### Contrast Utilities
+The architectural logic for determining luminance and contrast ratios is implemented within the `src/func/color.sass` module, while the `assert-contrast` mixin is available through the `src/mix/contrast.sass` module.
+
+### Integration in Tests
+The `assert-contrast` mixin can be utilized to prevent successful builds or test completions if color contrast falls below acceptable thresholds:
+
+```sass
+@use '../src/mix/contrast'
+
+.my-component
+  background: $bg-color
+  color: $fg-color
+  @include contrast.assert-contrast($fg-color, $bg-color)
+```
+
+---
+
+## Visual Regression Testing
+
+While Sass-True validates the generated CSS code, it does not account for visual representation within a browser. To ensure visual fidelity, we implement visual regression testing.
+
+Instruments such as **Cypress Component Testing**, **Percy**, or **BackstopJS** capture interface snapshots and perform comparisons against established baselines.
 
 ### Example: Cypress Component Testing
-If you use Cypress to test how CSS components look in HTML, a test might look like this:
+When utilizing Cypress to validate component rendering in HTML, a test may be structured as follows:
 
 ```javascript
 describe('Button Component', () => {
   it('should render the default button correctly', () => {
     cy.visit('/demo/index.html');
     
-    // Select the button and take a visual snapshot
+    // Validate the component and capture a snapshot
     cy.get('button.default-btn').matchImageSnapshot('base-btn-default');
   });
 });
 ```
-This ensures that no accidental design changes are pushed to the users.
+This practice ensures that no unintended design regressions are introduced.
 
 ---
 
-## 3. Manual Testing (Demo App)
+## Manual Verification (Demo Application)
 
-Lumina Sass includes a local `demo` folder. We use this to manually check how our changes look in a browser before we publish them.
+Lumina Sass includes a dedicated `demo` environment, allowing developers to manually inspect changes within a browser prior to publication.
 
-### Running the Demo
-To build the CSS and start a local server for the demo app, run:
+### Launching the Demo
+To compile the CSS and initiate the local development server, execute:
 ```bash
 npm run dev
 ```
-This will compile the Sass files and start a local `http-server` at `http://localhost:8080`.
+This process builds the Sass files and serves the application at `http://localhost:8080`.
 
 ---
 
-## Overview: What to Test and How
+## Testing Strategy Overview
 
-To maintain a good balance between speed and quality, choose your testing strategy based on what you are changing:
+To achieve an optimal balance between development velocity and software quality, select the appropriate testing methodology based on the nature of the change:
 
-| Type of Change | Recommended Test Method | Tool |
-|----------------|-------------------------|------|
-| Logic in `@function` (e.g., math) | **Unit Testing** | Sass-True |
+| Nature of Change | Recommended Methodology | Tools |
+|-------------------|-------------------------|---------|
+| Logic in `@function` | **Unit Testing** | Sass-True |
 | CSS output from `@mixin` | **Unit Testing** | Sass-True |
-| Design changes (colors, spacing) | **Visual Regression Testing** | Cypress / Percy / BackstopJS |
-| Exploring new components | **Manual Testing** | Demo (`npm run dev`) |
-| User interaction (e.g., hover states) | **Visual Regression / Manual** | Cypress / Demo |
+| Aesthetic modifications | **Visual Regression Testing** | Cypress / Percy / BackstopJS |
+| New component | **Manual Verification** | Demo (`npm run dev`) |
+| Interactive elements | **Visual / Manual** | Cypress / Demo |
+| Accessibility compliance | **Contrast Checks** | `assert-contrast` mixin |
+| Code quality standards | **Code Analysis** | Stylelint |
 
-By combining these methods, we build a reliable code base free of logic errors, while also delivering a beautiful and consistent user interface.
+By integrating these methodologies, we establish a robust codebase free of logical discrepancies while maintaining a consistent user interface.

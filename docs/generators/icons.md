@@ -1,73 +1,77 @@
 # Icons
-*Last updated: 2026-06-05*
-This file explains the icon‑generator mixin provided by Lumina Sass.
+*Last updated: 2026-06-10*
 
-## Mixins
+This document outlines the functionality of the `icon-generator` mixin within Lumina Sass.
 
-- `icon-generator($name: null, $color: null, $font-family: 'bootstrap-icons')`
-  - When `$name` is omitted, the mixin creates utility classes for **all** icons defined in the icon map (`src/map/icons`).
-  - If a specific `$name` is given, only that icon class is generated.
-  - `$color` can override the default colour.
-  - `$font-family` defaults to `bootstrap-icons` but can be changed.
+## Icon Generator Mixin
 
-## Usage Example
+The `icon-generator($name: null, $color: null, $font-family: 'bootstrap-icons')` mixin provides a robust mechanism for generating icon utility classes.
+
+- **Automated Generation:** When the `$name` parameter is omitted, the mixin systematically creates utility classes for all icons defined within the icon map located at `src/map/icons`.
+- **Targeted Generation:** Providing a specific `$name` ensures that only the requested icon class is generated.
+- **Customization:**
+  - The `$color` parameter allows for the overriding of the default icon color.
+  - The `$font-family` parameter defaults to `bootstrap-icons` but can be adjusted to support alternative icon sets.
+
+## Implementation Examples
 
 ```scss
-// Generate all icons (default)
+// Generate utility classes for the entire icon set
 @include icon-generator();
 
-// Generate only the "search" icon with a custom colour
+// Generate a specific "search" icon with a custom color configuration
 @include icon-generator('search', #ff6600);
 ```
 
-The mixin creates CSS classes you can apply directly in HTML, e.g. `<i class="search"></i>`.
+The mixin generates CSS classes that can be utilized directly within HTML structures:
+`<i class="search"></i>`
 
 ## Supported Icon Frameworks
 
-Lumina Sass currently supports the following icon frameworks:
+Lumina Sass provides built-in support for the following icon frameworks:
 
-- **Bootstrap Icons**: The default framework (font-family: `'bootstrap-icons'`). The library is pre-configured with unicode mappings compatible with Bootstrap Icons.
+- **Bootstrap Icons:** This is the default framework (`font-family: 'bootstrap-icons'`). The library is pre-configured with unicode mappings that are fully compatible with Bootstrap Icons.
 
 ## Icons Reference
 
-| Category | Icon name |
+| Category | Icon Name |
 |----------|-----------|
-| academic | school |
-| academic | diploma |
-| document | pdf |
-| document | dir |
-| document | default |
-| misc-icons | dir |
-| misc-icons | map-pin |
-| misc-icons | collaborator |
-| misc-icons | alarm |
-| misc-icons | cloud |
-| misc-icons | dot |
-| misc-icons | code |
-| misc-icons | default |
-| communication | email |
-| communication | mail |
-| communication | github |
-| communication | ytube |
-| communication | facebook |
-| communication | linkedin |
-| communication | instagram |
-| communication | twitter |
-| utility-inputs | color |
-| utility-inputs | hidden |
-| input-controls | tel |
-| input-controls | url |
-| input-controls | text |
-| input-controls | search |
-| input-controls | number |
-| input-controls | password |
-| video-controls | play-video |
-| video-controls | pause-video |
-| boolean-controls | radio |
-| boolean-controls | checkbox |
-| datetime-pickers | time |
-| datetime-pickers | week |
-| datetime-pickers | month |
-| datetime-pickers | calendar |
+| Academic | School |
+| Academic | Diploma |
+| Document | PDF |
+| Document | Directory |
+| Document | Default |
+| Miscellaneous | Directory |
+| Miscellaneous | Map-pin |
+| Miscellaneous | Collaborator |
+| Miscellaneous | Alarm |
+| Miscellaneous | Cloud |
+| Miscellaneous | Dot |
+| Miscellaneous | Code |
+| Miscellaneous | Default |
+| Communication | Email |
+| Communication | Mail |
+| Communication | GitHub |
+| Communication | YouTube |
+| Communication | Facebook |
+| Communication | LinkedIn |
+| Communication | Instagram |
+| Communication | Twitter |
+| Utility Inputs | Color |
+| Utility Inputs | Hidden |
+| Input Controls | Tel |
+| Input Controls | URL |
+| Input Controls | Text |
+| Input Controls | Search |
+| Input Controls | Number |
+| Input Controls | Password |
+| Video Controls | Play-video |
+| Video Controls | Pause-video |
+| Boolean Controls | Radio |
+| Boolean Controls | Checkbox |
+| DateTime Pickers | Time |
+| DateTime Pickers | Week |
+| DateTime Pickers | Month |
+| DateTime Pickers | Calendar |
 
 ---

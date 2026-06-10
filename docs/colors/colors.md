@@ -1,10 +1,13 @@
-# All Colours Reference
-*Last updated: 2026-06-05*
-This document lists every colour variable defined in the `src/color` directory. The colours are grouped by their sub‑folder. All colour values are expressed in `rgba` format for consistency.
+# Color Reference
+*Last updated: 2026-06-10*
+
+This document provides an exhaustive inventory of all color variables defined within the `src/color` directory.
+
+> **Accessibility Note:** For methodologies regarding the verification of color contrast against WCAG standards, please consult our [**Color Contrast & Accessibility Guide**](contrast.md).
 
 ---
 
-## Base (`src/color/base/_index.sass`)
+## Base Colors (`src/color/base/_index.sass`)
 
 | Variable | RGBA Value | Source |
 |---|---|---|
@@ -21,7 +24,7 @@ This document lists every colour variable defined in the `src/color` directory. 
 
 ---
 
-## Accents (`src/color/accents/_index.sass`)
+## Accent Colors (`src/color/accents/_index.sass`)
 
 | Variable | RGBA Value | Source |
 |---|---|---|
@@ -31,9 +34,9 @@ This document lists every colour variable defined in the `src/color` directory. 
 
 ---
 
-## Brands (`src/color/brands/`)
+## Brand Palettes (`src/color/brands/`)
 
-### `_github.sass`
+### GitHub (`_github.sass`)
 
 | Variable | RGBA Value | Source |
 |---|---|---|
@@ -42,7 +45,7 @@ This document lists every colour variable defined in the `src/color` directory. 
 | $brand-github-gray-hover | rgba(120, 120, 120, 1) | [L3](file:///home/kristoffer/Repositories/lumina-sass/src/color/brands/_github.sass#L3) |
 | $brand-github-light-green | rgba(231, 243, 243, 1) | [L4](file:///home/kristoffer/Repositories/lumina-sass/src/color/brands/_github.sass#L4) |
 
-### `_index.sass`
+### Global Brand Index (`_index.sass`)
 
 | Variable | RGBA Value | Source |
 |---|---|---|
@@ -69,7 +72,7 @@ This document lists every colour variable defined in the `src/color` directory. 
 | $linked-in-blue-hover | rgba(25, 25, 140, 1) | [L29](file:///home/kristoffer/Repositories/lumina-sass/src/color/brands/_index.sass#L29) |
 | $linked-in-blue-active | rgba(0, 0, 115, 1) | [L28](file:///home/kristoffer/Repositories/lumina-sass/src/color/brands/_index.sass#L28) |
 
-### `_lumina.sass`
+### Lumina Core (`_lumina.sass`)
 
 | Variable | RGBA Value | Source |
 |---|---|---|
@@ -80,7 +83,7 @@ This document lists every colour variable defined in the `src/color` directory. 
 | $brand-light-orange | rgba(231, 113, 125, 1) | [L6](file:///home/kristoffer/Repositories/lumina-sass/src/color/brands/_lumina.sass#L6) |
 | $brand-dark-orange | rgba(204, 85, 102, 1) | [L7](file:///home/kristoffer/Repositories/lumina-sass/src/color/brands/_lumina.sass#L7) |
 
-### `_social.sass`
+### Social Media Standards (`_social.sass`)
 
 | Variable | RGBA Value | Source |
 |---|---|---|
@@ -105,9 +108,7 @@ This document lists every colour variable defined in the `src/color` directory. 
 
 ---
 
-
-
-## Misc (`src/color/misc/_index.sass`)
+## Miscellaneous Colors (`src/color/misc/_index.sass`)
 
 | Variable | RGBA Value | Source |
 |---|---|---|
@@ -121,7 +122,7 @@ This document lists every colour variable defined in the `src/color` directory. 
 
 ---
 
-## Neutral (`src/color/neutral/_index.sass`)
+## Neutral Palette (`src/color/neutral/_index.sass`)
 
 | Variable | RGBA Value | Source |
 |---|---|---|
@@ -136,7 +137,7 @@ This document lists every colour variable defined in the `src/color` directory. 
 
 ---
 
-## Palette – Groovy 70s (`src/color/palette/groovy-70s/_index.sass`)
+## Palette – Groovy 70s (`src/color/palette/groovy-70s/_index.sass`)
 
 | Variable | RGBA Value | Source |
 |---|---|---|
@@ -153,7 +154,7 @@ This document lists every colour variable defined in the `src/color` directory. 
 
 ---
 
-## Stacks (`src/color/stacks/_index.sass`)
+## Technology Stacks (`src/color/stacks/_index.sass`)
 
 | Variable | RGBA Value | Source |
 |---|---|---|

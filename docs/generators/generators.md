@@ -1,19 +1,28 @@
 # Generators
-*Last updated: 2026-06-06*
-This document describes the generator mixins provided by **Lumina Sass**.
+*Last updated: 2026-06-10*
 
-## Mixins
+This document provides a technical overview of the generator mixins offered by **Lumina Sass**.
+
+## Generator Mixins
+
+The following mixins facilitate the automated generation of utility classes and component styles.
+
+### Icon Generator
 
 - `icon-generator($name: null, $color: null, $font-family: 'bootstrap-icons')`
-  - Generates utility classes for icons. If `$name` is omitted, it creates classes for **all** icons defined in the map.
-  - Optional `$color` overrides the icon colour.
+  - This mixin generates utility classes for icons. If the `$name` parameter is omitted, it systematically generates classes for every icon defined within the configuration map.
+  - The optional `$color` parameter allows for the overriding of the default icon coloration.
+
+### Flexbox Generator
 
 - `flexbox-generator($name)`
-  - Generates a set of flexbox utility classes based on the `$name` entry in the flexbox map.
+  - This mixin generates a predefined set of flexbox utility classes corresponding to the specified `$name` entry within the flexbox configuration map.
+
+### Input Generator
 
 - `input-generator($name, $placeholder-color: null, $custom: ())`
-  - Generates styling for input elements. If `$name` is `null`, it creates styles for **all** inputs defined in the inputs map.
-  - `$placeholder-color` sets the placeholder text colour.
-  - `$custom` allows overriding default properties, such as focus outline.
+  - This mixin generates styling for input elements. If the `$name` parameter is set to `null`, it generates styles for all inputs defined in the input configuration map.
+  - The `$placeholder-color` parameter configures the color of the placeholder text.
+  - The `$custom` parameter enables the overriding of default properties, such as focus outlines and borders.
 
-Both mixins are defined in `src/mix/_generators.sass` and are exported via `src/mix/_index.sass`.
+These mixins are architected within `src/mix/_generators.sass` and are exported through the main `src/mix/_index.sass` entry point.

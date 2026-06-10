@@ -1,48 +1,49 @@
 # Releasing & Publishing
 *Last updated: 2026-06-05*
-This project uses an automated pipeline to handle versioning, changelogs, and publishing to NPM.
+
+This project utilizes an automated release management system to orchestrate versioning, maintain the changelog, and facilitate publication to the NPM registry.
 
 ## Automated Workflow
 
-The release process is managed by two GitHub Actions:
+The release lifecycle is governed by two primary GitHub Actions:
 
 1.  **Release Workflow (`release.yml`):**
-    - Runs when changes are pushed to the `master` branch.
-    - Uses `standard-version` to:
-        - Update the version in `package.json`.
-        - Update `CHANGELOG.md`.
-        - Create a Git tag.
-    - Pushes the changes back to GitHub and creates a release with notes.
+    - Triggered upon pushing changes to the `master` branch.
+    - Employs `standard-version` to perform the following operations:
+        - Increment the version number within `package.json`.
+        - Update `CHANGELOG.md` with relevant changes.
+        - Generate a corresponding Git tag.
+    - Synchronizes with GitHub to create an official release accompanied by detailed release notes.
 
 2.  **Publish Workflow (`publish.yml`):**
-    - Runs when a new GitHub Release is created.
-    - Publishes the package to the NPM registry.
+    - Initiated upon the creation of a new GitHub Release.
+    - Executes the publication of the package to the NPM registry.
 
-## How to Trigger a Release
+## Initiating a Release
 
-Just push your changes to the `master` branch. The automated tools will handle the release.
+To trigger the release process, simply push your verified changes to the `master` branch. The automated infrastructure will manage the subsequent release steps.
 
 ```bash
 git push origin master
 ```
 
-## Trusted Publishing Setup (NPM)
+## Trusted Publishing (NPM)
 
-This repository uses **Trusted Publishing (OIDC)** to publish to NPM securely.
+Lumina Sass leverages **Trusted Publishing (OIDC)** to ensure secure and verified publication to NPM.
 
-### One-time Setup Steps:
-1. Log in to [npmjs.com](https://www.npmjs.com/).
-2. Go to: `https://www.npmjs.com/package/lumina-sass/settings/publishing`.
-3. Under **Trusted Publishers**, click **Add a Publisher**.
-4. Select **GitHub Actions** and enter:
+### Configuration Procedure:
+1. Authenticate with [npmjs.com](https://www.npmjs.com/).
+2. Navigate to: `https://www.npmjs.com/package/lumina-sass/settings/publishing`.
+3. Within the **Trusted Publishers** section, select **Add a Publisher**.
+4. Opt for **GitHub Actions** and provide the following specifications:
    - **GitHub Organization/User:** `NexusWeave`
    - **Repository:** `ux-lumina-sass`
    - **Workflow Filename:** `publish.yml`
    - **Environment Name:** `npm-release`
-5. Click **Add Publisher**.
+5. Confirm by clicking **Add Publisher**.
 
 ### GitHub Environment Configuration
-Create a GitHub Environment named `npm-release` in your repository settings (**Settings > Environments**).
+Establish a GitHub Environment designated as `npm-release` within your repository settings (**Settings > Environments**).
 
-## Versioning Policy
-This project uses [Semantic Versioning (SemVer)](https://semver.org/). Version numbers are updated automatically based on [Conventional Commits](https://www.conventionalcommits.org/).
+## Versioning Methodology
+This project adheres to [Semantic Versioning (SemVer)](https://semver.org/). Version increments are determined automatically based on [Conventional Commits](https://www.conventionalcommits.org/) standards.

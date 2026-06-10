@@ -1,251 +1,140 @@
 # Lumina SASS
-*Last updated: 2026-06-09*
-Lumina Sass provides design tokens and mixins to help you build modern web applications.
 
-## Overview
+[![CI](https://github.com/NexusWeave/ux-lumina-sass/actions/workflows/ci.yml/badge.svg)](https://github.com/NexusWeave/ux-lumina-sass/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/lumina-sass.svg)](https://www.npmjs.com/package/lumina-sass)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Lumina SASS offers a collection of standardized color variables and utility mixins. The library uses clear naming conventions, making it simple to add to any SASS-based project.
+**Lumina SASS** is a comprehensive design token and mixin framework engineered for modern web development. It provides a robust, standardized foundation for color systems, responsive layouts, and reusable components utilizing the **Sass Indented Syntax**.
+
+---
+
+## Technical Specifications
+
+Lumina SASS is architected with modularity and efficiency as core principles. Key features include:
+- **Type Safety:** Leveraging Sass maps and sophisticated validation logic.
+- **Architectural Consistency:** Standardized nomenclature for design tokens.
+- **Enhanced Developer Experience:** An intuitive API featuring streamlined mixins.
+- **Modern Standards Compliance:** Full compatibility with Dart Sass and the `@use` module system.
+
+> **Note:** This library utilizes the **Sass Indented Syntax** (.sass). It remains compatible with SCSS projects via the `@use` directive. Demonstration examples employ the indented syntax to maintain consistency with the source codebase.
 
 ## Installation
-
-Install the package as a project-level dependency in your project:
 
 ```bash
 npm install lumina-sass
 ```
 
-This will add `lumina-sass` to your `package.json` file. Do not install the library globally.
-
 ## Usage
 
-### Importing the Library
+Lumina SASS employs a modular architecture, permitting the importation of the entire framework or specific modules as required.
 
-You can use the library directly in your Sass files using standard `@use` syntax.
-
-#### 1. Import Flexbox Utilities (the only public export)
-
-You can import the flexbox utilities directly:
+### Importing Modules
 
 ```sass
-// In your style.sass or style.scss file:
-@use 'lumina-sass/flexbox' as flex;
+// Import flexbox utilities (recommended)
+@use 'lumina-sass/flexbox' as flex
 
-// Now all flexbox mixins and classes are available:
-.container {
-  @include flex.flexbox-generator('flex');
-}
+// Import generator mixins
+@use 'lumina-sass/generators' as gen
+
+// Import descriptive color variables
+@use 'lumina-sass/colors' as color
+
+// Import general mixins (typography, layout, accessibility)
+@use 'lumina-sass/mixins' as mix
+
+// Import design tokens and maps
+@use 'lumina-sass/map' as map
+
+// Import general utility functions
+@use 'lumina-sass/func' as func
 ```
 
+### Implementation Examples
 
-#### 2. Import Specific Modules
+#### Flexbox Layout
+```sass
+.container
+  @include flex.flexbox-generator('flex-row')
+  @include flex.flex-items-center
+```
 
- > The package now exports the `flexbox` sub‑path and other public sub‑paths (`color`, `mix`). Other internal modules (`utils`, `map`, …) remain private.
+#### Automated Generation (Icons & Inputs)
+```sass
+// Systematically generate all icon classes
+@include gen.icon-generator()
 
+// Apply base styling to all text inputs
+@include gen.input-generator('text')
+```
 
-### Module Breakdown
+#### Accessibility (WCAG Contrast Verification)
+```sass
+.alert
+  background: color.$brand-lumina-blue
+  color: color.$neutral-white
+  // Triggers a build failure if the contrast ratio falls below 4.5:1
+  @include mix.assert-contrast(color.$neutral-white, color.$brand-lumina-blue)
+```
+> For comprehensive details, please refer to our [**Color Contrast & Accessibility Guide**](docs/colors/contrast.md).
 
-| Module | Description |
+#### Pure Functions (Mathematical & Logical Utilities)
+```sass
+.custom-bg
+  // Determine the relative luminance of a brand color
+  $luminance: func.luminance(color.$brand-lumina-blue)
+  opacity: if($luminance > 0.5, 0.8, 1)
+```
+
+#### Semantic Breakpoints
+```sass
+.card
+  width: 100%
+  @include mix.on-breakpoint(md)
+    width: 50%
+```
+
+## Public API Reference (Sub-paths)
+
+| Path | Description |
 | :--- | :--- |
-| `lumina-sass/flexbox` | Flexbox utilities and CSS classes. |
-| `lumina-sass/color`   | Color variables and palettes. |
-| `lumina-sass/mix`     | General mixins (layout, typography, media). |
+| `lumina-sass` | Primary entry point (includes common utilities). |
+| `lumina-sass/flexbox` | Comprehensive flexbox mixins and utility classes. |
+| `lumina-sass/color` | Standardized brand and UI color palettes. |
+| `lumina-sass/mix` | Primary mixins for typography, media queries, and structural elements. |
+| `lumina-sass/map` | Internal configurations and design tokens. |
+| `lumina-sass/contrast` | Automated WCAG contrast ratio verification. |
+| `lumina-sass/func` | Specialized Sass functions for mathematics, logic, and searching. |
 
+## Key Features
 
-### Utility Classes
+- **Standardized Palettes:** Consistent `$brand-color` patterns utilizing `rgb()` for maximum compatibility.
+- **Automated Accessibility:** Integrated WCAG contrast ratio verification.
+- **Specialized Functions:** Dedicated modules for mathematical operations and font stack resolution.
+- **Responsive Utilities:** Intuitive media query helpers (e.g., `on-breakpoint`, `on-dark-mode`).
+- **Flexbox Engine:** A robust suite of mixins for rows, columns, and sophisticated alignment.
 
-If you prefer to use CSS classes directly in your HTML (like `.flex-center`), please check our [**Utility Classes Guide**](docs/utils/utility_classes.md).
+## Developer Resources
 
-### Semantic Media Queries
-For common media queries, you can use these simple helper mixins to make your code more readable.
+- [**Documentation Index**](docs/README.md)
+- [**Development Guide**](docs/developer/development.md) – Technical overview and contribution workflows.
+- [**Testing Suite**](docs/developer/testing.md) – Detailed specifications for unit testing and code analysis.
+- [**Sass Testing Quick-Start**](docs/developer/testing.md#unit-testing-with-sass-true) – Direct access to testing methodologies.
+- [**Utility Classes**](docs/utils/utility_classes.md) – A comprehensive inventory of pre-configured CSS classes.
+- [**AI Operations Guide**](docs/ai_guide.md) – Guidance for automated assistant integration.
 
-```sass
-.my-component
-  // Base styles
-  background: white
+## Contributing
 
-  // Applies styles for medium screens and smaller
-  @include on-breakpoint(md)
-    font-size: 0.9rem
+We welcome contributions to the project. Please consult our [Development Guide](docs/developer/development.md) and ensure that all tests pass successfully prior to submitting a pull request.
 
-  // Applies styles when the user prefers dark mode
-  @include on-dark-mode
-    background: black
+```bash
+# Execute unit testing suite
+npm test
+
+# Execute stylistic analysis
+npm run lint:sass
 ```
-
-Available helpers:
-- `@include on-breakpoint($name)`
-- `@include on-dark-mode`
-- `@include on-light-mode`
-- `@include on-landscape`
-- `@include on-portrait`
-
-## Features
-### Recent Changes
-
-- **RGB conversion:** All colour variables that previously used `rgba(..., 1)` are now simplified to `rgb(...)`; any hexadecimal literals have been converted to `rgb()`.
-### Standardized Colors
-Uses a consistent `$[brand]-[color]` pattern for easy use and maintenance.
-- **Brand Colors:** Social media platforms, operating systems, and tech brands.
-- **UI States:** Hover and active states.
-
-### Flexbox Utilities
-A complete set of flexbox mixins and maps to help you build layouts quickly.
-
-### Utility Mixins
-- **Responsive Design:** Media query breakpoints.
-- **Responsive Media Queries:** Added `media-queries` mixin usage in demo and `device-media` support for iPhone.
-- **Typography:** Font handling and text styling.
-- **Elements:** Button generation and image styling.
-
----
-
-## Contributing & Internal Docs
-
-To learn how to contribute or understand the release process, please see:
-
-- [**Development Guide**](docs/developer/development.md) - Project structure and setup rules.
-- [**Testing Guide**](docs/developer/testing.md) - How to write and run Sass unit tests.
-- [**Releasing & Publishing**](docs/developer/releasing.md) - Details on the release process.
-
----
-
-# AI Operations Guide for **lumina-sass**
-
-> This document is intended for the Antigravity AI (or any other automated assistant) that contributes to the `lumina-sass` project. It consolidates the repository‑specific conventions, tooling, and policies that enable the AI to work safely, efficiently, and in compliance with the user’s personal rules.
-
----
-
-## 1️⃣ Project Overview
-- **Name:** `lumina-sass`
-- **Purpose:** Provides design tokens, mixins, and flexbox utilities for Sass‑based web projects.
-- **Primary public entry point:** `lumina-sass/flexbox` (the only sub‑path exported in `package.json`).
-- **Main files:**
-  - `src/_index.sass` – default entry (re‑exports flexbox).
-  - `src/flexbox/_index.sass` – collection of flexbox mixins and utility classes.
-  - `README.md` – user‑facing documentation (kept up‑to‑date with export changes).
-
----
-
-## 2️⃣ Development Environment (User‑defined rules)
-- **Node.js version:** Use the latest **Stable LTS** (v24.x) via `fnm`.
-  ```bash
-  fnm use lts   # activates the stable LTS version
-  ```
-- **Package manager:** `npm` (default for this repo).
-- **GPG signing:** All commits must be **GPG‑signed** (`git commit -S`). The AI should stage changes and let the user provide the pass‑phrase; never use `--no-gpg-sign`.
-- **Conventional Commits:** Follow the `type: description.` format, ending with a period. Emphasise *why* a change is made.
-- **Python tools:** When needed, create a virtual environment with `python -m venv .venv` (not required for this repo, but noted for future scripts).
-
----
-
-## 3️⃣ Repository Layout (important paths)
-```
-lumina-sass/
-├─ src/                     # Sass source files
-│  ├─ _index.sass          # Default entry point (re‑exports flexbox)
-│  ├─ flexbox/             # Public module – only exported sub‑path
-│  │   ├─ _index.sass
-│  │   └─ …
-│  └─ (other internal directories: color/, mix/, utils/, map/)
-├─ dist/                    # Build artefacts (generated by `npm run build`)
-├─ docs/                    # Additional documentation
-│  └─ ai_guide.md          # **This file** – AI reference guide
-├─ README.md                # Consumer‑facing docs – kept in sync with exports
-├─ package.json
-└─ ...
-```
-
----
-
-## 4️⃣ Core Tasks for the AI
-| Task | How the AI should perform it | Important notes |
-|------|-----------------------------|----------------|
-| **Edit files** | Use `replace_file_content` for a single contiguous block or `multi_replace_file_content` for multiple non‑adjacent edits. Never overwrite a whole file with `write_to_file` unless explicitly creating a new artifact. | Preserve existing comments and docstrings. |
-| **Stage changes** | `git add <file>` after editing. |
-| **Commit** | `git commit -S -m "<Conventional Commit>"`. The AI must describe the command before execution and ensure GPG signing is enabled. |
-| **Run builds** | `npm run build` (or `npm run dev` if a dev server is needed). Ensure the LTS Node version is active via `fnm`. |
-| **Verify exports** | Test that `import 'lumina-sass/flexbox'` works and that importing any other sub‑path fails with `Package subpath ... is not defined`. |
-| **Update documentation** | Keep `README.md` and any internal docs in sync with code changes, especially the `exports` field. |
-| **Memory synchronization** | Whenever the AI updates a file that is part of the user’s memory (e.g., global or project‑specific memory files), also copy the changes to `/home/kristoffer/Gdrive/Administration/Gemini-Memory-Backup/`. |
-
----
-
-## 5️⃣ Export Management (Key AI Responsibility)
-- The `package.json` **exports** block defines the public API. The AI must:
-  1. Ensure only the intended sub‑paths are listed (currently `.` and `./flexbox`).
-  2. Update the **module breakdown table** in `README.md` to reflect the exported modules.
-  3. When new public modules are added, remember to:
-     - Add them to `exports`.
-     - Update the README table.
-     - Adjust the documentation guide.
-- Any attempt to expose internal modules (`color`, `mixins`, `utils`, `map`) must be rejected unless the user explicitly asks for it.
-
----
-
-## 6️⃣ Testing & Verification Workflow
-1. **Run Unit Tests**
-   ```bash
-   npm test
-   ```
-2. **Local import test**
-   ```bash
-   node -e "import 'lumina-sass/flexbox'"   # should succeed
-   node -e "import 'lumina-sass/utils'"     # should fail
-   ```
-2. **Build**
-   ```bash
-   npm run build
-   ```
-3. **Run demo** (optional) to ensure compiled CSS works:
-   ```bash
-   npm run serve   # serves the demo folder via http‑server
-   ```
-4. **Commit verification**: After committing, run `git log --show-signature -1` to confirm the GPG signature is present.
-
----
-
-## 7️⃣ Contribution Guidelines (for AI and humans)
-- **Pull‑request workflow:**
-  1. Create a feature branch.
-  2. Make the required edits.
-  3. Run the verification steps above.
-  4. Commit with a signed Conventional Commit.
-  5. Push and open a PR.
-- **Documentation:** Every public change must be reflected in `README.md` and, if relevant, in the AI guide.
-- **Linting / Formatting:** Keep the repo formatted according to the existing style (Sass indentation, no trailing spaces).
-
----
-
-## 8️⃣ Quick Reference Commands (AI‑friendly)
-| Purpose | Command |
-|---------|---------|
-| Activate LTS Node | `fnm use lts` |
-| Install dependencies | `npm install` |
-| Build the package | `npm run build` |
-| Run tests | `npm test` |
-| Serve demo (optional) | `npm run serve` |
-| Stage a file | `git add <path>` |
-| Signed commit (example) | `git commit -S -m "feat: description of change."` |
-| Verify signature | `git log --show-signature -1` |
-| Test valid import | `node -e "import 'lumina-sass/flexbox'"` |
-| Test invalid import | `node -e "import 'lumina-sass/utils'"` |
-
----
-
-## 9️⃣ Contact & Further Help
-- For any ambiguity, the AI should ask the user via a clarifying question before proceeding.
-- The AI must always **present a plan before executing** any non‑trivial change (as per user‑global rules).
-
----
-
-*This guide is version‑controlled along with the rest of the repository, ensuring the AI always has an up‑to‑date reference when working on `lumina-sass`.*
-
-
-
-## Acknowledgements
-
-Please see our [Acknowledgements](docs/acknowledgements.md) page for a list of projects, libraries, and people who have inspired or contributed to this work.
 
 ## License
 
-MIT
+This project is licensed under the terms of the [MIT License](LICENSE).

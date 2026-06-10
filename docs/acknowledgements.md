@@ -1,7 +1,7 @@
 # Acknowledgements
 *Last updated: 2026-06-09*
 
-We would like to thank the following projects, libraries, and individuals for their inspiration and contributions:
+We extend our sincere gratitude to the following projects, libraries, and individuals for their invaluable contributions and inspiration:
 
-- [Sass](https://sass-lang.com/) - For the powerful CSS extension language.
-- *(Add more acknowledgements here)*
+- [Sass](https://sass-lang.com/) – For providing the sophisticated CSS extension language that serves as our foundation.
+- *(Additional acknowledgements may be incorporated here)*

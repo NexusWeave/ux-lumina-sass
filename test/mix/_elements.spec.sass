@@ -6,16 +6,37 @@
 
 @include true.describe('elements mixin')
 
-    @include true.it('should apply link-defaults styles')
+    @include true.it('should apply link-color styles')
         @include true.assert
             @include true.output
                 .test
-                    @include link-defaults()
+                    @include link-color()
             
             @include true.expect
-                .test a [aria-disabled=true]
-                    background-color: transparent
-                    color: alerts.$disabled
-                    cursor: not-allowed
-                    pointer-events: none
-                    text-decoration: none
+                .test
+                    a
+                        cursor: pointer
+                        text-decoration: none
+                        color: c.$light-blue
+                        [aria-disabled=true]
+                            background-color: transparent
+                            color: alerts.$disabled
+                            cursor: not-allowed
+                            pointer-events: none
+                            text-decoration: none
+                        &:active
+                            background-color: transparent
+                            color: #0088cc
+                        &.external-link
+                            text-decoration: underline
+                        &:visited
+                            background-color: transparent
+                            color: c.$light-blue
+                        h1, h2, h3, h4, h5, h6, p, span, strong, em, b, i, div, li, article, section
+                            background-color: transparent
+                            color: c.$light-blue
+                        @media (hover: hover)
+                            &:hover
+                                border-radius: 0.5em
+                                background-color: transparent
+                                color: #0099ee

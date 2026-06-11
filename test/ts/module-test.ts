@@ -1,6 +1,7 @@
+import path from 'path';
 import { execSync } from 'child_process';
 import { writeFileSync, mkdirSync, rmSync, existsSync } from 'fs';
-import path from 'path';
+
 
 const modules: string[] = ['func', 'flexbox', 'color', 'mix', 'map'];
 const rootDir: string = process.cwd();
@@ -8,9 +9,8 @@ const tempDir: string = path.join(rootDir, 'test/temp-module-test');
 
 console.log('Running: module test');
 
-if (existsSync(tempDir)) {
-    rmSync(tempDir, { recursive: true, force: true });
-}
+if (existsSync(tempDir)) { rmSync(tempDir, { recursive: true, force: true }); }
+
 mkdirSync(tempDir, { recursive: true });
 
 // Create a minimal package.json that points to the local project
@@ -41,8 +41,7 @@ try {
         }
     }
 
-} catch (error: any) {
-    console.error('Environment preparation failed:', error.message);
+} catch (error: any) { console.error('Environment preparation failed:', error.message);
 } finally {
     rmSync(tempDir, { recursive: true, force: true });
     console.log('\nmodule test complete.');

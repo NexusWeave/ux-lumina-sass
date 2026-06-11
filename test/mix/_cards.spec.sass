@@ -1,10 +1,15 @@
+@use 'sass:map'
 @use '../../src/mix' as *
-@use '../../node_modules/sass-true' as true
 @use '../../src/color' as c
+@use '../../src/func/color' as func-color
+@use '../../node_modules/sass-true' as true
 
 @include true.describe('card mixin')
 
-    @include true.it('should apply square shape by default')
+    @include true.it('should apply square shape by default with derived colors')
+        $colors: func-color.derive-card-colors(null, c.$soft-white)
+        $bg: map.get($colors, 'background')
+        $text: map.get($colors, 'text')
         @include true.assert
             @include true.output
                 .card
@@ -12,16 +17,24 @@
             
             @include true.expect
                 .card
+                    background-color: $bg
+                    color: $text
                     aspect-ratio: 1 / 1
                     border-radius: 5%
 
-    @include true.it('should apply circle shape')
+    @include true.it('should apply circle shape and custom accent color')
+        $accent: c.$logo-red
+        $colors: func-color.derive-card-colors($accent, c.$soft-white)
+        $bg: map.get($colors, 'background')
+        $text: map.get($colors, 'text')
         @include true.assert
             @include true.output
-                .card
-                    @include card($shape: 'circle')
+                .card-circle
+                    @include card($accent-color: $accent, $shape: 'circle')
             
             @include true.expect
-                .card
+                .card-circle
+                    background-color: $bg
+                    color: $text
                     aspect-ratio: 1 / 1
                     border-radius: 50%

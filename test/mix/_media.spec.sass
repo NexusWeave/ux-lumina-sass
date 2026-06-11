@@ -1,16 +1,19 @@
+@use 'sass:map'
 @use 'sass:meta'
 @use '../../src/mix/_media' as media
+@use '../../src/map/devices-breakpoints' as devices-breakpoints
 @use '../../src/mix/../../node_modules/sass-true' as true
 
 @include true.test-module('Media Queries')
   @include true.test('Generates max-width media query for breakpoint md')
+    $md: map.get(devices-breakpoints.$breakpoints, 'md')
     @include true.assert
       @include true.output
         @include media.media-queries('md')
           color: blue
       
       @include true.expect
-        @media (max-inline-size: 64rem)
+        @media (max-inline-size: $md)
           color: blue
 
   @include true.test('Generates prefers-color-scheme')
@@ -24,13 +27,18 @@
           background: black
 
   @include true.test('Generates device-media for iphone')
+    $iphone: map.get(devices-breakpoints.$devices, 'iphone')
+    $min-inline: map.get($iphone, 'inline-size')
+    $max-inline: $min-inline + 0.125rem
+    $min-block: map.get($iphone, 'block-size')
+    $max-block: $min-block + 0.125rem
     @include true.assert
       @include true.output
         @include media.device-media('iphone')
           color: white
       
       @include true.expect
-        @media only screen and (min-inline-size: 20rem) and (max-inline-size: 20.125rem) and (min-block-size: 30rem) and (max-block-size: 30.125rem) and (orientation: portrait)
+        @media only screen and (min-inline-size: $min-inline) and (max-inline-size: $max-inline) and (min-block-size: $min-block) and (max-block-size: $max-block) and (orientation: portrait)
           color: white
 
   @include true.test('Generates background-image with default values')
@@ -57,4 +65,3 @@
         background-attachment: fixed
         background-clip: padding-box
         background-origin: content-box
-

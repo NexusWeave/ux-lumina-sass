@@ -1,5 +1,7 @@
+@use 'sass:map'
 @use 'sass:meta'
 @use '../../src/mix/_generators' as generators
+@use '../../src/map/inputs' as inputs
 @use '../../src/mix/../../node_modules/sass-true' as true
 
 @include true.test-module('Icon Generator')
@@ -34,19 +36,11 @@
       
       @include true.expect
         input[type="text"]
-          cursor: text
-          font-size: 1rem
-          line-height: 1.5
-          padding: 0.5rem 1rem
-          border-radius: 0.5rem
-          box-sizing: border-box
-          focus-outline: rgb(0, 120, 215)
-          background-color: rgb(255, 255, 255)
-          border: rgb(204, 204, 204) solid 0.0625rem
-          outline: 0.0625rem solid rgb(0, 120, 215)
+          @each $prop, $val in inputs.$default-input-props
+            #{$prop}: $val
         
         input[type="text"]::focus
-          outline: rgb(0, 120, 215)
+          outline: map.get(inputs.$default-input-props, 'focus-outline')
         
         &::-webkit-slider-runnable-track
           block-size: 0.4rem
@@ -60,4 +54,3 @@
           background: #0078d7
           border-radius: 50%
           margin-top: -0.3rem
-

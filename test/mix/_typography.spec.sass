@@ -48,6 +48,27 @@
   @include true.test('Detects generic category names')
     @include true.assert-equal(func-typo.font-family-of('mono'), monospace)
     @include true.assert-equal(func-typo.font-family-of('serif'), serif)
+    @include true.assert-equal(func-typo.font-family-of('icons'), 'bootstrap-icons')
+
+  @include true.test('Handles bootstrap keyword')
+    @include true.assert
+      @include true.output
+        .test-bootstrap
+          @include typo.font('bootstrap')
+      
+      @include true.expect
+        .test-bootstrap
+          font-family: "Bootstrap", "bootstrap-icons", "Nunito", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+
+  @include true.test('Handles bootstrap-icons font name')
+    @include true.assert
+      @include true.output
+        .test-bi
+          @include typo.font('bootstrap-icons')
+      
+      @include true.expect
+        .test-bi
+          font-family: "bootstrap-icons"
 
   @include true.test('Provides fallbacks for unknown fonts in font-family-of')
     @include true.assert-equal(func-typo.font-family-of('MyCustomFont'), ('Nunito', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif))

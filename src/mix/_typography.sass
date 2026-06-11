@@ -18,16 +18,24 @@
 
   @if func-typo.is-known-font($font)
     $family: $detected-family
+
+    @if map.has-key(fonts.$fonts, $font)
+      $font: null
   
   @else if $family == null
     $family: $detected-family
+
     @if $font != null and $quiet == false
       @warn "Font '#{$font}' not found in configuration map. Defaulting to stack: '#{$font}', #{$family}."
 
   @if meta.type-of($font) == 'list'
     $last: list.nth($font, list.length($font))
+
     @if $last == $family
       $family: null
+  
+  @if $font == $family
+    $family: null
 
   @if $font != null
     font-family: $font, $family

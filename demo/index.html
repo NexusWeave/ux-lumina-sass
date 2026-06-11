@@ -17,22 +17,12 @@
         <nav class="flex-center" style="flex-wrap: wrap; gap: 0.5rem;">
             <a href="#lumina-sass-color">color</a>
             <a href="#lumina-sass-flexbox">flexbox</a>
-            <a href="#lumina-sass-map">map/_inputs</a>
-            <a href="#lumina-sass-mix">mix/_index</a>
-            <a href="#lumina-sass-mix-elements">mix/_elements</a>
-            <a href="#lumina-sass-mix-generators">mix/_generators</a>
-            <a href="#lumina-sass-mix-buttons">mix/_buttons</a>
-            <a href="#lumina-sass-mix-alerts">mix/_alerts</a>
-            <a href="#lumina-sass-mix-typography">mix/_typography</a>
-            <a href="#lumina-sass-mix-cards">mix/_cards</a>
-            <a href="#lumina-sass-mix-theme-setup">mix/_theme-setup</a>
         </nav>
         <nav class="flex-center" style="margin-top: 1rem; flex-wrap: wrap; gap: 0.5rem;">
             <a href="#lumina-sass-mix-alerts">Alerts Docs</a>
             <a href="#lumina-sass-mix-cards">Cards Docs</a>
             <a href="#lumina-sass-mix-typography">Typography Docs</a>
             <a href="#lumina-sass-mix-theme-setup">Theme Setup Docs</a>
-            <a href="#lumina-sass-mix-elements">Elements Docs</a>
         </nav>
     </header>
 
@@ -44,31 +34,7 @@
     <p>Lumina SASS is a modular, design-token-driven styling library built for modern web applications. It provides standardized colors, flexbox utilities, and powerful mixins to streamline your development process.</p>
     </section></details>
 
-<details id="lumina-sass-mix-elements">
-  <summary><h2>lumina-sass/mix/_elements.sass</h2></summary>
-  <section class="section">
-    <figure>
-        <img src="assets/figure_demo.png" alt="Sample figure"/>
-      <figcaption>Figure 1 – Demonstration of a styled figure with caption.</figcaption>
-    </figure>
-  </section>
-  <details class="section">
-    <summary><h3>Quick Usage</h3></summary>
-    <pre><code>&lt;!-- HTML --&gt;
-&lt;figure&gt;
-  &lt;img src="assets/figure_demo.png" alt="Sample figure"/&gt;
-  &lt;figcaption&gt;Figure 1 – Demonstration of a styled figure with caption.&lt;/figcaption&gt;
-&lt;/figure&gt;
 
-&lt;!-- SASS --&gt;
-figure
-  img
-    aspect-ratio: 16 / 9
-    object-fit: cover
-  figcaption
-    @include font($style: italic)</code></pre>
-  </details>
-</details>
   <details id="lumina-sass-map">
     <summary><h2>lumina-sass/map/_inputs.sass</h2></summary>
     
@@ -455,9 +421,20 @@ figure
 
 // This generates all icon utility classes
 @include icon-generator</code></pre>
-                <details class="section">
+            </details>
+
+            <details class="section">
+                <summary><h3>Academic</h3></summary>
+                <div class="grid">
+                    <div class="demo-icon-card school"><span>School</span></div>
+                    <div class="demo-icon-card diploma"><span>Diploma</span></div>
+                </div>
+            </details>
+
+            <details class="section">
                 <summary><h3>Communication</h3></summary>
                 <div class="grid">
+                    <div class="demo-icon-card email"><span>Email</span></div>
                     <div class="demo-icon-card mail"><span>Mail</span></div>
                     <div class="demo-icon-card github"><span>GitHub</span></div>
                     <div class="demo-icon-card ytube"><span>YouTube</span></div>
@@ -469,38 +446,66 @@ figure
             </details>
 
             <details class="section">
+                <summary><h3>Alerts</h3></summary>
+                <div class="grid">
+                    <div class="demo-icon-card warning"><span>Warning</span></div>
+                    <div class="demo-icon-card success"><span>Success</span></div>
+                    <div class="demo-icon-card error"><span>Error</span></div>
+                    <div class="demo-icon-card info"><span>Info</span></div>
+                </div>
+            </details>
+
+            <details class="section">
                 <summary><h3>Documents</h3></summary>
                 <div class="grid">
                     <div class="demo-icon-card pdf"><span>PDF</span></div>
+                    <div class="demo-icon-card dir"><span>Directory</span></div>
+                    <div class="demo-icon-card default"><span>Default</span></div>
                 </div>
             </details>
 
             <details class="section">
-                <summary><h3>Controls & Navigation</h3></summary>
+                <summary><h3>Controls & Inputs</h3></summary>
                 <div class="grid">
                     <div class="demo-icon-card radio"><span>Radio</span></div>
-                    <div class="demo-icon-card chkbox"><span>Checkbox</span></div>
-                    <div class="demo-icon-card refresh"><span>Refresh</span></div>
-                    <div class="demo-icon-card list"><span>List</span></div>
-                    <div class="demo-icon-card grid-icon"><span>Grid</span></div>
+                    <div class="demo-icon-card checkbox"><span>Checkbox</span></div>
+                    <div class="demo-icon-card color"><span>Color</span></div>
+                    <div class="demo-icon-card hidden"><span>Hidden</span></div>
+                    <div class="demo-icon-card tel"><span>Tel</span></div>
+                    <div class="demo-icon-card url"><span>URL</span></div>
+                    <div class="demo-icon-card text"><span>Text</span></div>
+                    <div class="demo-icon-card search"><span>Search</span></div>
+                    <div class="demo-icon-card number"><span>Number</span></div>
+                    <div class="demo-icon-card password"><span>Password</span></div>
                 </div>
             </details>
 
             <details class="section">
-                <summary><h3>Professional & Academic</h3></summary>
+                <summary><h3>Video Controls</h3></summary>
                 <div class="grid">
-                    <div class="demo-icon-card chart"><span>Chart</span></div>
-                    <div class="demo-icon-card briefcase"><span>Briefcase</span></div>
-                    <div class="demo-icon-card library"><span>Library</span></div>
+                    <div class="demo-icon-card play-video"><span>Play</span></div>
+                    <div class="demo-icon-card pause-video"><span>Pause</span></div>
                 </div>
             </details>
 
             <details class="section">
-                <summary><h3>Devices & Tools</h3></summary>
+                <summary><h3>Datetime Pickers</h3></summary>
                 <div class="grid">
-                    <div class="demo-icon-card tel"><span>Telephone</span></div>
+                    <div class="demo-icon-card time"><span>Time</span></div>
+                    <div class="demo-icon-card week"><span>Week</span></div>
+                    <div class="demo-icon-card month"><span>Month</span></div>
+                    <div class="demo-icon-card calendar"><span>Calendar</span></div>
+                </div>
+            </details>
+
+            <details class="section">
+                <summary><h3>Misc Icons</h3></summary>
+                <div class="grid">
+                    <div class="demo-icon-card map-pin"><span>Map Pin</span></div>
+                    <div class="demo-icon-card collaborator"><span>Collaborator</span></div>
                     <div class="demo-icon-card alarm"><span>Alarm</span></div>
                     <div class="demo-icon-card cloud"><span>Cloud</span></div>
+                    <div class="demo-icon-card dot"><span>Dot</span></div>
                     <div class="demo-icon-card code"><span>Code</span></div>
                 </div>
             </details>          </details>
@@ -564,6 +569,7 @@ figure
                 <p class="demo-sans">This is sans-serif typography.</p>
                 <p class="demo-serif">This is serif typography.</p>
                 <p class="demo-mono">This is monospace typography.</p>
+                <p class="demo-bootstrap">This is bootstrap typography.</p>
                 <p class="demo-line-clamp">This is a very long text that will be truncated after exactly two lines because we are using the line clamp mixin provided by the Lumina SASS typography module.</p>
             </section>
         </details>

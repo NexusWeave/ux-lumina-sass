@@ -1,9 +1,10 @@
 @use '../src' as *
 @use '../src/color' as c
+@use '../src/func/color' as func-color
 
 // Using library theme setup
 body
-  @include theme-setup()
+  @include theme-setup($accent-color: c.$accent-slate-blue)
   background: linear-gradient(135deg, c.$soft-white 0%, rgba(c.$accent-slate-blue, 0.05) 100%)
   background-attachment: fixed
   min-height: 100vh
@@ -39,25 +40,17 @@ header
     gap: 1rem
 
     a
-      display: inline-block
-      padding: 0.6rem 1.2rem
-      border-radius: 0.5rem
       @include text-adjustments($decoration: none)
-      @include font($weight: 600)
-      @include background-color(c.$accent-slate-blue, c.$white)
-      transition: all 0.3s ease-in-out
-      box-shadow: 0 0.25rem 0.375rem rgba(0,0,0,0.1)
+      @include base-btn($bg-color: c.$accent-slate-blue, $size: 1rem, $weight: 600)
+      margin: 0 // Override base-btn margin to rely on nav gap
 
       &:hover
         @include background-color(c.$accent-salmon)
-        transform: translateY(-0.125rem)
-        box-shadow: 0 0.375rem 0.5rem rgba(0,0,0,0.15)
       
       &.active
         @include background-color(c.$accent-salmon)
         cursor: default
         pointer-events: none
-        box-shadow: inset 0 0.125rem 0.25rem rgba(0,0,0,0.2)
 
 h2
   margin-bottom: 1rem
@@ -123,6 +116,15 @@ h3
   border-radius: 0.5rem
   background-color: c.$white
 
+.grid
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))
+  gap: 1.5rem
+  margin-top: 1rem
+
+  .card, .demo-icon-card
+    aspect-ratio: 1 / 1
+
 .demo-icon-card
   display: flex
   flex-direction: column
@@ -165,16 +167,16 @@ h3
 
 // Alerts
 .demo-alert-warning
-  @include alert($bg-color: c.$warning, $icon: 'alarm')
+  @include alert($bg-color: c.$warning, $icon: 'warning')
 
 .demo-alert-success
-  @include alert($bg-color: c.$success)
+  @include alert($bg-color: c.$success, $icon: 'success')
 
 .demo-alert-error
-  @include alert($bg-color: c.$error)
+  @include alert($bg-color: c.$error, $icon: 'error')
 
 .demo-alert-info
-  @include alert($bg-color: c.$info)
+  @include alert($bg-color: c.$info, $icon: 'info')
 
 // Typography
 .demo-sans
@@ -185,6 +187,9 @@ h3
 
 .demo-mono
   @include monospace()
+
+.demo-bootstrap
+  @include font('bootstrap')
 
 .demo-line-clamp
   @include line-clamp(2)
@@ -214,12 +219,22 @@ $demo-colors: ('accent-lavender': c.$accent-lavender, 'accent-salmon': c.$accent
 @each $name, $color in $demo-colors
   .#{$name}
     @include background-color($color)
+    
+    code
+      // Calculate best text color using WCAG contrast-ratio
+      $light-contrast: func-color.contrast-ratio($color, c.$white)
+      $dark-contrast: func-color.contrast-ratio($color, c.$dark-grey)
+      $text-color: c.$dark-grey
+      @if $light-contrast > $dark-contrast
+        $text-color: c.$white
+      
+      color: $text-color
+      background-color: rgba($text-color, 0.2)
 
-// Generate all icons (defaults to bootstrap-icons)
+// Generate all icons (defaults to icons)
 @include icon-generator()
 
-// Generate input styling
-@include input-generator(null, c.$github-gray, ('color': c.$dark-grey, 'background-color': c.$white))
+// Input styling is now handled directly by theme-setup
 
 // Sizing utility classes used in the demo
 .w100p

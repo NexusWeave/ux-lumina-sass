@@ -1,9 +1,11 @@
 @use 'sass:color'
+@use '../color' as c
 @use 'misc-styling' as *
 @use 'typography' as typo
-@use '../color/palette/groovy-70s' as *
+@use '../func/color' as func-color
 
-@mixin base-btn($bg-color: $groovy-70s-cream, $text-color: $groovy-70s-warm-white, $border-color: null, $size: 1em, $weight: bold)
+
+@mixin base-btn($bg-color: c.$light-blue, $text-color: null, $border-color: null, $size: 1em, $weight: bold)
 
     @if $border-color == null
         border: none
@@ -24,11 +26,13 @@
 
     &:hover
         transform: scale(1.05)
-        background-color: color.adjust($bg-color, $lightness: -5%)
+        $hover-bg: color.adjust($bg-color, $lightness: -5%)
+        @include background-color($hover-bg)
 
     &:active
         transform: scale(0.95)
-        background-color: color.adjust($bg-color, $lightness: -10%)
+        $active-bg: color.adjust($bg-color, $lightness: -10%)
+        @include background-color($active-bg)
 
     &:disabled
         opacity: 0.3

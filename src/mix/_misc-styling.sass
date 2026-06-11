@@ -1,3 +1,16 @@
-@mixin background-color($bg-color, $text-color)
-    color: rgba($text-color, 1)
-    background-color: rgba($bg-color, 1)
+@use 'sass:meta'
+@use '../color' as c
+@use '../func/color' as func-color
+
+/// Sets background color and automatically handles text color contrast if not provided.
+/// @param {Color|String} $bg-color [c.$soft-white] - The background color to apply.
+/// @param {Color|String} $text-color [null] - Optional text color. If null, calculated based on contrast.
+/// @param {Color} $blend-bg [c.$soft-white] - Background to blend against if $bg-color is semi-transparent.
+@mixin background-color($bg-color: c.$soft-white, $text-color: null, $blend-bg: c.$soft-white)
+    background-color: $bg-color
+
+    @if $text-color != null
+        color: $text-color
+
+    @else if meta.type-of($bg-color) == 'color'
+        color: func-color.best-contrast-color($bg-color, $background: $blend-bg)

@@ -1,0 +1,26 @@
+@use 'sass:map'
+@use '../color' as c
+@use 'misc-styling' as *
+@use '../func/color' as func-color
+
+/// Renders a card with automated text contrast and optional overrides.
+/// @param {Color|null} $accent-color [null] - The accent color to derive card colors from.
+/// @param {Color} $context-bg [c.$soft-white] - The background context to use if no accent color is provided.
+/// @param {Map} $overrides [()] - A map for overriding 'background' or 'text' colors.
+@mixin card($accent-color: null, $context-bg: c.$soft-white, $overrides: ())
+    // Derive defaults based on provided accent or context
+    $colors: func-color.derive-card-colors($accent-color, $context-bg)
+    
+    // Apply styles with overrides
+    $bg: map.get($colors, 'background')
+    @if map.has-key($overrides, 'background')
+        $bg: map.get($overrides, 'background')
+
+    $text: map.get($colors, 'text')
+    @if map.has-key($overrides, 'text')
+        $text: map.get($overrides, 'text')
+    
+    @include background-color($bg, $text)
+    
+    aspect-ratio: 1 / 1
+    border-radius: 5%

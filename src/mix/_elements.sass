@@ -1,34 +1,37 @@
+@use 'sass:color'
+@use '../color' as c
+@use 'misc-styling' as *
 @use 'typography' as typo
-@use '../color/alerts' as *
+@use '../color/alerts' as alerts
 
-@mixin link-color($color, $color-hover, $color-active, $color-visited)
+
+/// Applies link colors using theme-aware defaults.
+@mixin link-color($color: c.$light-blue, $color-hover: color.adjust(c.$light-blue, $lightness: -10%), $color-active: color.adjust(c.$light-blue, $lightness: -20%), $color-visited: c.$light-blue)
 
     a
         [aria-disabled="true"]
-            color: $disabled
+            @include background-color(transparent, alerts.$disabled)
             cursor: not-allowed
             pointer-events: none
-            text-decoration: none
+            @include typo.text-adjustments($decoration: none)
 
         &:active
-            color: $color-active
+            @include background-color(transparent, $color-active)
         
         &.external-link
-            text-decoration: underline
+            @include typo.text-adjustments($decoration: underline)
 
         @media (hover: hover)
-
             &:hover
-                color: $color-hover
                 border-radius: 0.5em
+                @include background-color(transparent, $color-hover)
 
         &:visited
-            color: $color-visited
-        
+            @include background-color(transparent, $color-visited)
 
-        h1, h2, h3, h4, h5, h6
-            color: $color !important
+        h1, h2, h3, h4, h5, h6, p, span, strong, em, b, i, div, li, article, section
+            @include background-color(transparent, $color)
 
-        color: $color
         cursor: pointer
         @include typo.text-adjustments($quiet: true)
+        @include background-color(transparent, $color)

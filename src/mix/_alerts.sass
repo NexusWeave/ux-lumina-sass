@@ -1,0 +1,35 @@
+@use 'misc-styling' as *
+@use '../color/alerts' as alerts
+@use 'typography' as typo
+@use '../func/color' as func-color
+
+/// Applies alert styles with automated theme-aware contrast and strong typography.
+/// @param {Color} $bg-color [alerts.$warning] - The alert background color.
+/// @param {String|null} $icon [null] - Optional icon name (expects bootstrap-icons).
+@mixin alert($bg-color: alerts.$warning, $icon: null)
+    @include background-color($bg-color)
+    @include typo.font($weight: 800)
+    padding: 1em
+    margin: 1em 0
+    border-radius: 0.5em
+    border: 1px solid rgba(0, 0, 0, 0.1)
+    display: flex
+    align-items: center
+    gap: 0.5em
+
+    @if $icon != null
+        &::before
+            font-family: 'bootstrap-icons'
+            font-weight: normal
+            // Map icon names to content codes (simplified approach)
+            @if $icon == 'warning'
+                content: "\f33a"
+            @else if $icon == 'error'
+                content: "\F335"
+            @else if $icon == 'info'
+                content: "\F431"
+            @else if $icon == 'success'
+                content: "\F272"
+            
+            // Icon color matches alert text color for accessibility
+            color: inherit 

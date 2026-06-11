@@ -58,8 +58,9 @@
     "dev": "npm run build && npm run serve",
     "module-test": "tsx test/ts/module-test.ts",
     "build": "sass demo/style.sass demo/style.css",
+    "test:warnings": "tsx test/ts/dependency-warnings.ts",
     "test:sass": "sass test/index.spec.sass test/index.spec.css",
-    "test": "npm run test:sass && npm run lint:sass && npm run module-test"
+    "test": "npm run test:warnings && npm run test:sass && npm run lint:sass && npm run module-test"
   },
   "files": [
     "src"

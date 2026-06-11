@@ -1,10 +1,10 @@
 @use 'sass:map'
+@use 'generators'
+@use 'typography' as typo
 @use 'misc-styling' as *
 @use '../color/alerts' as alerts
-@use 'typography' as typo
 @use '../func/color' as func-color
 @use '../func/icons' as func-icons
-@use 'flexbox-mixin' as f
 
 /// Mixin for alert icons
 @mixin _alert-icon($icon)
@@ -26,7 +26,8 @@
 
     @include typo.font($weight: 800)
     @include background-color($bg-color)
-    @include f.flex(row, nowrap, null, center)
+    @include generators.flexbox-generator('flex-row')
+    align-items: center
 
     @if $icon != null
         @include _alert-icon($icon)

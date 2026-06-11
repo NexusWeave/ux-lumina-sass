@@ -13,9 +13,39 @@
             
             @include true.expect
                 .alert
-                    background-color: alerts.$warning
-                    color: func-color.best-contrast-color(alerts.$warning)
+                    gap: 0.5em
                     padding: 1em
                     margin: 1em 0
                     border-radius: 0.5em
                     border: 1px solid rgba(0, 0, 0, 0.1)
+                    font-weight: 800
+                    background-color: alerts.$warning
+                    color: func-color.best-contrast-color(alerts.$warning)
+                    display: flex
+                    flex-wrap: nowrap
+                    flex-direction: row
+                    align-items: center
+
+    @include true.it('should apply an icon when provided')
+        @include true.assert
+            @include true.output
+                .alert-with-icon
+                    @include alert($icon: 'alarm')
+            
+            @include true.expect
+                .alert-with-icon
+                    gap: 0.5em
+                    padding: 1em
+                    margin: 1em 0
+                    border-radius: 0.5em
+                    border: 1px solid rgba(0, 0, 0, 0.1)
+                    font-weight: 800
+                    background-color: alerts.$warning
+                    color: func-color.best-contrast-color(alerts.$warning)
+                    display: flex
+                    flex-wrap: nowrap
+                    flex-direction: row
+                    align-items: center
+                    &::before
+                        font-family: 'bootstrap-icons'
+                        content: "\F102"

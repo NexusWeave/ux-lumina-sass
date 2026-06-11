@@ -1,5 +1,6 @@
 @use 'sass:meta'
 @use '../color' as c
+@use 'typography' as typo
 @use '../func/color' as func-color
 
 /// Sets background color and automatically handles text color contrast if not provided.
@@ -17,8 +18,8 @@
 
 /// Applies icon font properties.
 /// @param {String} $icon-content - The unicode character for the icon.
-/// @param {String} $font-family ['bootstrap-icons'] - The font family to use.
-@mixin icon-style($icon-content, $font-family: 'bootstrap-icons')
+/// @param {String} $font-family ['icons'] - The font family to use.
+@mixin icon-style($icon-content, $font-family: 'icons')
     &::before
-        font-family: $font-family
+        @include typo.font($font-family)
         content: $icon-content

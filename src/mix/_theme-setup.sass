@@ -40,6 +40,11 @@
         border: 1px solid rgba($text, 0.2)
         @include background-color($input-bg, $text)
 
+        &:hover
+            $hover-color: func-color.contrast-color-fallback($bg, $accent-color)
+            outline: 1px solid rgba($hover-color, 0.5)
+            outline-offset: 1px
+
         &:focus
             // Use accent color if provided, otherwise auto-calculate high contrast
             $outline-color: func-color.contrast-color-fallback($bg, $accent-color)

@@ -1,6 +1,7 @@
 @use 'sass:map' as map
 @use "sass:list" as list
 @use "sass:meta" as meta
+@use 'typography' as typo
 @use '../color/base' as base
 @use '../map/inputs' as inputs
 @use '../map/icons' as icon-map
@@ -16,12 +17,12 @@
         @if $color
           color: $color !important
 
-        font-family: $font-family
+        @include typo.font($font-family)
         content: map.get($props, icon)
   @else
     @warn "Icon #{$name} not found in icon mapping."
 
-@mixin icon-generator($name: null, $color: rgb(64, 64, 64), $font-family: 'bootstrap-icons')
+@mixin icon-generator($name: null, $color: rgb(64, 64, 64), $font-family: 'icons')
   @if icon-map.$icons
     @if $name == null
       @each $category, $maps in icon-map.$icons
@@ -31,7 +32,7 @@
               @if $color
                 color: $color !important
 
-              font-family: $font-family
+              @include typo.font($font-family)
               content: map.get($props, icon)
               
     @else

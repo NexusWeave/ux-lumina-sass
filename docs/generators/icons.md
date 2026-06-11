@@ -13,6 +13,21 @@ The `icon-generator($name: null, $color: null, $font-family: 'bootstrap-icons')`
   - The `$color` parameter allows for the overriding of the default icon color.
   - The `$font-family` parameter defaults to `bootstrap-icons` but can be adjusted to support alternative icon sets.
 
+## Icon Style Mixin
+
+The `icon-style($icon-content, $font-family: 'icons')` mixin applies icon font properties to an element, typically used within a pseudo-element.
+
+- **Direct Usage:** Allows for manually specifying the unicode content of an icon.
+- **Custom Font Support:** Supports overriding the default font family.
+
+```sass
+@use 'lumina-sass/src/mix' as mix;
+
+.custom-icon {
+  @include mix.icon-style("\f123");
+}
+```
+
 ## Implementation Examples
 
 ```sass
@@ -49,6 +64,10 @@ Lumina Sass provides built-in support for the following icon frameworks:
 | Miscellaneous | Dot |
 | Miscellaneous | Code |
 | Miscellaneous | Default |
+| Alerts | Warning |
+| Alerts | Success |
+| Alerts | Error |
+| Alerts | Info |
 | Communication | Email |
 | Communication | Mail |
 | Communication | GitHub |

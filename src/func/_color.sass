@@ -76,13 +76,36 @@
         @return $light
 
 /// Sets up global webpage theme colors.
-@function theme-colors($body-bg: c.$soft-white, $text-color: null)
+/// @param {Color} $body-bg [c.$soft-white] - The background color for the page.
+/// @param {Color} $text-color [null] - The text color. If null, automatically calculated.
+/// @param {Color|null} $accent-color [null] - The accent color to use for anchors and other elements.
+/// @param {Map} $custom-colors [()] - A map of custom colors to merge into the theme.
+/// @return {Map} - A map containing all theme colors.
+@function theme-colors($body-bg: c.$soft-white, $text-color: null, $accent-color: null, $custom-colors: ())
     $final-text: best-contrast-color($body-bg)
     @if $text-color != null
         $final-text: $text-color
-    @return (
+
+    // Derive anchor color if not provided as accent
+    $anchor: $accent-color
+    @if $anchor == null
+        // Default to a blue that contrasts well
+        $anchor: best-contrast-color($body-bg, $light: c.$light-blue, $dark: color.adjust(c.$light-blue, $lightness: -10%))
+    
+    // Derive card colors
+    $card-colors: derive-card-colors($accent-color, $body-bg)
+    
+    // Derive code and abbr colors
+    $code-bg: rgba($final-text, 0.1)
+    $abbr-underline: rgba($final-text, 0.5)
+
+    $base-colors: (
+        'anchor': $anchor,
+        'code-bg': $code-bg,
         'body-bg': $body-bg, 
         'text': $final-text,
+        'cards': $card-colors,
+        'abbr-underline': $abbr-underline,
         'alerts': (
             'warning': alerts.$warning,
             'error': alerts.$error,
@@ -90,6 +113,18 @@
             'success': alerts.$success
         )
     )
+
+    @return map.merge($base-colors, $custom-colors)
+
+/// Ensures a high-contrast color is returned, prioritizing an accent color if provided.
+/// @param {Color} $bg - The background color.
+/// @param {Color|null} $accent [null] - The preferred accent color.
+/// @return {Color} - The accent color if provided, otherwise the best contrast color.
+@function contrast-color-fallback($bg, $accent: null)
+    @if $accent != null
+        @return $accent
+    // Ensure we use a high-contrast color that works against both light and dark backgrounds
+    @return best-contrast-color($bg, $light: c.$white, $dark: base.$dark-grey)
 
 /// Derives card background and text colors based on an accent color or context background.
 @function derive-card-colors($accent-color: null, $context-bg: c.$soft-white)

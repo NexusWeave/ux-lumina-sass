@@ -1,31 +1,35 @@
 @use 'sass:map'
 
 $sans-serif: (
+  'Bootstrap': sans-serif, 'bootstrap-icons': sans-serif,
+  'Inter': sans-serif, 'Tahoma': sans-serif, 'Verdana': sans-serif,
   'Roboto': sans-serif, 'Helvetica': sans-serif, 'Arial': sans-serif,
+  'Gill Sans': sans-serif, 'Futura': sans-serif, 'Ubuntu': sans-serif,
   'Work Sans': sans-serif, 'Nunito': sans-serif, 'Open Sans': sans-serif,
   'Lato': sans-serif, 'Montserrat': sans-serif, 'Source Sans Pro': sans-serif,
-  'Inter': sans-serif, 'Tahoma': sans-serif, 'Verdana': sans-serif,
-  'Gill Sans': sans-serif, 'Futura': sans-serif, 'Ubuntu': sans-serif,
   'Noto Sans': sans-serif, 'Noto Sans KR': sans-serif, 'Noto Sans JP': sans-serif,
-  'Noto Sans SC': sans-serif, 'Noto Sans Arabic': sans-serif, 'Noto Sans Hebrew': sans-serif,
-  'Bootstrap': sans-serif, 'bootstrap-icons': sans-serif
+  'Noto Sans SC': sans-serif, 'Noto Sans Arabic': sans-serif, 'Noto Sans Hebrew': sans-serif
 )
 
 $serif: (
+  'Noto Serif SC': serif,
   'Georgia': serif, 'Times New Roman': serif, 'Palatino': serif,
   'Libre Baskerville': serif, 'Merriweather': serif, 'PT Serif': serif,
-  'Noto Serif': serif, 'Noto Serif KR': serif, 'Noto Serif JP': serif,
-  'Noto Serif SC': serif
+  'Noto Serif': serif, 'Noto Serif KR': serif, 'Noto Serif JP': serif
 )
 
 $mono: (
+  'Menlo': monospace, 'Monaco': monospace, 'Noto Mono': monospace,
   'Courier New': monospace, 'Consolas': monospace, 'Ubuntu Mono': monospace,
-  'Source Code Pro': monospace, 'Fira Code': monospace, 'Inconsolata': monospace,
-  'Menlo': monospace, 'Monaco': monospace, 'Noto Mono': monospace
+  'Source Code Pro': monospace, 'Fira Code': monospace, 'Inconsolata': monospace
 )
 
+$icon-fonts: (
+  'Bootstrap':'bootstrap-icons'
+)
 $fonts: (
   'mono': $mono,
   'serif': $serif,
+  'icons': $icon-fonts,
   'sans-serif': $sans-serif
 )

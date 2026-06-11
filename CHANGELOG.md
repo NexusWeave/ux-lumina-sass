@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.11.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.10.2...v2.11.0) (2026-06-11)
+
+
+### Features
+
+* **theme:** dynamically generate hover outlines and apply smart contrast to code elements. ([2be3d6b](https://github.com/NexusWeave/ux-lumina-sass/commit/2be3d6b9b8a3db1828b327101ae9e322b796bf6a))
+
+
+### Bug Fixes
+
+* **alerts:** update alert structure to ensure proper integration with theme components. ([631f8d1](https://github.com/NexusWeave/ux-lumina-sass/commit/631f8d15d487d102d06cac10184402e9f6783229))
+* **icons:** correct font generation and map missing icons to restore rendering. ([e0e22f3](https://github.com/NexusWeave/ux-lumina-sass/commit/e0e22f3a36a650c7b90a1b07c80aecae533523e0))
+* **typography:** enhance font mapping and stack resolution to improve compatibility. ([b605991](https://github.com/NexusWeave/ux-lumina-sass/commit/b6059916873ca33a602fb65fee08c5af84346a4d))
+
 ### [2.10.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.10.1...v2.10.2) (2026-06-11)
 
 ### [2.10.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.10.0...v2.10.1) (2026-06-11)

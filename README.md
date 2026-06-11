@@ -16,7 +16,7 @@ Lumina SASS is architected with modularity and efficiency as core principles. Ke
 - **Enhanced Developer Experience:** An intuitive API featuring streamlined mixins.
 - **Modern Standards Compliance:** Full compatibility with Dart Sass and the `@use` module system.
 
-> **Note:** This library utilizes the **Sass Indented Syntax** (.sass). It remains compatible with SCSS projects via the `@use` directive. Demonstration examples employ the indented syntax to maintain consistency with the source codebase.
+> **Note:** This library utilizes the **Sass Indented Syntax** (.sass). It remains compatible with Sass projects via the `@use` directive. Demonstration examples employ the indented syntax to maintain consistency with the source codebase.
 
 ## Installation
 

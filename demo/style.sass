@@ -1,31 +1,39 @@
 @use '../src' as *
+@use '../src/color' as c
 
-// Basic Reset
-*
-  margin: 0
-  padding: 0
-  box-sizing: border-box
-
+// Using library theme setup
 body
-  @include font($font: 'Roboto')
-  @include text-wrap-safe
-  background-color: $soft-white
-  color: $text-light-1
-  line-block-size: 1.6
-  padding: 1.5rem
+  @include theme-setup()
+  background: linear-gradient(135deg, c.$soft-white 0%, rgba(c.$accent-slate-blue, 0.05) 100%)
+  background-attachment: fixed
+  min-height: 100vh
 
 header
-  text-align: center
-  margin-bottom: 1.5rem
-  border-bottom: 0.1875rem solid $accent-slate-blue // 3px
-  padding-bottom: 1rem
+  @include text-adjustments($alignment: center)
+  margin-bottom: 2.5rem
+  border-bottom: 1px solid rgba(c.$accent-slate-blue, 0.1)
+  padding: 2rem 1rem
+  background: rgba(255, 255, 255, 0.6)
+  backdrop-filter: blur(16px)
+  border-radius: 0 0 2rem 2rem
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03)
   
+  .header-title-container
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 1.5rem
+    margin-bottom: 1rem
+
+  .header-logo
+    max-height: 80px
+
   h1
     @include font($size: 2.5rem, $weight: 800)
-    color: $accent-salmon
+    @include background-color(transparent, c.$accent-salmon)
     text-transform: uppercase
     letter-spacing: 0.1rem
-    margin-bottom: 1rem
+    margin-bottom: 0
 
   nav
     gap: 1rem
@@ -34,388 +42,229 @@ header
       display: inline-block
       padding: 0.6rem 1.2rem
       border-radius: 0.5rem
-      text-decoration: none
+      @include text-adjustments($decoration: none)
       @include font($weight: 600)
-      background-color: $accent-slate-blue
-      color: $white
+      @include background-color(c.$accent-slate-blue, c.$white)
       transition: all 0.3s ease-in-out
       box-shadow: 0 0.25rem 0.375rem rgba(0,0,0,0.1)
 
       &:hover
-        background-color: $accent-salmon
+        @include background-color(c.$accent-salmon)
         transform: translateY(-0.125rem)
         box-shadow: 0 0.375rem 0.5rem rgba(0,0,0,0.15)
       
       &.active
-        background-color: $accent-salmon
+        @include background-color(c.$accent-salmon)
         cursor: default
         pointer-events: none
         box-shadow: inset 0 0.125rem 0.25rem rgba(0,0,0,0.2)
 
 h2
   margin-bottom: 1rem
-  border-left: 0.3125rem solid $accent-salmon // 5px
+  border-left: 0.3125rem solid c.$accent-salmon // 5px
   padding-left: 0.5rem
-  color: $accent-slate-blue
+  @include background-color(transparent, c.$accent-slate-blue)
   @include font($size: 1.5rem)
 
+main > details
+  flex: 1
+  min-width: 450px
+  margin-bottom: 0
+  background: rgba(255, 255, 255, 0.8)
+  backdrop-filter: blur(10px)
+  border-radius: 1rem
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05)
+  border: 1px solid rgba(255, 255, 255, 0.4)
+  padding: 1.5rem
+  transition: transform 0.3s ease, box-shadow 0.3s ease
+
+  &:hover
+    transform: translateY(-5px)
+    box-shadow: 0 12px 40px rgba(c.$accent-slate-blue, 0.1)
+
 h3
-  color: $sea-green
+  @include background-color(transparent, c.$sea-green)
   margin-bottom: 0.5rem
 
 .section
-  margin-bottom: 1.5rem
+  margin-bottom: 2rem
 
-details
-  margin-bottom: 1rem
-  padding: 0.5rem
+.demo-group-container
+  gap: 1.5rem
+  margin-top: 1rem
+  padding: 1rem
+  background-color: rgba(0, 0, 0, 0.02)
   border-radius: 0.5rem
-  transition: all 0.3s ease
 
-  &[open]
-    background: rgba($accent-slate-blue, 0.03)
-    border-left: 0.25rem solid $accent-slate-blue
+.demo-box
+  border: 2px dashed c.$accent-slate-blue
+  border-radius: 0.5rem
+  padding: 1rem
+  background-color: rgba(c.$accent-slate-blue, 0.05)
+  min-height: 100px
+  position: relative
+  
+  // Optional label to show what the box is demonstrating
+  &::before
+    position: absolute
+    top: -10px
+    left: 10px
+    background: c.$white
+    padding: 0 5px
+    font-size: 0.75rem
+    color: c.$accent-slate-blue
+    border: 1px solid c.$accent-slate-blue
+    border-radius: 4px
 
-  summary
-    cursor: pointer
-    list-style: none
-    outline: none
-    padding: 0.5rem
-    border-radius: 0.25rem
-    transition: background 0.2s
+.flex-utility-group
+  margin-bottom: 2rem
+  padding: 1rem
+  border: 1px solid rgba(c.$accent-slate-blue, 0.2)
+  border-radius: 0.5rem
+  background-color: c.$white
 
-    &::-webkit-details-marker
-      display: none
+.demo-icon-card
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  gap: 0.75rem
+  padding: 1.5rem
+  border: 1px solid rgba(c.$accent-slate-blue, 0.2)
+  border-radius: 0.5rem
+  background-color: c.$white
+  
+  &::before
+    font-size: 2.5rem
+    color: c.$accent-slate-blue
 
-    &:hover
-      background: rgba($accent-salmon, 0.1)
+  span
+    font-size: 0.85rem
+    color: c.$github-gray
+    font-weight: 600
 
-    h2, h3, h4
-      display: inline-block
-      margin-bottom: 0
-      vertical-align: middle
+// Demo: Card usage with theme-aware mixin
+.demo-card
+  @include card()
 
-    &::before
-      content: '▶'
-      display: inline-block
-      margin-right: 0.5rem
-      font-size: 0.8rem
-      transition: transform 0.2s
-      color: $accent-slate-blue
+.demo-card-accent
+  @include card($accent-color: c.$light-blue)
 
-  .section
-    margin-bottom: 1.5rem
+.demo-card-override
+  @include card($overrides: ('background': c.$discord-blue, 'text': c.$white))
 
-  .demo-group-container
-    background: #f8f9fa
-    padding: 1.5rem
-    border-radius: 12px
-    border: 1px solid #dee2e6
-    gap: 1rem
-@include media-queries('sm')
-  .demo-group-container
-    flex-direction: column
-    align-items: stretch
-  .demo-box
-    min-inline-size: auto
-    inline-size: 100%
-    align-items: stretch
+// Buttons
+.demo-btn-primary
+  @include base-btn($bg-color: c.$light-blue)
 
-    &.align-items-start
-      align-items: flex-start
+.demo-btn-secondary
+  @include base-btn($bg-color: c.$github-gray)
 
-  .demo-box
-    padding: 1.5rem
-    border-radius: 8px
-    border: 1px dashed #adb5bd
-    flex: 1
-    min-inline-size: 300px
+.demo-btn-danger
+  @include base-btn($bg-color: c.$logo-red)
 
-    &.min-w-auto
-      min-inline-size: auto
-    &.flex-1
+// Alerts
+.demo-alert-warning
+  @include alert($bg-color: c.$warning, $icon: 'warning')
 
-      flex: 1
-    &.flex-2
-      flex: 2
-    &.min-w200
-      min-inline-size: 200px
-    &.min-w400
-      min-inline-size: 400px
-    &.min-w500
-      min-inline-size: 500px
-    &.min-h100
-      min-block-size: 100px
-    &.min-h120
-      min-block-size: 120px
-    &.min-h150
-      min-block-size: 150px
-    &.min-h180
-      min-block-size: 180px
-    &.min-h200
-      min-block-size: 200px
-    &.min-h250
-      min-block-size: 250px
-    &.min-h300
-      min-block-size: 300px
-    &.min-h350
-      min-block-size: 350px
-// Device‑specific tweaks (portrait)
-@include device-media('iphone', portrait)
-  body
-    padding: 1rem
-  header h1
-    font-size: 2rem
+.demo-alert-success
+  @include alert($bg-color: c.$success, $icon: 'success')
 
-// Device‑specific tweaks (landscape)
-@include device-media('iphone', landscape)
-  .demo-group-container
-    flex-direction: row
-    justify-content: space-around
-  .demo-box
-    min-inline-size: 200px
+.demo-alert-error
+  @include alert($bg-color: c.$error, $icon: 'error')
 
-  .card
-    padding: 1.5rem 0.5rem
-    border-radius: 0.5rem
-    text-align: center
-    font-weight: bold
-    color: #404040
-    box-shadow: 0 0.25rem 0.375rem rgba(0,0,0,0.1)
-    font-size: 0.95rem
-    display: flex
-    flex-direction: column
-    justify-content: center
-    gap: 0.5rem
-    min-block-size: 6.25rem
+.demo-alert-info
+  @include alert($bg-color: c.$info, $icon: 'info')
 
-    &.w100p
-      inline-size: 100%
-    &.w200
-      inline-size: 200px
-    &.w250
-      inline-size: 250px
-    &.w400
-      inline-size: 400px
-    &.h40
-      block-size: 40px
-    &.h60
-      block-size: 60px
-    &.h80
-      block-size: 80px
-    &.h100
-      block-size: 100px
+// Typography
+.demo-sans
+  @include sans-serif()
 
-    code
-      font-size: 0.75rem
-      opacity: 0.8
-      display: block
-      font-family: 'Courier New', Courier, monospace
+.demo-serif
+  @include serif()
 
-// Brand Colors
-.github-gray
-  background-color: $github-gray !important
-  color: white !important
-.discord-blue
-  background-color: $discord-blue !important
-  color: white !important
-.facebook-blue
-  background-color: $facebook-blue !important
-  color: white !important
-.instagram-purple
-  background-color: $instagram-purple !important
-  color: white !important
-.messenger-blue
-  background-color: $messenger-blue !important
-  color: white !important
-.youtube-red
-  background-color: $youtube-red !important
-  color: white !important
-.linkedin-blue
-  background-color: $linked-in-blue !important
-  color: white !important
+.demo-mono
+  @include monospace()
 
-// Stacks
-.typescript-blue
-  background-color: $typescript-blue !important
-  color: white !important
-.go-teal
-  background-color: $go-teal !important
-  color: white !important
-.javascript-yellow
-  background-color: $javascript-yellow !important
-  color: #333 !important
-.compiled-orange
-  background-color: $compiled-orange !important
-  color: white !important
-.db-red
-  background-color: $db-red !important
-  color: white !important
-.workflow-blue
-  background-color: $workflow-blue !important
-  color: white !important
-.powershell-blue
-  background-color: $powershell-blue !important
-  color: white !important
+.demo-line-clamp
+  @include line-clamp(2)
+  max-width: 300px
 
-// OS & Tags
-.linux-orange
-  background-color: $linux-orange !important
-  color: white !important
-.windows-blue
-  background-color: $windows-blue !important
-  color: white !important
-.macos-silver
-  background-color: $macos-silver !important
-  color: #333 !important
-.fullstack-vibrant-orange
-  background-color: $fullstack-vibrant-orange !important
-  color: white !important
-
-// Accents
-.accent-salmon
-  background-color: $accent-salmon !important
-  color: white !important
-.accent-slate-blue
-  background-color: $accent-slate-blue !important
-  color: white !important
-.accent-lavender
-  background-color: $accent-lavender !important
-  color: $deep-midnight-blue !important
-
-// Base
-.deep-midnight-blue
-  background-color: $deep-midnight-blue !important
-  color: white !important
-.sea-green
-  background-color: $sea-green !important
-  color: white !important
-.logo-red
-  background-color: $logo-red !important
-  color: white !important
-
-// Neutrals
-.white
-  background-color: $white !important
-  color: #333 !important
-.soft-white
-  background-color: $soft-white !important
-  color: #333 !important
-.off-white
-  background-color: $off-white !important
-  color: #333 !important
-.dark-grey
-  background-color: $dark-grey !important
-  color: white !important
-
-// Groovy 70s
-.groovy-brown
-  background-color: $groovy-70s-earth-brown !important
-  color: white !important
-.groovy-green
-  background-color: $groovy-70s-avocado-green !important
-  color: #333 !important
-.groovy-orange
-  background-color: $groovy-70s-burnt-orange !important
-  color: white !important
-.groovy-yellow
-  background-color: $groovy-70s-mustard-yellow !important
-  color: #333 !important
-.groovy-cream
-  background-color: $groovy-70s-cream !important
-  color: #333 !important
-
-// UI & Status
-.warning
-  background-color: $warning !important
-  color: white !important
-.disabled
-  background-color: $disabled !important
-  color: white !important
-
-// Generate Icon Classes
-@include icon-generator
-
-// Icon colors
-.mail::before
-  color: $email-red
-.github::before
-  color: $github-gray !important
-.ytube::before
-  color: #ff0000
-.facebook::before
-  color: $facebook-blue
-.linkedin::before
-  color: $linked-in-blue
-.instagram::before
-  color: $instagram-purple
-.twitter::before
-  color: #1da1f2 !important
-  content: "\F5EF"
-
-.pdf::before
-  color: $pdf-red
-
-.radio::before, .checkbox::before
-  color: $accent-salmon
-.globe::before
-  color: $globe-green
-.map-pin::before
-  color: #e74c3c
-.calendar::before
-  color: $accent-slate-blue
-.search::before
-  color: $dark-grey
-
-.school::before, .diploma::before, .collaborator::before
-  color: $deep-midnight-blue !important
-
-.tel::before
-  color: $sea-green
-.alarm::before
-  color: $logo-red
-.cloud::before
-  color: $typescript-blue !important
-  content: "\F2C1"
-.code::before
-  color: $code-blue !important
-  content: "\F2C8"
-
-
-footer
+// Base Card styles and color classes
+.card
+  display: flex
+  align-items: center
+  justify-content: center
+  padding: 1.5rem
+  border-radius: 1rem
+  font-weight: 700
   text-align: center
-  margin-top: 1.5rem
-  color: $text-light-2
-  font-style: italic
-// -------------------------------------------------------------------
-// Demo: Input generator showcase
-// -------------------------------------------------------------------
+  min-height: 4rem
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05)
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease
+  cursor: pointer
+  border: 1px solid rgba(255, 255, 255, 0.2)
+  
+  &:hover
+    transform: scale(1.05) translateY(-5px)
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15)
+  
+$demo-colors: ('accent-lavender': c.$accent-lavender, 'accent-salmon': c.$accent-salmon, 'accent-slate-blue': c.$accent-slate-blue, 'compiled-orange': c.$compiled-orange, 'dark-grey': c.$dark-grey, 'db-red': c.$db-red, 'deep-midnight-blue': c.$deep-midnight-blue, 'disabled': c.$disabled, 'discord-blue': c.$discord-blue, 'facebook-blue': c.$facebook-blue, 'fullstack-vibrant-orange': c.$fullstack-vibrant-orange, 'github-gray': c.$github-gray, 'go-teal': c.$go-teal, 'groovy-brown': c.$groovy-70s-earth-brown, 'groovy-cream': c.$groovy-70s-cream, 'groovy-green': c.$groovy-70s-avocado-green, 'groovy-orange': c.$groovy-70s-burnt-orange, 'groovy-yellow': c.$groovy-70s-mustard-yellow, 'instagram-purple': c.$instagram-purple, 'javascript-yellow': c.$javascript-yellow, 'linkedin-blue': c.$linked-in-blue, 'linux-orange': c.$linux-orange, 'logo-red': c.$logo-red, 'macos-silver': c.$macos-silver, 'messenger-blue': c.$messenger-blue, 'off-white': c.$off-white, 'powershell-blue': c.$powershell-blue, 'sea-green': c.$sea-green, 'soft-white': c.$soft-white, 'typescript-blue': c.$typescript-blue, 'warning': c.$warning, 'white': c.$white, 'windows-blue': c.$windows-blue, 'workflow-blue': c.$workflow-blue, 'youtube-red': c.$youtube-red)
 
-figure
-  video.portrait-media
-    aspect-ratio: 9 / 16
-    max-inline-size: 20rem !important
+@each $name, $color in $demo-colors
+  .#{$name}
+    @include background-color($color)
 
-  video.landscape-media
-    aspect-ratio: 16 / 9
-    object-position: center 35%
+// Generate all icons (defaults to bootstrap-icons)
+@include icon-generator()
 
-  picture,
-  img
-    inline-size: 100%
-    object-fit: cover
-    aspect-ratio: 16 / 9
+// Generate input styling
+@include input-generator(null, c.$github-gray, ('color': c.$dark-grey, 'background-color': c.$white))
 
-  picture img
-    inline-size: 100%
-    object-fit: cover
-    aspect-ratio: 16 / 9
-
-  figcaption
-    @include font($style: italic)
-
-.demo__inputs
-  @include input-generator(null)   // Generates styles for *all* inputs
-
-.demo__inputs--custom-outline
-  @include input-generator('text', $custom: ('focus-outline': rgb(255, 0, 0)))
+// Sizing utility classes used in the demo
+.w100p
+  width: 100%
+.w200
+  width: 200px
+.w250
+  width: 250px
+.w400
+  width: 400px
+.h40
+  height: 40px
+.h60
+  height: 60px
+.h80
+  height: 80px
+.h100
+  height: 100px
+.min-w200
+  min-width: 200px
+.min-w250
+  min-width: 250px
+.min-w400
+  min-width: 400px
+.min-w500
+  min-width: 500px
+.min-w-auto
+  min-width: auto
+.min-h100
+  min-height: 100px
+.min-h120
+  min-height: 120px
+.min-h150
+  min-height: 150px
+.min-h180
+  min-height: 180px
+.min-h200
+  min-height: 200px
+.min-h250
+  min-height: 250px
+.min-h300
+  min-height: 300px
+.min-h350
+  min-height: 350px
+.flex-1
+  flex: 1
+.flex-2
+  flex: 2

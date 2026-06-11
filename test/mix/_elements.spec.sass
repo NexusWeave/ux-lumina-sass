@@ -1,38 +1,21 @@
-@use 'sass:meta'
-@use '../../src/mix/_elements' as elements
-@use '../../src/mix/../../node_modules/sass-true' as true
+@use '../../src/mix' as *
+@use '../../node_modules/sass-true' as true
+@use '../../src/color' as c
+@use '../../src/color/alerts' as alerts
+@use '../../src/func/color' as func-color
 
-@include true.test-module('Elements')
-  @include true.test('Applies link colors and properties')
-    @include true.assert
-      @include true.output
-        @include elements.link-color(rgb(0, 0, 255), rgb(0, 0, 200), rgb(0, 0, 150), rgb(128, 0, 128))
-      
-      @include true.expect
-        a
-          color: rgb(0, 0, 255)
-          cursor: pointer
-          text-decoration: none
+@include true.describe('elements mixin')
 
-          [aria-disabled="true"]
-            color: rgb(160, 160, 160)
-            cursor: not-allowed
-            pointer-events: none
-            text-decoration: none
-
-          &:active
-            color: rgb(0, 0, 150)
-
-          &.external-link
-            text-decoration: underline
-
-          @media (hover: hover)
-            &:hover
-              color: rgb(0, 0, 200)
-              border-radius: 0.5em
-
-          &:visited
-            color: rgb(128, 0, 128)
-
-          h1, h2, h3, h4, h5, h6
-            color: rgb(0, 0, 255) !important
+    @include true.it('should apply link-defaults styles')
+        @include true.assert
+            @include true.output
+                .test
+                    @include link-defaults()
+            
+            @include true.expect
+                .test a [aria-disabled=true]
+                    background-color: transparent
+                    color: alerts.$disabled
+                    cursor: not-allowed
+                    pointer-events: none
+                    text-decoration: none

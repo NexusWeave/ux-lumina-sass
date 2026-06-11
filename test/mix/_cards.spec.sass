@@ -1,0 +1,27 @@
+@use '../../src/mix' as *
+@use '../../node_modules/sass-true' as true
+@use '../../src/color' as c
+
+@include true.describe('card mixin')
+
+    @include true.it('should apply square shape by default')
+        @include true.assert
+            @include true.output
+                .card
+                    @include card()
+            
+            @include true.expect
+                .card
+                    aspect-ratio: 1 / 1
+                    border-radius: 5%
+
+    @include true.it('should apply circle shape')
+        @include true.assert
+            @include true.output
+                .card
+                    @include card($shape: 'circle')
+            
+            @include true.expect
+                .card
+                    aspect-ratio: 1 / 1
+                    border-radius: 50%

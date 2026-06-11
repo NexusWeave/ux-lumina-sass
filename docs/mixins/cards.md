@@ -5,20 +5,16 @@ The `card` mixin renders cards that automatically adapt to the global page backg
 ## Usage
 
 ```sass
-// Option 1: Specific module import
-@use 'lumina-sass/src/mix/cards' as *;
-
-// Option 2: General library import
-@use 'lumina-sass/src/mix' as *;
+@use 'lumina-sass/mix' as *;
 
 // Automatically adapts to global theme background
 .my-card {
     @include card();
 }
 
-// Uses a specific accent color
-.accent-card {
-    @include card($accent-color: blue);
+// Uses a specific accent color and shape
+.circle-card {
+    @include card($accent-color: blue, $shape: 'circle');
 }
 
 // Custom overrides
@@ -32,5 +28,6 @@ The `card` mixin renders cards that automatically adapt to the global page backg
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | `$accent-color` | Color\|null | (Optional) Accent color to derive card colors. Defaults to `null`. |
-| `$context-bg` | Color | (Optional) Page background context if no accent color is provided. Defaults to library soft-white token. |
-| `$overrides` | Map | (Optional) Map for overriding 'background' or 'text' colors. |
+| `$context-bg` | Color | (Optional) Page background context if no accent color is provided. Defaults to library `soft-white` token. |
+| `$overrides` | Map | (Optional) Map for overriding 'background' or 'text' colors. Defaults to `()`. |
+| `$shape` | String | (Optional) Shape of the card: `'square'`, `'circle'`, `'rectangle'`, or `'triangle'`. Defaults to `'square'`. |

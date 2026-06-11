@@ -1,16 +1,17 @@
 # Typography
-*Last updated: 2026-06-09*
+*Last updated: 2026-06-11*
 
 This document details the typography mixins provided by Lumina SASS and outlines the styling conventions for figure captions.
 
 ## Mixins
 
 - `text-wrap-safe($inline: 0)` – Enables hyphenation and secure line-wrapping for block-level textual content.
-- `font-style($font, $family: null, $line-height: null, $variant: null)` – Configures the `font-family` utilizing a preferred typeface and an optional fallback specification.
-- `font($font: null, $size: 1rem, $family: null, $style: null, $weight: null, $line-height: null, $variant: null)` – A comprehensive shorthand for defining various typography properties.
-- `sans-serif($font: null, $size: 1rem, $weight: null, $style: null)` – Applies a sans-serif typeface. In the absence of a specific font argument, it defaults to the pre-configured sans-serif font stack.
-- `serif($font: null, $size: 1rem, $weight: null, $style: null)` – Applies a serif typeface. If no font is specified, it defaults to the pre-configured serif font stack.
-- `monospace($font: null, $size: 1rem, $weight: null, $style: null)` – Applies a monospace typeface. In the absence of a specific font argument, it defaults to the pre-configured monospace font stack.
+- `font($font: null, $size: 1rem, $family: null, $style: null, $weight: null, $line-height: null, $variant: null, $quiet: false)` – A comprehensive shorthand for defining various typography properties. If `$font` is not found, it defaults to a system stack.
+- `sans-serif($font: null, $size: 1rem, $weight: null, $style: null)` – Applies a sans-serif typeface.
+- `serif($font: null, $size: 1rem, $weight: null, $style: null)` – Applies a serif typeface.
+- `monospace($font: null, $size: 1rem, $weight: null, $style: null)` – Applies a monospace typeface.
+- `line-clamp($lines: 3)` – Restricts text to a specified number of lines, appending an ellipsis if necessary.
+- `text-adjustments($alignment: null, $decoration: null, $quiet: false)` – Provides quick adjustments for text alignment and decoration.
 
 ## Font Fallback and Warning Protocols
 
@@ -26,6 +27,8 @@ If a specified `$font` identifier is not found within the configuration maps (lo
 The `figcaption` element can be styled directly utilizing the `font` mixin:
 
 ```sass
+@use 'lumina-sass/mix' as typo;
+
 figcaption {
   @include typo.font($size: 1rem, $style: italic);
 }
@@ -36,6 +39,8 @@ This implementation ensures that captions maintain consistent typography through
 ## Implementation Example
 
 ```sass
+@use 'lumina-sass/mix' as *;
+
 // Enable secure wrapping for textual elements
 @include text-wrap-safe();
 
@@ -45,5 +50,15 @@ This implementation ensures that captions maintain consistent typography through
 // Style a figcaption element directly
 figcaption {
   @include font($size: 1rem, $style: italic);
+}
+
+// Restrict text to 2 lines
+.excerpt {
+  @include line-clamp(2);
+}
+
+// Apply text adjustments
+.centered-link {
+  @include text-adjustments($alignment: center, $decoration: underline);
 }
 ```

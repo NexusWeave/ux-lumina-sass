@@ -14,7 +14,8 @@ npm test
 This command sequentially executes:
 1.  **Sass Unit Tests** (Sass-True)
 2.  **Sass Syntax & Namespace Validation** (Custom TypeScript checker)
-3.  **Module Integration Testing** (Sub-module export verification)
+3.  **Sass Dependency Warnings** (Verification of clean compilation)
+4.  **Module Integration Testing** (Sub-module export verification)
 
 ---
 
@@ -66,6 +67,12 @@ The following example demonstrates a test for a button mixin (located in `test/m
 Because modern Sass Module namespaces (e.g., `@use 'foo' as bar; @include bar.mixin()`) are not supported by legacy Stylelint parsers for indented syntax, we utilize a custom validation script (`test/ts/syntax-check.ts`).
 
 This script is written in TypeScript and utilizes the official Dart Sass compiler to programmatically verify that every `.sass` file in the `src/` directory is syntactically valid and that all namespace imports resolve correctly.
+
+---
+
+## Sass Dependency Warnings
+
+To ensure a clean and modern developer experience, we monitor the library for Sass deprecation and dependency warnings. The validation script (`test/ts/dependency-warnings.ts`) captures the output of the Sass compiler and triggers a failure if any warnings (e.g., legacy JS API usage or upcoming syntax changes) are detected.
 
 ---
 

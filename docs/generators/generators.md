@@ -25,4 +25,4 @@ The following mixins facilitate the automated generation of utility classes and 
   - The `$placeholder-color` parameter configures the color of the placeholder text.
   - The `$custom` parameter enables the overriding of default properties, such as focus outlines and borders.
 
-These mixins are architected within `src/mix/_generators.sass` and are exported through the main `src/mix/_index.sass` entry point.
+These mixins are architected within `src/mix/_generators.sass` and are exported through the `lumina-sass/mix` sub-path.

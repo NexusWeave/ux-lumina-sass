@@ -51,13 +51,13 @@ Invoke utilities as follows:
 ## Primary AI Responsibilities
 | Responsibility | Execution Strategy |
 |------|-----------------------------|
-| **File Modification** | Employ `replace_file_content` for targeted code blocks or `multi_replace_file_content` for distributed updates. Ensure all comments are preserved. |
-| **Staging Modifications** | Execute `git add <file>` following any file modification. |
+| **File Modification** | Employ the `replace` tool for targeted, surgical edits or `write_file` for creating new or small files. Ensure all comments and stylistic conventions are preserved. |
+| **Staging Modifications** | Execute `git add <file>` following any file modification when preparing for a commit. |
 | **Committing Changes** | `git commit -S -m "<Conventional Commit>"`. Articulate the command's purpose prior to execution and verify GPG signing. |
 | **Build Execution** | `npm run build`. Ensure the LTS Node environment is active via `fnm`. |
-| **Export Verification** | Validate that public imports (e.g., `lumina-sass/flexbox`, `lumina-sass/mix`) resolve correctly. |
-| **Documentation Maintenance** | Synchronize `README.md` and auxiliary documentation with code modifications, particularly regarding `exports` configurations. |
-| **Memory Synchronization** | Upon modifying files related to user memory, synchronize changes to `/home/kristoffer/Gdrive/Administration/Gemini-Memory-Backup/`. |
+| **Export Verification** | Validate that public imports (e.g., `lumina-sass/flexbox`, `lumina-sass/mix`, `lumina-sass/color`) resolve correctly. |
+| **Documentation Maintenance** | Synchronize `README.md` and auxiliary documentation with code modifications, particularly regarding `exports` configurations and new mixins. |
+| **Memory Synchronization** | Upon modifying files related to user memory, synchronize changes to `/home/kristoffer/.gemini/GEMINI.md` or project memory as appropriate. |
 
 ---
 

@@ -24,6 +24,7 @@ These utility classes provide consistent layout behavior across the application.
 | `.flex` | Configures `display: flex`. |
 | `.inline-flex` | Configures `display: inline-flex`. |
 | `.flex-center` | Aligns content horizontally and vertically within the container. |
+| `.flex-items-center` | Aligns flex container items to the center. |
 
 ### Directional Utilities
 

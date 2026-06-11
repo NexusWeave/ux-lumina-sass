@@ -57,7 +57,7 @@ Lumina Sass is architected for modularity, allowing developers to import specifi
 To maintain architectural consistency, please adhere to the following naming patterns:
 
 - **Colors:** Employ the `$[brand]-[color]` (e.g., `$linux-orange`) or `$[category]-[color]` (e.g., `$compiled-orange`) format.
-- **Mixins:** Use descriptive kebab-case identifiers (e.g., `@mixin flex-center`, `@mixin on-breakpoint`).
+- **Mixins:** Use descriptive kebab-case identifiers (e.g., `@mixin flex-center`, `@mixin media-queries`).
 
 ## Contribution Workflow
 

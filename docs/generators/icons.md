@@ -21,7 +21,7 @@ The `icon-style($icon-content, $font-family: 'icons')` mixin applies icon font p
 - **Custom Font Support:** Supports overriding the default font family.
 
 ```sass
-@use 'lumina-sass/src/mix' as mix;
+@use 'lumina-sass/mix' as mix;
 
 .custom-icon {
   @include mix.icon-style("\f123");

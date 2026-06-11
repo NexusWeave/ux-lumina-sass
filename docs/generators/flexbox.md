@@ -113,8 +113,18 @@ This section enumerates the comprehensive suite of flexbox utility classes provi
 
 ## Implementation Examples
 
+```sass
+@use 'lumina-sass/mix' as mix;
+
+// A centered horizontal arrangement of elements
+.container {
+  @include mix.flexbox-generator('flex-center');
+  @include mix.flexbox-generator('flex-row');
+}
+```
+
 ```html
-<!-- A centered horizontal arrangement of elements -->
+<!-- A centered horizontal arrangement of elements using utility classes -->
 <div class="flex-center flex-row">
   <div class="item">Element 1</div>
   <div class="item">Element 2</div>

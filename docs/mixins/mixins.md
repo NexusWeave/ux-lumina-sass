@@ -25,9 +25,25 @@ This document provides a **comprehensive technical reference** for the entire `l
 | `serif` | `src/mix/_typography.sass` | 57 | `@mixin serif($font: null, $size: 1rem, $weight: null, $style: null)` |
 | `monospace` | `src/mix/_typography.sass` | 62 | `@mixin monospace($font: null, $size: 1rem, $weight: null, $style: null)` |
 | `text-adjustments` | `src/mix/_typography.sass` | 73 | `@mixin text-adjustments($alignment: null, $decoration: null, $quiet: false)` |
+| `line-clamp` | `src/mix/_typography.sass` | 67 | `@mixin line-clamp($lines: 3)` |
 | `assert-contrast` | `src/mix/_contrast.sass` | 8 | `@mixin assert-contrast($foreground, $background, $threshold: 4.5)` |
-| `base-btn` | `src/mix/_buttons.sass` | 6 | `@mixin base-btn($bg-color: $groovy-70s-cream, $text-color: $groovy-70s-warm-white, $border-color: null, $size: 1em, $weight: bold)` |
-| `link-color` | `src/mix/_elements.sass` | 4 | `@mixin link-color($color, $color-hover, $color-active, $color-visited)` |
-| `background-color` | `src/mix/_misc-styling.sass` | 9 | `@mixin background-color($bg-color: base.$white, $text-color: null, $blend-bg: base.$white)` |
+| `base-btn` | `src/mix/_buttons.sass` | 8 | `@mixin base-btn($bg-color: $light-blue, $text-color: null, $border-color: null, $size: 1em, $weight: bold)` |
+| `link-color` | `src/mix/_elements.sass` | 7 | `@mixin link-color($color: $light-blue, $color-hover: ..., $color-active: ..., $color-visited: $light-blue)` |
+| `background-color` | `src/mix/_misc-styling.sass` | 9 | `@mixin background-color($bg-color: $soft-white, $text-color: null, $blend-bg: $soft-white)` |
+| `icon-style` | `src/mix/_misc-styling.sass` | 21 | `@mixin icon-style($icon-content, $font-family: 'icons')` |
+| `theme-setup` | `src/mix/_theme-setup.sass` | 13 | `@mixin theme-setup($body-bg: $soft-white, $text-color: null, $accent-color: null, $custom-colors: ())` |
+
+---
+
+## Detailed Documentation
+
+- [Alerts](./alerts.md)
+- [Buttons](./buttons.md)
+- [Cards](./cards.md)
+- [Elements](./elements.md)
+- [Media Queries](./media.md)
+- [Miscellaneous Styling](./misc-styling.md)
+- [Theme Setup](./theme-setup.md)
+- [Typography](./typography.md)
 
 *Note: All mixins are implemented utilizing the indented Sass syntax (`.sass`). The referenced line numbers correspond to the initial line of the `@mixin` declaration within the source file.*

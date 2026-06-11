@@ -5,13 +5,9 @@ The `alert` mixin provides a reusable, accessible alert box style that automatic
 ## Usage
 
 ```sass
-// Option 1: Specific module import
-@use 'lumina-sass/src/mix/alerts' as *;
-@use 'lumina-sass/src/color/alerts' as alerts;
-
-// Option 2: General library import
-@use 'lumina-sass/src/mix' as *;
-@use 'lumina-sass/src/color/alerts' as alerts;
+// Primary library import
+@use 'lumina-sass/mix' as *;
+@use 'lumina-sass/color' as alerts;
 
 .my-alert {
     @include alert($bg-color: alerts.$warning);

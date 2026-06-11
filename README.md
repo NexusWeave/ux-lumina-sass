@@ -90,7 +90,7 @@ Lumina SASS employs a modular architecture, permitting the importation of the en
 ```sass
 .card
   width: 100%
-  @include mix.on-breakpoint(md)
+  @include mix.media-queries(md)
     width: 50%
 ```
 
@@ -111,7 +111,7 @@ Lumina SASS employs a modular architecture, permitting the importation of the en
 - **Standardized Palettes:** Consistent `$brand-color` patterns utilizing `rgb()` for maximum compatibility.
 - **Automated Accessibility:** Integrated WCAG contrast ratio verification.
 - **Specialized Functions:** Dedicated modules for mathematical operations and font stack resolution.
-- **Responsive Utilities:** Intuitive media query helpers (e.g., `on-breakpoint`, `on-dark-mode`).
+- **Responsive Utilities:** Intuitive media query helpers (e.g., `media-queries`, `prefers-color-scheme`).
 - **Flexbox Engine:** A robust suite of mixins for rows, columns, and sophisticated alignment.
 
 ## Developer Resources

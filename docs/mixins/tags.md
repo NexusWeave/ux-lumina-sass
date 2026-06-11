@@ -1,5 +1,5 @@
 # Tags and Elements Mixins
-*Last updated: 2026-06-09*
+*Last updated: 2026-06-11*
 
 This document provides a comprehensive overview of the mixins available for styling buttons, links, and fundamental HTML elements. For architectural clarity, these mixins are distributed across three distinct modules: `_buttons.sass`, `_elements.sass`, and `_misc-styling.sass`.
 
@@ -33,7 +33,7 @@ Designed for styling hyperlinks and heading elements, this mixin orchestrates va
 
 ## Implementation Example
 
-```scss
+```sass
 @use 'src/mix/buttons' as btn;
 @use 'src/mix/elements' as el;
 @use 'src/mix/misc-styling' as style;

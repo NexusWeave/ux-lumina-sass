@@ -25,7 +25,7 @@ If a specified `$font` identifier is not found within the configuration maps (lo
 ### Figure Caption Styling
 The `figcaption` element can be styled directly utilizing the `font` mixin:
 
-```scss
+```sass
 figcaption {
   @include typo.font($size: 1rem, $style: italic);
 }
@@ -35,7 +35,7 @@ This implementation ensures that captions maintain consistent typography through
 
 ## Implementation Example
 
-```scss
+```sass
 // Enable secure wrapping for textual elements
 @include text-wrap-safe();
 

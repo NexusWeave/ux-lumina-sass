@@ -1,5 +1,5 @@
 # Icons
-*Last updated: 2026-06-10*
+*Last updated: 2026-06-11*
 
 This document outlines the functionality of the `icon-generator` mixin within Lumina Sass.
 
@@ -15,7 +15,7 @@ The `icon-generator($name: null, $color: null, $font-family: 'bootstrap-icons')`
 
 ## Implementation Examples
 
-```scss
+```sass
 // Generate utility classes for the entire icon set
 @include icon-generator();
 

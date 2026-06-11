@@ -2,16 +2,22 @@
 @use 'sass:meta'
 @use 'sass:list'
 @use '../src/func' as func-module
+@use '../src/color/base' as base
 @use '../node_modules/sass-true' as true
 
 @include true.test-module('Utility Functions')
   @include true.test-module('Color Functions')
     @include true.test('Calculates luminance correctly')
-      @include true.assert-equal(func-module.luminance(#fff), 1)
+      @include true.assert-equal(func-module.luminance(base.$white), 0.9130986517934191) // Exact luminance for rgb(245, 245, 245)
       @include true.assert-equal(func-module.luminance(#000), 0)
 
     @include true.test('Calculates contrast ratio correctly')
-      @include true.assert-equal(func-module.contrast-ratio(#fff, #000), 21)
+      @include true.assert-equal(func-module.contrast-ratio(base.$white, #000), 19.26)
+
+    @include true.test('Picks best contrast color')
+      @include true.assert-equal(func-module.best-contrast-color(base.$white), base.$dark-grey)
+      @include true.assert-equal(func-module.best-contrast-color(#000000), base.$white)
+      @include true.assert-equal(func-module.best-contrast-color(base.$white, $dark: #000000), #000000)
 
   @include true.test-module('Icon Functions')
     @include true.test('Finds icon glyph by name')

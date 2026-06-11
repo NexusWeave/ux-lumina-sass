@@ -33,3 +33,28 @@
         @media only screen and (min-inline-size: 20rem) and (max-inline-size: 20.125rem) and (min-block-size: 30rem) and (max-block-size: 30.125rem) and (orientation: portrait)
           color: white
 
+  @include true.test('Generates background-image with default values')
+    @include true.assert
+      @include true.output
+        @include media.background-image('path/to/img.png')
+      
+      @include true.expect
+        background-size: cover
+        background-repeat: no-repeat
+        background-image: url("path/to/img.png")
+        background-position: center
+
+  @include true.test('Generates background-image with all properties')
+    @include true.assert
+      @include true.output
+        @include media.background-image('path/to/img.png', $size: contain, $repeat: repeat-x, $position: top left, $attachment: fixed, $clip: padding-box, $origin: content-box)
+      
+      @include true.expect
+        background-size: contain
+        background-repeat: repeat-x
+        background-image: url("path/to/img.png")
+        background-position: top left
+        background-attachment: fixed
+        background-clip: padding-box
+        background-origin: content-box
+

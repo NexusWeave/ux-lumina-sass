@@ -1,16 +1,84 @@
 @use 'sass:meta'
+@use '../../src/color/base' as base
 @use '../../src/mix/_misc-styling' as misc-styling
 @use '../../src/mix/../../node_modules/sass-true' as true
 
 @include true.test-module('Misc Styling')
-  @include true.test('Applies background and text color')
+  @include true.test('Applies background and explicit text color')
     @include true.assert
       @include true.output
         .custom-bg
-          @include misc-styling.background-color(rgb(255, 0, 0), rgb(255, 255, 255))
+          @include misc-styling.background-color(#ff0000, #ffffff)
       
       @include true.expect
         .custom-bg
-          color: rgba(255, 255, 255, 1)
-          background-color: rgba(255, 0, 0, 1)
+          background-color: #ff0000
+          color: #ffffff
 
+  @include true.test('Automatically picks white text for dark background')
+    @include true.assert
+      @include true.output
+        .dark-bg
+          @include misc-styling.background-color(#000000)
+      
+      @include true.expect
+        .dark-bg
+          background-color: #000000
+          color: base.$white
+
+  @include true.test('Automatically picks dark grey text for light background')
+    @include true.assert
+      @include true.output
+        .light-bg
+          @include misc-styling.background-color(#ffffff)
+      
+      @include true.expect
+        .light-bg
+          background-color: #ffffff
+          color: base.$dark-grey
+
+  @include true.test('Uses default white background when no arguments passed')
+    @include true.assert
+      @include true.output
+        .default-bg
+          @include misc-styling.background-color
+      
+      @include true.expect
+        .default-bg
+          background-color: base.$white
+          color: base.$dark-grey
+
+  @include true.test('Handles inherit background correctly')
+    @include true.assert
+      @include true.output
+        .inherit-bg
+          @include misc-styling.background-color(inherit)
+      
+      @include true.expect
+        .inherit-bg
+          background-color: inherit
+
+  @include true.test('Handles explicit inherit and transparent values for text')
+    @include true.assert
+      @include true.output
+        .explicit-values
+          @include misc-styling.background-color(transparent, inherit)
+          @include misc-styling.background-color(inherit, transparent)
+      
+      @include true.expect
+        .explicit-values
+          background-color: transparent
+          color: inherit
+          background-color: inherit
+          color: transparent
+
+  @include true.test('Handles transparent background correctly with blending')
+    @include true.assert
+      @include true.output
+        .transparent-bg
+          @include misc-styling.background-color(transparent, $blend-bg: #000000)
+      
+      @include true.expect
+        .transparent-bg
+          background-color: transparent
+          color: base.$white

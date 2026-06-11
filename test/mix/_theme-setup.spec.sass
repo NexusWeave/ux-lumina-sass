@@ -1,0 +1,28 @@
+@use '../../src/mix' as *
+@use '../../node_modules/sass-true' as true
+@use '../../src/func/color' as func-color
+@use '../../src/color' as c
+
+@include true.describe('theme-setup mixin')
+
+    @include true.it('should apply default theme colors')
+        @include true.assert
+            @include true.output
+                body
+                    @include theme-setup()
+            
+            @include true.expect
+                body
+                    background-color: c.$soft-white
+                    color: func-color.best-contrast-color(c.$soft-white)
+
+    @include true.it('should apply custom theme colors')
+        @include true.assert
+            @include true.output
+                body
+                    @include theme-setup($body-bg: #000, $text-color: #fff)
+            
+            @include true.expect
+                body
+                    background-color: #000
+                    color: #fff

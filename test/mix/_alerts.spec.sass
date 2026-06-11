@@ -1,0 +1,21 @@
+@use '../../src/mix' as *
+@use '../../node_modules/sass-true' as true
+@use '../../src/color/alerts' as alerts
+@use '../../src/func/color' as func-color
+
+@include true.describe('alert mixin')
+
+    @include true.it('should apply alert styles with default color')
+        @include true.assert
+            @include true.output
+                .alert
+                    @include alert()
+            
+            @include true.expect
+                .alert
+                    background-color: alerts.$warning
+                    color: func-color.best-contrast-color(alerts.$warning)
+                    padding: 1em
+                    margin: 1em 0
+                    border-radius: 0.5em
+                    border: 1px solid rgba(0, 0, 0, 0.1)

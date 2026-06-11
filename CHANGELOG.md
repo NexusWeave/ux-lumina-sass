@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.9.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.8.0...v2.9.0) (2026-06-11)
+
+
+### Features
+
+* **assets): add logo and favicon, fix(mix:** update media mixin ([f746f23](https://github.com/NexusWeave/ux-lumina-sass/commit/f746f23ea819213b820778816efd7f33ba8ee08e))
+* **core:** implement theme-aware color utilities and alert tokens ([2097d66](https://github.com/NexusWeave/ux-lumina-sass/commit/2097d665d05204d2113c7166d3f4552baaef0433))
+* **demo:** update core library and demo site styling ([ccc987d](https://github.com/NexusWeave/ux-lumina-sass/commit/ccc987dfccd554deb28260ee7d8ebf46ff474654))
+* **mix:** implement universal theme-aware mixins ([7e6c6eb](https://github.com/NexusWeave/ux-lumina-sass/commit/7e6c6eb56ec980dddd32613de8f70988a7cd29d9))
+
 ## [2.8.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.7.1...v2.8.0) (2026-06-10)
 
 

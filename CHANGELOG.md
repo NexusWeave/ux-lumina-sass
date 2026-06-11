@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.10.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.9.0...v2.10.0) (2026-06-11)
+
+
+### Features
+
+* enhance theme setup and typography foundations. ([fa0f56a](https://github.com/NexusWeave/ux-lumina-sass/commit/fa0f56a0eef186a82446823d1b33650f0ab4505f))
+* **misc:** add icon-style mixin for icon font properties. ([28c881d](https://github.com/NexusWeave/ux-lumina-sass/commit/28c881d4062350d026eb26ee3f12096e22457207))
+
 ## [2.9.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.8.0...v2.9.0) (2026-06-11)
 
 

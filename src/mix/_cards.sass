@@ -7,7 +7,8 @@
 /// @param {Color|null} $accent-color [null] - The accent color to derive card colors from.
 /// @param {Color} $context-bg [c.$soft-white] - The background context to use if no accent color is provided.
 /// @param {Map} $overrides [()] - A map for overriding 'background' or 'text' colors.
-@mixin card($accent-color: null, $context-bg: c.$soft-white, $overrides: ())
+/// @param {String} $shape ['square'] - Shape of the card ('square', 'circle', 'triangle', 'rectangle').
+@mixin card($accent-color: null, $context-bg: c.$soft-white, $overrides: (), $shape: 'square')
     // Derive defaults based on provided accent or context
     $colors: func-color.derive-card-colors($accent-color, $context-bg)
     
@@ -22,5 +23,18 @@
     
     @include background-color($bg, $text)
     
-    aspect-ratio: 1 / 1
-    border-radius: 5%
+    @if $shape == 'square'
+        border-radius: 5%
+        aspect-ratio: 1 / 1
+        
+    @else if $shape == 'circle'
+        border-radius: 50%
+        aspect-ratio: 1 / 1
+
+    @else if $shape == 'rectangle'
+        aspect-ratio: 16 / 9
+        border-radius: 5%
+
+    @else if $shape == 'triangle'
+        aspect-ratio: 1 / 1
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%)

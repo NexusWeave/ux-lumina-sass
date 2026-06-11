@@ -30,7 +30,7 @@
         @include true.assert
             @include true.output
                 .alert-with-icon
-                    @include alert($icon: 'alarm')
+                    @include alert($icon: 'warning')
             
             @include true.expect
                 .alert-with-icon
@@ -48,4 +48,4 @@
                     align-items: center
                     &::before
                         font-family: 'bootstrap-icons'
-                        content: "\F102"
+                        content: "\F33A"

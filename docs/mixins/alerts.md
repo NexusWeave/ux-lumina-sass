@@ -18,8 +18,21 @@ The `alert` mixin provides a reusable, accessible alert box style that automatic
 }
 ```
 
+## Alert Tokens
+
+The following color tokens are available for alerts in `src/color/alerts.sass`:
+
+| Token | Value | Description |
+| :--- | :--- | :--- |
+| `$warning` | `rgb(255, 193, 7)` | Yellow warning color. |
+| `$error` | `rgb(220, 53, 69)` | Red error color. |
+| `$info` | `rgb(13, 202, 240)` | Blue informational color. |
+| `$success` | `rgb(25, 135, 84)` | Green success color. |
+| `$disabled` | `rgb(160, 160, 160)` | Grey disabled color. |
+
 ## Parameters
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | `$bg-color` | Color | The background color of the alert. Defaults to library warning token. |
+| `$icon` | String | Optional icon name (e.g., 'warning', 'success', 'info', 'error'). Defaults to `null`. |

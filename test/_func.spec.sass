@@ -23,6 +23,16 @@
       // Bright cyan (rgb(13, 202, 240)) has a high luminance, so it should force dark text, not white.
       @include true.assert-equal(func-module.best-contrast-color(rgb(13, 202, 240)), base.$dark-grey)
 
+  @include true.test-module('Universell Utforming (Accessibility)')
+    @include true.test('Ensures standard text meets WCAG AA contrast (4.5:1)')
+      // $dark-grey on $white should be > 4.5
+      $ratio-dark-on-light: func-module.contrast-ratio(base.$dark-grey, base.$white)
+      @include true.assert-true($ratio-dark-on-light >= 4.5)
+
+      // $white on #000000 should be > 4.5
+      $ratio-light-on-dark: func-module.contrast-ratio(base.$white, #000000)
+      @include true.assert-true($ratio-light-on-dark >= 4.5)
+
   @include true.test-module('Icon Functions')
     @include true.test('Finds icon glyph by name')
       $glyph: func-module.find('school')

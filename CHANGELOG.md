@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.0.1...v3.1.0) (2026-06-12)
+
+
+### Features
+
+* **generators:** add silent parameter, enforce strict errors, and output utility classes ([2a31e2f](https://github.com/NexusWeave/ux-lumina-sass/commit/2a31e2ffb03db7aa5765a9ef0ada1f13d2d85e46))
+
 ### [3.0.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.0.0...v3.0.1) (2026-06-12)
 
 ## [3.0.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.11.1...v3.0.0) (2026-06-12)

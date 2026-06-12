@@ -19,7 +19,8 @@
 /// Applies icon font properties.
 /// @param {String} $icon-content - The unicode character for the icon.
 /// @param {String} $font-family ['icons'] - The font family to use.
-@mixin icon-style($icon-content, $font-family: 'icons')
+/// @param {Number} $size [1rem] - The font size of the icon.
+@mixin icon-style($icon-content, $font-family: 'icons', $size: 1rem)
     &::before
-        @include typo.font($font-family)
+        @include typo.font($font-family, $size: $size)
         content: $icon-content

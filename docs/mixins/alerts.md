@@ -31,4 +31,7 @@ The following color tokens are available for alerts in `src/color/alerts.sass`:
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | `$bg-color` | Color | The background color of the alert. Defaults to library warning token. |
-| `$icon` | String | Optional icon name (e.g., 'warning', 'success', 'info', 'error'). Defaults to `null`. |
+| `$text-color` | Color \| null | Optional text color override. Defaults to `null` (auto-calculated). |
+| `$icon` | String \| null | Optional icon name (e.g., 'warning', 'success', 'info', 'error'). Defaults to `null`. |
+| `$inline-size` | String | The inline size of the alert. Defaults to `35rem`. |
+| `$icon-size` | Number | The font size of the icon. Defaults to `2rem`. |

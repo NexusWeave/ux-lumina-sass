@@ -13,33 +13,33 @@
     input, textarea, select, button, datalist, optgroup, option
         padding: 0.5em
         border-radius: 0.3em
-        border: 1px solid rgba($text, 0.2)
+        border: 0.0625rem solid rgba($text, 0.2)
         @include background-color($input-bg, $text)
 
         &:hover
             $hover-color: func-color.contrast-color-fallback($bg, $accent-color)
-            outline-offset: 1px
-            outline: 1px solid rgba($hover-color, 0.5)
+            outline-offset: 0.0625rem
+            outline: 0.0625rem solid rgba($hover-color, 0.5)
 
         &:focus
             $outline-color: func-color.contrast-color-fallback($bg, $accent-color)
-            outline-offset: 2px
-            outline: 2px solid $outline-color
+            outline-offset: 0.125rem
+            outline: 0.125rem solid $outline-color
 
     // Labels and typography
     label, legend
         color: $text
         cursor: pointer
         font-weight: 600
-        margin-bottom: 0.25em
+        margin-block-end: 0.25em
         display: inline-block
 
     // Structural elements
     fieldset
-        border: 1px solid rgba($text, 0.2)
+        border: 0.0625rem solid rgba($text, 0.2)
         border-radius: 0.3em
         padding: 1em
-        margin-bottom: 1em
+        margin-block-end: 1em
 
     // Helper text or output
     output

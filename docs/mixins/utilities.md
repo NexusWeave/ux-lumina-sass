@@ -35,7 +35,7 @@ The `icon-style` mixin applies icon font properties, typically used within a pse
 
 ```sass
 .my-icon {
-  @include icon-style($icon-content: "\f123");
+  @include icon-style($icon-content: "\f123", $size: 1.2rem);
 }
 ```
 
@@ -45,3 +45,4 @@ The `icon-style` mixin applies icon font properties, typically used within a pse
 | :--- | :--- | :--- |
 | `$icon-content` | String | The unicode character for the icon. |
 | `$font-family` | String | The font family to use. Defaults to `'icons'`. |
+| `$size` | Number | The font size of the icon. Defaults to `1rem`. |

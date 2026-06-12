@@ -7,7 +7,7 @@ body
   @include apply-global-theme($accent-color: c.$accent-slate-blue)
   background: linear-gradient(135deg, c.$soft-white 0%, rgba(c.$accent-slate-blue, 0.05) 100%)
   background-attachment: fixed
-  min-height: 100vh
+  min-block-size: 100vh
 
 header
   @include text-adjustments($alignment: center)
@@ -20,14 +20,14 @@ header
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03)
   
   .header-title-container
-    display: flex
+    @include gen-flexbox('flex-row')
     align-items: center
     justify-content: center
     gap: 1.5rem
     margin-bottom: 1rem
 
   .header-logo
-    max-height: 80px
+    max-block-size: 80px
 
   h1
     @include font($size: 2.5rem, $weight: 800)
@@ -37,6 +37,7 @@ header
     margin-bottom: 0
 
   nav
+    @include gen-flexbox('flex')
     gap: 1rem
 
     a
@@ -60,8 +61,9 @@ h2
   @include font($size: 1.5rem)
 
 main > details
+  @include gen-flexbox('flex')
   flex: 1
-  min-width: 450px
+  min-inline-size: 450px
   margin-bottom: 0
   background: rgba(255, 255, 255, 0.8)
   backdrop-filter: blur(10px)
@@ -83,18 +85,19 @@ h3
   margin-bottom: 2rem
 
 .demo-group-container
+  @include gen-flexbox('flex')
   gap: 1.5rem
   margin-top: 1rem
   padding: 1rem
-  background-color: rgba(0, 0, 0, 0.02)
+  @include background-color(rgba(0, 0, 0, 0.02))
   border-radius: 0.5rem
 
 .demo-box
   border: 2px dashed c.$accent-slate-blue
   border-radius: 0.5rem
   padding: 1rem
-  background-color: rgba(c.$accent-slate-blue, 0.05)
-  min-height: 100px
+  @include background-color(rgba(c.$accent-slate-blue, 0.05))
+  min-block-size: 100px
   position: relative
   
   // Optional label to show what the box is demonstrating
@@ -104,8 +107,8 @@ h3
     left: 10px
     background: c.$white
     padding: 0 5px
-    font-size: 0.75rem
-    color: c.$accent-slate-blue
+    @include font($size: 0.75rem)
+    @include background-color(transparent, c.$accent-slate-blue)
     border: 1px solid c.$accent-slate-blue
     border-radius: 4px
 
@@ -114,7 +117,7 @@ h3
   padding: 1rem
   border: 1px solid rgba(c.$accent-slate-blue, 0.2)
   border-radius: 0.5rem
-  background-color: c.$white
+  @include background-color(c.$white)
 
 .grid
   display: grid
@@ -126,24 +129,22 @@ h3
     aspect-ratio: 1 / 1
 
 .demo-icon-card
-  display: flex
-  flex-direction: column
+  @include gen-flexbox('flex-col')
   align-items: center
   justify-content: center
   gap: 0.75rem
   padding: 1.5rem
   border: 1px solid rgba(c.$accent-slate-blue, 0.2)
   border-radius: 0.5rem
-  background-color: c.$white
+  @include background-color(c.$white)
   
   &::before
-    font-size: 2.5rem
-    color: c.$accent-slate-blue
+    @include font($size: 2.5rem)
+    @include background-color(transparent, c.$accent-slate-blue)
 
   span
-    font-size: 0.85rem
-    color: c.$github-gray
-    font-weight: 600
+    @include font($size: 0.85rem, $weight: 600)
+    @include background-color(transparent, c.$github-gray)
 
 // Demo: Card usage with theme-aware mixin
 .demo-card
@@ -193,18 +194,18 @@ h3
 
 .demo-line-clamp
   @include line-clamp(2)
-  max-width: 300px
+  max-inline-size: 300px
 
 // Base Card styles and color classes
 .card
-  display: flex
+  @include gen-flexbox('flex')
   align-items: center
   justify-content: center
   padding: 1.5rem
   border-radius: 1rem
-  font-weight: 700
-  text-align: center
-  min-height: 4rem
+  @include font($weight: 700)
+  @include text-adjustments($alignment: center)
+  min-block-size: 4rem
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05)
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease
   cursor: pointer
@@ -228,8 +229,7 @@ $demo-colors: ('accent-lavender': c.$accent-lavender, 'accent-salmon': c.$accent
       @if $light-contrast > $dark-contrast
         $text-color: c.$white
       
-      color: $text-color
-      background-color: rgba($text-color, 0.2)
+      @include background-color(rgba($text-color, 0.2), $text-color)
 
 // Generate all icons (defaults to icons)
 @include gen-icons()
@@ -238,48 +238,50 @@ $demo-colors: ('accent-lavender': c.$accent-lavender, 'accent-salmon': c.$accent
 
 // Sizing utility classes used in the demo
 .w100p
-  width: 100%
+  inline-size: 100%
 .w200
-  width: 200px
+  inline-size: 200px
 .w250
-  width: 250px
+  inline-size: 250px
 .w400
-  width: 400px
+  inline-size: 400px
 .h40
-  height: 40px
+  block-size: 40px
 .h60
-  height: 60px
+  block-size: 60px
 .h80
-  height: 80px
+  block-size: 80px
 .h100
-  height: 100px
+  block-size: 100px
 .min-w200
-  min-width: 200px
+  min-inline-size: 200px
 .min-w250
-  min-width: 250px
+  min-inline-size: 250px
 .min-w400
-  min-width: 400px
+  min-inline-size: 400px
 .min-w500
-  min-width: 500px
+  min-inline-size: 500px
 .min-w-auto
-  min-width: auto
+  min-inline-size: auto
 .min-h100
-  min-height: 100px
+  min-block-size: 100px
 .min-h120
-  min-height: 120px
+  min-block-size: 120px
 .min-h150
-  min-height: 150px
+  min-block-size: 150px
 .min-h180
-  min-height: 180px
+  min-block-size: 180px
 .min-h200
-  min-height: 200px
+  min-block-size: 200px
 .min-h250
-  min-height: 250px
+  min-block-size: 250px
 .min-h300
-  min-height: 300px
+  min-block-size: 300px
 .min-h350
-  min-height: 350px
+  min-block-size: 350px
 .flex-1
+  @include gen-flexbox('flex')
   flex: 1
 .flex-2
+  @include gen-flexbox('flex')
   flex: 2

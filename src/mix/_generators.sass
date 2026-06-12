@@ -120,32 +120,32 @@
 @mixin gen-range-slider($custom: ())
   $default-range-props: (
     'track-color': #ddd,
-    'track-height': 0.4rem,
+    'track-block-size': 0.4rem,
     'track-radius': 0.2rem,
     'thumb-color': #0078d7,
     'thumb-size': 1.2rem,
     'thumb-radius': 50%,
-    'width': 100%
+    'inline-size': 100%
   )
   $props: map.merge($default-range-props, $custom)
-  
-  $track-height: map.get($props, 'track-height')
+
+  $track-block-size: map.get($props, 'track-block-size')
   $thumb-size: map.get($props, 'thumb-size')
-  
+
   // Calculate margin to perfectly center the thumb on the track in Webkit
-  $thumb-margin: calc((#{$track-height} - #{$thumb-size}) / 2)
+  $thumb-margin: calc((#{$track-block-size} - #{$thumb-size}) / 2)
 
   // Target the range input itself
   -webkit-appearance: none
   appearance: none
   background: transparent
-  inline-size: map.get($props, 'width')
+  inline-size: map.get($props, 'inline-size')
   cursor: pointer
 
   // The Track
   &::-webkit-slider-runnable-track,
   &::-moz-range-track
-    block-size: $track-height
+    block-size: $track-block-size
     background: map.get($props, 'track-color')
     border-radius: map.get($props, 'track-radius')
 
@@ -158,4 +158,4 @@
     block-size: $thumb-size
     background: map.get($props, 'thumb-color')
     border-radius: map.get($props, 'thumb-radius')
-    margin-top: $thumb-margin
+    margin-block-start: $thumb-margin

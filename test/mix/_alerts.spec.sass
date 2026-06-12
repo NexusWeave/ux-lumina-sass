@@ -13,18 +13,19 @@
             
             @include true.expect
                 .alert
-                    gap: 0.5em
-                    padding: 1em
-                    margin: 1em 0
-                    border-radius: 0.5em
-                    border: 1px solid rgba(0, 0, 0, 0.1)
+                    gap: 1.5rem
+                    padding: 1.5rem
+                    margin: auto
+                    inline-size: 35rem
+                    align-items: center
+                    border-radius: 0.5rem
+                    border: 0.0625rem solid rgba(0, 0, 0, 0.1)
                     font-weight: 800
                     background-color: alerts.$warning
                     color: func-color.best-contrast-color(alerts.$warning)
                     display: flex
                     flex-wrap: nowrap
-                    flex-direction: row
-                    align-items: center
+                    flex-direction: column
 
     @include true.it('should apply an icon when provided')
         @include true.assert
@@ -34,18 +35,20 @@
             
             @include true.expect
                 .alert-with-icon
-                    gap: 0.5em
-                    padding: 1em
-                    margin: 1em 0
-                    border-radius: 0.5em
-                    border: 1px solid rgba(0, 0, 0, 0.1)
+                    gap: 1.5rem
+                    padding: 1.5rem
+                    margin: auto
+                    inline-size: 35rem
+                    align-items: center
+                    border-radius: 0.5rem
+                    border: 0.0625rem solid rgba(0, 0, 0, 0.1)
                     font-weight: 800
                     background-color: alerts.$warning
                     color: func-color.best-contrast-color(alerts.$warning)
                     display: flex
                     flex-wrap: nowrap
-                    flex-direction: row
-                    align-items: center
+                    flex-direction: column
                     &::before
                         font-family: 'bootstrap-icons'
                         content: "\F33A"
+                        font-size: 2rem

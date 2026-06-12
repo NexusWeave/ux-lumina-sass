@@ -7,29 +7,31 @@
 @use '../func/icons' as func-icons
 
 /// Mixin for alert icons
-@mixin _alert-icon($icon)
+@mixin _alert-icon($icon, $size: 1.5rem)
     $icon-props: func-icons.find($icon)
     @if $icon-props
-        @include icon-style(map.get($icon-props, icon))
+        @include icon-style(map.get($icon-props, icon), $size: $size)
     @else
         @warn "Icon '#{$icon}' not found in icon mapping."
 
 /// Applies alert styles with automated theme-aware contrast and strong typography.
 /// @param {Color} $bg-color [alerts.$warning] - The alert background color.
 /// @param {String|null} $icon [null] - Optional icon name (expects bootstrap-icons).
-@mixin alert($bg-color: alerts.$warning, $text-color: null, $icon: null)
+/// @param {String} $inline-size [35rem] - The inline size of the alert.
+/// @param {Number} $icon-size [2rem] - The font size of the icon.
+@mixin alert($bg-color: alerts.$warning, $text-color: null, $icon: null, $inline-size: 35rem, $icon-size: 2rem)
     @if $icon != null
-        @include _alert-icon($icon)
-    
-    gap: 0.5em
-    padding: 1em
-    margin: 1em 0
+        @include _alert-icon($icon, $size: $icon-size)
+    gap: 1.5rem
+    margin: auto
+    padding: 1.5rem
     align-items: center
-    border-radius: 0.5em
-    border: 1px solid rgba(0, 0, 0, 0.1)
+    border-radius: 0.5rem
+    inline-size: $inline-size
+    border: 0.0625rem solid rgba(0, 0, 0, 0.1)
 
     @include typo.font($weight: 800)
+    @include generators.gen-flexbox('flex-col')
     @include background-color($bg-color, $text-color)
-    @include generators.gen-flexbox('flex-row')
 
     

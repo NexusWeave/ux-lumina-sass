@@ -89,9 +89,9 @@ Lumina SASS employs a modular architecture, permitting the importation of the en
 #### Semantic Breakpoints
 ```sass
 .card
-  width: 100%
+  inline-size: 100%
   @include mix.media-queries(md)
-    width: 50%
+    inline-size: 50%
 ```
 
 ## Public API Reference (Sub-paths)

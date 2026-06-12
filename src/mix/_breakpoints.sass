@@ -33,18 +33,18 @@
   @if $data == null
     @error "Device `#{$device}` not found in $devices map."
 
-  $width: map.get($data, inline-size)
-  $height: map.get($data, block-size)
+  $inline-size: map.get($data, inline-size)
+  $block-size: map.get($data, block-size)
 
   @if $orientation == portrait
-    $max-width: $width + 0.125rem
-    $max-height: $height + 0.125rem
-    @media only screen and (min-inline-size: $width) and (max-inline-size: $max-width) and (min-block-size: $height) and (max-block-size: $max-height) and (orientation: portrait)
+    $max-inline-size: $inline-size + 0.125rem
+    $max-block-size: $block-size + 0.125rem
+    @media only screen and (min-inline-size: $inline-size) and (max-inline-size: $max-inline-size) and (min-block-size: $block-size) and (max-block-size: $max-block-size) and (orientation: portrait)
       @content
   @else if $orientation == landscape
-    $max-height: $height + 0.125rem
-    $max-width: $width + 0.125rem
-    @media only screen and (min-inline-size: $height) and (max-inline-size: $max-height) and (min-block-size: $width) and (max-block-size: $max-width) and (orientation: landscape)
+    $max-block-size: $inline-size + 0.125rem
+    $max-inline-size: $block-size + 0.125rem
+    @media only screen and (min-inline-size: $block-size) and (max-inline-size: $max-inline-size) and (min-block-size: $inline-size) and (max-block-size: $max-block-size) and (orientation: landscape)
       @content
   @else
     @error "Invalid orientation `#{$orientation}` – use portrait or landscape."

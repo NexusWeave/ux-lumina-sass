@@ -1,11 +1,11 @@
 # Icons
 *Last updated: 2026-06-11*
 
-This document outlines the functionality of the `icon-generator` mixin within Lumina Sass.
+This document outlines the functionality of the `gen-icons` mixin within Lumina Sass.
 
 ## Icon Generator Mixin
 
-The `icon-generator($name: null, $color: null, $font-family: 'bootstrap-icons')` mixin provides a robust mechanism for generating icon utility classes.
+The `gen-icons($name: null, $color: null, $font-family: 'bootstrap-icons')` mixin provides a robust mechanism for generating icon utility classes.
 
 - **Automated Generation:** When the `$name` parameter is omitted, the mixin systematically creates utility classes for all icons defined within the icon map located at `src/map/icons`.
 - **Targeted Generation:** Providing a specific `$name` ensures that only the requested icon class is generated.
@@ -32,10 +32,10 @@ The `icon-style($icon-content, $font-family: 'icons')` mixin applies icon font p
 
 ```sass
 // Generate utility classes for the entire icon set
-@include icon-generator();
+@include gen-icons();
 
 // Generate a specific "search" icon with a custom color configuration
-@include icon-generator('search', #ff6600);
+@include gen-icons('search', #ff6600);
 ```
 
 The mixin generates CSS classes that can be utilized directly within HTML structures:

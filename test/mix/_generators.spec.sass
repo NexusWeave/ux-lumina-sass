@@ -8,7 +8,7 @@
   @include true.test('Generates school icon class')
     @include true.assert
       @include true.output
-        @include generators.icon-generator('school')
+        @include generators.gen-icons('school')
       
       @include true.expect
         .school
@@ -21,7 +21,7 @@
   @include true.test('Generates flex-row properties')
     @include true.assert
       @include true.output
-        @include generators.flexbox-generator('flex-row')
+        @include generators.gen-flexbox('flex-row')
       
       @include true.expect
         display: flex
@@ -32,7 +32,7 @@
   @include true.test('Generates text input type')
     @include true.assert
       @include true.output
-        @include generators.input-generator('text')
+        @include generators.gen-inputs('text')
       
       @include true.expect
         input[type="text"]

@@ -1,0 +1,59 @@
+@use '../../src/mix' as *
+@use '../../node_modules/sass-true' as true
+@use '../../src/func/color' as func-color
+@use '../../src/color' as c
+
+@include true.describe('start mixin')
+
+    @include true.it('should apply default theme colors')
+        @include true.assert
+            @include true.output
+                body
+                    @include apply-global-theme()
+            
+            @include true.expect
+                body
+                    background-color: c.$soft-white
+                    color: func-color.best-contrast-color(c.$soft-white)
+
+    @include true.it('should apply custom theme colors')
+        @include true.assert
+            @include true.output
+                body
+                    @include apply-global-theme($body-bg: #000, $text-color: #fff)
+            
+            @include true.expect
+                body
+                    background-color: #000
+                    color: #fff
+
+    @include true.it('should apply default font stack and text-wrap-safe')
+        @include true.assert
+            @include true.output
+                body
+                    @include apply-global-theme()
+            
+            @include true.expect
+                body
+                    background-color: c.$soft-white
+                    color: func-color.best-contrast-color(c.$soft-white)
+                    font-family: 'Nunito', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
+                    
+                    p, h1, h2, h3, h4, h5, h6, figcaption, a, li
+                        hyphens: auto
+                        word-wrap: anywhere
+                        white-space: pre-wrap
+                        overflow-wrap: anywhere
+                        min-inline-size: 0
+
+    @include true.it('should apply custom font')
+        @include true.assert
+            @include true.output
+                body
+                    @include apply-global-theme($font: 'Arial')
+            
+            @include true.expect
+                body
+                    background-color: c.$soft-white
+                    color: func-color.best-contrast-color(c.$soft-white)
+                    font-family: 'Arial', 'Nunito', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif

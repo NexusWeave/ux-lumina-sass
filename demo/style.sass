@@ -2,9 +2,9 @@
 @use '../src/color' as c
 @use '../src/func/color' as func-color
 
-// Using library theme setup
+// Using library theme start
 body
-  @include theme-setup($accent-color: c.$accent-slate-blue)
+  @include apply-global-theme($accent-color: c.$accent-slate-blue)
   background: linear-gradient(135deg, c.$soft-white 0%, rgba(c.$accent-slate-blue, 0.05) 100%)
   background-attachment: fixed
   min-height: 100vh
@@ -232,9 +232,9 @@ $demo-colors: ('accent-lavender': c.$accent-lavender, 'accent-salmon': c.$accent
       background-color: rgba($text-color, 0.2)
 
 // Generate all icons (defaults to icons)
-@include icon-generator()
+@include gen-icons()
 
-// Input styling is now handled directly by theme-setup
+// Input styling is now handled directly by theme-start
 
 // Sizing utility classes used in the demo
 .w100p

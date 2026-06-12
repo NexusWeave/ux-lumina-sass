@@ -8,8 +8,8 @@ This document outlines the organization of the Lumina Sass documentation and ser
   - `media.md` – Sophisticated utilities for responsive design implementation.
   - `typography.md` – Advanced tools for font management and textual styling.
   - `buttons.md` – Reusable button component mixins.
-  - `elements.md` – Fundamental HTML element styling.
-  - `misc-styling.md` – Utility mixins for backgrounds and icons.
+  - `links.md` – Fundamental HTML element styling.
+  - `utilities.md` – Utility mixins for backgrounds and icons.
   - `alerts.md` – Accessible alert box styles.
 - **[Colors](colors/colors.md)** – An exhaustive inventory of color variables and palettes.
   - **[Color Contrast & Accessibility](colors/contrast.md)** – Integrated utilities for automated WCAG compliance verification.

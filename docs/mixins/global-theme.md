@@ -1,6 +1,6 @@
-# Theme Setup Mixin
+# Core Scaffolding Mixin
 
-The `theme-setup` mixin configures the global page background and text color, applying automated contrast, and sets base styles for common elements (`a`, `abbr`, `code`, `input`, etc.) using library tokens. It also supports accent colors and custom color maps for advanced theme configuration.
+The `core` mixin configures the global page background and text color, applying automated contrast, and sets base styles for common elements (`a`, `abbr`, `code`, `input`, etc.) using library tokens. It also supports accent colors and custom color maps for advanced theme configuration.
 
 ## Usage
 
@@ -13,10 +13,10 @@ The `theme-setup` mixin configures the global page background and text color, ap
 
 body {
     // Automatically applies theme defaults
-    @include theme-setup();
+    @include core();
     
     // Custom theme configuration
-    @include theme-setup($body-bg: #1a1a1a, $accent-color: #ff6600);
+    @include core($body-bg: #1a1a1a, $accent-color: #ff6600);
 }
 ```
 
@@ -27,4 +27,4 @@ body {
 | `$body-bg` | Color | The background color for the page. Defaults to library `soft-white` token. |
 | `$text-color` | Color\|null | The text color. Defaults to `null` (auto-calculated for best contrast). |
 | `$accent-color` | Color\|null | The accent color for interactive elements (links, focus states). Defaults to `null`. |
-| `$custom-colors` | Map | A map of custom color tokens to merge into the theme. Defaults to `()`. |
+| `$custom-colors` | Map | A map of custom color tokens to merge into the theme-colors. Defaults to `()`. |

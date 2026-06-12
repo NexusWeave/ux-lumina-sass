@@ -1,6 +1,6 @@
 @use 'sass:meta'
 @use '../../src/color/base' as base
-@use '../../src/mix/_misc-styling' as misc-styling
+@use '../../src/mix/_utilities' as utilities
 @use '../../src/mix/../../node_modules/sass-true' as true
 
 @include true.test-module('Misc Styling')
@@ -8,7 +8,7 @@
     @include true.assert
       @include true.output
         .custom-bg
-          @include misc-styling.background-color(#ff0000, #ffffff)
+          @include utilities.background-color(#ff0000, #ffffff)
       
       @include true.expect
         .custom-bg
@@ -19,7 +19,7 @@
     @include true.assert
       @include true.output
         .dark-bg
-          @include misc-styling.background-color(#000000)
+          @include utilities.background-color(#000000)
       
       @include true.expect
         .dark-bg
@@ -30,7 +30,7 @@
     @include true.assert
       @include true.output
         .light-bg
-          @include misc-styling.background-color(#ffffff)
+          @include utilities.background-color(#ffffff)
       
       @include true.expect
         .light-bg
@@ -41,7 +41,7 @@
     @include true.assert
       @include true.output
         .default-bg
-          @include misc-styling.background-color
+          @include utilities.background-color
       
       @include true.expect
         .default-bg
@@ -52,7 +52,7 @@
     @include true.assert
       @include true.output
         .inherit-bg
-          @include misc-styling.background-color(inherit)
+          @include utilities.background-color(inherit)
       
       @include true.expect
         .inherit-bg
@@ -62,8 +62,8 @@
     @include true.assert
       @include true.output
         .explicit-values
-          @include misc-styling.background-color(transparent, inherit)
-          @include misc-styling.background-color(inherit, transparent)
+          @include utilities.background-color(transparent, inherit)
+          @include utilities.background-color(inherit, transparent)
       
       @include true.expect
         .explicit-values
@@ -76,7 +76,7 @@
     @include true.assert
       @include true.output
         .transparent-bg
-          @include misc-styling.background-color(transparent, $blend-bg: #000000)
+          @include utilities.background-color(transparent, $blend-bg: #000000)
       
       @include true.expect
         .transparent-bg

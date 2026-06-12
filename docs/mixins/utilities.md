@@ -1,7 +1,7 @@
-# Miscellaneous Styling
+# Utilities
 *Last updated: 2026-06-11*
 
-The `misc-styling` module provides utility mixins for common styling tasks like background colors and icon properties.
+The `utilities` module provides utility mixins for common styling tasks like background colors and icon properties.
 
 ## Mixins
 

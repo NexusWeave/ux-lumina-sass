@@ -32,7 +32,37 @@
                         &:visited
                             background-color: transparent
                             color: c.$light-blue
-                        h1, h2, h3, h4, h5, h6, p, span, strong, em, b, i, div, li, article, section
+                        @media (hover: hover)
+                            &:hover
+                                border-radius: 0.5em
+                                background-color: transparent
+                                color: #0099ee
+
+    @include true.it('should not apply link color to child elements inside anchors')
+        @include true.assert
+            @include true.output
+                .test
+                    @include link-color()
+            
+            // This test explicitly ensures `article` and `span` are NOT selected
+            @include true.expect
+                .test
+                    a
+                        cursor: pointer
+                        text-decoration: none
+                        color: c.$light-blue
+                        [aria-disabled=true]
+                            background-color: transparent
+                            color: alerts.$disabled
+                            cursor: not-allowed
+                            pointer-events: none
+                            text-decoration: none
+                        &:active
+                            background-color: transparent
+                            color: #0088cc
+                        &.external-link
+                            text-decoration: underline
+                        &:visited
                             background-color: transparent
                             color: c.$light-blue
                         @media (hover: hover)

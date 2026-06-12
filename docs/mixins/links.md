@@ -1,4 +1,4 @@
-# Elements
+# Links
 *Last updated: 2026-06-11*
 
 The `elements` module provides mixins for styling fundamental HTML elements like links.

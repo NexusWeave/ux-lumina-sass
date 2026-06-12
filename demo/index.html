@@ -22,7 +22,7 @@
             <a href="#lumina-sass-mix-alerts">Alerts Docs</a>
             <a href="#lumina-sass-mix-cards">Cards Docs</a>
             <a href="#lumina-sass-mix-typography">Typography Docs</a>
-            <a href="#lumina-sass-mix-theme-setup">Theme Setup Docs</a>
+            <a href="#lumina-sass-mix-core">Theme Setup Docs</a>
         </nav>
     </header>
 
@@ -43,7 +43,7 @@
         <pre><code>@use 'lumina-sass' as *
 
 // Generates styling for all inputs defined in map/_inputs.sass
-@include input-generator(null)
+@include gen-inputs(null)
 </code></pre>
     </details>
 
@@ -604,15 +604,15 @@
             </section>
         </details>
 
-        <details id="lumina-sass-mix-theme-setup">
-            <summary><h2>lumina-sass/mix/_theme-setup.sass</h2></summary>
+        <details id="lumina-sass-mix-core">
+            <summary><h2>lumina-sass/mix/_global-theme-colors.sass</h2></summary>
 
             <details class="section">
                 <summary><h3>Quick Usage</h3></summary>
                 <pre><code>@use 'lumina-sass' as *
 
 body {
-  @include theme-setup()
+  @include core()
 }</code></pre>
             </details>
 

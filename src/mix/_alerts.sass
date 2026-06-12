@@ -11,6 +11,9 @@
     $icon-props: func-icons.find($icon)
     @if $icon-props
         @include icon-style(map.get($icon-props, icon), $size: $size)
+        &::before
+            grid-column: 1
+            grid-row: 1
     @else
         @warn "Icon '#{$icon}' not found in icon mapping."
 
@@ -20,18 +23,23 @@
 /// @param {String} $inline-size [35rem] - The inline size of the alert.
 /// @param {Number} $icon-size [2rem] - The font size of the icon.
 @mixin alert($bg-color: alerts.$warning, $text-color: null, $icon: null, $inline-size: 35rem, $icon-size: 2rem)
-    @if $icon != null
-        @include _alert-icon($icon, $size: $icon-size)
     gap: 1.5rem
     margin: auto
     padding: 1.5rem
-    align-items: center
     border-radius: 0.5rem
     inline-size: $inline-size
     border: 0.0625rem solid rgba(0, 0, 0, 0.1)
 
     @include typo.font($weight: 800)
-    @include generators.gen-flexbox('flex-col')
     @include background-color($bg-color, $text-color)
+
+    @if $icon != null
+        display: grid
+        grid-template-columns: auto 1fr
+        align-items: start
+        @include _alert-icon($icon, $size: $icon-size)
+    @else
+        align-items: center
+        @include generators.gen-flexbox('flex-col')
 
     

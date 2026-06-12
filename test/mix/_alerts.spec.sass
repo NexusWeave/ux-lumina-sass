@@ -39,16 +39,17 @@
                     padding: 1.5rem
                     margin: auto
                     inline-size: 35rem
-                    align-items: center
                     border-radius: 0.5rem
                     border: 0.0625rem solid rgba(0, 0, 0, 0.1)
                     font-weight: 800
                     background-color: alerts.$warning
                     color: func-color.best-contrast-color(alerts.$warning)
-                    display: flex
-                    flex-wrap: nowrap
-                    flex-direction: column
+                    display: grid
+                    grid-template-columns: auto 1fr
+                    align-items: start
                     &::before
                         font-family: 'bootstrap-icons'
                         content: "\F33A"
                         font-size: 2rem
+                        grid-column: 1
+                        grid-row: 1

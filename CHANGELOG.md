@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.2.3](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.2.2...v3.2.3) (2026-06-12)
+
+
+### Bug Fixes
+
+* decouple gen-icons from internal icon map and allow styling-only generation. ([1183e78](https://github.com/NexusWeave/ux-lumina-sass/commit/1183e78c0f367d4724fbae1badd135fae0d0fe04))
+
 ### [3.2.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.2.1...v3.2.2) (2026-06-12)
 
 ### [3.2.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.2.0...v3.2.1) (2026-06-12)

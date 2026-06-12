@@ -48,6 +48,21 @@ Invoke utilities as follows:
 
 ---
 
+## Architecture & Naming Conventions
+- **Language Mandate**: The AI must communicate and generate documentation using an **Intermediate English language level**. Avoid complex jargon, metaphors, and overly formal words. Keep explanations simple, clear, and direct.
+- **Everyday Language**: Functions and mixins must use straightforward, everyday actions to be easily understandable (e.g., `@mixin apply-global-theme()` instead of `scaffold`, `@mixin style-forms()` instead of `setup`, `@mixin gen-inputs()` instead of `input-generator`).
+- **Single Responsibility Modules**:
+  - `_global-theme-colors.sass` (`@mixin apply-global-theme(...)`): The master orchestrator that bootstraps everything.
+  - `_theme-colors.sass` (`@mixin apply-theme-colors(...)`): Dedicated exclusively to setting the body background, text color, and font.
+  - `_forms.sass` (`@mixin style-forms(...)`): Dedicated to base styling of input fields.
+  - `_breakpoints.sass`: Dedicated purely to media queries.
+  - `_media.sass`: Dedicated purely to styling media objects (e.g., background-images).
+  - `_links.sass`: Dedicated to link (`a` tag) styles.
+  - `_utilities.sass`: Miscellaneous generic helper styles.
+- **AI Rule**: Whenever generating code for a user using this framework, prefer the "everyday" names. If the user wants a full bootstrap, include `mix.apply-global-theme()`. If they just want pure theme values, use `mix.apply-theme-colors()`.
+
+---
+
 ## Primary AI Responsibilities
 | Responsibility | Execution Strategy |
 |------|-----------------------------|

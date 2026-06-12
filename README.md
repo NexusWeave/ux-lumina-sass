@@ -55,17 +55,17 @@ Lumina SASS employs a modular architecture, permitting the importation of the en
 #### Flexbox Layout
 ```sass
 .container
-  @include flex.flexbox-generator('flex-row')
+  @include flex.gen-flexbox('flex-row')
   @include flex.flex-items-center
 ```
 
 #### Automated Generation (Icons & Inputs)
 ```sass
 // Systematically generate all icon classes
-@include gen.icon-generator()
+@include gen.gen-icons()
 
 // Apply base styling to all text inputs
-@include gen.input-generator('text')
+@include gen.gen-inputs('text')
 ```
 
 #### Accessibility (WCAG Contrast Verification)
@@ -113,6 +113,14 @@ Lumina SASS employs a modular architecture, permitting the importation of the en
 - **Specialized Functions:** Dedicated modules for mathematical operations and font stack resolution.
 - **Responsive Utilities:** Intuitive media query helpers (e.g., `media-queries`, `prefers-color-scheme`).
 - **Flexbox Engine:** A robust suite of mixins for rows, columns, and sophisticated alignment.
+
+## AI Migration Prompt
+
+Lumina SASS recently updated its API to use highly descriptive, everyday language for its mixins and modules (e.g., `scaffold()` is now `apply-global-theme()`). 
+
+If you are upgrading an older project, you can copy and paste the following prompt to your favorite AI coding assistant to automate the migration:
+
+> **"Please scan my project's Sass/CSS files and update all Lumina-Sass references to match their new descriptive names. Specifically: change `core` imports to `global-theme` and `theme` imports to `theme-colors`. Update mixin calls from `start()` to `apply-global-theme()`, `apply()` to `apply-theme-colors()`, and `forms.setup()` to `forms.style-forms()`. Finally, update `input-generator`, `icon-generator`, and `flexbox-generator` to their new `gen-*` prefixes (e.g., `gen-inputs`)."**
 
 ## Developer Resources
 

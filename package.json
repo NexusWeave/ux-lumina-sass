@@ -51,6 +51,16 @@
     "type": "git",
     "url": "https://github.com/NexusWeave/ux-lumina-sass.git"
   },
+  "standard-version": {
+    "types": [
+      { "type": "feat", "section": "Features" },
+      { "type": "fix", "section": "Bug Fixes" },
+      { "type": "chore", "hidden": true },
+      { "type": "style", "hidden": true },
+      { "type": "docs", "hidden": true },
+      { "type": "refactor", "hidden": true }
+    ]
+  },
   "scripts": {
     "serve": "http-server demo",
     "release": "standard-version",

@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.11.1...v3.0.0) (2026-06-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* The core initialization API has been completely renamed to use everyday language. The mixin `theme-setup()` is now `apply-global-theme()`, `input-generator()` is now `gen-inputs()`, and `misc-styling` has been renamed to `utilities`.
+
+* adopt descriptive everyday naming conventions for core modules ([7dd2484](https://github.com/NexusWeave/ux-lumina-sass/commit/7dd2484fd5af172ce73d4788c999f651dc42893f))
+
 ### [2.11.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.11.0...v2.11.1) (2026-06-11)
 
 ## [2.11.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v2.10.2...v2.11.0) (2026-06-11)

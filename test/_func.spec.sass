@@ -14,10 +14,14 @@
     @include true.test('Calculates contrast ratio correctly')
       @include true.assert-equal(func-module.contrast-ratio(base.$white, #000), 19.26)
 
-    @include true.test('Picks best contrast color')
+    @include true.test('Picks best contrast color (WCAG logic)')
       @include true.assert-equal(func-module.best-contrast-color(base.$white), base.$dark-grey)
       @include true.assert-equal(func-module.best-contrast-color(#000000), base.$white)
       @include true.assert-equal(func-module.best-contrast-color(base.$white, $dark: #000000), #000000)
+      
+      // Specifically test the edge-case from the bug report (bright cyan)
+      // Bright cyan (rgb(13, 202, 240)) has a high luminance, so it should force dark text, not white.
+      @include true.assert-equal(func-module.best-contrast-color(rgb(13, 202, 240)), base.$dark-grey)
 
   @include true.test-module('Icon Functions')
     @include true.test('Finds icon glyph by name')

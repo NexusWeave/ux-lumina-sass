@@ -22,7 +22,7 @@
   @else
     @warn "Icon #{$name} not found in icon mapping."
 
-@mixin icon-generator($name: null, $color: rgb(64, 64, 64), $font-family: 'icons')
+@mixin gen-icons($name: null, $color: rgb(64, 64, 64), $font-family: 'icons')
   @if icon-map.$icons
     @if $name == null
       @each $category, $maps in icon-map.$icons
@@ -45,7 +45,7 @@
   @else
     @error "Icon mapping not found."
 
-@mixin flexbox-generator($name)
+@mixin gen-flexbox($name)
   $props: map.get(flexbox-mapping.$flexbox, $name)
   @if $props
     @each $property, $value in $props
@@ -53,7 +53,7 @@
   @else
     @error "#{$name} not found in flexbox mapping."
 
-@mixin input-generator($name, $placeholder-color: null, $custom: ())
+@mixin gen-inputs($name: null, $placeholder-color: null, $custom: ())
   $props: map.merge(inputs.$default-input-props, $custom)
 
   // Determine focus outline (custom overrides default)

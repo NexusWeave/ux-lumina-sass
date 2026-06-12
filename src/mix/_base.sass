@@ -1,0 +1,22 @@
+@use 'sass:map'
+@use '../color' as c
+@use 'utilities' as *
+@use 'typography' as typo
+
+/// Applies base html resets and structural typography.
+@mixin reset($text: c.$dark-grey, $colors: ())
+    @include typo.text-wrap-safe()
+
+    abbr
+        cursor: help
+        text-decoration: underline dotted
+        @include background-color(transparent, $text)
+        @if map.has-key($colors, 'abbr-underline')
+            text-decoration-color: map.get($colors, 'abbr-underline')
+
+    code
+        padding: 0.2em 0.4em
+        border-radius: 0.3em
+        @include typo.monospace($size: null)
+        @if map.has-key($colors, 'code-bg')
+            @include background-color(map.get($colors, 'code-bg'))

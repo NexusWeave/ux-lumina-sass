@@ -1,0 +1,7 @@
+@use 'utilities' as *
+@use 'typography' as typo
+
+/// Core theme logic for body background, text color, and font
+@mixin apply-theme-colors($bg, $text, $font: null)
+    @include typo.font($font, $size: null)
+    @include background-color($bg, $text)

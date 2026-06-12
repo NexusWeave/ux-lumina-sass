@@ -78,8 +78,8 @@
 /// Sets up global webpage theme colors.
 /// @param {Color} $body-bg [c.$soft-white] - The background color for the page.
 /// @param {Color} $text-color [null] - The text color. If null, automatically calculated.
-/// @param {Color|null} $accent-color [null] - The accent color to use for anchors and other elements.
-/// @param {Map} $custom-colors [()] - A map of custom colors to merge into the theme.
+/// @param {Color|null} $accent-color [null] - The accent color to use for anchors and other links.
+/// @param {Map} $custom-colors [()] - A map of custom colors to merge into the theme-colors.
 /// @return {Map} - A map containing all theme colors.
 @function theme-colors($body-bg: c.$soft-white, $text-color: null, $accent-color: null, $custom-colors: ())
     $final-text: best-contrast-color($body-bg)

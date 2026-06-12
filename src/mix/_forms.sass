@@ -1,0 +1,48 @@
+@use '../color' as c
+@use 'utilities' as *
+@use '../func/color' as func-color
+
+/// Applies global form input styles.
+/// @param {Color} $bg - The background color for the page context.
+/// @param {Color} $text - The text color.
+/// @param {Color|null} $accent-color [null] - The accent color for focus/hover outlines.
+@mixin style-forms($bg: c.$soft-white, $text: c.$dark-grey, $accent-color: null)
+    $input-bg: func-color.best-contrast-color($bg, $light: c.$white, $dark: c.$soft-white)
+    
+    // Core input elements
+    input, textarea, select, button, datalist, optgroup, option
+        padding: 0.5em
+        border-radius: 0.3em
+        border: 1px solid rgba($text, 0.2)
+        @include background-color($input-bg, $text)
+
+        &:hover
+            $hover-color: func-color.contrast-color-fallback($bg, $accent-color)
+            outline-offset: 1px
+            outline: 1px solid rgba($hover-color, 0.5)
+
+        &:focus
+            $outline-color: func-color.contrast-color-fallback($bg, $accent-color)
+            outline-offset: 2px
+            outline: 2px solid $outline-color
+
+    // Labels and typography
+    label, legend
+        color: $text
+        cursor: pointer
+        font-weight: 600
+        margin-bottom: 0.25em
+        display: inline-block
+
+    // Structural elements
+    fieldset
+        border: 1px solid rgba($text, 0.2)
+        border-radius: 0.3em
+        padding: 1em
+        margin-bottom: 1em
+
+    // Helper text or output
+    output
+        color: $text
+        display: inline-block
+        padding: 0.5em 0

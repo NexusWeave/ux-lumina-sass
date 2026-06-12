@@ -1,0 +1,25 @@
+@use 'sass:map'
+@use 'base' as base
+@use '../color' as c
+@use 'links' as links
+@use 'forms' as forms
+@use 'theme-colors' as theme-colors
+
+@use '../func/color' as func-color
+
+/// Bootstraps the entire theme start by orchestrating the sub-modules
+@mixin apply-global-theme($body-bg: c.$soft-white, $text-color: null, $accent-color: null, $custom-colors: (), $font: null)
+    $colors: func-color.theme-colors($body-bg, $text-color, $accent-color, $custom-colors)
+    $bg: map.get($colors, 'body-bg')
+    $text: map.get($colors, 'text')
+
+    @include base.reset($text, $colors)
+    @include theme-colors.apply-theme-colors($bg, $text, $font)
+
+    @include forms.style-forms($bg, $text, $accent-color)
+
+    $link-color: map.get($colors, 'anchor')
+    $color-hover: func-color.best-contrast-color($bg, $light: $link-color, $dark: $link-color)
+    @include links.link-color($color: $link-color, $color-hover: $color-hover)
+
+    

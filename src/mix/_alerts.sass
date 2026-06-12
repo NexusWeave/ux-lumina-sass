@@ -1,7 +1,7 @@
 @use 'sass:map'
 @use 'generators'
 @use 'typography' as typo
-@use 'misc-styling' as *
+@use 'utilities' as *
 @use '../color/alerts' as alerts
 @use '../func/color' as func-color
 @use '../func/icons' as func-icons
@@ -18,6 +18,9 @@
 /// @param {Color} $bg-color [alerts.$warning] - The alert background color.
 /// @param {String|null} $icon [null] - Optional icon name (expects bootstrap-icons).
 @mixin alert($bg-color: alerts.$warning, $icon: null)
+    @if $icon != null
+        @include _alert-icon($icon)
+    
     gap: 0.5em
     padding: 1em
     margin: 1em 0
@@ -27,7 +30,6 @@
 
     @include typo.font($weight: 800)
     @include background-color($bg-color)
-    @include generators.flexbox-generator('flex-row')
+    @include generators.gen-flexbox('flex-row')
 
-    @if $icon != null
-        @include _alert-icon($icon)
+    

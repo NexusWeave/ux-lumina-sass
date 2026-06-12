@@ -1,6 +1,6 @@
 @use 'sass:color'
 @use '../color' as c
-@use 'misc-styling' as *
+@use 'utilities' as *
 @use 'typography' as typo
 @use '../color/alerts' as alerts
 
@@ -10,10 +10,10 @@
 
     a
         [aria-disabled="true"]
-            @include background-color(transparent, alerts.$disabled)
             cursor: not-allowed
             pointer-events: none
             @include typo.text-adjustments($decoration: none)
+            @include background-color(transparent, alerts.$disabled)
 
         &:active
             @include background-color(transparent, $color-active)
@@ -28,9 +28,6 @@
 
         &:visited
             @include background-color(transparent, $color-visited)
-
-        h1, h2, h3, h4, h5, h6, p, span, strong, em, b, i, div, li, article, section
-            @include background-color(transparent, $color)
 
         cursor: pointer
         @include typo.text-adjustments($quiet: true)

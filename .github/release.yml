@@ -1,0 +1,15 @@
+changelog:
+  exclude:
+    labels:
+      - chore
+      - style
+      - test
+    authors:
+      - octocat
+  categories:
+    - title: Features
+      labels:
+        - feat
+    - title: Bug Fixes
+      labels:
+        - fix

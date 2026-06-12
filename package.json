@@ -70,6 +70,10 @@
         "hidden": true
       },
       {
+        "type": "test",
+        "hidden": true
+      },
+      {
         "type": "docs",
         "hidden": true
       },

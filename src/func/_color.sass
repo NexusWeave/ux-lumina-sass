@@ -66,14 +66,23 @@
 /// @param {Color} $light [base.$white] - The color to return if background is dark.
 /// @param {Color} $dark [base.$dark-grey] - The color to return if background is light.
 /// @param {Color} $background [base.$white] - The background color to blend against if $bg-color is semi-transparent.
+/// @param {Boolean} $debug [false] - Set to true to log the calculated contrast ratios to the console.
 /// @return {Color} - The color with better contrast.
-@function best-contrast-color($bg-color, $light: base.$white, $dark: base.$dark-grey, $background: base.$white)
-    $lum: luminance($bg-color, $background)
+@function best-contrast-color($bg-color, $light: base.$white, $dark: base.$dark-grey, $background: base.$white, $debug: false)
+    $opaque-bg: $bg-color
+    @if color.channel($bg-color, "alpha") < 1
+        $opaque-bg: color.mix($bg-color, $background, math.percentage(color.channel($bg-color, "alpha")))
+        
+    $ratio-light: contrast-ratio($opaque-bg, $light)
+    $ratio-dark: contrast-ratio($opaque-bg, $dark)
     
-    @if $lum > 0.5
-        @return $dark
-    @else
+    @if $debug
+        @debug "Contrast for #{$bg-color} -> Light (#{$light}): #{$ratio-light}:1 | Dark (#{$dark}): #{$ratio-dark}:1"
+
+    @if $ratio-light > $ratio-dark
         @return $light
+    @else
+        @return $dark
 
 /// Sets up global webpage theme colors.
 /// @param {Color} $body-bg [c.$soft-white] - The background color for the page.

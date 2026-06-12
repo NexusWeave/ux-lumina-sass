@@ -9,9 +9,11 @@
 @use '../func/icons' as func-icons
 @use '../map/flexbox' as flexbox-mapping
 
-@mixin _icon-base($name, $color, $font-family)
+@mixin _icon-base($name, $color, $font-family, $debug: false, $silent: false)
   $props: func-icons.find($name)
   @if $props
+    @if $debug
+      @debug "gen-icons: Generating icon .#{$name}"
     .#{$name}
       &::before
         @if $color
@@ -20,11 +22,16 @@
         @include typo.font($font-family)
         content: map.get($props, icon)
   @else
-    @warn "Icon #{$name} not found in icon mapping."
+    @if $silent
+      @warn "gen-icons: Icon '#{$name}' not found in icon mapping."
+    @else
+      @error "gen-icons: Fatal error! Icon '#{$name}' not found in icon mapping."
 
-@mixin gen-icons($name: null, $color: rgb(64, 64, 64), $font-family: 'icons')
+@mixin gen-icons($name: null, $color: rgb(64, 64, 64), $font-family: 'icons', $debug: false, $silent: false)
   @if icon-map.$icons
     @if $name == null
+      @if $debug
+        @debug "gen-icons: Generating all icons..."
       @each $category, $maps in icon-map.$icons
         @each $icon, $props in $maps
           .#{$icon}
@@ -41,28 +48,36 @@
         $names: ($name)
 
       @each $single in $names
-        @include _icon-base($single, $color, $font-family)
+        @include _icon-base($single, $color, $font-family, $debug, $silent)
   @else
-    @error "Icon mapping not found."
+    @if $silent
+      @warn "gen-icons: Global icon mapping not found."
+    @else
+      @error "gen-icons: Fatal error! Global icon mapping not found."
 
-@mixin gen-flexbox($name)
+@mixin gen-flexbox($name, $silent: false)
   $props: map.get(flexbox-mapping.$flexbox, $name)
   @if $props
     @each $property, $value in $props
       #{$property}: $value
   @else
-    @error "#{$name} not found in flexbox mapping."
+    @if $silent
+      @warn "#{$name} not found in flexbox mapping."
+    @else
+      @error "#{$name} not found in flexbox mapping."
 
-@mixin gen-inputs($name: null, $placeholder-color: null, $custom: ())
+@mixin gen-inputs($name: null, $placeholder-color: null, $custom: (), $debug: false, $silent: false)
   $props: map.merge(inputs.$default-input-props, $custom)
 
   // Determine focus outline (custom overrides default)
   $focus-outline: map.get($custom, 'focus-outline') or rgb(0, 120, 215)
 
   @if $name == null
+    @if $debug
+      @debug "gen-inputs: Generating all input utility classes..."
     @each $cat, $list in inputs.$inputs
       @each $input in $list
-        input[type="#{$input}"]
+        .#{$input}-input
           @each $prop, $val in $props
             #{$prop}: $val
           @if $placeholder-color != null
@@ -77,28 +92,70 @@
         $category: $cat
 
     @if $category == null and meta.type-of($name) == 'string'
-      @warn "Input '#{$name}' not found in inputs map. Check inputs/_inputs.sass for valid names."
+      @if $silent
+        @warn "gen-inputs: Input '#{$name}' not found in inputs map."
+      @else
+        @error "gen-inputs: Fatal error! Input '#{$name}' not found in inputs map. Check inputs/_inputs.sass for valid names."
 
-    input[type="#{$name}"]
+    @if $debug
+      @debug "gen-inputs: Generating specific input class .#{$name}-input"
+
+    .#{$name}-input
       @each $prop, $val in $props
         #{$prop}: $val
       @if $placeholder-color != null
         &::placeholder
           color: $placeholder-color
-      &::focus
-        outline: $focus-outline
+      @if $focus-outline != null
+        &::focus
+          outline: $focus-outline
 
-  // Range track styling
-  &::-webkit-slider-runnable-track
-    block-size: 0.4rem
-    background: #ddd
-    border-radius: 0.2rem
+  // Ensure custom pseudo-elements are applied properly
+  @if $name == 'range' or $name == null
+    .range-input
+      @include gen-range-slider($custom)
 
-  // Range thumb styling
-  &::-webkit-slider-thumb
+/// Generates highly flexible styles for range sliders (tracks and thumbs).
+/// @param {Map} $custom - Custom overrides for the track and thumb properties.
+@mixin gen-range-slider($custom: ())
+  $default-range-props: (
+    'track-color': #ddd,
+    'track-height': 0.4rem,
+    'track-radius': 0.2rem,
+    'thumb-color': #0078d7,
+    'thumb-size': 1.2rem,
+    'thumb-radius': 50%,
+    'width': 100%
+  )
+  $props: map.merge($default-range-props, $custom)
+  
+  $track-height: map.get($props, 'track-height')
+  $thumb-size: map.get($props, 'thumb-size')
+  
+  // Calculate margin to perfectly center the thumb on the track in Webkit
+  $thumb-margin: calc((#{$track-height} - #{$thumb-size}) / 2)
+
+  // Target the range input itself
+  -webkit-appearance: none
+  appearance: none
+  background: transparent
+  inline-size: map.get($props, 'width')
+  cursor: pointer
+
+  // The Track
+  &::-webkit-slider-runnable-track,
+  &::-moz-range-track
+    block-size: $track-height
+    background: map.get($props, 'track-color')
+    border-radius: map.get($props, 'track-radius')
+
+  // The Thumb
+  &::-webkit-slider-thumb,
+  &::-moz-range-thumb
     -webkit-appearance: none
-    inline-size: 1rem
-    block-size: 1rem
-    background: #0078d7
-    border-radius: 50%
-    margin-top: -0.3rem
+    appearance: none
+    inline-size: $thumb-size
+    block-size: $thumb-size
+    background: map.get($props, 'thumb-color')
+    border-radius: map.get($props, 'thumb-radius')
+    margin-top: $thumb-margin

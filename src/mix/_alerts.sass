@@ -17,7 +17,7 @@
 /// Applies alert styles with automated theme-aware contrast and strong typography.
 /// @param {Color} $bg-color [alerts.$warning] - The alert background color.
 /// @param {String|null} $icon [null] - Optional icon name (expects bootstrap-icons).
-@mixin alert($bg-color: alerts.$warning, $icon: null)
+@mixin alert($bg-color: alerts.$warning, $text-color: null, $icon: null)
     @if $icon != null
         @include _alert-icon($icon)
     
@@ -29,7 +29,7 @@
     border: 1px solid rgba(0, 0, 0, 0.1)
 
     @include typo.font($weight: 800)
-    @include background-color($bg-color)
+    @include background-color($bg-color, $text-color)
     @include generators.gen-flexbox('flex-row')
 
     

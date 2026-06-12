@@ -12,7 +12,7 @@ This document provides a **comprehensive technical reference** for the entire `l
 |-------|--------------|------|-----------|
 | `gen-icons` | `src/mix/_generators.sass` | 24 | `@mixin gen-icons($name: null, $color: rgb(64, 64, 64), $font-family: 'bootstrap-icons')` |
 | `gen-flexbox` | `src/mix/_generators.sass` | 47 | `@mixin gen-flexbox($name)` |
-| `gen-inputs` | `src/mix/_generators.sass` | 55 | `@mixin gen-inputs($name, $placeholder-color: null, $custom: ())` |
+| `gen-inputs` | `src/mix/_generators.sass` | 55 | `@mixin gen-inputs($name: null, $placeholder-color: null, $custom: (), $debug: false, $silent: false)` |
 | `media-queries-base` | `src/mix/_media.sass` | 8 | `@mixin media-queries-base($breakpoint, $value: null)` |
 | `media-queries` | `src/mix/_media.sass` | 22 | `@mixin media-queries($feature, $value: null)` |
 | `prefers-color-scheme` | `src/mix/_media.sass` | 27 | `@mixin prefers-color-scheme($mode)` |

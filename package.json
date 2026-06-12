@@ -1,6 +1,6 @@
 {
   "name": "lumina-sass",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "type": "module",
   "description": "Lumina Sass design tokens, mixins and public sub-modules (flexbox, color, mix).",
   "main": "src/_index.sass",
@@ -53,12 +53,30 @@
   },
   "standard-version": {
     "types": [
-      { "type": "feat", "section": "Features" },
-      { "type": "fix", "section": "Bug Fixes" },
-      { "type": "chore", "hidden": true },
-      { "type": "style", "hidden": true },
-      { "type": "docs", "hidden": true },
-      { "type": "refactor", "hidden": true }
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "chore",
+        "hidden": true
+      },
+      {
+        "type": "style",
+        "hidden": true
+      },
+      {
+        "type": "docs",
+        "hidden": true
+      },
+      {
+        "type": "refactor",
+        "hidden": true
+      }
     ]
   },
   "scripts": {

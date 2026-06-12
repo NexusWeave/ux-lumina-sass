@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.1.0...v3.2.0) (2026-06-12)
+
+
+### Features
+
+* migrate to logical properties and rem units. ([566ab4f](https://github.com/NexusWeave/ux-lumina-sass/commit/566ab4f8851fafec0489a8f1fbba140db2be46db))
+
 ### [3.1.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.1.0...v3.1.1) (2026-06-12)
 
 ## [3.1.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.0.1...v3.1.0) (2026-06-12)

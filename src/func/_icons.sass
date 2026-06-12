@@ -1,14 +1,19 @@
 @use 'sass:map' as map
+@use 'sass:meta' as meta
 @use '../map/icons' as icon-map
 
 $icon-aliases: ('info-circle': 'info', 'warning-triangle': 'warning')
 
-@function find($name)
+@function find($name, $map: icon-map.$icons)
   $search-name: $name
   @if map.has-key($icon-aliases, $name)
     $search-name: map.get($icon-aliases, $name)
 
-  @each $category, $maps in icon-map.$icons
-    @if map.has-key($maps, $search-name)
-      @return map.get($maps, $search-name)
+  @each $key, $value in $map
+    @if $key == $search-name and meta.type-of($value) == 'map' and map.has-key($value, 'icon')
+      @return $value
+
+    @if meta.type-of($value) == 'map'
+      @if map.has-key($value, $search-name)
+        @return map.get($value, $search-name)
   @return null

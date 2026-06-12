@@ -9,8 +9,8 @@
 @use '../func/icons' as func-icons
 @use '../map/flexbox' as flexbox-mapping
 
-@mixin _icon-base($name, $color, $font-family, $debug: false, $silent: false)
-  $props: func-icons.find($name)
+@mixin _icon-base($name, $color, $font-family, $debug: false, $silent: false, $map: icon-map.$icons, $include-content: true)
+  $props: func-icons.find($name, $map)
   @if $props
     @if $debug
       @debug "gen-icons: Generating icon .#{$name}"
@@ -20,27 +20,43 @@
           color: $color !important
 
         @include typo.font($font-family)
-        content: map.get($props, icon)
+        @if $include-content
+          content: map.get($props, icon)
   @else
     @if $silent
       @warn "gen-icons: Icon '#{$name}' not found in icon mapping."
     @else
       @error "gen-icons: Fatal error! Icon '#{$name}' not found in icon mapping."
 
-@mixin gen-icons($name: null, $color: rgb(64, 64, 64), $font-family: 'icons', $debug: false, $silent: false)
-  @if icon-map.$icons
+@mixin gen-icons($name: null, $color: rgb(64, 64, 64), $font-family: 'bootstrap-icons', $debug: false, $silent: false, $map: icon-map.$icons, $include-content: true)
+  @if $map
+  
     @if $name == null
       @if $debug
         @debug "gen-icons: Generating all icons..."
-      @each $category, $maps in icon-map.$icons
-        @each $icon, $props in $maps
-          .#{$icon}
-            &::before
-              @if $color
-                color: $color !important
+      @each $key, $value in $map
+        @if meta.type-of($value) == 'map'
+          @if map.has-key($value, 'icon')
+            // Flat structure: icon-name -> (icon: value)
+            .#{$key}
+              &::before
+                @if $color
+                  color: $color !important
 
-              @include typo.font($font-family)
-              content: map.get($props, icon)
+                @include typo.font($font-family)
+                @if $include-content
+                  content: map.get($value, icon)
+          @else
+            // Nested structure: category -> (icon-name -> (icon: value))
+            @each $icon, $props in $value
+              .#{$icon}
+                &::before
+                  @if $color
+                    color: $color !important
+
+                  @include typo.font($font-family)
+                  @if $include-content
+                    content: map.get($props, icon)
               
     @else
       $names: $name
@@ -48,12 +64,12 @@
         $names: ($name)
 
       @each $single in $names
-        @include _icon-base($single, $color, $font-family, $debug, $silent)
+        @include _icon-base($single, $color, $font-family, $debug, $silent, $map, $include-content)
   @else
     @if $silent
-      @warn "gen-icons: Global icon mapping not found."
+      @warn "gen-icons: Icon mapping not found."
     @else
-      @error "gen-icons: Fatal error! Global icon mapping not found."
+      @error "gen-icons: Fatal error! Icon mapping not found."
 
 @mixin gen-flexbox($name, $silent: false)
   $props: map.get(flexbox-mapping.$flexbox, $name)

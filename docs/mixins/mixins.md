@@ -10,7 +10,7 @@ This document provides a **comprehensive technical reference** for the entire `l
 
 | Mixin | Source Module | Line | Signature |
 |-------|--------------|------|-----------|
-| `gen-icons` | `src/mix/_generators.sass` | 24 | `@mixin gen-icons($name: null, $color: rgb(64, 64, 64), $font-family: 'bootstrap-icons')` |
+| `gen-icons` | `src/mix/_generators.sass` | 24 | `@mixin gen-icons($name: null, $color: rgb(64, 64, 64), $font-family: 'bootstrap-icons', $map: icon-map.$icons, $include-content: true)` |
 | `gen-flexbox` | `src/mix/_generators.sass` | 47 | `@mixin gen-flexbox($name)` |
 | `gen-inputs` | `src/mix/_generators.sass` | 55 | `@mixin gen-inputs($name: null, $placeholder-color: null, $custom: (), $debug: false, $silent: false)` |
 | `media-queries-base` | `src/mix/_media.sass` | 8 | `@mixin media-queries-base($breakpoint, $value: null)` |

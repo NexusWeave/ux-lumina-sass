@@ -1,0 +1,31 @@
+@use 'sass:map'
+@use 'sass:meta'
+@use '../src/func' as func-module
+@use '../src/map/icons' as icon-map
+@use '../node_modules/sass-true' as true
+
+@include true.test-module('Icons Verification')
+  @include true.test('All icons in the configuration map can be resolved')
+    @each $category, $icons-in-cat in icon-map.$icons
+      @if meta.type-of($icons-in-cat) == 'map'
+        @each $icon-name, $icon-props in $icons-in-cat
+          $resolved: func-module.find($icon-name)
+          @include true.assert-true(meta.type-of($resolved) == 'map', 'Expected #{$icon-name} to resolve to a map')
+          @include true.assert-true(map.has-key($resolved, 'icon'), 'Expected #{$icon-name} to have key "icon"')
+
+  @include true.test('find() returns the first match for duplicate names based on category order')
+    $default-resolved: func-module.find('default')
+    // 'document' category comes before 'misc-icons', so it should resolve to document's default (\F369)
+    @include true.assert-equal(map.get($default-resolved, 'icon'), "\F369")
+
+  @include true.test('Icon aliases resolve correctly')
+    $info-resolved: func-module.find('info-circle')
+    @include true.assert-true(meta.type-of($info-resolved) == 'map')
+    @include true.assert-equal(map.get($info-resolved, 'icon'), "\F431")
+
+    $warning-resolved: func-module.find('warning-triangle')
+    @include true.assert-true(meta.type-of($warning-resolved) == 'map')
+    @include true.assert-equal(map.get($warning-resolved, 'icon'), "\F33A")
+
+  @include true.test('Searching for an unknown icon returns null')
+    @include true.assert-equal(func-module.find('non-existent-icon'), null)

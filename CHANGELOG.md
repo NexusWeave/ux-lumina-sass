@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.2.5](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.2.4...v3.2.5) (2026-06-14)
+
+
+### Bug Fixes
+
+* Resolving issues with icons, not display properly. ([2863e92](https://github.com/NexusWeave/ux-lumina-sass/commit/2863e9218c7c2deec9d9ddbadf080180ff8ec776))
+
 ### [3.2.4](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.2.3...v3.2.4) (2026-06-12)
 
 ### [3.2.3](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.2.2...v3.2.3) (2026-06-12)

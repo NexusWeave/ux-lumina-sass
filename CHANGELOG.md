@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.2.7](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.2.6...v3.2.7) (2026-06-14)
+
+
+### Bug Fixes
+
+* correct syntax for tool icon in sass map. ([d280e2f](https://github.com/NexusWeave/ux-lumina-sass/commit/d280e2f7e00880a181c5306d076c84d716368629))
+
 ### [3.2.6](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.2.5...v3.2.6) (2026-06-14)
 
 ### [3.2.5](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.2.4...v3.2.5) (2026-06-14)

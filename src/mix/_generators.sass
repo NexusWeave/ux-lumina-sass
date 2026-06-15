@@ -82,6 +82,11 @@
     @else
       @error "#{$name} not found in flexbox mapping."
 
+@mixin gen-flexbox-atomic($prefix, $property, $map)
+  @each $key, $value in $map
+    .#{$prefix}-#{$key}
+      #{$property}: $value
+
 @mixin gen-inputs($name: null, $placeholder-color: null, $custom: (), $debug: false, $silent: false)
   $props: map.merge(inputs.$default-input-props, $custom)
 

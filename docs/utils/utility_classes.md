@@ -1,5 +1,5 @@
 # Utility Classes
-*Last updated: 2026-06-10*
+*Last updated: 2026-06-15*
 
 This document provides a comprehensive overview of the CSS utility class helpers facilitated by Lumina Sass.
 
@@ -17,6 +17,19 @@ To utilize these helpers, import the main library or the specific utility module
 
 These utility classes provide consistent layout behavior across the application.
 
+### Atomic Flexbox Utilities (New)
+
+For maximum flexibility, use these atomic classes to build custom layouts.
+
+| Property Group | Class Pattern | Example |
+| :--- | :--- | :--- |
+| **Justify Content** | `.justify-{value}` | `.justify-between` |
+| **Align Items** | `.items-{value}` | `.items-center` |
+| **Flex Direction** | `.dir-{value}` | `.dir-col-reverse` |
+| **Align Self** | `.self-{value}` | `.self-end` |
+| **Align Content** | `.content-{value}` | `.content-around` |
+| **Flex Wrap** | `.wrap-{value}` | `.wrap-nowrap` |
+
 ### Base Flexbox Utilities
 
 | Class | Description |
@@ -26,7 +39,7 @@ These utility classes provide consistent layout behavior across the application.
 | `.flex-center` | Aligns content horizontally and vertically within the container. |
 | `.flex-items-center` | Aligns flex container items to the center. |
 
-### Directional Utilities
+### Directional Utilities (Composite Shortcuts)
 
 | Class | Description |
 | :--- | :--- |

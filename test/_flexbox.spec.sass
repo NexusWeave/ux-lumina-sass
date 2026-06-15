@@ -39,3 +39,171 @@
           flex-direction: row
           align-items: center
           justify-content: center
+
+  @include true.test('Applies .flex-inline-items-justify-center utility properties')
+    @include true.assert
+      @include true.output
+        .test-inline-composite
+          @extend .flex-inline-items-justify-center
+      
+      @include true.expect
+        .test-inline-composite
+          display: inline-flex
+          align-items: center
+          justify-content: center
+
+  @include true.test('Applies atomic justify-content properties')
+    @include true.assert
+      @include true.output
+        .test-justify-start
+          @extend .justify-start
+        .test-justify-end
+          @extend .justify-end
+        .test-justify-center
+          @extend .justify-center
+        .test-justify-between
+          @extend .justify-between
+        .test-justify-around
+          @extend .justify-around
+        .test-justify-evenly
+          @extend .justify-evenly
+      
+      @include true.expect
+        .test-justify-start
+          justify-content: flex-start
+        .test-justify-end
+          justify-content: flex-end
+        .test-justify-center
+          justify-content: center
+        .test-justify-between
+          justify-content: space-between
+        .test-justify-around
+          justify-content: space-around
+        .test-justify-evenly
+          justify-content: space-evenly
+
+  @include true.test('Applies atomic align-items properties')
+    @include true.assert
+      @include true.output
+        .test-items-start
+          @extend .items-start
+        .test-items-end
+          @extend .items-end
+        .test-items-center
+          @extend .items-center
+        .test-items-baseline
+          @extend .items-baseline
+        .test-items-stretch
+          @extend .items-stretch
+      
+      @include true.expect
+        .test-items-start
+          align-items: flex-start
+        .test-items-end
+          align-items: flex-end
+        .test-items-center
+          align-items: center
+        .test-items-baseline
+          align-items: baseline
+        .test-items-stretch
+          align-items: stretch
+
+  @include true.test('Applies atomic align-content properties')
+    @include true.assert
+      @include true.output
+        .test-content-start
+          @extend .content-start
+        .test-content-end
+          @extend .content-end
+        .test-content-center
+          @extend .content-center
+        .test-content-between
+          @extend .content-between
+        .test-content-around
+          @extend .content-around
+        .test-content-stretch
+          @extend .content-stretch
+      
+      @include true.expect
+        .test-content-start
+          align-content: flex-start
+        .test-content-end
+          align-content: flex-end
+        .test-content-center
+          align-content: center
+        .test-content-between
+          align-content: space-between
+        .test-content-around
+          align-content: space-around
+        .test-content-stretch
+          align-content: stretch
+
+  @include true.test('Applies atomic align-self properties')
+    @include true.assert
+      @include true.output
+        .test-self-auto
+          @extend .self-auto
+        .test-self-start
+          @extend .self-start
+        .test-self-end
+          @extend .self-end
+        .test-self-center
+          @extend .self-center
+        .test-self-baseline
+          @extend .self-baseline
+        .test-self-stretch
+          @extend .self-stretch
+      
+      @include true.expect
+        .test-self-auto
+          align-self: auto
+        .test-self-start
+          align-self: flex-start
+        .test-self-end
+          align-self: flex-end
+        .test-self-center
+          align-self: center
+        .test-self-baseline
+          align-self: baseline
+        .test-self-stretch
+          align-self: stretch
+
+  @include true.test('Applies atomic flex-wrap properties')
+    @include true.assert
+      @include true.output
+        .test-wrap-nowrap
+          @extend .wrap-nowrap
+        .test-wrap-wrap
+          @extend .wrap-wrap
+        .test-wrap-wrap-reverse
+          @extend .wrap-wrap-reverse
+      
+      @include true.expect
+        .test-wrap-nowrap
+          flex-wrap: nowrap
+        .test-wrap-wrap
+          flex-wrap: wrap
+        .test-wrap-wrap-reverse
+          flex-wrap: wrap-reverse
+
+  @include true.test('Applies atomic flex-direction properties')
+    @include true.assert
+      @include true.output
+        .test-dir-row
+          @extend .dir-row
+        .test-dir-row-reverse
+          @extend .dir-row-reverse
+        .test-dir-col
+          @extend .dir-col
+        .test-dir-col-reverse
+          @extend .dir-col-reverse
+      
+      @include true.expect
+        .test-dir-row
+          flex-direction: row
+        .test-dir-row-reverse
+          flex-direction: row-reverse
+        .test-dir-col
+          flex-direction: column
+        .test-dir-col-reverse
+          flex-direction: column-reverse

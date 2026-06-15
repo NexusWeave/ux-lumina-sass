@@ -1,0 +1,9 @@
+@use '../mix/index' as mix
+@use '../map/index' as map
+
+@include mix.gen-flexbox-atomic('justify', 'justify-content', map.$justify-content)
+@include mix.gen-flexbox-atomic('items', 'align-items', map.$align-items)
+@include mix.gen-flexbox-atomic('content', 'align-content', map.$align-content)
+@include mix.gen-flexbox-atomic('self', 'align-self', map.$align-self)
+@include mix.gen-flexbox-atomic('wrap', 'flex-wrap', map.$flex-wrap)
+@include mix.gen-flexbox-atomic('dir', 'flex-direction', map.$flex-direction)

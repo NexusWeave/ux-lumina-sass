@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.3.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.2.7...v3.3.0) (2026-06-15)
+
+
+### Features
+
+* add atomic flexbox utilities and update documentation to support customized layout compositions. ([cc68c5c](https://github.com/NexusWeave/ux-lumina-sass/commit/cc68c5c0f9cd6d40de3350e100e7da8f6f659258))
+
 ### [3.2.7](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.2.6...v3.2.7) (2026-06-14)
 
 

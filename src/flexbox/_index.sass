@@ -1,16 +1,17 @@
+// Internal dependencies
 @use '../mix/index' as mix
 
+@forward 'atomic'
 @forward '../mix/index'
 @forward 'flexbox-row'
 @forward 'flexbox-column'
 @forward 'flexbox-wrap-row'
 @forward 'flexbox-reversed-row'
-
 @forward 'inline-flex/flex-inline-align-justify'
 @forward 'column-align-justify-mix/column-justify-items'
 @forward 'row-align-justify-mix/flex-wrap-row-items-justify'
 @forward 'row-align-justify-mix/flex-wrap-row-content-justify'
-@forward 'atomic'
+
 
 .flex
     @include mix.gen-flexbox('flex')

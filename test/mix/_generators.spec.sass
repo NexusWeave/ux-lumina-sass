@@ -1,8 +1,13 @@
+// Built-in Dependencies
 @use 'sass:map'
 @use 'sass:meta'
+
+// Third-party dependencies
+@use '../../src/mix/../../node_modules/sass-true' as true
+
+// Internal dependencies
 @use '../../src/mix/_generators' as generators
 @use '../../src/map/inputs' as inputs
-@use '../../src/mix/../../node_modules/sass-true' as true
 
 @include true.test-module('Icon Generator')
   @include true.test('Generates school icon class')

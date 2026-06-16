@@ -1,8 +1,13 @@
+// Built-in Dependencies
 @use 'sass:map'
+
+// Third-party dependencies
+@use '../../node_modules/sass-true' as true
+
+// Internal dependencies
 @use '../../src/mix' as *
 @use '../../src/color' as c
 @use '../../src/func/color' as func-color
-@use '../../node_modules/sass-true' as true
 
 @include true.describe('card mixin')
 

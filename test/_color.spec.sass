@@ -1,6 +1,9 @@
+// Third-party dependencies
+@use '../node_modules/sass-true' as true
+
+// Internal dependencies
 @use '../src/func/color' as func-color
 @use '../src/mix/contrast' as mix-contrast
-@use '../node_modules/sass-true' as true
 
 @include true.test-module('Color Contrast Utilities')
   @include true.test('Calculates relative luminance of white as 1')

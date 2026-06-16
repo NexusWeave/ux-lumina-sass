@@ -1,7 +1,12 @@
+// Built-in Dependencies
 @use 'sass:meta'
+
+// Third-party dependencies
+@use '../../src/mix/../../node_modules/sass-true' as true
+
+// Internal dependencies
 @use '../../src/color/base' as base
 @use '../../src/mix/_utilities' as utilities
-@use '../../src/mix/../../node_modules/sass-true' as true
 
 @include true.test-module('Misc Styling')
   @include true.test('Applies background and explicit text color')

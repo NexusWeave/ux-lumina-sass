@@ -1,8 +1,13 @@
+// Built-in Dependencies
 @use 'sass:map'
 @use 'sass:meta'
+
+// Third-party dependencies
+@use '../node_modules/sass-true' as true
+
+// Internal dependencies
 @use '../src/func' as func-module
 @use '../src/map/icons' as icon-map
-@use '../node_modules/sass-true' as true
 
 @include true.test-module('Icons Verification')
   @include true.test('All icons in the configuration map can be resolved')

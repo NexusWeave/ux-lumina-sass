@@ -1,8 +1,13 @@
+// Built-in Dependencies
 @use 'sass:color'
+
+// Third-party dependencies
+@use '../../src/mix/../../node_modules/sass-true' as true
+
+// Internal dependencies
 @use '../../src/mix/_buttons' as buttons
 @use '../../src/color' as c
 @use '../../src/func/color' as func-color
-@use '../../src/mix/../../node_modules/sass-true' as true
 
 @include true.test-module('Buttons')
   @include true.test('Applies base button styling')

@@ -1,5 +1,8 @@
-@use '../../src/mix/_media' as media
+// Third-party dependencies
 @use '../../src/mix/../../node_modules/sass-true' as true
+
+// Internal dependencies
+@use '../../src/mix/_media' as media
 
 @include true.test-module('Media Objects')
   @include true.test('Generates background-image with default values')

@@ -1,9 +1,14 @@
+// Built-in Dependencies
 @use 'sass:map'
 @use 'sass:meta'
 @use 'sass:list'
+
+// Third-party dependencies
+@use '../node_modules/sass-true' as true
+
+// Internal dependencies
 @use '../src/func' as func-module
 @use '../src/color/base' as base
-@use '../node_modules/sass-true' as true
 
 @include true.test-module('Utility Functions')
   @include true.test-module('Color Functions')

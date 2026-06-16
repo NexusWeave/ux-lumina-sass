@@ -1,6 +1,11 @@
+// Built-in Dependencies
 @use 'sass:map'
-@use '../src/map' as map-module
+
+// Third-party dependencies
 @use '../node_modules/sass-true' as true
+
+// Internal dependencies
+@use '../src/map' as map-module
 
 @include true.test-module('Configuration Maps')
   @include true.test('Icons map contains expected categories')

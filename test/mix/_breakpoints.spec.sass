@@ -1,8 +1,13 @@
+// Built-in Dependencies
 @use 'sass:map'
 @use 'sass:meta'
+
+// Third-party dependencies
+@use '../../src/mix/../../node_modules/sass-true' as true
+
+// Internal dependencies
 @use '../../src/mix/_breakpoints' as breakpoints
 @use '../../src/map/devices-breakpoints' as devices-breakpoints
-@use '../../src/mix/../../node_modules/sass-true' as true
 
 @include true.test-module('Media Queries')
   @include true.test('Generates max-width media query for breakpoint md')

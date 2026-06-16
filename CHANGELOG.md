@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.3](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.3.2...v3.3.3) (2026-06-16)
+
+
+### Bug Fixes
+
+* **core:** remove side-effect that automatically applies global theme on import ([3852b27](https://github.com/NexusWeave/ux-lumina-sass/commit/3852b2762fe6830e2817b745d3bb3e5ebfc38602))
+
 ### [3.3.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.3.1...v3.3.2) (2026-06-16)
 
 ### [3.3.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.3.0...v3.3.1) (2026-06-16)

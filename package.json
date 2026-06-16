@@ -1,6 +1,6 @@
 {
   "name": "lumina-sass",
-  "version": "3.3.2",
+  "version": "3.3.3",
   "type": "module",
   "description": "Lumina Sass design tokens, mixins and public sub-modules (flexbox, color, mix).",
   "main": "src/_index.sass",

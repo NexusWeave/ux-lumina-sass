@@ -2,11 +2,8 @@
 @forward 'func'
 @forward 'color'
 @forward 'flexbox'
-@use 'mix' as *
+
 
 *, *::before, *::after    
     box-sizing: border-box
     writing-mode: horizontal-tb
-
-body
-    @include apply-global-theme()

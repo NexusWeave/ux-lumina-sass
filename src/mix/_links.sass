@@ -6,7 +6,19 @@
 
 
 /// Applies link colors using theme-aware defaults.
-@mixin link-color($color: c.$light-blue, $color-hover: color.adjust(c.$light-blue, $lightness: -10%), $color-active: color.adjust(c.$light-blue, $lightness: -20%), $color-visited: c.$light-blue)
+@mixin link-color($color: null, $color-hover: null, $color-active: null, $color-visited: null)
+
+    @if $color == null
+        $color: c.$light-blue
+    
+    @if $color-hover == null
+        $color-hover: color.adjust($color, $lightness: -10%)
+    
+    @if $color-active == null
+        $color-active: color.adjust($color, $lightness: -20%)
+    
+    @if $color-visited == null
+        $color-visited: $color
 
     a
         [aria-disabled="true"]

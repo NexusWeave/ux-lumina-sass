@@ -2,7 +2,10 @@ import path from 'path';
 import { execSync } from 'child_process';
 import { writeFileSync, mkdirSync, rmSync, existsSync } from 'fs';
 
-const MODULES: string[] = ['func', 'flexbox', 'color', 'mix', 'map'];
+const MODULES: string[] = [
+  '.', 'map', 'mix', 'func', 'color', 'colors',
+  'mixins', 'flexbox', 'contrast', 'generators'
+];
 const ROOT_DIR: string = process.cwd();
 const TEMP_DIR: string = path.join(ROOT_DIR, 'test/temp-module-test');
 
@@ -31,9 +34,10 @@ function runModuleTests(): void {
     execSync('npm install', { cwd: TEMP_DIR, stdio: 'pipe' });
 
     for (const mod of MODULES) {
-      process.stdout.write(`Testing @use 'pkg:lumina-sass/${mod}'... `);
-      const testFile: string = path.join(TEMP_DIR, `test-${mod}.sass`);
-      writeFileSync(testFile, `@use 'pkg:lumina-sass/${mod}'\n.test\n  content: 'ok'`);
+      const importPath = mod === '.' ? 'lumina-sass' : `lumina-sass/${mod}`;
+      process.stdout.write(`Testing @use 'pkg:${importPath}'... `);
+      const testFile: string = path.join(TEMP_DIR, `test-${mod === '.' ? 'root' : mod}.sass`);
+      writeFileSync(testFile, `@use 'pkg:${importPath}'\n.test\n  content: 'ok'`);
       
       try {
         // Using the node package importer which understands pkg: prefix and package.json exports

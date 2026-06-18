@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.5](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.3.4...v3.3.5) (2026-06-18)
+
+
+### Bug Fixes
+
+* **test:** update module-test to cover all public sub-paths and root import ([bf9ecbb](https://github.com/NexusWeave/ux-lumina-sass/commit/bf9ecbbcbc8e925a73722bd7a288299d96afed3d))
+
 ### [3.3.4](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.3.3...v3.3.4) (2026-06-16)
 
 ### [3.3.3](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.3.2...v3.3.3) (2026-06-16)

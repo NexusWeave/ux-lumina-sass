@@ -122,6 +122,79 @@ If you are upgrading an older project, you can copy and paste the following prom
 
 > **"Please scan my project's Sass/CSS files and update all Lumina-Sass references to match their new descriptive names. Specifically: change `core` imports to `global-theme` and `theme` imports to `theme-colors`. Update mixin calls from `start()` to `apply-global-theme()`, `apply()` to `apply-theme-colors()`, and `forms.setup()` to `forms.style-forms()`. Finally, update `input-generator`, `icon-generator`, and `flexbox-generator` to their new `gen-*` prefixes (e.g., `gen-inputs`)."**
 
+## How to Test
+
+Lumina SASS is engineered for testability. We recommend utilizing [**Sass-True**](https://github.com/oddbird/true) to unit test your components and verify that your mixins generate the expected CSS.
+
+### Unit Testing with Sass-True
+
+To use clean package imports (e.g., `@use 'lumina-sass/flexbox'`) in your test suite, you must enable the **Node.js Package Importer** (requires **Dart Sass v1.80.0+**).
+
+#### Example Specification (`component.spec.sass`)
+```sass
+@use 'sass-true' as true
+@use 'lumina-sass/flexbox' as flex
+
+@include true.test-module('UI Components')
+  @include true.test('Centered Flexbox Container')
+    @include true.assert
+      @include true.output
+        .container
+          @include flex.gen-flexbox('flex-row')
+          @include flex.flex-items-center
+      @include true.expect
+        .container
+          display: flex
+          flex-direction: row
+          align-items: center
+```
+
+#### Running Tests via CLI
+Include the `--pkg-importer=node` flag to resolve package imports:
+```bash
+sass --pkg-importer=node tests/component.spec.sass tests/output.css
+```
+
+#### Running Tests via JavaScript (Vitest/Jest)
+
+Integrating Sass-True with a JavaScript test runner like **Vitest** or **Jest** provides better reporting, watch modes, and seamless CI integration.
+
+1.  **Install dependencies:**
+    ```bash
+    npm install --save-dev vitest sass-true
+    ```
+
+2.  **Create a test wrapper (`sass.test.ts`):**
+    ```javascript
+    import { describe, it } from 'vitest';
+    import { runSass } from 'sass-true';
+    import * as sass from 'sass';
+    import path from 'path';
+
+    const sassSpec = path.resolve(__dirname, 'test/index.spec.sass');
+
+    runSass({ describe, it }, sassSpec, {
+      sass,
+      importers: [new sass.NodePackageImporter()]
+    });
+    ```
+
+3.  **Execute tests:**
+    ```bash
+    npx vitest run
+    ```
+
+### Internal Library Testing
+If you are contributing to Lumina SASS, you can execute the full validation suite (Unit tests, Syntax checks, and Integration tests) using:
+
+```bash
+# Run all tests
+npm test
+
+# Run Sass-True suite specifically
+npm run test:sass
+```
+
 ## Developer Resources
 
 - [**Documentation Index**](docs/README.md)

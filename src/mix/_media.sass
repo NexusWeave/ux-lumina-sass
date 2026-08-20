@@ -1,4 +1,4 @@
-
+@use './_typography' as typo
 
 /// Background image utility for setting multiple background properties at once.
 /// @param {String} $path - Path to the image file.
@@ -22,3 +22,114 @@
 
     @if $origin != null
         background-origin: $origin
+
+@mixin video-wrapper($feeback-overlay, $feedback-color, $section-color, $input-accent-color, $accent-color,$icon-color)
+
+    .video-wrapper
+        &:hover
+            > section
+                opacity: 1
+                pointer-events: auto
+
+        video
+            display: block
+            grid-area: media
+            inline-size: 100%
+            object-fit: cover
+
+        button.video-feedback
+            cursor: pointer
+            background-color: transparent
+
+        .video-feedback
+            z-index: 2
+            opacity: 1
+            border: none
+            outline: none
+            line-height: 1
+            padding: 0.8rem
+            grid-area: media
+            font-size: 5.5rem
+            place-self: center
+            border-radius: 100%
+            pointer-events: none
+            color: rgba($feedback-color, 0.95)
+            background: rgba($overlay-trans-black, 0.3) !important
+            transition: opacity 0.25s ease, transform 0.2s ease, background 0.2s ease
+            
+            // Force icon span & ::before to the correct size
+            // (gen-icons hardcodes font-size: 1rem on ::before)
+            span
+                &::before
+                    font-size: 5.5rem
+                font-size: 5.5rem
+
+            &:hover, &:focus
+                transform: scale(1.1)
+
+        > section
+            margin: 0
+            z-index: 1
+            gap:0.3rem
+            padding: 1rem
+            align-self: end
+            grid-area: media
+            inline-size: 100%
+            background: linear-gradient(transparent, rgba($section-trans-overlay, .7))
+
+            // Hover Transition Logic
+            opacity: 0
+            pointer-events: none
+            transition: opacity 0.3s ease-in-out
+
+            input[type="range"]
+                cursor: pointer
+                inline-size: 100%
+                accent-color: $input-accent-color
+
+            section // Row for button and timer
+                gap: 1rem
+                padding: 0
+
+                button
+                    // Force icon span & ::before to the correct size
+                    // (gen-icons hardcodes font-size: 1rem on ::before)
+                    span
+                        &::before
+                            @include font($font:'bootstrap', $size: 2.8rem)
+                        @include font($font:'bootstrap', $size: 2.8rem)
+
+                    &:hover, &:focus
+                        outline: none
+
+                    i
+                        color: $accent-color
+
+                    padding: 0
+                    border: none
+                    outline: none
+                    line-height: 1
+                    cursor: pointer
+                    border-radius: 0
+                    color: transparent
+                    background: transparent
+                    @include typo.font($size: 2.8rem)
+
+                pre
+                    color: $accent-color
+                    font-family: monospace
+                    @include typo.font($size: 0.9rem)
+
+            .icon
+                color: rgba($icon-color, 0.8)
+                animation: feedback-pop 0.6s ease-out forwards
+
+        *   // Global reset for video wrapper children to counter index.sass margin: auto
+        padding: 0
+        margin: auto
+        display: grid
+        cursor: pointer
+        overflow: hidden
+        border-radius: 1rem
+        background-color: black
+        grid-template-areas: "media"

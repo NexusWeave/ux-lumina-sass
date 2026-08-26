@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.3.5...v3.4.0) (2026-08-26)
+
+
+### Features
+
+* **video-wrapper:** add video-wrapper. ([86726ac](https://github.com/NexusWeave/ux-lumina-sass/commit/86726ac4d31dcd3029bea5964783be173ef9a439))
+
+
+### Bug Fixes
+
+* **media:** fix intendation error. ([b880924](https://github.com/NexusWeave/ux-lumina-sass/commit/b880924cb2670361709f45b9b29bb4a2ecfd4e25))
+
 ### [3.3.5](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.3.4...v3.3.5) (2026-06-18)
 
 

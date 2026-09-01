@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.5.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.4.2...v3.5.0) (2026-09-01)
+
+
+### Features
+
+* **icons:** introduce hamburger & x icons. ([389b19e](https://github.com/NexusWeave/ux-lumina-sass/commit/389b19ecc5a076969cfa18b16cfc5117984b8a62))
+
 ### [3.4.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.4.1...v3.4.2) (2026-08-27)
 
 ### [3.4.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.4.0...v3.4.1) (2026-08-26)

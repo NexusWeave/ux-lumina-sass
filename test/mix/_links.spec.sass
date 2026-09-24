@@ -1,3 +1,6 @@
+// Built-in Dependencies
+@use 'sass:color'
+
 // Third-party dependencies
 @use '../../node_modules/sass-true' as true
 
@@ -10,6 +13,9 @@
 @include true.describe('elements mixin')
 
     @include true.it('should apply link-color styles')
+        $color: c.$light-blue
+        $hover: color.adjust($color, $lightness: -10%)
+        $active: color.adjust($color, $lightness: -20%)
         @include true.assert
             @include true.output
                 .test
@@ -18,30 +24,34 @@
             @include true.expect
                 .test
                     a
-                        cursor: pointer
-                        text-decoration: none
-                        color: c.$light-blue
-                        [aria-disabled=true]
-                            background-color: transparent
-                            color: alerts.$disabled
+                        [aria-disabled="true"]
                             cursor: not-allowed
                             pointer-events: none
                             text-decoration: none
+                            background-color: transparent
+                            color: alerts.$disabled
                         &:active
                             background-color: transparent
-                            color: #0088cc
+                            color: $active
                         &.external-link
                             text-decoration: underline
-                        &:visited
-                            background-color: transparent
-                            color: c.$light-blue
                         @media (hover: hover)
                             &:hover
                                 border-radius: 0.5em
                                 background-color: transparent
-                                color: #0099ee
+                                color: $hover
+                        &:visited
+                            background-color: transparent
+                            color: $color
+                        cursor: pointer
+                        text-decoration: none
+                        background-color: transparent
+                        color: $color
 
     @include true.it('should not apply link color to child elements inside anchors')
+        $color: c.$light-blue
+        $hover: color.adjust($color, $lightness: -10%)
+        $active: color.adjust($color, $lightness: -20%)
         @include true.assert
             @include true.output
                 .test
@@ -51,25 +61,26 @@
             @include true.expect
                 .test
                     a
-                        cursor: pointer
-                        text-decoration: none
-                        color: c.$light-blue
-                        [aria-disabled=true]
-                            background-color: transparent
-                            color: alerts.$disabled
+                        [aria-disabled="true"]
                             cursor: not-allowed
                             pointer-events: none
                             text-decoration: none
+                            background-color: transparent
+                            color: alerts.$disabled
                         &:active
                             background-color: transparent
-                            color: #0088cc
+                            color: $active
                         &.external-link
                             text-decoration: underline
-                        &:visited
-                            background-color: transparent
-                            color: c.$light-blue
                         @media (hover: hover)
                             &:hover
                                 border-radius: 0.5em
                                 background-color: transparent
-                                color: #0099ee
+                                color: $hover
+                        &:visited
+                            background-color: transparent
+                            color: $color
+                        cursor: pointer
+                        text-decoration: none
+                        background-color: transparent
+                        color: $color

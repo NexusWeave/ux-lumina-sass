@@ -3,13 +3,14 @@
 
 // Internal dependencies
 @use '../src/flexbox' as flex
+@use '../src/map/flexbox' as map-flex
 
 @include true.test-module('Flexbox Utility Classes')
   @include true.test('Applies .flex-row utility properties')
     @include true.assert
       @include true.output
         .test-row
-          @extend .flex-row
+          @include flex.gen-flexbox('flex-row')
       
       @include true.expect
         .test-row
@@ -21,7 +22,7 @@
     @include true.assert
       @include true.output
         .test-col
-          @extend .flex-col
+          @include flex.gen-flexbox('flex-col')
       
       @include true.expect
         .test-col
@@ -33,7 +34,11 @@
     @include true.assert
       @include true.output
         .test-composite
-          @extend .flex-row-items-center-justify-center
+          display: flex
+          flex-wrap: nowrap
+          flex-direction: row
+          align-items: center
+          justify-content: center
       
       @include true.expect
         .test-composite
@@ -47,7 +52,9 @@
     @include true.assert
       @include true.output
         .test-inline-composite
-          @extend .flex-inline-items-justify-center
+          display: inline-flex
+          align-items: center
+          justify-content: center
       
       @include true.expect
         .test-inline-composite
@@ -58,155 +65,101 @@
   @include true.test('Applies atomic justify-content properties')
     @include true.assert
       @include true.output
-        .test-justify-start
-          @extend .justify-start
-        .test-justify-end
-          @extend .justify-end
-        .test-justify-center
-          @extend .justify-center
-        .test-justify-between
-          @extend .justify-between
-        .test-justify-around
-          @extend .justify-around
-        .test-justify-evenly
-          @extend .justify-evenly
+        @include flex.gen-flexbox-atomic('justify', 'justify-content', map-flex.$justify-content)
       
       @include true.expect
-        .test-justify-start
+        .justify-start
           justify-content: flex-start
-        .test-justify-end
+        .justify-end
           justify-content: flex-end
-        .test-justify-center
+        .justify-center
           justify-content: center
-        .test-justify-between
+        .justify-between
           justify-content: space-between
-        .test-justify-around
+        .justify-around
           justify-content: space-around
-        .test-justify-evenly
+        .justify-evenly
           justify-content: space-evenly
 
   @include true.test('Applies atomic align-items properties')
     @include true.assert
       @include true.output
-        .test-items-start
-          @extend .items-start
-        .test-items-end
-          @extend .items-end
-        .test-items-center
-          @extend .items-center
-        .test-items-baseline
-          @extend .items-baseline
-        .test-items-stretch
-          @extend .items-stretch
+        @include flex.gen-flexbox-atomic('items', 'align-items', map-flex.$align-items)
       
       @include true.expect
-        .test-items-start
+        .items-start
           align-items: flex-start
-        .test-items-end
+        .items-end
           align-items: flex-end
-        .test-items-center
+        .items-center
           align-items: center
-        .test-items-baseline
+        .items-baseline
           align-items: baseline
-        .test-items-stretch
+        .items-stretch
           align-items: stretch
 
   @include true.test('Applies atomic align-content properties')
     @include true.assert
       @include true.output
-        .test-content-start
-          @extend .content-start
-        .test-content-end
-          @extend .content-end
-        .test-content-center
-          @extend .content-center
-        .test-content-between
-          @extend .content-between
-        .test-content-around
-          @extend .content-around
-        .test-content-stretch
-          @extend .content-stretch
+        @include flex.gen-flexbox-atomic('content', 'align-content', map-flex.$align-content)
       
       @include true.expect
-        .test-content-start
+        .content-start
           align-content: flex-start
-        .test-content-end
+        .content-end
           align-content: flex-end
-        .test-content-center
+        .content-center
           align-content: center
-        .test-content-between
+        .content-between
           align-content: space-between
-        .test-content-around
+        .content-around
           align-content: space-around
-        .test-content-stretch
+        .content-stretch
           align-content: stretch
 
   @include true.test('Applies atomic align-self properties')
     @include true.assert
       @include true.output
-        .test-self-auto
-          @extend .self-auto
-        .test-self-start
-          @extend .self-start
-        .test-self-end
-          @extend .self-end
-        .test-self-center
-          @extend .self-center
-        .test-self-baseline
-          @extend .self-baseline
-        .test-self-stretch
-          @extend .self-stretch
+        @include flex.gen-flexbox-atomic('self', 'align-self', map-flex.$align-self)
       
       @include true.expect
-        .test-self-auto
+        .self-auto
           align-self: auto
-        .test-self-start
+        .self-start
           align-self: flex-start
-        .test-self-end
+        .self-end
           align-self: flex-end
-        .test-self-center
+        .self-center
           align-self: center
-        .test-self-baseline
+        .self-baseline
           align-self: baseline
-        .test-self-stretch
+        .self-stretch
           align-self: stretch
 
   @include true.test('Applies atomic flex-wrap properties')
     @include true.assert
       @include true.output
-        .test-wrap-nowrap
-          @extend .wrap-nowrap
-        .test-wrap-wrap
-          @extend .wrap-wrap
-        .test-wrap-wrap-reverse
-          @extend .wrap-wrap-reverse
+        @include flex.gen-flexbox-atomic('wrap', 'flex-wrap', map-flex.$flex-wrap)
       
       @include true.expect
-        .test-wrap-nowrap
+        .wrap-nowrap
           flex-wrap: nowrap
-        .test-wrap-wrap
+        .wrap-wrap
           flex-wrap: wrap
-        .test-wrap-wrap-reverse
+        .wrap-wrap-reverse
           flex-wrap: wrap-reverse
 
   @include true.test('Applies atomic flex-direction properties')
     @include true.assert
       @include true.output
-        .test-dir-row
-          @extend .dir-row
-        .test-dir-row-reverse
-          @extend .dir-row-reverse
-        .test-dir-col
-          @extend .dir-col
-        .test-dir-col-reverse
-          @extend .dir-col-reverse
+        @include flex.gen-flexbox-atomic('dir', 'flex-direction', map-flex.$flex-direction)
       
       @include true.expect
-        .test-dir-row
+        .dir-row
           flex-direction: row
-        .test-dir-row-reverse
+        .dir-row-reverse
           flex-direction: row-reverse
-        .test-dir-col
+        .dir-col
           flex-direction: column
-        .test-dir-col-reverse
+        .dir-col-reverse
           flex-direction: column-reverse

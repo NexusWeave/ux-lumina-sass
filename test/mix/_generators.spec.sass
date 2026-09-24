@@ -40,22 +40,9 @@
         @include generators.gen-inputs('text')
       
       @include true.expect
-        input[type="text"]
+        .text-input
           @each $prop, $val in inputs.$default-input-props
             #{$prop}: $val
         
-        input[type="text"]::focus
-          outline: map.get(inputs.$default-input-props, 'focus-outline')
-        
-        &::-webkit-slider-runnable-track
-          block-size: 0.4rem
-          background: #ddd
-          border-radius: 0.2rem
-        
-        &::-webkit-slider-thumb
-          -webkit-appearance: none
-          inline-size: 1rem
-          block-size: 1rem
-          background: #0078d7
-          border-radius: 50%
-          margin-top: -0.3rem
+          &::focus
+            outline: map.get(inputs.$default-input-props, 'focus-outline')

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.7.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.6.1...v3.7.0) (2026-09-24)
+
+
+### Features
+
+* **mixins:** add position utilities & min/max logical dimension helpers. ([28a5ca5](https://github.com/NexusWeave/ux-lumina-sass/commit/28a5ca58d26cb351b1f76b94fc06eeb7062357c5))
+
 ### [3.6.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.6.0...v3.6.1) (2026-09-24)
 
 ## [3.6.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.5.3...v3.6.0) (2026-09-24)

@@ -22,7 +22,7 @@ These mixins are exported through `src/mix/_index.sass` and can be integrated in
 @use "lumina-sass/mix" as media;
 
 // Implementation example
-@include media.media-queries('md') {
+@include media.media-queries('tablet-landscape') {
   .example { color: red; }
 }
 ```
@@ -31,17 +31,13 @@ These mixins are exported through `src/mix/_index.sass` and can be integrated in
 
 | Breakpoints | Technical Specification |
 |---------------------|-------------|
-| **xs** | 30rem – Extra-small breakpoint |
-| **sm** | 48rem – Small breakpoint |
-| **md** | 64rem – Medium breakpoint |
-| **lg** | 80rem – Large breakpoint |
-| **xl** | 90rem – Extra-large breakpoint |
-| **S**  | 12.5rem – Custom small dimension |
-| **M**  | 31.25rem – Custom medium dimension |
-| **L**  | 50rem – Custom large dimension |
-| **XL** | 64rem – Custom extra-large dimension |
-| **2XL**| 80rem – Custom double-extra-large dimension |
-| **3XL**| 81.25rem – Custom triple-extra-large dimension |
+| **mobile-s** | 30rem – Extra-small mobile breakpoint (480px) |
+| **mobile** | 48rem – Standard mobile / small tablet breakpoint (768px) |
+| **tablet-landscape** | 64rem – Tablet landscape breakpoint (1024px) |
+| **desktop-s** | 80rem – Small desktop breakpoint (1280px) |
+| **desktop** | 90rem – Standard desktop breakpoint (1440px) |
+| **fhd** | 120rem – Full HD desktop breakpoint (1920px) |
+| **4k** | 160rem – 4K / Ultra-high resolution breakpoint (2560px) |
 | **htc** | Device support: Desire, Sensation, One |
 | **sharp** | Device support: IS03, 941SH, SX862 |
 | **apple** | Device support: iPad, iPad Air, iPad Pro, TV-CD, iPhone (various models) |

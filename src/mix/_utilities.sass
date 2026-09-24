@@ -25,8 +25,8 @@
 /// @param {Number} $size [1rem] - The font size of the icon.
 @mixin icon-style($icon-content, $font-family: 'icons', $size: 1rem)
     &::before
-        @include typo.font($font-family, $size: $size)
         content: $icon-content
+        @include typo.font($font-family, $size: $size)
 
 /// Sets logical dimensions: inline-size (width) and block-size (height), with optional min/max constraints.
 /// Supports both short ($min-inline, $min-block, $max-inline, $max-block) and full CSS property names ($min-inline-size, $min-block-size, $max-inline-size, $max-block-size).

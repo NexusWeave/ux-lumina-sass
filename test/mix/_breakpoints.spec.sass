@@ -3,25 +3,36 @@
 @use 'sass:meta'
 
 // Third-party dependencies
-@use '../../src/mix/../../node_modules/sass-true' as true
+@use '../../node_modules/sass-true' as true
 
 // Internal dependencies
 @use '../../src/mix/_breakpoints' as breakpoints
 @use '../../src/map/devices-breakpoints' as devices-breakpoints
 
-@include true.test-module('Media Queries')
-  @include true.test('Generates max-width media query for breakpoint md')
-    $md: map.get(devices-breakpoints.$breakpoints, 'md')
+@include true.describe('Media Queries')
+  @include true.it('Generates max-width media query for breakpoint mobile')
+    $mobile: map.get(devices-breakpoints.$breakpoints, 'mobile')
     @include true.assert
       @include true.output
-        @include breakpoints.media-queries('md')
+        @include breakpoints.media-queries('mobile')
           color: blue
       
       @include true.expect
-        @media (max-inline-size: $md)
+        @media (max-inline-size: $mobile)
           color: blue
 
-  @include true.test('Generates prefers-color-scheme')
+  @include true.it('Generates max-width media query for semantic descriptive breakpoint (tablet-landscape)')
+    $tablet-land: map.get(devices-breakpoints.$breakpoints, 'tablet-landscape')
+    @include true.assert
+      @include true.output
+        @include breakpoints.media-queries('tablet-landscape')
+          color: green
+      
+      @include true.expect
+        @media (max-inline-size: $tablet-land)
+          color: green
+
+  @include true.it('Generates prefers-color-scheme')
     @include true.assert
       @include true.output
         @include breakpoints.prefers-color-scheme(dark)
@@ -31,7 +42,7 @@
         @media (prefers-color-scheme: dark)
           background: black
 
-  @include true.test('Generates device-media for iphone')
+  @include true.it('Generates device-media for iphone')
     $iphone: map.get(devices-breakpoints.$devices, 'iphone')
     $min-inline: map.get($iphone, 'inline-size')
     $max-inline: $min-inline + 0.125rem

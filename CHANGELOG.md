@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.0.0...v4.1.0) (2026-09-24)
+
+
+### Features
+
+* **mix:** add margin & comprehensive form input mixins with unit tests. ([18c7829](https://github.com/NexusWeave/ux-lumina-sass/commit/18c7829de8578c62d1667fc539caf8601c3575a1))
+
 ## [4.0.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.7.0...v4.0.0) (2026-09-24)
 
 

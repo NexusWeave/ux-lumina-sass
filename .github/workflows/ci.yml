@@ -12,7 +12,7 @@ on:
 
 jobs:
   test:
-    name: Run Sass Unit Tests
+    name: Run Vitest & Sass Validation
     runs-on: ubuntu-latest
 
     steps:
@@ -31,5 +31,5 @@ jobs:
       - name: Run Build
         run: npm run build
 
-      - name: Run Tests
+      - name: Run Vitest & Test Suite
         run: npm test

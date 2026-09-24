@@ -188,11 +188,8 @@ Integrating Sass-True with a JavaScript test runner like **Vitest** or **Jest** 
 If you are contributing to Lumina SASS, you can execute the full validation suite (Unit tests, Syntax checks, and Integration tests) using:
 
 ```bash
-# Run all tests
+# Run full test suite (Vitest, warnings check, syntax lint & module tests)
 npm test
-
-# Run Sass-True suite specifically
-npm run test:sass
 ```
 
 ## Developer Resources

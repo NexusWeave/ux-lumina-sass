@@ -1,0 +1,48 @@
+// Third-party dependencies
+@use '../../node_modules/sass-true' as true
+
+// Internal dependencies
+@use '../../src/mix/margin' as m
+
+@include true.describe('Margin Utilities')
+  @include true.it('Applies shorthand and logical margin properties')
+    @include true.assert
+      @include true.output
+        .box
+          @include m.margin($block: 1rem 2rem, $inline: auto)
+        .header
+          @include m.margin($margin: 0 auto)
+      
+      @include true.expect
+        .box
+          margin-block: 1rem 2rem
+          margin-inline: auto
+        .header
+          margin: 0 auto
+
+  @include true.it('Applies directional logical and physical margins')
+    @include true.assert
+      @include true.output
+        .article
+          @include m.margin($b-start: 2rem, $b-end: 1rem, $i-start: 0.5rem)
+        .footer
+          @include m.margin($top: 10px, $left: 20px)
+      
+      @include true.expect
+        .article
+          margin-block-start: 2rem
+          margin-block-end: 1rem
+          margin-inline-start: 0.5rem
+        .footer
+          margin-top: 10px
+          margin-left: 20px
+
+  @include true.it('Applies margin-center convenience helper')
+    @include true.assert
+      @include true.output
+        .centered
+          @include m.margin-center()
+      
+      @include true.expect
+        .centered
+          margin-inline: auto

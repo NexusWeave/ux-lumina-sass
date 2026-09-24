@@ -1,0 +1,59 @@
+/// Sets element margins using logical and physical properties.
+///
+/// @param {Length|String|List} $margin [null] - Margin shorthand.
+/// @param {Length|String|List} $block [null] - Logical margin-block.
+/// @param {Length|String|List} $inline [null] - Logical margin-inline.
+/// @param {Length|String} $block-start [null] - Logical margin-block-start.
+/// @param {Length|String} $block-end [null] - Logical margin-block-end.
+/// @param {Length|String} $inline-start [null] - Logical margin-inline-start.
+/// @param {Length|String} $inline-end [null] - Logical margin-inline-end.
+/// @param {Length|String} $b-start [null] - Short alias for $block-start.
+/// @param {Length|String} $b-end [null] - Short alias for $block-end.
+/// @param {Length|String} $i-start [null] - Short alias for $inline-start.
+/// @param {Length|String} $i-end [null] - Short alias for $inline-end.
+/// @param {Length|String} $top [null] - Physical margin-top.
+/// @param {Length|String} $right [null] - Physical margin-right.
+/// @param {Length|String} $bottom [null] - Physical margin-bottom.
+/// @param {Length|String} $left [null] - Physical margin-left.
+@mixin margin($margin: null, $block: null, $inline: null, $block-start: null, $block-end: null, $inline-start: null, $inline-end: null, $b-start: null, $b-end: null, $i-start: null, $i-end: null, $top: null, $right: null, $bottom: null, $left: null)
+    $actual-bs: if($b-start != null, $b-start, $block-start)
+    $actual-be: if($b-end != null, $b-end, $block-end)
+    $actual-is: if($i-start != null, $i-start, $inline-start)
+    $actual-ie: if($i-end != null, $i-end, $inline-end)
+
+    @if $margin != null
+        margin: $margin
+
+    @if $block != null
+        margin-block: $block
+
+    @if $inline != null
+        margin-inline: $inline
+
+    @if $actual-bs != null
+        margin-block-start: $actual-bs
+
+    @if $actual-be != null
+        margin-block-end: $actual-be
+
+    @if $actual-is != null
+        margin-inline-start: $actual-is
+
+    @if $actual-ie != null
+        margin-inline-end: $actual-ie
+
+    @if $top != null
+        margin-top: $top
+
+    @if $right != null
+        margin-right: $right
+
+    @if $bottom != null
+        margin-bottom: $bottom
+
+    @if $left != null
+        margin-left: $left
+
+/// Convenience mixin for horizontal centering.
+@mixin margin-center()
+    margin-inline: auto

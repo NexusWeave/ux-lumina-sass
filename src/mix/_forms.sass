@@ -1,7 +1,244 @@
 // Internal dependencies
 @use '../color' as c
-@use 'utilities' as *
+@use 'utilities' as util
+@use 'typography' as typo
+@use 'margin' as m
 @use '../func/color' as func-color
+
+
+/// Range input styling (applied directly on input[type="range"])
+/// @param {Color|String} $bg [transparent] - Background color of the range container.
+/// @param {Color} $thumb-color [null] - Color of the thumb slider.
+/// @param {Color} $track-color [null] - Color of the slider track.
+/// @param {Length} $thumb-inline [0.9375rem] - Width (inline-size) of the thumb.
+/// @param {Length} $thumb-block [1.875rem] - Height (block-size) of the thumb.
+/// @param {Length} $thumb-radius [1rem] - Border radius of the thumb.
+/// @param {Number} $thumb-opacity [null] - Opacity of the thumb.
+/// @param {Length} $thumb-margin-top [null] - Top offset for the thumb (margin-block-start).
+/// @param {Length} $track-block [0.9rem] - Height (block-size) of the track.
+/// @param {Length} $track-radius [1rem] - Border radius of the track.
+/// @param {Length} $inline [100%] - Overall inline-size.
+/// @param {Length} $block [auto] - Overall block-size.
+/// @param {String} $cursor [pointer] - Cursor type.
+/// @param {String} $outline [none] - Focus outline.
+@mixin input-range($bg: transparent, $thumb-color: null, $track-color: null, $thumb-inline: 0.9375rem, $thumb-block: 1.875rem, $thumb-radius: 1rem, $thumb-opacity: null, $thumb-margin-top: null, $track-block: 0.9rem, $track-radius: 1rem, $inline: 100%, $block: auto, $cursor: pointer, $outline: none)
+    cursor: $cursor
+    appearance: none
+    -webkit-appearance: none
+    @if $bg == transparent
+        background: transparent
+    @else if $bg != null
+        @include util.background-color($bg)
+    @include util.size($inline: $inline, $block: $block)
+
+    @if $outline != null
+        &:focus
+            outline: $outline
+
+    $resolved-tr: $bg
+    @if $track-color != null
+        $resolved-tr: $track-color
+
+    &::-webkit-slider-runnable-track, &::-moz-range-track
+        cursor: $cursor
+        -webkit-appearance: none
+        @if $resolved-tr == transparent
+            background: transparent
+        @else if $resolved-tr != null
+            @include util.background-color($resolved-tr)
+        @if $track-radius != null
+            border-radius: $track-radius
+        @if $track-block != null
+            @include util.size($block: $track-block)
+
+    $resolved-th: $bg
+    @if $thumb-color != null
+        $resolved-th: $thumb-color
+
+    &::-webkit-slider-thumb
+        cursor: $cursor
+        -webkit-appearance: none
+        @if $resolved-th == transparent
+            background: transparent
+        @else if $resolved-th != null
+            @include util.background-color($resolved-th)
+        @if $thumb-opacity != null
+            opacity: $thumb-opacity
+        @if $thumb-radius != null
+            border-radius: $thumb-radius
+        @include util.size($inline: $thumb-inline, $block: $thumb-block)
+        @if $thumb-margin-top != null
+            @include m.margin($b-start: $thumb-margin-top)
+
+    &::-moz-range-thumb
+        border: none
+        cursor: $cursor
+        @if $resolved-th == transparent
+            background: transparent
+        @else if $resolved-th != null
+            @include util.background-color($resolved-th)
+        @if $thumb-opacity != null
+            opacity: $thumb-opacity
+        @if $thumb-radius != null
+            border-radius: $thumb-radius
+        @include util.size($inline: $thumb-inline, $block: $thumb-block)
+
+
+/// Textual input styling (text, email, password, search, tel, url, number, date)
+/// @param {Color} $bg [c.$soft-white] - Background color.
+/// @param {Color} $color [c.$dark-grey] - Text color.
+/// @param {String} $border [0.0625rem solid rgba(0, 0, 0, 0.15)] - Border definition.
+/// @param {Length} $radius [0.375rem] - Border radius.
+/// @param {Length} $padding [0.5rem 0.75rem] - Padding.
+/// @param {Length} $inline [100%] - Inline-size.
+/// @param {Color} $focus-border [c.$sea-green] - Border color on focus.
+@mixin input-text($bg: c.$soft-white, $color: c.$dark-grey, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.5rem 0.75rem, $inline: 100%, $focus-border: c.$sea-green)
+    padding: $padding
+    border: $border
+    border-radius: $radius
+    transition: border-color 0.2s ease, box-shadow 0.2s ease
+    @include util.background-color($bg, $color)
+    @include util.size($inline: $inline)
+    @include typo.font($size: 1rem)
+
+    &:focus
+        outline: none
+        @if $focus-border != null
+            border-color: $focus-border
+            box-shadow: 0 0 0 0.2rem rgba($focus-border, 0.25)
+
+
+/// Checkbox and Radio input styling
+/// @param {Color} $accent [c.$sea-green] - Accent color.
+/// @param {Length} $size [1.1rem] - Width and height.
+/// @param {String} $cursor [pointer] - Cursor type.
+@mixin input-check($accent: c.$sea-green, $size: 1.1rem, $cursor: pointer)
+    cursor: $cursor
+    accent-color: $accent
+    @include util.size($size, $size)
+
+
+/// Color picker input styling
+/// @param {Length} $size [2.5rem] - Size of the color picker button.
+/// @param {Length} $radius [0.375rem] - Border radius.
+/// @param {String} $border [0.0625rem solid rgba(0, 0, 0, 0.15)] - Border definition.
+/// @param {String} $cursor [pointer] - Cursor type.
+@mixin input-color($size: 2.5rem, $radius: 0.375rem, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $cursor: pointer)
+    cursor: $cursor
+    border: $border
+    border-radius: $radius
+    padding: 0.125rem
+    background: transparent
+    @include util.size($size, $size)
+
+    &::-webkit-color-swatch-wrapper
+        padding: 0
+
+    &::-webkit-color-swatch, &::-moz-color-swatch
+        border: none
+        @if $radius != null
+            border-radius: $radius
+        @else
+            border-radius: 0
+
+
+/// File input styling
+/// @param {Color} $bg [c.$soft-white] - Input background color.
+/// @param {Color} $btn-bg [c.$sea-green] - Upload button background color.
+/// @param {Color} $btn-color [c.$white] - Upload button text color.
+/// @param {Length} $radius [0.375rem] - Border radius.
+/// @param {String} $cursor [pointer] - Cursor type.
+@mixin input-file($bg: c.$soft-white, $btn-bg: c.$sea-green, $btn-color: c.$white, $radius: 0.375rem, $cursor: pointer)
+    cursor: $cursor
+    border-radius: $radius
+    @include typo.font($size: 0.9rem)
+    @include util.background-color($bg)
+
+    &::file-selector-button, &::-webkit-file-upload-button
+        cursor: $cursor
+        border: none
+        border-radius: $radius
+        padding: 0.5rem 1rem
+        transition: opacity 0.2s ease
+        @include util.background-color($btn-bg, $btn-color)
+        @include m.margin($inline: 0 0.5rem)
+
+        &:hover
+            opacity: 0.9
+
+
+/// Select dropdown styling
+/// @param {Color} $bg [c.$soft-white] - Background color.
+/// @param {Color} $color [c.$dark-grey] - Text color.
+/// @param {String} $border [0.0625rem solid rgba(0, 0, 0, 0.15)] - Border definition.
+/// @param {Length} $radius [0.375rem] - Border radius.
+/// @param {Length} $padding [0.5rem 2rem 0.5rem 0.75rem] - Padding including arrow space.
+/// @param {Length} $inline [100%] - Inline-size.
+/// @param {String} $cursor [pointer] - Cursor type.
+/// @param {Color} $focus-border [c.$sea-green] - Focus border color.
+@mixin input-select($bg: c.$soft-white, $color: c.$dark-grey, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.5rem 2rem 0.5rem 0.75rem, $inline: 100%, $cursor: pointer, $focus-border: c.$sea-green)
+    @include input-text($bg: $bg, $color: $color, $border: $border, $radius: $radius, $padding: $padding, $inline: $inline, $focus-border: $focus-border)
+    cursor: $cursor
+    appearance: none
+    -webkit-appearance: none
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")
+    background-repeat: no-repeat
+    background-position: right 0.75rem center
+    background-size: 1rem
+
+
+/// Textarea styling
+/// @param {Color} $bg [c.$soft-white] - Background color.
+/// @param {Color} $color [c.$dark-grey] - Text color.
+/// @param {String} $border [0.0625rem solid rgba(0, 0, 0, 0.15)] - Border definition.
+/// @param {Length} $radius [0.375rem] - Border radius.
+/// @param {Length} $padding [0.75rem] - Padding.
+/// @param {Length} $min-block [6rem] - Minimum block-size (height).
+/// @param {Length} $inline [100%] - Inline-size.
+/// @param {String} $resize [vertical] - CSS resize behavior.
+/// @param {Color} $focus-border [c.$sea-green] - Focus border color.
+@mixin input-textarea($bg: c.$soft-white, $color: c.$dark-grey, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.75rem, $min-block: 6rem, $inline: 100%, $resize: vertical, $focus-border: c.$sea-green)
+    @include input-text($bg: $bg, $color: $color, $border: $border, $radius: $radius, $padding: $padding, $inline: $inline, $focus-border: $focus-border)
+    resize: $resize
+    @include util.size($min-block: $min-block)
+
+
+/// Generic input-styles routing mixin for embedding into parent selectors
+@mixin input-styles($color: null, $type: 'range')
+    @if $type == 'range'
+        input[type="range"]
+            @include input-range($thumb-color: $color, $track-color: $color)
+
+    @else if $type == 'text' or $type == 'password' or $type == 'email' or $type == 'number' or $type == 'search' or $type == 'tel' or $type == 'url' or $type == 'date' or $type == 'datetime-local' or $type == 'month' or $type == 'time' or $type == 'week'
+        input[type="#{$type}"]
+            @include input-text($color: $color)
+
+    @else if $type == 'checkbox' or $type == 'radio'
+        $check-color: c.$sea-green
+        @if $color != null
+            $check-color: $color
+        input[type="#{$type}"]
+            @include input-check($accent: $check-color)
+
+    @else if $type == 'color'
+        input[type="color"]
+            @include input-color()
+
+    @else if $type == 'file'
+        $file-btn: c.$sea-green
+        @if $color != null
+            $file-btn: $color
+        input[type="file"]
+            @include input-file($btn-bg: $file-btn)
+
+    @else if $type == 'select'
+        select
+            @include input-select()
+
+    @else if $type == 'textarea'
+        textarea
+            @include input-textarea()
+
 
 /// Applies global form input styles.
 /// @param {Color} $bg - The background color for the page context.
@@ -15,7 +252,7 @@
         padding: 0.5em
         border-radius: 0.3em
         border: 0.0625rem solid rgba($text, 0.2)
-        @include background-color($input-bg, $text)
+        @include util.background-color($input-bg, $text)
 
         &:hover
             $hover-color: func-color.contrast-color-fallback($bg, $accent-color)

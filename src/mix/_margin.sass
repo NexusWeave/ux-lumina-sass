@@ -16,10 +16,21 @@
 /// @param {Length|String} $bottom [null] - Physical margin-bottom.
 /// @param {Length|String} $left [null] - Physical margin-left.
 @mixin margin($margin: null, $block: null, $inline: null, $block-start: null, $block-end: null, $inline-start: null, $inline-end: null, $b-start: null, $b-end: null, $i-start: null, $i-end: null, $top: null, $right: null, $bottom: null, $left: null)
-    $actual-bs: if($b-start != null, $b-start, $block-start)
-    $actual-be: if($b-end != null, $b-end, $block-end)
-    $actual-is: if($i-start != null, $i-start, $inline-start)
-    $actual-ie: if($i-end != null, $i-end, $inline-end)
+    $actual-bs: $block-start
+    @if $b-start != null
+        $actual-bs: $b-start
+
+    $actual-be: $block-end
+    @if $b-end != null
+        $actual-be: $b-end
+
+    $actual-is: $inline-start
+    @if $i-start != null
+        $actual-is: $i-start
+
+    $actual-ie: $inline-end
+    @if $i-end != null
+        $actual-ie: $i-end
 
     @if $margin != null
         margin: $margin
@@ -54,6 +65,11 @@
     @if $left != null
         margin-left: $left
 
-/// Convenience mixin for horizontal centering.
-@mixin margin-center()
+
+/// Convenience helper to center an element horizontally using logical margin-inline.
+///
+/// @param {Length|String} $block [null] - Optional vertical margin-block.
+@mixin margin-center($block: null)
     margin-inline: auto
+    @if $block != null
+        margin-block: $block

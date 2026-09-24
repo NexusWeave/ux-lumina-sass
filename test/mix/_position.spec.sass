@@ -1,0 +1,82 @@
+// Third-party dependencies
+@use '../../node_modules/sass-true' as true
+
+// Internal dependencies
+@use '../../src/mix/position' as pos
+
+@include true.describe('Position Utilities')
+  @include true.it('Applies generic position mixin with physical offsets')
+    @include true.assert
+      @include true.output
+        .modal-overlay
+          @include pos.position(absolute, $top: 0, $right: 0, $bottom: 0, $left: 0, $z-index: 100)
+      
+      @include true.expect
+        .modal-overlay
+          position: absolute
+          top: 0
+          right: 0
+          bottom: 0
+          left: 0
+          z-index: 100
+
+  @include true.it('Applies generic position mixin with inset shorthand')
+    @include true.assert
+      @include true.output
+        .inset-full
+          @include pos.position(fixed, $inset: 0, $z-index: 50)
+      
+      @include true.expect
+        .inset-full
+          position: fixed
+          inset: 0
+          z-index: 50
+
+  @include true.it('Applies absolute mixin helper')
+    @include true.assert
+      @include true.output
+        .badge
+          @include pos.absolute($top: 0.5rem, $right: 1rem, $z-index: 10)
+      
+      @include true.expect
+        .badge
+          position: absolute
+          top: 0.5rem
+          right: 1rem
+          z-index: 10
+
+  @include true.it('Applies relative, fixed, and sticky mixins')
+    @include true.assert
+      @include true.output
+        .header-sticky
+          @include pos.sticky($top: 0, $z-index: 20)
+        .app-bar-fixed
+          @include pos.fixed($top: 0, $left: 0, $right: 0)
+        .card-container-relative
+          @include pos.relative($top: 10px)
+      
+      @include true.expect
+        .header-sticky
+          position: sticky
+          top: 0
+          z-index: 20
+        .app-bar-fixed
+          position: fixed
+          top: 0
+          right: 0
+          left: 0
+        .card-container-relative
+          position: relative
+          top: 10px
+
+  @include true.it('Applies logical inset block and inline properties')
+    @include true.assert
+      @include true.output
+        .logical-pos
+          @include pos.absolute($inset-block: 1rem, $inset-inline: 2rem)
+      
+      @include true.expect
+        .logical-pos
+          position: absolute
+          inset-block: 1rem
+          inset-inline: 2rem

@@ -29,27 +29,98 @@
         content: $icon-content
 
 /// Sets logical dimensions: inline-size (width) and block-size (height), with optional min/max constraints.
+/// Supports both short ($min-inline, $min-block, $max-inline, $max-block) and full CSS property names ($min-inline-size, $min-block-size, $max-inline-size, $max-block-size).
 /// @param {Length|String} $inline [null] - The inline-size to set.
 /// @param {Length|String} $block [auto] - The block-size to set (defaults to auto).
-/// @param {Length|String} $max-inline [null] - Optional max-inline-size.
-/// @param {Length|String} $max-block [null] - Optional max-block-size.
 /// @param {Length|String} $min-inline [null] - Optional min-inline-size.
 /// @param {Length|String} $min-block [null] - Optional min-block-size.
-@mixin size($inline: null, $block: auto, $max-inline: null, $max-block: null, $min-inline: null, $min-block: null)
-    @if $inline != null
-        inline-size: $inline
+/// @param {Length|String} $max-inline [null] - Optional max-inline-size.
+/// @param {Length|String} $max-block [null] - Optional max-block-size.
+/// @param {Length|String} $min-inline-size [null] - Alias for $min-inline.
+/// @param {Length|String} $min-block-size [null] - Alias for $min-block.
+/// @param {Length|String} $max-inline-size [null] - Alias for $max-inline.
+/// @param {Length|String} $max-block-size [null] - Alias for $max-block.
+/// @param {Length|String} $inline-size [null] - Alias for $inline.
+/// @param {Length|String} $block-size [null] - Alias for $block.
+@mixin size($inline: null, $block: auto, $min-inline: null, $min-block: null, $max-inline: null, $max-block: null, $min-inline-size: null, $min-block-size: null, $max-inline-size: null, $max-block-size: null, $inline-size: null, $block-size: null)
+    $actual-inline: $inline
+    @if $inline-size != null
+        $actual-inline: $inline-size
 
-    @if $block != null
-        block-size: $block
+    $actual-block: $block
+    @if $block-size != null
+        $actual-block: $block-size
 
-    @if $max-inline != null
-        max-inline-size: $max-inline
+    $actual-min-inline: $min-inline
+    @if $min-inline-size != null
+        $actual-min-inline: $min-inline-size
 
-    @if $max-block != null
-        max-block-size: $max-block
+    $actual-min-block: $min-block
+    @if $min-block-size != null
+        $actual-min-block: $min-block-size
 
-    @if $min-inline != null
-        min-inline-size: $min-inline
+    $actual-max-inline: $max-inline
+    @if $max-inline-size != null
+        $actual-max-inline: $max-inline-size
 
-    @if $min-block != null
-        min-block-size: $min-block
+    $actual-max-block: $max-block
+    @if $max-block-size != null
+        $actual-max-block: $max-block-size
+
+    @if $actual-inline != null
+        inline-size: $actual-inline
+
+    @if $actual-block != null
+        block-size: $actual-block
+
+    @if $actual-min-inline != null
+        min-inline-size: $actual-min-inline
+
+    @if $actual-min-block != null
+        min-block-size: $actual-min-block
+
+    @if $actual-max-inline != null
+        max-inline-size: $actual-max-inline
+
+    @if $actual-max-block != null
+        max-block-size: $actual-max-block
+
+/// Sets logical min dimensions (min-inline-size and min-block-size).
+/// @param {Length|String} $inline [null] - The min-inline-size.
+/// @param {Length|String} $block [null] - The min-block-size.
+/// @param {Length|String} $min-inline-size [null] - Alias for $inline.
+/// @param {Length|String} $min-block-size [null] - Alias for $block.
+@mixin min-size($inline: null, $block: null, $min-inline-size: null, $min-block-size: null)
+    $actual-inline: $inline
+    @if $min-inline-size != null
+        $actual-inline: $min-inline-size
+
+    $actual-block: $block
+    @if $min-block-size != null
+        $actual-block: $min-block-size
+
+    @if $actual-inline != null
+        min-inline-size: $actual-inline
+
+    @if $actual-block != null
+        min-block-size: $actual-block
+
+/// Sets logical max dimensions (max-inline-size and max-block-size).
+/// @param {Length|String} $inline [null] - The max-inline-size.
+/// @param {Length|String} $block [null] - The max-block-size.
+/// @param {Length|String} $max-inline-size [null] - Alias for $inline.
+/// @param {Length|String} $max-block-size [null] - Alias for $block.
+@mixin max-size($inline: null, $block: null, $max-inline-size: null, $max-block-size: null)
+    $actual-inline: $inline
+    @if $max-inline-size != null
+        $actual-inline: $max-inline-size
+
+    $actual-block: $block
+    @if $max-block-size != null
+        $actual-block: $max-block-size
+
+    @if $actual-inline != null
+        max-inline-size: $actual-inline
+
+    @if $actual-block != null
+        max-block-size: $actual-block

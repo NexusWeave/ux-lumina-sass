@@ -98,5 +98,34 @@
         .box-size
           inline-size: 100%
           block-size: 20rem
-          max-inline-size: 60rem
           min-block-size: 10rem
+          max-inline-size: 60rem
+
+  @include true.test('Sets dimensions using full min-inline-size and min-block-size argument names')
+    @include true.assert
+      @include true.output
+        .box-full-args
+          @include utilities.size($inline-size: 50%, $block-size: 300px, $min-inline-size: 200px, $min-block-size: 100px, $max-inline-size: 800px, $max-block-size: 600px)
+      
+      @include true.expect
+        .box-full-args
+          inline-size: 50%
+          block-size: 300px
+          min-inline-size: 200px
+          min-block-size: 100px
+          max-inline-size: 800px
+          max-block-size: 600px
+
+  @include true.test('Sets min-size and max-size standalone mixins')
+    @include true.assert
+      @include true.output
+        .box-min-max
+          @include utilities.min-size($inline: 15rem, $block: 8rem)
+          @include utilities.max-size($inline: 50rem, $block: 25rem)
+      
+      @include true.expect
+        .box-min-max
+          min-inline-size: 15rem
+          min-block-size: 8rem
+          max-inline-size: 50rem
+          max-block-size: 25rem

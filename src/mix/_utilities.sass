@@ -27,3 +27,29 @@
     &::before
         @include typo.font($font-family, $size: $size)
         content: $icon-content
+
+/// Sets logical dimensions: inline-size (width) and block-size (height), with optional min/max constraints.
+/// @param {Length|String} $inline [null] - The inline-size to set.
+/// @param {Length|String} $block [auto] - The block-size to set (defaults to auto).
+/// @param {Length|String} $max-inline [null] - Optional max-inline-size.
+/// @param {Length|String} $max-block [null] - Optional max-block-size.
+/// @param {Length|String} $min-inline [null] - Optional min-inline-size.
+/// @param {Length|String} $min-block [null] - Optional min-block-size.
+@mixin size($inline: null, $block: auto, $max-inline: null, $max-block: null, $min-inline: null, $min-block: null)
+    @if $inline != null
+        inline-size: $inline
+
+    @if $block != null
+        block-size: $block
+
+    @if $max-inline != null
+        max-inline-size: $max-inline
+
+    @if $max-block != null
+        max-block-size: $max-block
+
+    @if $min-inline != null
+        min-inline-size: $min-inline
+
+    @if $min-block != null
+        min-block-size: $min-block

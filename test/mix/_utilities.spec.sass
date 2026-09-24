@@ -50,7 +50,7 @@
       
       @include true.expect
         .default-bg
-          background-color: base.$white
+          background-color: base.$soft-white
           color: base.$dark-grey
 
   @include true.test('Handles inherit background correctly')
@@ -87,3 +87,16 @@
         .transparent-bg
           background-color: transparent
           color: base.$white
+
+  @include true.test('Sets inline and block sizes with optional min/max limits')
+    @include true.assert
+      @include true.output
+        .box-size
+          @include utilities.size($inline: 100%, $block: 20rem, $max-inline: 60rem, $min-block: 10rem)
+      
+      @include true.expect
+        .box-size
+          inline-size: 100%
+          block-size: 20rem
+          max-inline-size: 60rem
+          min-block-size: 10rem

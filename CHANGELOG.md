@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.7.0...v4.0.0) (2026-09-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* **map:** Removed legacy breakpoint shortcodes (xs, sm, md, lg, xl, S, M, L, XL, 2XL, 3XL), tablet, and desktop variations from $breakpoints. Consumers must use the 7 standardized semantic keys: mobile-s, mobile, tablet-landscape, desktop-s, desktop, fhd, 4k.
+
+### Features
+
+* **map:** standardize semantic breakpoint names & remove legacy codes. ([f55a6d4](https://github.com/NexusWeave/ux-lumina-sass/commit/f55a6d4dfd0eac3ae80afa9f5820475d5e2034a2))
+
 ## [3.7.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.6.1...v3.7.0) (2026-09-24)
 
 

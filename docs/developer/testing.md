@@ -19,9 +19,19 @@ This command sequentially executes:
 
 ---
 
-## Unit Testing with Sass-True
+## Unit Testing with Vitest and Sass-True
 
-We utilize [Sass-True](https://github.com/oddbird/true) to perform unit tests on our mixins and functions. This ensures that our Sass codebase compiles into the expected CSS output.
+We utilize [Sass-True](https://github.com/oddbird/true) paired with [Vitest](https://vitest.dev) (`test/sass.spec.ts`) to execute unit tests on our mixins and functions. Vitest parses the compiled CSS output and asserts AST-level equality against the expected CSS rules.
+
+### Running Tests
+
+```bash
+# Run the complete test suite
+npm test
+
+# Run Vitest test runner directly
+npx vitest run
+```
 
 ### Organization
 To maintain a clean production package, tests are isolated within the `test/` directory.

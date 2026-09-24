@@ -31,7 +31,15 @@ This document provides a **comprehensive technical reference** for the entire `l
 | `link-color` | `src/mix/_elements.sass` | 7 | `@mixin link-color($color: $light-blue, $color-hover: ..., $color-active: ..., $color-visited: $light-blue)` |
 | `background-color` | `src/mix/_utilities.sass` | 9 | `@mixin background-color($bg-color: $soft-white, $text-color: null, $blend-bg: $soft-white)` |
 | `icon-style` | `src/mix/_utilities.sass` | 21 | `@mixin icon-style($icon-content, $font-family: 'icons')` |
-| `core` | `src/mix/_global-theme-colors.sass` | 13 | `@mixin apply-global-theme($body-bg: $soft-white, $text-color: null, $accent-color: null, $custom-colors: ())` |
+| `size` | `src/mix/_utilities.sass` | 38 | `@mixin size($inline: null, $block: auto, $min-inline: null, $min-block: null, $max-inline: null, $max-block: null)` |
+| `min-size` | `src/mix/_utilities.sass` | 74 | `@mixin min-size($inline: null, $block: null)` |
+| `max-size` | `src/mix/_utilities.sass` | 89 | `@mixin max-size($inline: null, $block: null)` |
+| `position` | `src/mix/_position.sass` | 11 | `@mixin position($position: null, $top: null, $right: null, $bottom: null, $left: null, $inset: null, $z-index: null)` |
+| `absolute` | `src/mix/_position.sass` | 37 | `@mixin absolute($top: null, $right: null, $bottom: null, $left: null, $inset: null, $z-index: null)` |
+| `fixed` | `src/mix/_position.sass` | 41 | `@mixin fixed($top: null, $right: null, $bottom: null, $left: null, $inset: null, $z-index: null)` |
+| `relative` | `src/mix/_position.sass` | 45 | `@mixin relative($top: null, $right: null, $bottom: null, $left: null, $inset: null, $z-index: null)` |
+| `sticky` | `src/mix/_position.sass` | 49 | `@mixin sticky($top: null, $right: null, $bottom: null, $left: null, $inset: null, $z-index: null)` |
+| `core` | `src/mix/_global-theme.sass` | 13 | `@mixin apply-global-theme($body-bg: $soft-white, $text-color: null, $accent-color: null, $custom-colors: ())` |
 
 ---
 
@@ -42,8 +50,9 @@ This document provides a **comprehensive technical reference** for the entire `l
 - [Cards](./cards.md)
 - [Links](./links.md)
 - [Media Queries](./media.md)
+- [Position](./position.md)
 - [Utilities](./utilities.md)
-- [Core Scaffolding](./global-theme-colors.md)
+- [Core Scaffolding](./global-theme.md)
 - [Typography](./typography.md)
 
 *Note: All mixins are implemented utilizing the indented Sass syntax (`.sass`). The referenced line numbers correspond to the initial line of the `@mixin` declaration within the source file.*

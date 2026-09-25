@@ -4,7 +4,7 @@
 @use "sass:meta" as meta
 
 // Internal dependencies
-@use 'typography' as typo
+@use '../mix' as mix
 @use '../color/base' as base
 @use '../map/inputs' as inputs
 @use '../map/icons' as icon-map
@@ -14,17 +14,26 @@
 
 @mixin _icon-base($name, $color, $font-family, $debug: false, $silent: false, $map: icon-map.$icons, $include-content: true)
   $props: func-icons.find($name, $map)
+
   @if $props
     @if $debug
+
       @debug "gen-icons: Generating icon .#{$name}"
+
     .#{$name}
       &::before
         @if $color
           color: $color !important
 
-        @include typo.font($font-family)
+
         @if $include-content
           content: map.get($props, icon)
+  
+      gap:0.5rem
+      display: inline-flex
+      @include mix.grid-layout($gap: 0.5rem)
+      @include mix.font($font-family, $size: 1.2rem !important)
+
   @else
     @if $silent
       @warn "gen-icons: Icon '#{$name}' not found in icon mapping."
@@ -33,20 +42,20 @@
 
 @mixin gen-icons($name: null, $color: rgb(64, 64, 64), $font-family: 'bootstrap-icons', $debug: false, $silent: false, $map: icon-map.$icons, $include-content: true)
   @if $map
-  
     @if $name == null
       @if $debug
         @debug "gen-icons: Generating all icons..."
+
       @each $key, $value in $map
         @if meta.type-of($value) == 'map'
           @if map.has-key($value, 'icon')
-            // Flat structure: icon-name -> (icon: value)
-            .#{$key}
+            
+            .#{$key} // Flat structure: icon-name -> (icon: value)
               &::before
                 @if $color
                   color: $color !important
 
-                @include typo.font($font-family)
+                @include mix.font($font-family)
                 @if $include-content
                   content: map.get($value, icon)
           @else
@@ -57,7 +66,7 @@
                   @if $color
                     color: $color !important
 
-                  @include typo.font($font-family)
+                  @include mix.font($font-family)
                   @if $include-content
                     content: map.get($props, icon)
               

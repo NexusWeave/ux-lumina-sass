@@ -4,7 +4,7 @@
 @use "sass:meta" as meta
 
 // Internal dependencies
-@use '../mix' as mix
+@use 'typography' as typo
 @use '../color/base' as base
 @use '../map/inputs' as inputs
 @use '../map/icons' as icon-map
@@ -17,7 +17,6 @@
 
   @if $props
     @if $debug
-
       @debug "gen-icons: Generating icon .#{$name}"
 
     .#{$name}
@@ -25,14 +24,12 @@
         @if $color
           color: $color !important
 
-
         @if $include-content
           content: map.get($props, icon)
-  
+
       gap:0.5rem
       display: inline-flex
-      @include mix.grid-layout($gap: 0.5rem)
-      @include mix.font($font-family, $size: 1.2rem !important)
+      @include typo.font($font-family, $size: 1.2rem !important)
 
   @else
     @if $silent
@@ -48,27 +45,13 @@
 
       @each $key, $value in $map
         @if meta.type-of($value) == 'map'
-          @if map.has-key($value, 'icon')
-            
-            .#{$key} // Flat structure: icon-name -> (icon: value)
-              &::before
-                @if $color
-                  color: $color !important
 
-                @include mix.font($font-family)
-                @if $include-content
-                  content: map.get($value, icon)
+          @if map.has-key($value, 'icon') // Flat structure: icon-name -> (icon: value)
+            @include _icon-base($key, $color, $font-family, $debug, $silent, $map, $include-content) 
           @else
-            // Nested structure: category -> (icon-name -> (icon: value))
-            @each $icon, $props in $value
-              .#{$icon}
-                &::before
-                  @if $color
-                    color: $color !important
 
-                  @include mix.font($font-family)
-                  @if $include-content
-                    content: map.get($props, icon)
+            @each $icon, $props in $value // Nested structure: category -> (icon-name -> (icon: value))
+              @include _icon-base($icon, $color, $font-family, $debug, $silent, $map, $include-content)
               
     @else
       $names: $name

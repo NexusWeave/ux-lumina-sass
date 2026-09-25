@@ -19,8 +19,12 @@
         .school
           &::before
             color: rgb(64, 64, 64) !important
-            font-family: 'bootstrap-icons'
             content: "\F671"
+
+          gap: 0.5rem
+          display: inline-flex
+          font-family: 'bootstrap-icons'
+          font-size: 1.2rem !important
 
 @include true.test-module('Flexbox Generator')
   @include true.test('Generates flex-row properties')

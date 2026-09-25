@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.1.0...v4.1.1) (2026-09-24)
+
+
+### Bug Fixes
+
+* **margin:** replace deprecated if() with [@if](https://github.com/if) blocks. ([3f089ba](https://github.com/NexusWeave/ux-lumina-sass/commit/3f089bafb12695b2632612dab2a60a43a656795c))
+
 ## [4.1.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.0.0...v4.1.0) (2026-09-24)
 
 

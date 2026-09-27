@@ -10,7 +10,7 @@
 @use '../../src/map/devices-breakpoints' as devices-breakpoints
 
 @include true.describe('Media Queries')
-  @include true.it('Generates max-width media query for breakpoint mobile')
+  @include true.it('Generates min-width media query for breakpoint mobile (mobile-first)')
     $mobile: map.get(devices-breakpoints.$breakpoints, 'mobile')
     @include true.assert
       @include true.output
@@ -18,10 +18,10 @@
           color: blue
       
       @include true.expect
-        @media (max-inline-size: $mobile)
+        @media (min-inline-size: $mobile)
           color: blue
 
-  @include true.it('Generates max-width media query for semantic descriptive breakpoint (tablet-landscape)')
+  @include true.it('Generates min-width media query for semantic descriptive breakpoint (tablet-landscape)')
     $tablet-land: map.get(devices-breakpoints.$breakpoints, 'tablet-landscape')
     @include true.assert
       @include true.output
@@ -29,8 +29,30 @@
           color: green
       
       @include true.expect
-        @media (max-inline-size: $tablet-land)
+        @media (min-inline-size: $tablet-land)
           color: green
+
+  @include true.it('Generates media-up (min-inline-size)')
+    $mobile: map.get(devices-breakpoints.$breakpoints, 'mobile')
+    @include true.assert
+      @include true.output
+        @include breakpoints.media-up('mobile')
+          color: red
+      
+      @include true.expect
+        @media (min-inline-size: $mobile)
+          color: red
+
+  @include true.it('Generates media-down (max-inline-size)')
+    $mobile: map.get(devices-breakpoints.$breakpoints, 'mobile')
+    @include true.assert
+      @include true.output
+        @include breakpoints.media-down('mobile')
+          color: yellow
+      
+      @include true.expect
+        @media (max-inline-size: $mobile)
+          color: yellow
 
   @include true.it('Generates prefers-color-scheme')
     @include true.assert

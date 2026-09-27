@@ -11,7 +11,7 @@
       @content
   @else if map.has-key(bp.$breakpoints, $breakpoint)
     $breakpoint-value: map.get(bp.$breakpoints, $breakpoint)
-    @media (max-inline-size: $breakpoint-value)
+    @media (min-inline-size: $breakpoint-value)
       @content
   @else
     @media #{$breakpoint}
@@ -20,6 +20,16 @@
 // Public dispatcher
 @mixin media-queries($feature, $value: null)
   @include media-queries-base($feature, $value)
+    @content
+
+@mixin media-up($breakpoint)
+  $value: if(map.has-key(bp.$breakpoints, $breakpoint), map.get(bp.$breakpoints, $breakpoint), $breakpoint)
+  @media (min-inline-size: #{$value})
+    @content
+
+@mixin media-down($breakpoint)
+  $value: if(map.has-key(bp.$breakpoints, $breakpoint), map.get(bp.$breakpoints, $breakpoint), $breakpoint)
+  @media (max-inline-size: #{$value})
     @content
 
 @mixin prefers-color-scheme($mode)

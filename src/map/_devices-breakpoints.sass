@@ -2,7 +2,7 @@
 @use 'sass:map'
 
 
-$breakpoints:( 'mobile-s': 30rem, 'mobile': 48rem, 'tablet-landscape': 64rem, 'desktop-s': 80rem, 'desktop': 90rem, 'fhd': 120rem, '4k': 160rem )
+$breakpoints:( 'mobile-s': 30rem, 'mobile': 48rem, 'tablet-landscape': 64rem, 'hd': 80rem, 'desktop-s': 80rem, 'desktop': 90rem, 'fhd': 120rem, '4k': 160rem, '8k': 320rem )
 
 $apple: ('ipad': (inline-size: 48rem, block-size: map.get($breakpoints, 'desktop')), 'ipad-air': (block-size: 73.75rem, inline-size: 51.25rem), 'ipad-pro': (block-size: 85.375rem, inline-size: 64rem), 'tv-cd': (block-size: 160rem, inline-size: 100rem), 'iphone': (block-size: 30rem, inline-size: 20rem), 'iphone-7': (block-size: 41.6875rem, inline-size: 23.4375rem), 'iphone-xr': (block-size: 56rem, inline-size: 25.875rem), 'iphone-pro': (block-size: 52.75rem, inline-size: 24.375rem), 'iphone-pro-block-size': 52.75rem, 'iphone-plus': (block-size: 46rem, inline-size: 25.75rem), 'iphone-pro-max': (block-size: 57.875rem, inline-size: 26.875rem))
 $black-berry: ('bt': (inline-size: map.get(map.get($apple, 'iphone'),'block-size'), block-size: 40rem), 'curve': (inline-size: 22.5rem, block-size: map.get(map.get($apple, 'iphone'),'block-size')), 'original': (block-size: 50rem, inline-size: map.get(map.get($apple, 'iphone'),'block-size')))

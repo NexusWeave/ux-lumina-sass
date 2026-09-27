@@ -13,7 +13,7 @@
       @content
   @else if map.has-key(bp.$breakpoints, $breakpoint)
     $breakpoint-value: map.get(bp.$breakpoints, $breakpoint)
-    @media (min-inline-size: $breakpoint-value)
+    @media (max-inline-size: $breakpoint-value)
       @content
   @else if meta.type-of($breakpoint) == 'string' and (string.index($breakpoint, '(') != null or string.index($breakpoint, ':') != null)
     @media #{$breakpoint}

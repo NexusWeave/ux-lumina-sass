@@ -55,6 +55,19 @@
         @media (max-inline-size: $mobile-down)
           color: yellow
 
+  @include true.it('Generates media-between (min and max range)')
+    $mobile: map.get(devices-breakpoints.$breakpoints, 'mobile')
+    $desktop-s: map.get(devices-breakpoints.$breakpoints, 'desktop-s')
+    $desktop-down: $desktop-s - 0.02rem
+    @include true.assert
+      @include true.output
+        @include breakpoints.media-between('mobile', 'desktop-s')
+          color: purple
+      
+      @include true.expect
+        @media (min-inline-size: $mobile) and (max-inline-size: $desktop-down)
+          color: purple
+
   @include true.it('Generates prefers-color-scheme')
     @include true.assert
       @include true.output

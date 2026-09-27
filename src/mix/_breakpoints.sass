@@ -42,6 +42,20 @@
   @media (max-inline-size: #{$value})
     @content
 
+@mixin media-between($min-breakpoint, $max-breakpoint)
+  $min-value: $min-breakpoint
+  @if map.has-key(bp.$breakpoints, $min-breakpoint)
+    $min-value: map.get(bp.$breakpoints, $min-breakpoint)
+
+  $max-value: $max-breakpoint
+  @if map.has-key(bp.$breakpoints, $max-breakpoint)
+    $max-value: map.get(bp.$breakpoints, $max-breakpoint)
+    @if meta.type-of($max-value) == 'number'
+      $max-value: $max-value - 0.02rem
+
+  @media (min-inline-size: #{$min-value}) and (max-inline-size: #{$max-value})
+    @content
+
 @mixin prefers-color-scheme($mode)
   @include media-queries-base('(prefers-color-scheme: #{$mode})')
     @content

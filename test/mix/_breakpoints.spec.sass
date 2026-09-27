@@ -45,13 +45,14 @@
 
   @include true.it('Generates media-down (max-inline-size)')
     $mobile: map.get(devices-breakpoints.$breakpoints, 'mobile')
+    $mobile-down: $mobile - 0.02rem
     @include true.assert
       @include true.output
         @include breakpoints.media-down('mobile')
           color: yellow
       
       @include true.expect
-        @media (max-inline-size: $mobile)
+        @media (max-inline-size: $mobile-down)
           color: yellow
 
   @include true.it('Generates prefers-color-scheme')

@@ -1,5 +1,7 @@
 // Built-in Dependencies
 @use 'sass:map'
+@use 'sass:meta'
+@use 'sass:string'
 
 // Internal dependencies
 @use '../map/devices-breakpoints' as bp
@@ -13,7 +15,7 @@
     $breakpoint-value: map.get(bp.$breakpoints, $breakpoint)
     @media (min-inline-size: $breakpoint-value)
       @content
-  @else if type-of($breakpoint) == 'string' and (str-index($breakpoint, '(') != null or str-index($breakpoint, ':') != null)
+  @else if meta.type-of($breakpoint) == 'string' and (string.index($breakpoint, '(') != null or string.index($breakpoint, ':') != null)
     @media #{$breakpoint}
       @content
   @else
@@ -35,6 +37,8 @@
   $value: $breakpoint
   @if map.has-key(bp.$breakpoints, $breakpoint)
     $value: map.get(bp.$breakpoints, $breakpoint)
+    @if meta.type-of($value) == 'number'
+      $value: $value - 0.02rem
   @media (max-inline-size: #{$value})
     @content
 

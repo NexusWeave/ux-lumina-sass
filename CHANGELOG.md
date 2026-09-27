@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.3.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.2.3...v4.3.0) (2026-09-27)
+
+
+### Features
+
+* **mixins:** add media-between mixin for custom breakpoint range handling ([9cb4391](https://github.com/NexusWeave/ux-lumina-sass/commit/9cb43912089efc1b21aebaee9f4f42b633b507de))
+
+
+### Bug Fixes
+
+* **mixins:** prevent breakpoint collision in media-down mixin and fix deprecation warnings ([53fb8fa](https://github.com/NexusWeave/ux-lumina-sass/commit/53fb8fa1a7d3e1ca7e1f32eabc3bb279f59ab1a2))
+
 ### [4.2.3](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.2.2...v4.2.3) (2026-09-27)
 
 ### [4.2.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.2.1...v4.2.2) (2026-09-27)

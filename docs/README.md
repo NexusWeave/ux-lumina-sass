@@ -1,28 +1,24 @@
-# Documentation Overview
-*Last updated: 2026-06-10*
+# Lumina SASS Documentation
 
-This document outlines the organization of the Lumina Sass documentation and serves as a comprehensive reference for developers.
+### Core Modules
 
-## Core Modules
-- **[Mixins](mixins/mixins.md)** – Comprehensive specifications for layout, typography, and media-related mixins.
-  - `media.md` – Sophisticated utilities for responsive design implementation.
-  - `typography.md` – Advanced tools for font management and textual styling.
-  - `buttons.md` – Reusable button component mixins.
-  - `links.md` – Fundamental HTML element styling.
-  - `position.md` – Element positioning and directional offsets.
-  - `utilities.md` – Utility mixins for backgrounds, icons, and logical sizing.
-  - `alerts.md` – Accessible alert box styles.
-- **[Colors](colors/colors.md)** – An exhaustive inventory of color variables and palettes.
-  - **[Color Contrast & Accessibility](colors/contrast.md)** – Integrated utilities for automated WCAG compliance verification.
-- **[Generators](generators/generators.md)** – In-depth analysis of the mixin generation systems.
-  - `icons.md` – An advanced framework for icon implementation.
-  - `flexbox.md` – A robust and versatile suite of flexbox utilities.
+- **[Mixins](mixins/mixins.md):** Specifications for layout, typography, navigation, position, and resets.
+- **[Colors](colors/colors.md):** Palette definitions and WCAG contrast utilities.
+- **[Generators](generators/generators.md):** Generation systems for flexbox, icons, and input fields.
+- **[Utilities](utils/utility_classes.md):** Pre-built CSS helper classes.
 
-## Development & Quality Assurance
-- **[Utility Classes](utils/utility_classes.md)** – A comprehensive reference for pre-configured CSS helper classes.
-- **[Development Guide](developer/development.md)** – Detailed information regarding project architecture, naming conventions, and contribution workflows.
-- **[Testing Guide](developer/testing.md)** – A definitive guide covering **Unit Testing (Sass-True)**, **Code Analysis (Stylelint)**, and **WCAG Contrast Verification**.
-- **[AI Operations Guide](ai_guide.md)** – Specialized protocols and instructions for automated assistant integration.
+### Developer Guides
 
----
-*Lumina Sass is engineered with a steadfast commitment to technical excellence and accessibility.*
+- **[System Architecture](architecture.md):** Architectural design, module relationships, and core principles.
+- **[Contributing Guide](contributing.md):** How to fork the repository and submit Pull Requests.
+- **[Contributors List](contributions.md):** Acknowledging community members who have contributed.
+- **[Development Guide](developer/development.md):** Coding conventions and build configuration.
+- **[Testing Guide](developer/testing.md):** Unit testing setup with Sass-True and Vitest.
+
+### Contact
+
+For support, reach out to **krigjo25@outlook.com**.
+
+### License
+
+This project is licensed under the [MIT License](../LICENSE).

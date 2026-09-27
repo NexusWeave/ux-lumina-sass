@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.1.2...v4.2.0) (2026-09-27)
+
+
+### Features
+
+* **breakpoints:** refactor to mobile-first media queries and add hd/8k breakpoints ([5583b87](https://github.com/NexusWeave/ux-lumina-sass/commit/5583b8730540bc419014e731536b505e8690c50c))
+
+
+### Bug Fixes
+
+* **generators:** fix indentation in icon generator mixin ([3c22d46](https://github.com/NexusWeave/ux-lumina-sass/commit/3c22d4654bbebbbe7a30f30d4b3241490201b040))
+* **generators:** reuse icon-base mixin in gen-icons ([f32a1f9](https://github.com/NexusWeave/ux-lumina-sass/commit/f32a1f99281b61b7ca1e40b2bf503c73278c2b47))
+
 ### [4.1.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.1.1...v4.1.2) (2026-09-25)
 
 ### [4.1.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.1.0...v4.1.1) (2026-09-24)

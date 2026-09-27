@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.5.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.3.0...v4.5.0) (2026-09-27)
+
+
+### Features
+
+* **mixins:** refactor mixins, add navigation module, and expand parametric reset with position fallback ([1e44b61](https://github.com/NexusWeave/ux-lumina-sass/commit/1e44b61013573f9fd7307903d3a55f6b2b97417e))
+
 ## [4.3.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.2.3...v4.3.0) (2026-09-27)
 
 

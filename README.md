@@ -86,12 +86,22 @@ Lumina SASS employs a modular architecture, permitting the importation of the en
   opacity: if($luminance > 0.5, 0.8, 1)
 ```
 
-#### Semantic Breakpoints
+#### Semantic Breakpoints (Mobile-First)
 ```sass
 .card
-  inline-size: 100%
-  @include mix.media-queries(md)
+  inline-size: 100% // Mobile (default)
+
+  // Applied when screen size is at least 'desktop' (min-inline-size: 80rem)
+  @include mix.media-queries('desktop')
     inline-size: 50%
+
+  // Explicit Mobile-First helper (min-inline-size: 160rem)
+  @include mix.media-up('4k')
+    max-inline-size: 120rem
+
+  // Desktop-First override helper (max-inline-size: 48rem)
+  @include mix.media-down('mobile')
+    padding: 0.5rem
 ```
 
 ## Public API Reference (Sub-paths)

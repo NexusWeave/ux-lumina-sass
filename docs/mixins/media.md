@@ -7,12 +7,14 @@ This document provides a technical specification for the mixins defined within `
 
 | Mixin | Source Module | Line | Signature | Description |
 |-------|--------------|------|-----------|-------------|
-| `media-queries-base` | `src/mix/_media.sass` | 8 | `@mixin media-queries-base($breakpoint, $value: null)` | Core low-level implementation that constructs a media query from a breakpoint identifier (or raw query) and an optional value.
-| `media-queries` | `src/mix/_media.sass` | 22 | `@mixin media-queries($feature, $value: null)` | Public dispatcher that forwards execution to `media-queries-base` while maintaining the original API interface.
-| `prefers-color-scheme` | `src/mix/_media.sass` | 27 | `@mixin prefers-color-scheme($mode)` | Generates the `@media (prefers-color-scheme: $mode)` directive, supporting `light` or `dark` modes.
-| `prefers-orientation` | `src/mix/_media.sass` | 31 | `@mixin prefers-orientation($orientation)` | Generates the `@media (orientation: $orientation)` directive.
-| `device-media` | `src/mix/_media.sass` | 36 | `@mixin device-media($device, $orientation: portrait)` | Generates high-precision media queries for specific hardware defined in the `devices-breakpoints` map, supporting both portrait and landscape orientations.
-| `background-image` | `src/mix/_media.sass` | 66 | `@mixin background-image($path, $size: cover, $repeat: no-repeat, $position: center, $attachment: null, $clip: null, $origin: null)` | Advanced utility for setting multiple background image properties (size, repeat, position, etc.) in a single call.
+| `media-queries-base` | `src/mix/_breakpoints.sass` | 8 | `@mixin media-queries-base($breakpoint, $value: null)` | Core low-level implementation constructing mobile-first `min-inline-size` query by default when given a breakpoint identifier.
+| `media-queries` | `src/mix/_breakpoints.sass` | 21 | `@mixin media-queries($feature, $value: null)` | Public dispatcher forwarding execution to `media-queries-base`.
+| `media-up` | `src/mix/_breakpoints.sass` | 24 | `@mixin media-up($breakpoint)` | Explicit Mobile-First helper building `(min-inline-size: $breakpoint)`.
+| `media-down` | `src/mix/_breakpoints.sass` | 29 | `@mixin media-down($breakpoint)` | Explicit Desktop-First override helper building `(max-inline-size: $breakpoint)`.
+| `prefers-color-scheme` | `src/mix/_breakpoints.sass` | 34 | `@mixin prefers-color-scheme($mode)` | Generates `@media (prefers-color-scheme: $mode)` directive, supporting `light` or `dark` modes.
+| `prefers-orientation` | `src/mix/_breakpoints.sass` | 38 | `@mixin prefers-orientation($orientation)` | Generates `@media (orientation: $orientation)` directive.
+| `device-media` | `src/mix/_breakpoints.sass` | 42 | `@mixin device-media($device, $orientation: portrait)` | Generates high-precision media queries for specific hardware defined in `devices-breakpoints` map.
+| `background-image` | `src/mix/_media.sass` | 8 | `@mixin background-image(...)` | Advanced utility for setting multiple background image properties in a single call.
 
 
 
@@ -21,9 +23,14 @@ These mixins are exported through `src/mix/_index.sass` and can be integrated in
 ```sass
 @use "lumina-sass/mix" as media;
 
-// Implementation example
+// Mobile-first implementation (min-inline-size: 64rem)
 @include media.media-queries('tablet-landscape') {
   .example { color: red; }
+}
+
+// Explicit mobile-up helper
+@include media.media-up('8k') {
+  .example { font-size: 3rem; }
 }
 ```
 
@@ -34,10 +41,12 @@ These mixins are exported through `src/mix/_index.sass` and can be integrated in
 | **mobile-s** | 30rem – Extra-small mobile breakpoint (480px) |
 | **mobile** | 48rem – Standard mobile / small tablet breakpoint (768px) |
 | **tablet-landscape** | 64rem – Tablet landscape breakpoint (1024px) |
+| **hd** | 80rem – High Definition display breakpoint (1280px) |
 | **desktop-s** | 80rem – Small desktop breakpoint (1280px) |
 | **desktop** | 90rem – Standard desktop breakpoint (1440px) |
 | **fhd** | 120rem – Full HD desktop breakpoint (1920px) |
 | **4k** | 160rem – 4K / Ultra-high resolution breakpoint (2560px) |
+| **8k** | 320rem – 8K / Ultra-high resolution display breakpoint (5120px) |
 | **htc** | Device support: Desire, Sensation, One |
 | **sharp** | Device support: IS03, 941SH, SX862 |
 | **apple** | Device support: iPad, iPad Air, iPad Pro, TV-CD, iPhone (various models) |

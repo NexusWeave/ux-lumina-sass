@@ -79,4 +79,80 @@
         @media only screen and (min-inline-size: $min-inline) and (max-inline-size: $max-inline) and (min-block-size: $min-block) and (max-block-size: $max-block) and (orientation: portrait)
           color: white
 
+  @include true.it('Successfully resolves ALL named breakpoints from $breakpoints map')
+    @include true.assert
+      @include true.output
+        @include breakpoints.media-queries('mobile-s')
+          content: 'mobile-s'
+        @include breakpoints.media-queries('mobile')
+          content: 'mobile'
+        @include breakpoints.media-queries('tablet-landscape')
+          content: 'tablet-landscape'
+        @include breakpoints.media-queries('hd')
+          content: 'hd'
+        @include breakpoints.media-queries('desktop-s')
+          content: 'desktop-s'
+        @include breakpoints.media-queries('desktop')
+          content: 'desktop'
+        @include breakpoints.media-queries('fhd')
+          content: 'fhd'
+        @include breakpoints.media-queries('4k')
+          content: '4k'
+        @include breakpoints.media-queries('8k')
+          content: '8k'
+
+      @include true.expect
+        @media (min-inline-size: 30rem)
+          content: 'mobile-s'
+        @media (min-inline-size: 48rem)
+          content: 'mobile'
+        @media (min-inline-size: 64rem)
+          content: 'tablet-landscape'
+        @media (min-inline-size: 80rem)
+          content: 'hd'
+        @media (min-inline-size: 80rem)
+          content: 'desktop-s'
+        @media (min-inline-size: 90rem)
+          content: 'desktop'
+        @media (min-inline-size: 120rem)
+          content: 'fhd'
+        @media (min-inline-size: 160rem)
+          content: '4k'
+        @media (min-inline-size: 320rem)
+          content: '8k'
+
+  @include true.it('Generates prefers-orientation')
+    @include true.assert
+      @include true.output
+        @include breakpoints.prefers-orientation(landscape)
+          background: white
+      
+      @include true.expect
+        @media (orientation: landscape)
+          background: white
+
+  @include true.it('Generates custom feature query with value pair')
+    @include true.assert
+      @include true.output
+        @include breakpoints.media-queries('max-inline-size', 50rem)
+          color: purple
+      
+      @include true.expect
+        @media (max-inline-size: 50rem)
+          color: purple
+
+  @include true.it('Generates device-media for portrait and landscape orientations')
+    @include true.assert
+      @include true.output
+        @include breakpoints.device-media('iphone', portrait)
+          display: block
+        @include breakpoints.device-media('iphone', landscape)
+          display: inline
+
+      @include true.expect
+        @media only screen and (min-inline-size: 20rem) and (max-inline-size: 20.125rem) and (min-block-size: 30rem) and (max-block-size: 30.125rem) and (orientation: portrait)
+          display: block
+        @media only screen and (min-inline-size: 30rem) and (max-inline-size: 30.125rem) and (min-block-size: 20rem) and (max-block-size: 20.125rem) and (orientation: landscape)
+          display: inline
+
 

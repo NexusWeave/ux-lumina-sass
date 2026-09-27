@@ -13,9 +13,11 @@
     $breakpoint-value: map.get(bp.$breakpoints, $breakpoint)
     @media (min-inline-size: $breakpoint-value)
       @content
-  @else
+  @else if type-of($breakpoint) == 'string' and (str-index($breakpoint, '(') != null or str-index($breakpoint, ':') != null)
     @media #{$breakpoint}
       @content
+  @else
+    @error "Invalid breakpoint `#{$breakpoint}` in media-queries mixin. Available breakpoints: #{map.keys(bp.$breakpoints)}"
 
 // Public dispatcher
 @mixin media-queries($feature, $value: null)

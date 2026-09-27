@@ -23,12 +23,16 @@
     @content
 
 @mixin media-up($breakpoint)
-  $value: if(map.has-key(bp.$breakpoints, $breakpoint), map.get(bp.$breakpoints, $breakpoint), $breakpoint)
+  $value: $breakpoint
+  @if map.has-key(bp.$breakpoints, $breakpoint)
+    $value: map.get(bp.$breakpoints, $breakpoint)
   @media (min-inline-size: #{$value})
     @content
 
 @mixin media-down($breakpoint)
-  $value: if(map.has-key(bp.$breakpoints, $breakpoint), map.get(bp.$breakpoints, $breakpoint), $breakpoint)
+  $value: $breakpoint
+  @if map.has-key(bp.$breakpoints, $breakpoint)
+    $value: map.get(bp.$breakpoints, $breakpoint)
   @media (max-inline-size: #{$value})
     @content
 

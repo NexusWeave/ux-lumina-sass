@@ -1,5 +1,6 @@
 // Built-in Dependencies
 @use 'sass:meta'
+@use 'sass:map'
 
 // Internal dependencies
 @use '../color' as c
@@ -124,3 +125,133 @@
 
     @if $actual-block != null
         max-block-size: $actual-block
+
+/// Sets element margins using logical and physical properties.
+@mixin margin($margin: null, $block: null, $inline: null, $block-start: null, $block-end: null, $inline-start: null, $inline-end: null, $b-start: null, $b-end: null, $i-start: null, $i-end: null, $top: null, $right: null, $bottom: null, $left: null)
+    $actual-bs: $block-start
+    @if $b-start != null
+        $actual-bs: $b-start
+
+    $actual-be: $block-end
+    @if $b-end != null
+        $actual-be: $b-end
+
+    $actual-is: $inline-start
+    @if $i-start != null
+        $actual-is: $i-start
+
+    $actual-ie: $inline-end
+    @if $i-end != null
+        $actual-ie: $i-end
+
+    @if $margin != null
+        margin: $margin
+
+    @if $block != null
+        margin-block: $block
+
+    @if $inline != null
+        margin-inline: $inline
+
+    @if $actual-bs != null
+        margin-block-start: $actual-bs
+
+    @if $actual-be != null
+        margin-block-end: $actual-be
+
+    @if $actual-is != null
+        margin-inline-start: $actual-is
+
+    @if $actual-ie != null
+        margin-inline-end: $actual-ie
+
+    @if $top != null
+        margin-top: $top
+
+    @if $right != null
+        margin-right: $right
+
+    @if $bottom != null
+        margin-bottom: $bottom
+
+    @if $left != null
+        margin-left: $left
+
+/// Convenience helper to center an element horizontally using logical margin-inline.
+@mixin margin-center($block: null)
+    margin-inline: auto
+    @if $block != null
+        margin-block: $block
+
+/// Comprehensive universal CSS reset mixin for all CSS rules.
+/// All parameters default to false for safety and require explicit activation.
+@mixin reset($all: false, $box-sizing: false, $margin: false, $padding: false, $border: false, $outline: false, $font: false, $color: false, $background: false, $list-style: false, $text-decoration: false, $size: false, $appearance: false, $vertical-align: false, $user-select: false, $cursor: false, $position: false, $html-elements: false, $text: c.$dark-grey, $colors: ())
+    @if $all or $box-sizing
+        box-sizing: border-box
+    @if $all or $margin
+        margin: 0
+        margin-block: 0
+        margin-inline: 0
+    @if $all or $padding
+        padding: 0
+        padding-block: 0
+        padding-inline: 0
+    @if $all or $border
+        border: none
+    @if $all or $outline
+        outline: 0
+        outline-color: transparent
+    @if $all or $font
+        font: inherit
+        font-size: 100%
+        font-weight: normal
+        line-height: inherit
+    @if $all or $color
+        color: inherit
+    @if $all or $background
+        background: transparent
+        background-color: transparent
+        background-image: none
+    @if $all or $list-style
+        list-style: none
+    @if $all or $text-decoration
+        text-decoration: none
+    @if $all or $size
+        inline-size: auto
+        block-size: auto
+        max-inline-size: 100%
+        max-block-size: 100%
+    @if $all or $appearance
+        appearance: none
+        -webkit-appearance: none
+    @if $all or $vertical-align
+        vertical-align: baseline
+    @if $all or $user-select
+        user-select: auto
+    @if $all or $cursor
+        cursor: auto
+    @if $all or $position
+        position: static
+        top: auto
+        right: auto
+        bottom: auto
+        left: auto
+        inset: auto
+        z-index: auto
+    @if $all or $html-elements
+        abbr
+            cursor: help
+            text-decoration: underline dotted
+            @include background-color(transparent, $text)
+            @if map.has-key($colors, 'abbr-underline')
+                text-decoration-color: map.get($colors, 'abbr-underline')
+
+        code
+            padding: 0.2em 0.4em
+            border-radius: 0.3em
+            @include typo.monospace($size: null)
+            @if map.has-key($colors, 'code-bg')
+                @include background-color(map.get($colors, 'code-bg'))
+
+
+

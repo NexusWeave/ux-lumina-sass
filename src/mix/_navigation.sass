@@ -1,0 +1,39 @@
+// Built-in Dependencies
+@use 'sass:color'
+
+// Internal dependencies
+@use '../color' as c
+@use 'buttons' as btn
+@use 'position' as pos
+@use 'generators' as gen
+@use 'breakpoints' as bp
+@use 'utilities' as utils
+@use 'typography' as typo
+@use '../func/color' as func-color
+
+/// Generates hamburger toggle button mixin for tablets and mobile screens (<= 64rem / 1024px).
+/// @param {Color} $bg-color [transparent] - Background color for the button.
+/// @param {Color} $color [#ffffff] - Text and icon color.
+/// @param {Length} $top [1rem] - Top offset for the button.
+/// @param {Length} $right [1rem] - Right offset for the button.
+@mixin nav-hamburg($bg-color: transparent, $color: #ffffff, $top: 1rem, $right: 1rem)
+    display: none !important
+
+    @include bp.media-queries('tablet-landscape')
+        b
+            color: $color !important
+            @include typo.font($size: 2rem !important)
+
+        span
+            color: $color !important
+            @include typo.font($size: 1.1rem !important, $weight: bold !important)
+
+        gap: 0.5rem
+        align-items: center !important
+        padding: 0.5rem 1rem !important
+        justify-content: center !important
+
+        @include utils.reset($margin:true)
+        @include gen.gen-flexbox('inline-flex') 
+        @include btn.base-btn($bg-color: $bg-color, $text-color: $color, $border-color: $color)
+        @include pos.fixed($top: $top !important, $right: $right !important, $z-index: 10000 !important)

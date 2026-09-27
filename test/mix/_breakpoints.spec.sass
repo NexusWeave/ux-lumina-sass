@@ -116,23 +116,23 @@
           content: '8k'
 
       @include true.expect
-        @media (min-inline-size: 30rem)
+        @media (max-inline-size: 30rem)
           content: 'mobile-s'
-        @media (min-inline-size: 48rem)
+        @media (max-inline-size: 48rem)
           content: 'mobile'
-        @media (min-inline-size: 64rem)
+        @media (max-inline-size: 64rem)
           content: 'tablet-landscape'
-        @media (min-inline-size: 80rem)
+        @media (max-inline-size: 80rem)
           content: 'hd'
-        @media (min-inline-size: 80rem)
+        @media (max-inline-size: 80rem)
           content: 'desktop-s'
-        @media (min-inline-size: 90rem)
+        @media (max-inline-size: 90rem)
           content: 'desktop'
-        @media (min-inline-size: 120rem)
+        @media (max-inline-size: 120rem)
           content: 'fhd'
-        @media (min-inline-size: 160rem)
+        @media (max-inline-size: 160rem)
           content: '4k'
-        @media (min-inline-size: 320rem)
+        @media (max-inline-size: 320rem)
           content: '8k'
 
   @include true.it('Generates prefers-orientation')

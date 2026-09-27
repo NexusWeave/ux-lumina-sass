@@ -1,0 +1,74 @@
+// Built-in Dependencies
+@use 'sass:color'
+
+// Third-party dependencies
+@use '../../node_modules/sass-true' as true
+
+// Internal dependencies
+@use '../../src/mix/_navigation' as nav
+
+@include true.describe('Navigation Mixins')
+  @include true.it('Applies nav-hamburg mixin styling')
+    @include true.assert
+      @include true.output
+        .hamburger-toggle
+          @include nav.nav-hamburg()
+      
+      @include true.expect
+        .hamburger-toggle
+          display: none !important
+
+          @media (max-inline-size: 64rem)
+            b
+              color: #ffffff !important
+              font-family: "Nunito", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+              font-size: 2rem !important
+
+            span
+              color: #ffffff !important
+              font-family: "Nunito", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+              font-size: 1.1rem !important
+              font-weight: bold !important
+
+            gap: 0.5rem
+            align-items: center !important
+            padding: 0.5rem 1rem !important
+            justify-content: center !important
+            margin: 0
+            margin-block: 0
+            margin-inline: 0
+            display: inline-flex
+            border: 0.0625rem solid #ffffff
+            margin: 0.5em
+            cursor: pointer
+            padding: 0.5em 1.5em
+            border-radius: 0.5em
+            display: inline-block
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s
+            position: relative
+            font-family: "Nunito", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+            font-size: 1em
+            font-weight: bold
+            background-color: transparent
+            color: #ffffff
+
+            &:hover
+              transform: scale(1.05)
+              background-color: hsla(0, 0%, -5%, 0)
+              color: rgb(64, 64, 64)
+
+            &:active
+              transform: scale(0.95)
+              background-color: hsla(0, 0%, -10%, 0)
+              color: rgb(64, 64, 64)
+
+            &:disabled
+              opacity: 0.3
+              cursor: not-allowed
+              pointer-events: none
+
+            position: fixed
+            top: 1rem !important
+            right: 1rem !important
+            z-index: 10000 !important
+

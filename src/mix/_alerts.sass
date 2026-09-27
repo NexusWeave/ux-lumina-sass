@@ -2,8 +2,8 @@
 @use 'sass:map'
 
 // Internal dependencies
-@use 'generators'
-@use 'utilities' as *
+@use 'generators' as gen
+@use 'utilities' as utils
 @use 'typography' as typo
 @use '../color/alerts' as alerts
 @use '../func/color' as func-color
@@ -13,10 +13,11 @@
 @mixin _alert-icon($icon, $size: 1.5rem)
     $icon-props: func-icons.find($icon)
     @if $icon-props
-        @include icon-style(map.get($icon-props, icon), $size: $size)
         &::before
-            grid-column: 1
             grid-row: 1
+            grid-column: 1
+
+        @include utils.icon-style(map.get($icon-props, icon), $size: $size)
     @else
         @warn "Icon '#{$icon}' not found in icon mapping."
 
@@ -26,15 +27,6 @@
 /// @param {String} $inline-size [35rem] - The inline size of the alert.
 /// @param {Number} $icon-size [2rem] - The font size of the icon.
 @mixin alert($bg-color: alerts.$warning, $text-color: null, $icon: null, $inline-size: 35rem, $icon-size: 2rem)
-    gap: 1.5rem
-    margin: auto
-    padding: .5rem
-    border-radius: .5rem
-    inline-size: $inline-size
-    border: .0625rem solid rgba(0, 0, 0, 0.1)
-
-    @include typo.font($weight: 800)
-    @include background-color($bg-color, $text-color)
 
     @if $icon != null
         display: grid
@@ -44,4 +36,14 @@
 
     @else
         align-items: center
-        @include generators.gen-flexbox('flex-col')
+        @include gen.gen-flexbox('flex-col')
+
+    gap: 1rem
+    padding: .5rem
+    border-radius: .5rem
+    border: .0625rem solid rgba(0, 0, 0, 0.1)
+
+    @include typo.font($weight: 800)
+    @include utils.margin($margin: auto)
+    @include utils.size($inline: $inline-size)
+    @include utils.background-color($bg-color, $text-color)

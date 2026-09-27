@@ -8,13 +8,15 @@
 @use '../map/fonts' as fonts
 @use '../func/typography' as func-typo
 
+
 @mixin text-wrap-safe($inline: 0)
   p, h1, h2, h3, h4, h5, h6, figcaption, a, li
     hyphens: auto
     word-wrap: anywhere
     white-space: pre-wrap
     overflow-wrap: anywhere
-    min-inline-size: $inline
+    @if $inline != null and $inline != 0
+      min-inline-size: $inline
 
 @mixin font( $font:null, $size: null, $family: null, $style: null, $weight: null, $line-height: null, $variant: null, $quiet: false)
   $detected-family: func-typo.font-family-of($font)
@@ -81,6 +83,7 @@
   -webkit-line-clamp: $lines
   -webkit-box-orient: vertical
   overflow: hidden
+  
 
 @mixin text-adjustments($alignment: null, $decoration: null, $quiet: false)
   @if $alignment != null

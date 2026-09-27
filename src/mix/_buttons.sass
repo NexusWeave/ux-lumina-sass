@@ -3,40 +3,45 @@
 
 // Internal dependencies
 @use '../color' as c
-@use 'utilities' as *
+@use 'utilities' as utils
+
 @use 'typography' as typo
+@use 'position' as pos
+
 @use '../func/color' as func-color
 
 
 @mixin base-btn($bg-color: c.$light-blue, $text-color: null, $border-color: null, $size: 1em, $weight: bold)
 
     @if $border-color == null
-        border: none
+        @include utils.reset($border: true)
 
     @else
         border: 0.0625rem solid $border-color
 
     margin: 0.5em
     cursor: pointer
-    position: relative
     padding: 0.5em 1.5em
     border-radius: 0.5em
     display: inline-block
     transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s
-    
-    @include background-color($bg-color, $text-color)
+
+    @include pos.relative()
     @include typo.font($size: $size, $weight: $weight)
+    @include utils.background-color($bg-color, $text-color)
     
 
     &:hover
         transform: scale(1.05)
         $hover-bg: color.adjust($bg-color, $lightness: -5%)
-        @include background-color($hover-bg)
 
+        @include utils.background-color($hover-bg)
+        
     &:active
         transform: scale(0.95)
         $active-bg: color.adjust($bg-color, $lightness: -10%)
-        @include background-color($active-bg)
+
+        @include utils.background-color($active-bg)
 
     &:disabled
         opacity: 0.3

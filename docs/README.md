@@ -10,6 +10,7 @@
 ### Developer Guides
 
 - **[System Architecture](architecture.md):** Architectural design, module relationships, and core principles.
+- **[Issue Reporting Guide](issues.md):** Templates and guidelines for reporting bugs and feature requests.
 - **[Contributing Guide](contributing.md):** How to fork the repository and submit Pull Requests.
 - **[Contributors List](contributions.md):** Acknowledging community members who have contributed.
 - **[Development Guide](developer/development.md):** Coding conventions and build configuration.

@@ -7,11 +7,11 @@ This document provides a technical reference index for all mixins in the `lumina
 - `reset`: Universal CSS reset for all CSS rules, box-sizing, typography, background, list-styles, appearance, and base HTML elements (`src/mix/_utilities.sass`).
 - `margin`: Margin setter supporting physical and logical properties (`src/mix/_utilities.sass`).
 - `margin-center`: Centering helper using logical `margin-inline: auto` (`src/mix/_utilities.sass`).
-- `l-hamburg` / `nav-hamburg`: Responsive hamburger navigation menu button (`src/mix/_navigation.sass`).
+- `nav-hamburg`: Responsive hamburger navigation menu button (`src/mix/_navigation.sass`).
 - `background-color`: Automatic contrast-aware background setter (`src/mix/_utilities.sass`).
 - `size`: Logical width (`inline-size`) and height (`block-size`) dimensions (`src/mix/_utilities.sass`).
-- `media-queries`: Desktop-first and semantic media query helper (`src/mix/_breakpoints.sass`).
-- `media-up` / `media-down`: Directional breakpoint helpers (`src/mix/_breakpoints.sass`).
+- `mobile-first`: Mobile-first `min-width` media query helper (`src/mix/_breakpoints.sass`).
+- `desktop-first`: Desktop-first `max-width` media query helper with automatic boundary adjustment (`src/mix/_breakpoints.sass`).
 - `apply-global-theme`: System scaffolding theme orchestrator (`src/mix/_global-theme.sass`).
 - `base-btn`: Standard button base mixin (`src/mix/_buttons.sass`).
 

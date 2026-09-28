@@ -1,19 +1,18 @@
-# Media Mixins
-*Last updated: 2026-06-11*
+# Media Queries & Breakpoints Mixins
+*Last updated: 2026-09-28*
 
-This document provides a technical specification for the mixins defined within `src/mix/_media.sass`. These utilities are engineered to facilitate responsive design, device-specific queries, and sophisticated handling of figure and image elements.
+This document provides a technical specification for the media query and breakpoint mixins defined within `src/mix/_breakpoints.sass` and `src/mix/_media.sass`. These utilities facilitate mobile-first and desktop-first responsive designs, custom ranges, device-specific queries, and background image styling.
 
 ## Mixins
 
 | Mixin | Source Module | Line | Signature | Description |
 |-------|--------------|------|-----------|-------------|
-| `media-queries-base` | `src/mix/_breakpoints.sass` | 8 | `@mixin media-queries-base($breakpoint, $value: null)` | Core low-level implementation constructing mobile-first `min-inline-size` query by default when given a breakpoint identifier.
-| `media-queries` | `src/mix/_breakpoints.sass` | 21 | `@mixin media-queries($feature, $value: null)` | Public dispatcher forwarding execution to `media-queries-base`.
-| `media-up` | `src/mix/_breakpoints.sass` | 24 | `@mixin media-up($breakpoint)` | Explicit Mobile-First helper building `(min-inline-size: $breakpoint)`.
-| `media-down` | `src/mix/_breakpoints.sass` | 29 | `@mixin media-down($breakpoint)` | Explicit Desktop-First override helper building `(max-inline-size: $breakpoint)`.
-| `prefers-color-scheme` | `src/mix/_breakpoints.sass` | 34 | `@mixin prefers-color-scheme($mode)` | Generates `@media (prefers-color-scheme: $mode)` directive, supporting `light` or `dark` modes.
-| `prefers-orientation` | `src/mix/_breakpoints.sass` | 38 | `@mixin prefers-orientation($orientation)` | Generates `@media (orientation: $orientation)` directive.
-| `device-media` | `src/mix/_breakpoints.sass` | 42 | `@mixin device-media($device, $orientation: portrait)` | Generates high-precision media queries for specific hardware defined in `devices-breakpoints` map.
+| `media-queries-base` | `src/mix/_breakpoints.sass` | 15 | `@mixin media-queries-base($breakpoint, $value: null)` | Core low-level implementation constructing mobile-first `min-width` query by default when given a breakpoint identifier.
+| `mobile-first` | `src/mix/_breakpoints.sass` | 47 | `@mixin mobile-first($breakpoint, $value: null)` | Explicit Mobile-First helper building `(min-width: $breakpoint)`.
+| `desktop-first` | `src/mix/_breakpoints.sass` | 53 | `@mixin desktop-first($breakpoint, $value: null)` | Explicit Desktop-First override helper building `(max-width: $breakpoint)` with `-0.02rem` boundary adjustment.
+| `prefers-color-scheme` | `src/mix/_breakpoints.sass` | 82 | `@mixin prefers-color-scheme($mode)` | Generates `@media (prefers-color-scheme: $mode)` directive, supporting `light` or `dark` modes.
+| `prefers-orientation` | `src/mix/_breakpoints.sass` | 88 | `@mixin prefers-orientation($orientation)` | Generates `@media (orientation: $orientation)` directive.
+| `device-media` | `src/mix/_breakpoints.sass` | 94 | `@mixin device-media($device, $orientation: portrait)` | Generates high-precision media queries for specific hardware defined in `devices-breakpoints` map.
 | `background-image` | `src/mix/_media.sass` | 8 | `@mixin background-image(...)` | Advanced utility for setting multiple background image properties in a single call.
 
 
@@ -23,13 +22,13 @@ These mixins are exported through `src/mix/_index.sass` and can be integrated in
 ```sass
 @use "lumina-sass/mix" as media;
 
-// Mobile-first implementation (min-inline-size: 64rem)
-@include media.media-queries('tablet-landscape') {
+// Mobile-first implementation (min-width: 64rem)
+@include media.mobile-first('tablet-landscape') {
   .example { color: red; }
 }
 
-// Explicit mobile-up helper
-@include media.media-up('8k') {
+// Explicit desktop-first helper (max-width: 63.98rem)
+@include media.desktop-first('tablet-landscape') {
   .example { font-size: 3rem; }
 }
 ```

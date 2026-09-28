@@ -13,7 +13,7 @@ Sass Indented Syntax (`.sass`) was specifically chosen over SCSS and plain CSS b
 - **Parametric Resets:** `@mixin reset()` applies targeted CSS resets with safe `false` defaults.
 - **Automated Accessibility:** Builds fail automatically if text and background contrast falls below WCAG AA thresholds.
 - **Centralized Tokens:** Single-point map definitions for breakpoints, colors, and typography stacks.
-- **Navigation Controls:** Responsive mobile navigation buttons with `@mixin l-hamburg()`.
+- **Navigation Controls:** Responsive mobile navigation buttons with `@mixin nav-hamburger()`.
 
 ### Important Links
 
@@ -24,6 +24,7 @@ Sass Indented Syntax (`.sass`) was specifically chosen over SCSS and plain CSS b
 - **[Mixins Reference](docs/mixins/mixins.md):** Design tokens, breakpoints, and layout tools.
 - **[Navigation Guide](docs/mixins/navigation.md):** Responsive hamburger menu controls.
 - **[Contributing Guide](docs/contributing.md):** How to fork, develop, and submit Pull Requests.
+- **[Issue Templates & Guidelines](docs/issues.md):** Guidelines for reporting bugs and proposing features.
 - **[Contributors List](CONTRIBUTIONS.md):** Recognition and thanks to community contributors.
 - **[License](./LICENSE):** Open-source MIT License details.
 
@@ -42,7 +43,7 @@ npm install lumina-sass
 	@include l-mix.reset($box-sizing: true, $margin: true, $padding: true)
 
 .hamburger-toggle
-	@include l-mix.l-hamburg($bg-color: transparent, $color: #ffffff)
+	@include l-mix.nav-hamburger($bg-color: transparent, $color: #ffffff)
 
 .card
 	inline-size: 50%

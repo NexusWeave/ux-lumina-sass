@@ -2,6 +2,256 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.5.179](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.178...v4.5.179) (2026-09-28)
+
+### [4.5.178](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.177...v4.5.178) (2026-09-28)
+
+### [4.5.177](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.176...v4.5.177) (2026-09-28)
+
+### [4.5.176](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.175...v4.5.176) (2026-09-28)
+
+### [4.5.175](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.174...v4.5.175) (2026-09-28)
+
+### [4.5.174](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.173...v4.5.174) (2026-09-28)
+
+### [4.5.173](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.172...v4.5.173) (2026-09-28)
+
+### [4.5.172](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.171...v4.5.172) (2026-09-28)
+
+### [4.5.171](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.170...v4.5.171) (2026-09-28)
+
+### [4.5.170](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.169...v4.5.170) (2026-09-28)
+
+### [4.5.169](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.168...v4.5.169) (2026-09-28)
+
+### [4.5.168](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.167...v4.5.168) (2026-09-28)
+
+### [4.5.167](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.166...v4.5.167) (2026-09-28)
+
+### [4.5.166](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.165...v4.5.166) (2026-09-28)
+
+### [4.5.165](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.164...v4.5.165) (2026-09-28)
+
+### [4.5.164](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.163...v4.5.164) (2026-09-28)
+
+### [4.5.163](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.162...v4.5.163) (2026-09-28)
+
+### [4.5.162](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.161...v4.5.162) (2026-09-28)
+
+### [4.5.161](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.160...v4.5.161) (2026-09-28)
+
+### [4.5.160](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.159...v4.5.160) (2026-09-28)
+
+### [4.5.159](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.158...v4.5.159) (2026-09-28)
+
+### [4.5.158](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.157...v4.5.158) (2026-09-28)
+
+### [4.5.157](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.156...v4.5.157) (2026-09-28)
+
+### [4.5.156](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.155...v4.5.156) (2026-09-28)
+
+### [4.5.155](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.154...v4.5.155) (2026-09-28)
+
+### [4.5.154](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.153...v4.5.154) (2026-09-28)
+
+### [4.5.153](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.152...v4.5.153) (2026-09-28)
+
+### [4.5.152](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.151...v4.5.152) (2026-09-28)
+
+### [4.5.151](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.150...v4.5.151) (2026-09-28)
+
+### [4.5.150](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.149...v4.5.150) (2026-09-28)
+
+### [4.5.149](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.148...v4.5.149) (2026-09-28)
+
+### [4.5.148](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.147...v4.5.148) (2026-09-28)
+
+### [4.5.147](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.146...v4.5.147) (2026-09-28)
+
+### [4.5.146](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.145...v4.5.146) (2026-09-28)
+
+### [4.5.145](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.144...v4.5.145) (2026-09-28)
+
+### [4.5.144](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.143...v4.5.144) (2026-09-28)
+
+### [4.5.143](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.142...v4.5.143) (2026-09-28)
+
+### [4.5.142](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.141...v4.5.142) (2026-09-28)
+
+### [4.5.141](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.140...v4.5.141) (2026-09-28)
+
+### [4.5.140](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.139...v4.5.140) (2026-09-28)
+
+### [4.5.139](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.138...v4.5.139) (2026-09-28)
+
+### [4.5.138](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.137...v4.5.138) (2026-09-28)
+
+### [4.5.137](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.136...v4.5.137) (2026-09-28)
+
+### [4.5.136](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.135...v4.5.136) (2026-09-28)
+
+### [4.5.135](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.134...v4.5.135) (2026-09-28)
+
+### [4.5.134](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.133...v4.5.134) (2026-09-28)
+
+### [4.5.133](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.132...v4.5.133) (2026-09-28)
+
+### [4.5.132](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.131...v4.5.132) (2026-09-28)
+
+### [4.5.131](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.130...v4.5.131) (2026-09-28)
+
+### [4.5.130](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.129...v4.5.130) (2026-09-28)
+
+### [4.5.129](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.128...v4.5.129) (2026-09-28)
+
+### [4.5.128](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.127...v4.5.128) (2026-09-28)
+
+### [4.5.127](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.126...v4.5.127) (2026-09-28)
+
+### [4.5.126](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.125...v4.5.126) (2026-09-28)
+
+### [4.5.125](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.124...v4.5.125) (2026-09-28)
+
+### [4.5.124](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.123...v4.5.124) (2026-09-28)
+
+### [4.5.123](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.122...v4.5.123) (2026-09-28)
+
+### [4.5.122](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.121...v4.5.122) (2026-09-28)
+
+### [4.5.121](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.120...v4.5.121) (2026-09-28)
+
+### [4.5.120](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.119...v4.5.120) (2026-09-28)
+
+### [4.5.119](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.118...v4.5.119) (2026-09-28)
+
+### [4.5.118](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.117...v4.5.118) (2026-09-28)
+
+### [4.5.117](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.116...v4.5.117) (2026-09-28)
+
+### [4.5.116](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.115...v4.5.116) (2026-09-28)
+
+### [4.5.115](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.114...v4.5.115) (2026-09-28)
+
+### [4.5.114](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.113...v4.5.114) (2026-09-28)
+
+### [4.5.113](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.112...v4.5.113) (2026-09-28)
+
+### [4.5.112](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.111...v4.5.112) (2026-09-28)
+
+### [4.5.111](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.110...v4.5.111) (2026-09-28)
+
+### [4.5.110](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.109...v4.5.110) (2026-09-28)
+
+### [4.5.109](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.108...v4.5.109) (2026-09-28)
+
+### [4.5.108](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.107...v4.5.108) (2026-09-28)
+
+### [4.5.107](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.106...v4.5.107) (2026-09-28)
+
+### [4.5.106](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.105...v4.5.106) (2026-09-28)
+
+### [4.5.105](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.104...v4.5.105) (2026-09-28)
+
+### [4.5.104](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.103...v4.5.104) (2026-09-28)
+
+### [4.5.103](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.102...v4.5.103) (2026-09-28)
+
+### [4.5.102](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.101...v4.5.102) (2026-09-28)
+
+### [4.5.101](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.100...v4.5.101) (2026-09-28)
+
+### [4.5.100](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.99...v4.5.100) (2026-09-28)
+
+### [4.5.99](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.98...v4.5.99) (2026-09-28)
+
+### [4.5.98](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.97...v4.5.98) (2026-09-28)
+
+### [4.5.97](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.96...v4.5.97) (2026-09-28)
+
+### [4.5.96](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.95...v4.5.96) (2026-09-28)
+
+### [4.5.95](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.94...v4.5.95) (2026-09-28)
+
+### [4.5.94](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.93...v4.5.94) (2026-09-28)
+
+### [4.5.93](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.92...v4.5.93) (2026-09-28)
+
+### [4.5.92](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.91...v4.5.92) (2026-09-28)
+
+### [4.5.91](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.90...v4.5.91) (2026-09-28)
+
+### [4.5.90](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.89...v4.5.90) (2026-09-28)
+
+### [4.5.89](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.88...v4.5.89) (2026-09-28)
+
+### [4.5.88](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.87...v4.5.88) (2026-09-28)
+
+### [4.5.87](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.86...v4.5.87) (2026-09-28)
+
+### [4.5.86](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.85...v4.5.86) (2026-09-28)
+
+### [4.5.85](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.84...v4.5.85) (2026-09-28)
+
+### [4.5.84](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.83...v4.5.84) (2026-09-28)
+
+### [4.5.83](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.82...v4.5.83) (2026-09-28)
+
+### [4.5.82](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.81...v4.5.82) (2026-09-28)
+
+### [4.5.81](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.80...v4.5.81) (2026-09-28)
+
+### [4.5.80](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.79...v4.5.80) (2026-09-28)
+
+### [4.5.79](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.78...v4.5.79) (2026-09-28)
+
+### [4.5.78](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.77...v4.5.78) (2026-09-28)
+
+### [4.5.77](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.76...v4.5.77) (2026-09-28)
+
+### [4.5.76](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.75...v4.5.76) (2026-09-28)
+
+### [4.5.75](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.74...v4.5.75) (2026-09-28)
+
+### [4.5.74](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.73...v4.5.74) (2026-09-28)
+
+### [4.5.73](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.72...v4.5.73) (2026-09-28)
+
+### [4.5.72](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.71...v4.5.72) (2026-09-28)
+
+### [4.5.71](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.70...v4.5.71) (2026-09-28)
+
+### [4.5.70](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.69...v4.5.70) (2026-09-28)
+
+### [4.5.69](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.68...v4.5.69) (2026-09-28)
+
+### [4.5.68](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.67...v4.5.68) (2026-09-28)
+
+### [4.5.67](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.66...v4.5.67) (2026-09-28)
+
+### [4.5.66](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.65...v4.5.66) (2026-09-28)
+
+### [4.5.65](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.64...v4.5.65) (2026-09-28)
+
+### [4.5.64](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.63...v4.5.64) (2026-09-28)
+
+### [4.5.63](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.62...v4.5.63) (2026-09-28)
+
+### [4.5.62](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.61...v4.5.62) (2026-09-28)
+
+### [4.5.61](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.60...v4.5.61) (2026-09-28)
+
+### [4.5.60](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.59...v4.5.60) (2026-09-28)
+
+### [4.5.59](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.58...v4.5.59) (2026-09-28)
+
+### [4.5.58](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.57...v4.5.58) (2026-09-28)
+
+### [4.5.57](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.56...v4.5.57) (2026-09-28)
+
+### [4.5.56](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.55...v4.5.56) (2026-09-28)
+
+### [4.5.55](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.54...v4.5.55) (2026-09-28)
+
 ### [4.5.54](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.53...v4.5.54) (2026-09-28)
 
 ### [4.5.53](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.52...v4.5.53) (2026-09-28)

@@ -1,15 +1,21 @@
 name: Release
 
 on:
-  workflow_run:
-    workflows: ["CI"]
-    types:
-      - completed
+  push:
+    branches: [ master ]
+    tags-ignore:
+      - 'v*.*.*'
+    paths-ignore:
+      - 'package.json'
+      - 'package-lock.json'
+      - 'CHANGELOG.md'
+  workflow_dispatch:
 
 jobs:
   release:
+    name: Create Release & Bump Version
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'master' && github.actor != 'github-actions[bot]' }}
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') && !contains(github.event.head_commit.message, 'chore(release)') }}
     permissions:
       contents: write
     steps:
@@ -39,10 +45,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Pull latest remote changes and Push tags
-        run: |
-          git pull --rebase origin master
-          git push --follow-tags origin master
+      - name: Push release commit and tags
+        run: git push --follow-tags origin master
 
       - name: Get Latest Tag
         id: get_version
@@ -53,6 +57,5 @@ jobs:
         with:
           tag_name: ${{ steps.get_version.outputs.VERSION }}
           generate_release_notes: true
-
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

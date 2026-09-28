@@ -52,6 +52,7 @@
     "url": "https://github.com/NexusWeave/ux-lumina-sass.git"
   },
   "standard-version": {
+    "releaseCommitMessageFormat": "chore(release): {{currentTag}} [skip ci]",
     "types": [
       {
         "type": "feat",

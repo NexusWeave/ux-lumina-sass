@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.6.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.181...v4.6.0) (2026-09-28)
+
+
+### Features
+
+* **navigation:** update nav-hamburg breakpoint to 768px (48rem) mobile-first architecture ([7c37469](https://github.com/NexusWeave/ux-lumina-sass/commit/7c37469c558dded6191d03175de9dc14198e0c0a))
+
 ### [4.5.181](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.179...v4.5.181) (2026-09-28)
 
 

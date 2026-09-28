@@ -10,49 +10,49 @@
 @use '../../src/map/devices-breakpoints' as devices-breakpoints
 
 @include true.describe('Media Queries')
-  @include true.it('Generates max-width media query for breakpoint mobile (desktop-first)')
+  @include true.it('Generates min-width media query for breakpoint mobile (mobile-first)')
     $mobile: map.get(devices-breakpoints.$breakpoints, 'mobile')
     @include true.assert
       @include true.output
-        @include breakpoints.media-queries('mobile')
+        @include breakpoints.mobile-first('mobile')
           color: blue
       
       @include true.expect
-        @media (max-inline-size: $mobile)
+        @media (min-width: $mobile)
           color: blue
 
-  @include true.it('Generates max-width media query for semantic descriptive breakpoint (tablet-landscape)')
+  @include true.it('Generates min-width media query for semantic descriptive breakpoint (tablet-landscape)')
     $tablet-land: map.get(devices-breakpoints.$breakpoints, 'tablet-landscape')
     @include true.assert
       @include true.output
-        @include breakpoints.media-queries('tablet-landscape')
+        @include breakpoints.mobile-first('tablet-landscape')
           color: green
       
       @include true.expect
-        @media (max-inline-size: $tablet-land)
+        @media (min-width: $tablet-land)
           color: green
 
-  @include true.it('Generates media-up (min-inline-size)')
+  @include true.it('Generates mobile-first (min-width)')
     $mobile: map.get(devices-breakpoints.$breakpoints, 'mobile')
     @include true.assert
       @include true.output
-        @include breakpoints.media-up('mobile')
+        @include breakpoints.mobile-first('mobile')
           color: red
       
       @include true.expect
-        @media (min-inline-size: $mobile)
+        @media (min-width: $mobile)
           color: red
 
-  @include true.it('Generates media-down (max-inline-size)')
+  @include true.it('Generates desktop-first (max-width)')
     $mobile: map.get(devices-breakpoints.$breakpoints, 'mobile')
     $mobile-down: $mobile - 0.02rem
     @include true.assert
       @include true.output
-        @include breakpoints.media-down('mobile')
+        @include breakpoints.desktop-first('mobile')
           color: yellow
       
       @include true.expect
-        @media (max-inline-size: $mobile-down)
+        @media (max-width: $mobile-down)
           color: yellow
 
   @include true.it('Generates media-between (min and max range)')
@@ -65,7 +65,7 @@
           color: purple
       
       @include true.expect
-        @media (min-inline-size: $mobile) and (max-inline-size: $desktop-down)
+        @media (min-width: $mobile) and (max-width: $desktop-down)
           color: purple
 
   @include true.it('Generates prefers-color-scheme')
@@ -90,72 +90,77 @@
           color: white
       
       @include true.expect
-        @media only screen and (min-inline-size: $min-inline) and (max-inline-size: $max-inline) and (min-block-size: $min-block) and (max-block-size: $max-block) and (orientation: portrait)
+        @media only screen and (min-width: $min-inline) and (max-width: $max-inline) and (min-height: $min-block) and (max-height: $max-block) and (orientation: portrait)
           color: white
 
-  @include true.it('Successfully resolves ALL named breakpoints from $breakpoints map')
+  @include true.it('Successfully resolves ALL named breakpoints from $breakpoints map (mobile-first min-width)')
     @include true.assert
       @include true.output
-        @include breakpoints.media-queries('mobile-s')
+        @include breakpoints.mobile-first('mobile-s')
           content: 'mobile-s'
-        @include breakpoints.media-queries('mobile')
+        @include breakpoints.mobile-first('mobile')
           content: 'mobile'
-        @include breakpoints.media-queries('tablet-landscape')
+        @include breakpoints.mobile-first('tablet-landscape')
           content: 'tablet-landscape'
-        @include breakpoints.media-queries('hd')
+        @include breakpoints.mobile-first('hd')
           content: 'hd'
-        @include breakpoints.media-queries('desktop-s')
+        @include breakpoints.mobile-first('desktop-s')
           content: 'desktop-s'
-        @include breakpoints.media-queries('desktop')
+        @include breakpoints.mobile-first('desktop')
           content: 'desktop'
-        @include breakpoints.media-queries('fhd')
+        @include breakpoints.mobile-first('fhd')
           content: 'fhd'
-        @include breakpoints.media-queries('4k')
+        @include breakpoints.mobile-first('4k')
           content: '4k'
-        @include breakpoints.media-queries('8k')
+        @include breakpoints.mobile-first('8k')
           content: '8k'
 
       @include true.expect
-        @media (max-inline-size: 30rem)
+        @media (min-width: 30rem)
           content: 'mobile-s'
-        @media (max-inline-size: 48rem)
+        @media (min-width: 48rem)
           content: 'mobile'
-        @media (max-inline-size: 64rem)
+        @media (min-width: 64rem)
           content: 'tablet-landscape'
-        @media (max-inline-size: 80rem)
+        @media (min-width: 80rem)
           content: 'hd'
-        @media (max-inline-size: 80rem)
+        @media (min-width: 80rem)
           content: 'desktop-s'
-        @media (max-inline-size: 90rem)
+        @media (min-width: 90rem)
           content: 'desktop'
-        @media (max-inline-size: 120rem)
+        @media (min-width: 120rem)
           content: 'fhd'
-        @media (max-inline-size: 160rem)
+        @media (min-width: 160rem)
           content: '4k'
-        @media (max-inline-size: 320rem)
+        @media (min-width: 320rem)
           content: '8k'
 
   @include true.it('Generates prefers-orientation')
     @include true.assert
       @include true.output
-        @include breakpoints.prefers-orientation(landscape)
-          background: white
-      
+        @include breakpoints.prefers-orientation('landscape')
+          display: inline
+
       @include true.expect
         @media (orientation: landscape)
-          background: white
+          display: inline
 
   @include true.it('Generates custom feature query with value pair')
     @include true.assert
       @include true.output
-        @include breakpoints.media-queries('max-inline-size', 50rem)
-          color: purple
-      
+        @include breakpoints.mobile-first('min-width', 48rem)
+          color: red
+
       @include true.expect
-        @media (max-inline-size: 50rem)
-          color: purple
+        @media (min-width: 48rem)
+          color: red
 
   @include true.it('Generates device-media for portrait and landscape orientations')
+    $iphone: map.get(devices-breakpoints.$devices, 'iphone')
+    $min-inline: map.get($iphone, 'inline-size')
+    $max-inline: $min-inline + 0.125rem
+    $min-block: map.get($iphone, 'block-size')
+    $max-block: $min-block + 0.125rem
     @include true.assert
       @include true.output
         @include breakpoints.device-media('iphone', portrait)
@@ -164,9 +169,7 @@
           display: inline
 
       @include true.expect
-        @media only screen and (min-inline-size: 20rem) and (max-inline-size: 20.125rem) and (min-block-size: 30rem) and (max-block-size: 30.125rem) and (orientation: portrait)
+        @media only screen and (min-width: $min-inline) and (max-width: $max-inline) and (min-height: $min-block) and (max-height: $max-block) and (orientation: portrait)
           display: block
-        @media only screen and (min-inline-size: 30rem) and (max-inline-size: 30.125rem) and (min-block-size: 20rem) and (max-block-size: 20.125rem) and (orientation: landscape)
+        @media only screen and (min-width: $min-block) and (max-width: $max-block) and (min-height: $min-inline) and (max-height: $max-inline) and (orientation: landscape)
           display: inline
-
-

@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.5.81](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.80...v4.5.81) (2026-09-28)
+
 ### [4.5.80](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.79...v4.5.80) (2026-09-28)
 
 ### [4.5.79](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.78...v4.5.79) (2026-09-28)

@@ -3,13 +3,19 @@ changelog:
     labels:
       - chore
       - style
-      - test
+      - major
+
     authors:
-      - octocat
+      - NexusWave
   categories:
     - title: Features
       labels:
         - feat
+
     - title: Bug Fixes
       labels:
         - fix
+
+    - title: Major Changes
+      labels:
+        - major

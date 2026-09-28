@@ -2,7 +2,7 @@ name: Publish to NPM
 
 on:
   workflow_run:
-    workflows: ["Release"]
+    workflows: ["CI"]
     types:
       - completed
 

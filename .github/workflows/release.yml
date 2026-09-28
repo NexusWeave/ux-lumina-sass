@@ -1,10 +1,10 @@
 name: Release
 
 on:
-  push:
-    branches:
-      - master
-  workflow_dispatch:
+    workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
 
 jobs:
   release:
@@ -50,5 +50,6 @@ jobs:
         with:
           tag_name: ${{ steps.get_version.outputs.VERSION }}
           generate_release_notes: true
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.5.5](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.1...v4.5.5) (2026-09-28)
+
+
+### Bug Fixes
+
+* **ci:** fetch latest master ref before npm publish ([bc79d67](https://github.com/NexusWeave/ux-lumina-sass/commit/bc79d67cd11c754b45f224659cfc32b8a3bd3e3b))
+* **ci:** fix indentation under workflow_run trigger in release.yml ([4b4440b](https://github.com/NexusWeave/ux-lumina-sass/commit/4b4440b7bf735379fcd3ea3e7ab7d8c7559c9992))
+* **ci:** make publish workflow dependent on release workflow ([f87ffec](https://github.com/NexusWeave/ux-lumina-sass/commit/f87ffecc64ec8cc5c48b340f55ae50440efd6ff1))
+* **ci:** skip tag creation in release workflow to prevent duplicate tag failure ([5b25cca](https://github.com/NexusWeave/ux-lumina-sass/commit/5b25ccaf1afa117527efae87b1e3002e4e53dfe7))
+* **ci:** trigger release workflow and add workflow_dispatch ([c6d9e60](https://github.com/NexusWeave/ux-lumina-sass/commit/c6d9e6026ed2ed3bb468474ae866e10a185f61fb))
+* **release:** trigger pipeline release flow ([1bde8d5](https://github.com/NexusWeave/ux-lumina-sass/commit/1bde8d5933d6caef6032bb102eda9b331090d7ef))
+
 ### [4.5.4](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.1...v4.5.4) (2026-09-28)
 
 

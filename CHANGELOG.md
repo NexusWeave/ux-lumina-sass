@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.8.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.7.0...v4.8.0) (2026-09-29)
+
+
+### Features
+
+* **navigation:** add font-family & size parameters to nav-hamburg with tests. ([009be7f](https://github.com/NexusWeave/ux-lumina-sass/commit/009be7f7276282e78c7b66c150750f220d837adb))
+
 ## [4.7.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.6.0...v4.7.0) (2026-09-29)
 
 

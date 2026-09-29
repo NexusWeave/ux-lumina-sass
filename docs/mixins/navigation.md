@@ -26,6 +26,7 @@ Generates a responsive hamburger navigation toggle button with configurable brea
 - `$pos`: String - CSS position mode. Defaults to `relative`.
 - `$top`: Length - Top offset position. Defaults to `1rem`.
 - `$right`: Length - Right offset position. Defaults to `1rem`.
+- `$font-family`: String - Font family key or stack applied to the icon element (`b`). Defaults to `'Bootstrap'`.
 
 ### hamburg-is-open / hamburger-is-open
 

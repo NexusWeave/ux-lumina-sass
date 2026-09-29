@@ -16,17 +16,11 @@
       
       @include true.expect
         .hamburger-toggle
-          gap: 0.5rem
           display: flex
-          cursor: pointer
-          z-index: 2
-          align-items: center
-          padding: 0.5rem 1rem
-          justify-content: center
 
           b
             color: #ffffff !important
-            font-family: "Nunito", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+            font-family: "Bootstrap", "bootstrap-icons"
             font-size: 2rem !important
 
           span
@@ -75,6 +69,13 @@
           @media (min-width: 48rem)
             display: none
 
+          gap: 0.5rem
+          cursor: pointer
+          z-index: 2
+          align-items: center
+          padding: 0.5rem 1rem
+          justify-content: center
+
   @include true.it('Applies nav-hamburg mixin with custom breakpoint value (e.g. 20rem or tablet-landscape)')
     @include true.assert
       @include true.output
@@ -83,17 +84,11 @@
       
       @include true.expect
         .hamburger-toggle-custom
-          gap: 0.5rem
           display: flex
-          cursor: pointer
-          z-index: 2
-          align-items: center
-          padding: 0.5rem 1rem
-          justify-content: center
 
           b
             color: #ffffff !important
-            font-family: "Nunito", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+            font-family: "Bootstrap", "bootstrap-icons"
             font-size: 2rem !important
 
           span
@@ -141,6 +136,81 @@
 
           @media (min-width: 20rem)
             display: none
+
+          gap: 0.5rem
+          cursor: pointer
+          z-index: 2
+          align-items: center
+          padding: 0.5rem 1rem
+          justify-content: center
+
+  @include true.it('Applies nav-hamburg mixin with custom font-family')
+    @include true.assert
+      @include true.output
+        .hamburger-custom-font
+          @include nav.nav-hamburg($font-family: 'serif')
+
+      @include true.expect
+        .hamburger-custom-font
+          display: flex
+
+          b
+            color: #ffffff !important
+            font-family: "serif"
+            font-size: 2rem !important
+
+          span
+            color: #ffffff !important
+            font-family: "Nunito", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+            font-size: 1.1rem !important
+            font-weight: bold !important
+
+          margin: 0
+          margin-block: 0
+          margin-inline: 0
+          display: inline-flex
+          border: 0.0625rem solid #ffffff
+          margin: 0.5em
+          cursor: pointer
+          padding: 0.5em 1.5em
+          border-radius: 0.5em
+          display: inline-block
+          transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s
+          position: relative
+          font-family: "Nunito", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+          font-size: 1em
+          font-weight: bold
+          background-color: transparent
+          color: #ffffff
+
+          &:hover
+            transform: scale(1.05)
+            background-color: hsla(0, 0%, -5%, 0)
+            color: rgb(64, 64, 64)
+
+          &:active
+            transform: scale(0.95)
+            background-color: hsla(0, 0%, -10%, 0)
+            color: rgb(64, 64, 64)
+
+          &:disabled
+            opacity: 0.3
+            cursor: not-allowed
+            pointer-events: none
+
+          position: relative
+          top: 1rem !important
+          right: 1rem !important
+
+          @media (min-width: 48rem)
+            display: none
+
+          gap: 0.5rem
+          cursor: pointer
+          z-index: 2
+          align-items: center
+          padding: 0.5rem 1rem
+          justify-content: center
 
   @include true.it('Applies flexible hamburger-is-open mixin with custom classes')
     @include true.assert

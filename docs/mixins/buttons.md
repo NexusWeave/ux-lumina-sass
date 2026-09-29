@@ -12,19 +12,20 @@ The `base-btn` mixin applies a standard button style with hover and active anima
 #### Usage
 
 ```sass
-@use 'lumina-sass/mix' as *;
+@use 'lumina-sass/mix' as mix
 
-.my-button {
-  @include base-btn($bg-color: #0078d7, $size: 1.1em);
-}
+.custom-button
+  @include mix.base-btn($bg-color: #0078d7, $size: 1.1em)
+
+// Custom unstyled button with clean reset
+button.reset-button
+  @include mix.reset($button: true)
 ```
 
 #### Parameters
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| `$bg-color` | Color | The background color. Defaults to `light-blue` token. |
-| `$text-color` | Color\|null | The text color. Defaults to `null` (auto-calculated). |
-| `$border-color` | Color\|null | Optional border color. Defaults to `null` (no border). |
-| `$size` | Length | The font size for the button text. Defaults to `1em`. |
-| `$weight` | String\|Number | The font weight. Defaults to `bold`. |
+- `$bg-color`: Color - The background color. Defaults to `c.$light-blue`.
+- `$text-color`: Color|null - The text color. Defaults to `null` (auto-calculated via WCAG contrast).
+- `$border-color`: Color|null - Optional border color. Defaults to `null` (resets border).
+- `$size`: Length - The font size for the button text. Defaults to `1em`.
+- `$weight`: String|Number - The font weight. Defaults to `bold`.

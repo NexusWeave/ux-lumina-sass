@@ -3,6 +3,7 @@
 ### Core Modules
 
 - **[Mixins](mixins/mixins.md):** Specifications for layout, typography, navigation, position, and resets.
+- **[Functions](functions/README.md):** Contrast calculations, WCAG utilities, font resolution, and icon lookups.
 - **[Colors](colors/colors.md):** Palette definitions and WCAG contrast utilities.
 - **[Generators](generators/generators.md):** Generation systems for flexbox, icons, and input fields.
 - **[Utilities](utils/utility_classes.md):** Pre-built CSS helper classes.

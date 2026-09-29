@@ -33,6 +33,7 @@ The universal `reset` mixin resets all or specific CSS properties and HTML base 
 - `$font`: Boolean - Resets `font: inherit`, `font-size: 100%`, `font-weight: normal`, `line-height: inherit`. Defaults to `false`.
 - `$color`: Boolean - Resets `color: inherit`. Defaults to `false`.
 - `$background`: Boolean - Resets background to `transparent` with `background-image: none`. Defaults to `false`.
+- `$button`: Boolean - Resets native button styles (`border: none`, `outline: 0`, `color: inherit`, `background: transparent`, `font: inherit`, `cursor: pointer`, `appearance: none`). Defaults to `false`.
 - `$list-style`: Boolean - Resets `list-style: none`. Defaults to `false`.
 - `$text-decoration`: Boolean - Resets `text-decoration: none`. Defaults to `false`.
 - `$size`: Boolean - Resets logical dimensions (`inline-size: auto`, `block-size: auto`, `max-inline-size: 100%`, `max-block-size: 100%`). Defaults to `false`.
@@ -97,4 +98,58 @@ Sets CSS logical dimensions (`inline-size` and `block-size`), with optional `min
 .card-container
 	@include l-mix.size($inline: 100%, $block: 20rem, $min-inline: 320px, $max-inline: 1200px)
 ```
+
+### min-size
+
+Sets logical minimum dimensions (`min-inline-size` and `min-block-size`).
+
+#### Usage
+
+```sass
+@use 'lumina-sass/mixins' as l-mix
+
+.card-box
+	@include l-mix.min-size($inline: 15rem, $block: 8rem)
+```
+
+### max-size
+
+Sets logical maximum dimensions (`max-inline-size` and `max-block-size`).
+
+#### Usage
+
+```sass
+@use 'lumina-sass/mixins' as l-mix
+
+.modal-content
+	@include l-mix.max-size($inline: 40rem, $block: 90vh)
+```
+
+### transition
+
+Sets CSS transition shorthand or granular transition properties (`property`, `duration`, `timing-function`, `delay`, `behavior`).
+
+#### Usage
+
+```sass
+@use 'lumina-sass/mixins' as l-mix
+
+// Shorthand usage
+.interactive-card
+	@include l-mix.transition(all 0.3s ease)
+
+// Granular sub-properties usage
+.fade-element
+	@include l-mix.transition($transition: null, $property: opacity, $duration: 250ms, $timing-function: ease-in-out)
+```
+
+#### Parameters
+
+- `$transition`: String|List|null - Full transition shorthand, or null when using sub-properties. Required parameter without default.
+- `$property`: String|List - Target CSS property to transition. Defaults to `null`.
+- `$duration`: Length|String - Duration value. Defaults to `null`.
+- `$timing-function`: String - Timing function curve. Defaults to `null`.
+- `$delay`: Length|String - Delay time before start. Defaults to `null`.
+- `$behavior`: String - Transition behavior mode (e.g. `allow-discrete`). Defaults to `null`.
+
 

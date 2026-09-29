@@ -12,6 +12,9 @@ Sass Indented Syntax (`.sass`) was specifically chosen over SCSS and plain CSS b
 - **Zero Runtime Overhead:** Compiles layout math, WCAG contrast checks, and breakpoints directly to plain CSS at build time.
 - **Parametric Resets:** `@mixin reset()` applies targeted CSS resets with safe `false` defaults.
 - **Automated Accessibility:** Builds fail automatically if text and background contrast falls below WCAG AA thresholds.
+- **Strict WCAG Implementation:** Enforces WCAG AA contrast thresholds across all components, with adaptive disabled‑link handling.
+- **Colorblindness Simulation Tests:** Verify visual accessibility for protanopia, deuteranopia, tritanopia and achromatopsia.
+- **Parametric Resets:** `@mixin reset()` applies targeted CSS resets with safe `false` defaults.
 - **Centralized Tokens:** Single-point map definitions for breakpoints, colors, and typography stacks.
 - **Navigation Controls:** Responsive mobile navigation buttons with `@mixin nav-hamburger()`.
 

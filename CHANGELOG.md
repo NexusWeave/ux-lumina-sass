@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.7.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.6.0...v4.7.0) (2026-09-29)
+
+
+### Features
+
+* **typography:** add font smoothing, line-clamp & default stack updates with tests. ([98d5d01](https://github.com/NexusWeave/ux-lumina-sass/commit/98d5d01097c3093e832918a8068bb685d2c54742))
+* **utilities:** add button reset support & transition mixin with test coverage. ([07602ea](https://github.com/NexusWeave/ux-lumina-sass/commit/07602ea96c506504b50e311edee11e7c8dfac950))
+
+
+### Bug Fixes
+
+* **navigation:** remove border from hamburger button & align test expectations. ([cd2f1e0](https://github.com/NexusWeave/ux-lumina-sass/commit/cd2f1e0ae9d6c2b0c97cd811015d5c3f6ef42eb0))
+
 ## [4.6.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.181...v4.6.0) (2026-09-28)
 
 

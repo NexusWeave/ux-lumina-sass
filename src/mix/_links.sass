@@ -9,7 +9,12 @@
 
 
 /// Applies link colors using theme-aware defaults.
-@mixin link-color($color: null, $color-hover: null, $color-active: null, $color-visited: null)
+/// @param {Color|null} $color [null] - Default link color.
+/// @param {Color|null} $color-hover [null] - Hover link color.
+/// @param {Color|null} $color-active [null] - Active link color.
+/// @param {Color|null} $color-visited [null] - Visited link color.
+/// @param {Color|null} $bg-color [null] - Background color the links are placed on (used for contrast calculation).
+@mixin link-color($color: null, $color-hover: null, $color-active: null, $color-visited: null, $bg-color: null)
 
     @if $color == null
         $color: c.$light-blue-contrast
@@ -23,15 +28,19 @@
     @if $color-visited == null
         $color-visited: $color
 
+    $blend: c.$soft-white
+    @if $bg-color != null
+        $blend: $bg-color
+
     a
         [aria-disabled="true"]
             cursor: not-allowed
             pointer-events: none
             @include typo.text-adjustments($decoration: none)
-            @include background-color(transparent, alerts.$disabled)
+            @include background-color(transparent, alerts.$disabled, $blend-bg: $blend)
 
         &:active
-            @include background-color(transparent, $color-active)
+            @include background-color(transparent, $color-active, $blend-bg: $blend)
         
         &.external-link
             @include typo.text-adjustments($decoration: underline)
@@ -39,11 +48,11 @@
         @media (hover: hover)
             &:hover
                 border-radius: 0.5em
-                @include background-color(transparent, $color-hover)
+                @include background-color(transparent, $color-hover, $blend-bg: $blend)
 
         &:visited
-            @include background-color(transparent, $color-visited)
+            @include background-color(transparent, $color-visited, $blend-bg: $blend)
 
         cursor: pointer
         @include typo.text-adjustments($quiet: true)
-        @include background-color(transparent, $color)
+        @include background-color(transparent, $color, $blend-bg: $blend)

@@ -48,16 +48,21 @@
     @return $r * 0.2126 + $g * 0.7152 + $b * 0.0722
 
 /// Calculates the contrast ratio between two colors (WCAG 2.1 formula).
-/// Automatically blends semi-transparent colors against white.
+/// Automatically blends semi-transparent colors against the provided background (defaults to white).
 /// @param {Color} $color1 - The first color.
 /// @param {Color} $color2 - The second color.
+/// @param {Color|null} $background [null] - Optional background to blend semi-transparent colors against.
 /// @return {Number} - The contrast ratio (1 to 21), rounded to 2 decimal places.
-@function contrast-ratio($color1, $color2)
+@function contrast-ratio($color1, $color2, $background: null)
     @if meta.type-of($color1) != 'color' or meta.type-of($color2) != 'color'
         @error "contrast-ratio: Both arguments must be colors."
 
-    $l1: luminance($color1)
-    $l2: luminance($color2)
+    $bg: base.$white
+    @if $background != null
+        $bg: $background
+
+    $l1: luminance($color1, $bg)
+    $l2: luminance($color2, $bg)
 
     $ratio: math.div(math.max($l1, $l2) + 0.05, math.min($l1, $l2) + 0.05)
     

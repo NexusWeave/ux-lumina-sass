@@ -6,7 +6,8 @@
 /// @param {Color} $foreground - The foreground color to be evaluated.
 /// @param {Color} $background - The background color against which contrast is measured.
 /// @param {Number} $threshold [4.5] - The minimum acceptable contrast ratio (standard WCAG AA compliance is 4.5:1).
-@mixin assert-contrast($foreground, $background, $threshold: 4.5)
-    $ratio: func-color.contrast-ratio($foreground, $background)
+/// @param {Color} $blend-bg [null] - Optional background to blend against if $background is semi-transparent.
+@mixin assert-contrast($foreground, $background, $threshold: 4.5, $blend-bg: null)
+    $ratio: func-color.contrast-ratio($foreground, $background, $background: $blend-bg)
     @if $ratio < $threshold
         @error "Accessibility Failure: The contrast ratio of #{$ratio} between #{$foreground} and #{$background} does not meet the required threshold of #{$threshold}:1 (WCAG AA)."

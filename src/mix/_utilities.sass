@@ -20,7 +20,7 @@
 
     @if $text-color != null
         @if meta.type-of($bg-color) == 'color' and meta.type-of($text-color) == 'color'
-            @include contrast.assert-contrast($text-color, $bg-color, $threshold: $threshold)
+            @include contrast.assert-contrast($text-color, $bg-color, $threshold: $threshold, $blend-bg: $blend-bg)
         color: $text-color
 
     @else if meta.type-of($bg-color) == 'color'

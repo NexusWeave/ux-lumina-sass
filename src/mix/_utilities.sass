@@ -29,20 +29,9 @@
         content: $icon-content
         @include typo.font($font-family, $size: $size)
 
-/// Sets logical dimensions: inline-size (width) and block-size (height), with optional min/max constraints.
-/// Supports both short ($min-inline, $min-block, $max-inline, $max-block) and full CSS property names ($min-inline-size, $min-block-size, $max-inline-size, $max-block-size).
-/// @param {Length|String} $inline [null] - The inline-size to set.
-/// @param {Length|String} $block [auto] - The block-size to set (defaults to auto).
-/// @param {Length|String} $min-inline [null] - Optional min-inline-size.
-/// @param {Length|String} $min-block [null] - Optional min-block-size.
-/// @param {Length|String} $max-inline [null] - Optional max-inline-size.
-/// @param {Length|String} $max-block [null] - Optional max-block-size.
-/// @param {Length|String} $min-inline-size [null] - Alias for $min-inline.
-/// @param {Length|String} $min-block-size [null] - Alias for $min-block.
-/// @param {Length|String} $max-inline-size [null] - Alias for $max-inline.
-/// @param {Length|String} $max-block-size [null] - Alias for $max-block.
-/// @param {Length|String} $inline-size [null] - Alias for $inline.
-/// @param {Length|String} $block-size [null] - Alias for $block.
+/// Sets logical dimensions (inline-size and block-size) with optional min/max constraints.
+/// @param {Length|String|null} $inline [null] - Inline dimension.
+/// @param {Length|String|null} $block [auto] - Block dimension.
 @mixin size($inline: null, $block: auto, $min-inline: null, $min-block: null, $max-inline: null, $max-block: null, $min-inline-size: null, $min-block-size: null, $max-inline-size: null, $max-block-size: null, $inline-size: null, $block-size: null)
     $actual-inline: $inline
     @if $inline-size != null
@@ -86,45 +75,25 @@
     @if $actual-max-block != null
         max-block-size: $actual-max-block
 
-/// Sets logical min dimensions (min-inline-size and min-block-size).
-/// @param {Length|String} $inline [null] - The min-inline-size.
-/// @param {Length|String} $block [null] - The min-block-size.
-/// @param {Length|String} $min-inline-size [null] - Alias for $inline.
-/// @param {Length|String} $min-block-size [null] - Alias for $block.
-@mixin min-size($inline: null, $block: null, $min-inline-size: null, $min-block-size: null)
-    $actual-inline: $inline
-    @if $min-inline-size != null
-        $actual-inline: $min-inline-size
+/// Sets logical minimum dimensions (min-inline-size and min-block-size).
+/// @param {Length|String|null} $inline [null] - Minimum inline size.
+/// @param {Length|String|null} $block [null] - Minimum block size.
+@mixin min-size($inline: null, $block: null)
+    @if $inline != null
+        @include size($min-inline: $inline)
 
-    $actual-block: $block
-    @if $min-block-size != null
-        $actual-block: $min-block-size
+    @if $block != null
+        @include size($min-block: $block)
 
-    @if $actual-inline != null
-        min-inline-size: $actual-inline
+/// Sets logical maximum dimensions (max-inline-size and max-block-size).
+/// @param {Length|String|null} $inline [null] - Maximum inline size.
+/// @param {Length|String|null} $block [null] - Maximum block size.
+@mixin max-size($inline: null, $block: null)
+    @if $inline != null
+        @include size($max-inline: $inline)
 
-    @if $actual-block != null
-        min-block-size: $actual-block
-
-/// Sets logical max dimensions (max-inline-size and max-block-size).
-/// @param {Length|String} $inline [null] - The max-inline-size.
-/// @param {Length|String} $block [null] - The max-block-size.
-/// @param {Length|String} $max-inline-size [null] - Alias for $inline.
-/// @param {Length|String} $max-block-size [null] - Alias for $block.
-@mixin max-size($inline: null, $block: null, $max-inline-size: null, $max-block-size: null)
-    $actual-inline: $inline
-    @if $max-inline-size != null
-        $actual-inline: $max-inline-size
-
-    $actual-block: $block
-    @if $max-block-size != null
-        $actual-block: $max-block-size
-
-    @if $actual-inline != null
-        max-inline-size: $actual-inline
-
-    @if $actual-block != null
-        max-block-size: $actual-block
+    @if $block != null
+        @include size($max-block: $block)
 
 /// Sets element margins using logical and physical properties.
 @mixin margin($margin: null, $block: null, $inline: null, $block-start: null, $block-end: null, $inline-start: null, $inline-end: null, $b-start: null, $b-end: null, $i-start: null, $i-end: null, $top: null, $right: null, $bottom: null, $left: null)
@@ -179,79 +148,130 @@
 
 /// Convenience helper to center an element horizontally using logical margin-inline.
 @mixin margin-center($block: null)
-    margin-inline: auto
+    @include margin($inline: auto)
+
     @if $block != null
-        margin-block: $block
+        @include margin($block: $block)
 
 /// Comprehensive universal CSS reset mixin for all CSS rules.
 /// All parameters default to false for safety and require explicit activation.
-@mixin reset($all: false, $box-sizing: false, $margin: false, $padding: false, $border: false, $outline: false, $font: false, $color: false, $background: false, $list-style: false, $text-decoration: false, $size: false, $appearance: false, $vertical-align: false, $user-select: false, $cursor: false, $position: false, $html-elements: false, $text: c.$dark-grey, $colors: ())
+@mixin reset($all: false, $box-sizing: false, $margin: false, $padding: false, $border: false, $outline: false, $font: false, $color: false, $background: false, $button: false, $list-style: false, $text-decoration: false, $size: false, $appearance: false, $vertical-align: false, $user-select: false, $cursor: false, $position: false, $html-elements: false, $text: c.$dark-grey, $colors: ())
     @if $all or $box-sizing
         box-sizing: border-box
+
     @if $all or $margin
         margin: 0
         margin-block: 0
         margin-inline: 0
+
     @if $all or $padding
         padding: 0
         padding-block: 0
         padding-inline: 0
-    @if $all or $border
+
+    @if $all or $border or $button
         border: none
-    @if $all or $outline
+
+    @if $all or $outline or $button
         outline: 0
         outline-color: transparent
+
     @if $all or $font
         font: inherit
         font-size: 100%
         font-weight: normal
         line-height: inherit
-    @if $all or $color
+
+    @if $all or $color or $button
         color: inherit
-    @if $all or $background
+
+    @if $all or $background or $button
         background: transparent
         background-color: transparent
         background-image: none
+
+    @if $all or $button
+        font: inherit
+        cursor: pointer
+
     @if $all or $list-style
         list-style: none
+
     @if $all or $text-decoration
         text-decoration: none
+
     @if $all or $size
         inline-size: auto
         block-size: auto
         max-inline-size: 100%
         max-block-size: 100%
-    @if $all or $appearance
+
+    @if $all or $appearance or $button
         appearance: none
         -webkit-appearance: none
+    
     @if $all or $vertical-align
         vertical-align: baseline
+    
     @if $all or $user-select
         user-select: auto
+    
     @if $all or $cursor
         cursor: auto
+    
     @if $all or $position
-        position: static
         top: auto
-        right: auto
-        bottom: auto
         left: auto
+        right: auto
         inset: auto
+        bottom: auto
         z-index: auto
+        position: static
+
     @if $all or $html-elements
         abbr
-            cursor: help
-            text-decoration: underline dotted
-            @include background-color(transparent, $text)
             @if map.has-key($colors, 'abbr-underline')
                 text-decoration-color: map.get($colors, 'abbr-underline')
 
+            cursor: help
+            text-decoration: underline dotted
+            @include background-color(transparent, $text)
+            
+
         code
-            padding: 0.2em 0.4em
-            border-radius: 0.3em
-            @include typo.monospace($size: null)
             @if map.has-key($colors, 'code-bg')
                 @include background-color(map.get($colors, 'code-bg'))
 
+            padding: 0.2em 0.4em
+            border-radius: 0.3em
+            @include typo.monospace($size: null)
 
+/// Sets CSS transition shorthand or granular transition properties.
+/// @param {String|List|null} $transition - Full transition shorthand or null when using individual properties.
+/// @param {String|List|null} $property [null] - Target CSS property to transition.
+/// @param {Length|String|null} $duration [null] - Transition duration.
+/// @param {String|null} $timing-function [null] - Transition timing function curve.
+/// @param {Length|String|null} $delay [null] - Transition start delay.
+/// @param {String|null} $behavior [null] - Transition behavior mode.
+@mixin transition($transition, $property: null, $duration: null, $timing-function: null, $delay: null, $behavior: null)
+    @if $transition == null and $property == null and $duration == null and $timing-function == null and $delay == null and $behavior == null
+        @warn "No valid properties provided to transition mixin."
+
+    @if $transition != null
+        transition: $transition
+
+    @if $property != null
+        transition-property: $property
+
+    @if $duration != null
+        transition-duration: $duration
+
+    @if $timing-function != null
+        transition-timing-function: $timing-function
+
+    @if $delay != null
+        transition-delay: $delay
+
+    @if $behavior != null
+        transition-behavior: $behavior
 

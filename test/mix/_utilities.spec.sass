@@ -125,9 +125,13 @@
       
       @include true.expect
         .box-min-max
+          block-size: auto
           min-inline-size: 15rem
+          block-size: auto
           min-block-size: 8rem
+          block-size: auto
           max-inline-size: 50rem
+          block-size: auto
           max-block-size: 25rem
 
   @include true.test('Sets margin and margin-center mixins')
@@ -178,13 +182,13 @@
           block-size: auto
           max-inline-size: 100%
           max-block-size: 100%
-          position: static
           top: auto
-          right: auto
-          bottom: auto
           left: auto
+          right: auto
           inset: auto
+          bottom: auto
           z-index: auto
+          position: static
 
   @include true.test('Applies universal reset mixin with html element resets')
     @include true.assert
@@ -204,5 +208,30 @@
             padding: 0.2em 0.4em
             border-radius: 0.3em
             font-family: "Menlo", "Monaco", "Noto Mono", "Courier New", "Consolas", "Ubuntu Mono", "Source Code Pro", "Fira Code", "Inconsolata", monospace
+
+  @include true.test('Applies transition shorthand')
+    @include true.assert
+      @include true.output
+        .transition-box
+          @include utilities.transition(all 0.3s ease)
+
+      @include true.expect
+        .transition-box
+          transition: all 0.3s ease
+
+  @include true.test('Applies granular transition properties')
+    @include true.assert
+      @include true.output
+        .granular-box
+          @include utilities.transition($transition: null, $property: opacity, $duration: 200ms, $timing-function: ease-in-out, $delay: 50ms, $behavior: allow-discrete)
+
+      @include true.expect
+        .granular-box
+          transition-property: opacity
+          transition-duration: 200ms
+          transition-timing-function: ease-in-out
+          transition-delay: 50ms
+          transition-behavior: allow-discrete
+
 
 

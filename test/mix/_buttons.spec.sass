@@ -6,6 +6,7 @@
 
 // Internal dependencies
 @use '../../src/mix/_buttons' as buttons
+@use '../../src/mix/_utilities' as utils
 @use '../../src/color' as c
 @use '../../src/func/color' as func-color
 
@@ -48,5 +49,25 @@
             opacity: 0.3
             cursor: not-allowed
             pointer-events: none
+
+  @include true.test('Applies reset-btn mixin')
+    @include true.assert
+      @include true.output
+        button.custom-btn
+          @include utils.reset($button: true)
+      
+      @include true.expect
+        button.custom-btn
+          border: none
+          outline: 0
+          outline-color: transparent
+          color: inherit
+          background: transparent
+          background-color: transparent
+          background-image: none
+          font: inherit
+          cursor: pointer
+          appearance: none
+          -webkit-appearance: none
 
 

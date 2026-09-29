@@ -10,7 +10,12 @@
 
 @use '../func/color' as func-color
 
-
+/// Styles an interactive button with automated contrast, hover, and active states.
+/// @param {Color} $bg-color [c.$light-blue] - Button background color.
+/// @param {Color|null} $text-color [null] - Text color (auto-calculated if null).
+/// @param {Color|null} $border-color [null] - Optional border color.
+/// @param {Length} $size [1em] - Text font size.
+/// @param {String|Number} $weight [bold] - Text font weight.
 @mixin base-btn($bg-color: c.$light-blue, $text-color: null, $border-color: null, $size: 1em, $weight: bold)
 
     @if $border-color == null

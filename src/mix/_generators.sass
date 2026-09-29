@@ -36,6 +36,10 @@
     @else
       @error "gen-icons: Fatal error! Icon '#{$name}' not found in icon mapping."
 
+/// Generates icon utility classes with pseudo-element glyphs.
+/// @param {String|List|null} $name [null] - Single icon name, list of names, or null for all.
+/// @param {Color} $color [rgb(64, 64, 64)] - Icon text color.
+/// @param {String} $font-family ['bootstrap-icons'] - Icon font-family name.
 @mixin gen-icons($name: null, $color: rgb(64, 64, 64), $font-family: 'bootstrap-icons', $debug: false, $silent: false, $map: icon-map.$icons, $include-content: true)
   @if $map
     @if $name == null
@@ -65,6 +69,8 @@
     @else
       @error "gen-icons: Fatal error! Icon mapping not found."
 
+/// Generates flexbox properties based on registered flexbox mapping.
+/// @param {String} $name - Flexbox layout configuration key.
 @mixin gen-flexbox($name, $silent: false)
   $props: map.get(flexbox-mapping.$flexbox, $name)
   @if $props
@@ -76,11 +82,19 @@
     @else
       @error "#{$name} not found in flexbox mapping."
 
+/// Generates atomic utility classes for flexbox properties.
+/// @param {String} $prefix - Class name prefix.
+/// @param {String} $property - Target CSS property name.
+/// @param {Map} $map - Values mapping.
 @mixin gen-flexbox-atomic($prefix, $property, $map)
   @each $key, $value in $map
     .#{$prefix}-#{$key}
       #{$property}: $value
 
+/// Generates styled input classes with placeholder and focus states.
+/// @param {String|null} $name [null] - Specific input type name or null for all.
+/// @param {Color|null} $placeholder-color [null] - Optional placeholder text color.
+/// @param {Map} $custom [()] - Custom property overrides.
 @mixin gen-inputs($name: null, $placeholder-color: null, $custom: (), $debug: false, $silent: false)
   $props: map.merge(inputs.$default-input-props, $custom)
 

@@ -7,6 +7,10 @@
 
 $icon-aliases: ('info-circle': 'info', 'warning-triangle': 'warning')
 
+/// Finds an icon unicode glyph by identifier or alias.
+/// @param {String} $name - Icon identifier to locate.
+/// @param {Map} $map [icon-map.$icons] - Icon map source.
+/// @return {String|Map|null} - Icon glyph or null.
 @function find($name, $map: icon-map.$icons)
   $search-name: $name
   @if map.has-key($icon-aliases, $name)

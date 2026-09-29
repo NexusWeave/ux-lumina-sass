@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.9.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.8.0...v4.9.0) (2026-09-29)
+
+
+### Features
+
+* **func:** add colorblind simulation functions and tests ([4fa5f12](https://github.com/NexusWeave/ux-lumina-sass/commit/4fa5f1212bd83cfccc1d0b12b693ffa68abe890c))
+
+
+### Bug Fixes
+
+* **accessibility:** improve WCAG contrast compliance across mixins and palette ([6bc7f25](https://github.com/NexusWeave/ux-lumina-sass/commit/6bc7f25f82c4a01c96a34fc5323612f33e17ce97))
+
 ## [4.8.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.7.0...v4.8.0) (2026-09-29)
 
 

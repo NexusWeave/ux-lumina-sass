@@ -9,16 +9,16 @@
 @use '../../src/mix/_utilities' as utilities
 
 @include true.test-module('Misc Styling')
-  @include true.test('Applies background and explicit text color')
+  @include true.test('Applies background and explicit text color with WCAG compliance')
     @include true.assert
       @include true.output
         .custom-bg
-          @include utilities.background-color(#ff0000, #ffffff)
+          @include utilities.background-color(#ffffff, #000000)
       
       @include true.expect
         .custom-bg
-          background-color: #ff0000
-          color: #ffffff
+          background-color: #ffffff
+          color: #000000
 
   @include true.test('Automatically picks white text for dark background')
     @include true.assert

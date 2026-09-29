@@ -5,16 +5,22 @@
 // Internal dependencies
 @use '../color' as c
 @use 'typography' as typo
+@use 'contrast' as contrast
 @use '../func/color' as func-color
 
+
 /// Sets background color and automatically handles text color contrast if not provided.
+/// Validates WCAG contrast when explicit text color is provided.
 /// @param {Color|String} $bg-color [c.$soft-white] - The background color to apply.
 /// @param {Color|String} $text-color [null] - Optional text color. If null, calculated based on contrast.
 /// @param {Color} $blend-bg [c.$soft-white] - Background to blend against if $bg-color is semi-transparent.
-@mixin background-color($bg-color: c.$soft-white, $text-color: null, $blend-bg: c.$soft-white)
+/// @param {Number} $threshold [4.5] - The minimum acceptable contrast ratio (standard WCAG AA compliance is 4.5:1).
+@mixin background-color($bg-color: c.$soft-white, $text-color: null, $blend-bg: c.$soft-white, $threshold: 4.5)
     background-color: $bg-color
 
     @if $text-color != null
+        @if meta.type-of($bg-color) == 'color' and meta.type-of($text-color) == 'color'
+            @include contrast.assert-contrast($text-color, $bg-color, $threshold: $threshold)
         color: $text-color
 
     @else if meta.type-of($bg-color) == 'color'

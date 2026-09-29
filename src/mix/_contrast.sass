@@ -9,4 +9,4 @@
 @mixin assert-contrast($foreground, $background, $threshold: 4.5)
     $ratio: func-color.contrast-ratio($foreground, $background)
     @if $ratio < $threshold
-        @error "Accessibility Failure: The contrast ratio of #{$ratio} between #{$foreground} and #{$background} does not meet the required threshold of #{$threshold}:1."
+        @error "Accessibility Failure: The contrast ratio of #{$ratio} between #{$foreground} and #{$background} does not meet the required threshold of #{$threshold}:1 (WCAG AA)."

@@ -12,10 +12,10 @@
 @mixin link-color($color: null, $color-hover: null, $color-active: null, $color-visited: null)
 
     @if $color == null
-        $color: c.$light-blue
+        $color: c.$light-blue-contrast
     
     @if $color-hover == null
-        $color-hover: color.adjust($color, $lightness: -10%)
+        $color-hover: color.adjust($color, $lightness: -13%)
     
     @if $color-active == null
         $color-active: color.adjust($color, $lightness: -20%)

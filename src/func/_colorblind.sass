@@ -1,0 +1,84 @@
+// Built-in Dependencies
+@use 'sass:math'
+@use 'sass:meta'
+@use 'sass:color'
+
+
+/// Simulates color vision deficiency (color blindness) on a given color.
+/// Uses standard linear transformation matrices (Brettel/Machado approximations).
+/// @param {Color} $color - The input color to simulate.
+/// @param {String} $type ['deuteranopia'] - Type: 'protanopia', 'deuteranopia', 'tritanopia', or 'achromatopsia'.
+/// @return {Color} - The simulated color.
+@function simulate-colorblind($color, $type: 'deuteranopia')
+    @if meta.type-of($color) != 'color'
+        @error "simulate-colorblind: Expected $color to be a color, but got #{meta.type-of($color)}."
+
+    $alpha: color.channel($color, "alpha")
+    $r: color.channel($color, "red", $space: rgb)
+    $g: color.channel($color, "green", $space: rgb)
+    $b: color.channel($color, "blue", $space: rgb)
+
+    $sim-r: $r
+    $sim-g: $g
+    $sim-b: $b
+
+    @if $type == 'protanopia'
+        // Protanopia matrix (red-blindness simulation)
+        $sim-r: 0.56667 * $r + 0.43333 * $g + 0.0 * $b
+        $sim-g: 0.55833 * $r + 0.44167 * $g + 0.0 * $b
+        $sim-b: 0.0 * $r + 0.24167 * $g + 0.75833 * $b
+
+    @else if $type == 'deuteranopia'
+        // Deuteranopia matrix (green-blindness simulation)
+        $sim-r: 0.625 * $r + 0.375 * $g + 0.0 * $b
+        $sim-g: 0.70 * $r + 0.30 * $g + 0.0 * $b
+        $sim-b: 0.0 * $r + 0.30 * $g + 0.70 * $b
+
+    @else if $type == 'tritanopia'
+        // Tritanopia matrix (blue-blindness simulation)
+        $sim-r: 0.95 * $r + 0.05 * $g + 0.0 * $b
+        $sim-g: 0.0 * $r + 0.43333 * $g + 0.56667 * $b
+        $sim-b: 0.0 * $r + 0.475 * $g + 0.525 * $b
+
+    @else if $type == 'achromatopsia'
+        // Achromatopsia (monochromacy / total color blindness)
+        $gray: 0.2126 * $r + 0.7152 * $g + 0.0722 * $b
+        $sim-r: $gray
+        $sim-g: $gray
+        $sim-b: $gray
+
+    @else
+        @error "simulate-colorblind: Unknown deficiency type '#{$type}'. Supported types: 'protanopia', 'deuteranopia', 'tritanopia', 'achromatopsia'."
+
+    // Clamp values between 0 and 255 and round
+    $final-r: math.round(math.clamp(0, $sim-r, 255))
+    $final-g: math.round(math.clamp(0, $sim-g, 255))
+    $final-b: math.round(math.clamp(0, $sim-b, 255))
+
+    @if $alpha < 1
+        @return rgba($final-r, $final-g, $final-b, $alpha)
+    @return rgb($final-r, $final-g, $final-b)
+
+/// Helper function to simulate protanopia (red-blindness).
+/// @param {Color} $color - The color to simulate.
+/// @return {Color} - The simulated color.
+@function protanopia($color)
+    @return simulate-colorblind($color, 'protanopia')
+
+/// Helper function to simulate deuteranopia (green-blindness).
+/// @param {Color} $color - The color to simulate.
+/// @return {Color} - The simulated color.
+@function deuteranopia($color)
+    @return simulate-colorblind($color, 'deuteranopia')
+
+/// Helper function to simulate tritanopia (blue-blindness).
+/// @param {Color} $color - The color to simulate.
+/// @return {Color} - The simulated color.
+@function tritanopia($color)
+    @return simulate-colorblind($color, 'tritanopia')
+
+/// Helper function to simulate achromatopsia (total color blindness / monochromacy).
+/// @param {Color} $color - The color to simulate.
+/// @return {Color} - The simulated color.
+@function achromatopsia($color)
+    @return simulate-colorblind($color, 'achromatopsia')

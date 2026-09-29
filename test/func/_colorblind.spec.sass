@@ -1,0 +1,41 @@
+// Built-in Dependencies
+@use 'sass:meta'
+
+// Third-party dependencies
+@use '../../node_modules/sass-true' as true
+
+// Internal dependencies
+@use '../../src/func/colorblind' as cb
+
+@include true.describe('Colorblind Simulation Functions')
+
+  @include true.it('should simulate protanopia correctly')
+    $red: rgb(255, 0, 0)
+    $sim: cb.protanopia($red)
+    @include true.assert-equal(meta.type-of($sim), 'color')
+
+  @include true.it('should simulate deuteranopia correctly')
+    $green: rgb(0, 255, 0)
+    $sim: cb.deuteranopia($green)
+    @include true.assert-equal(meta.type-of($sim), 'color')
+
+  @include true.it('should simulate tritanopia correctly')
+    $blue: rgb(0, 0, 255)
+    $sim: cb.tritanopia($blue)
+    @include true.assert-equal(meta.type-of($sim), 'color')
+
+  @include true.it('should simulate achromatopsia correctly')
+    $color: rgb(255, 100, 50)
+    $sim: cb.achromatopsia($color)
+    @include true.assert-equal(meta.type-of($sim), 'color')
+
+  @include true.it('should produce identical results from helpers as main function')
+    $sample: rgb(120, 200, 80)
+    $from-helper: cb.deuteranopia($sample)
+    $from-main: cb.simulate-colorblind($sample, 'deuteranopia')
+    @include true.assert-equal($from-helper, $from-main)
+
+  @include true.it('should preserve opacity in simulated colors')
+    $semi: rgba(255, 0, 0, 0.5)
+    $sim: cb.protanopia($semi)
+    @include true.assert-equal(meta.type-of($sim), 'color')

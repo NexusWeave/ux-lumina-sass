@@ -1,4 +1,5 @@
 // Built-in Dependencies
+@use 'sass:meta'
 @use 'sass:color'
 
 // Internal dependencies
@@ -6,6 +7,7 @@
 @use 'utilities' as *
 @use 'typography' as typo
 @use '../color/alerts' as alerts
+@use '../func/color' as func-color
 
 
 /// Applies link colors using theme-aware defaults.
@@ -32,12 +34,16 @@
     @if $bg-color != null
         $blend: $bg-color
 
+    $disabled-color: alerts.$disabled
+    @if meta.type-of($blend) == 'color'
+        $disabled-color: func-color.best-contrast-color($blend, $light: rgba(c.$white, 0.6), $dark: alerts.$disabled)
+
     a
         [aria-disabled="true"]
             cursor: not-allowed
             pointer-events: none
             @include typo.text-adjustments($decoration: none)
-            @include background-color(transparent, alerts.$disabled, $blend-bg: $blend)
+            @include background-color(transparent, $disabled-color, $blend-bg: $blend, $threshold: 1)
 
         &:active
             @include background-color(transparent, $color-active, $blend-bg: $blend)

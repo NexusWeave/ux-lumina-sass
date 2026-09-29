@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.9.4](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.9.3...v4.9.4) (2026-09-29)
+
+
+### Bug Fixes
+
+* **contrast:** adaptive disabled link color with low threshold ([108b43e](https://github.com/NexusWeave/ux-lumina-sass/commit/108b43ea95e2c0f12105c052162ea3d7f3ff9250))
+
 ### [4.9.3](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.9.2...v4.9.3) (2026-09-29)
 
 

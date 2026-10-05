@@ -1,4 +1,6 @@
 /// Internal dependencies
+@use 'mix' as l-mix
+
 @forward 'mix'
 @forward 'func'
 @forward 'color'
@@ -13,5 +15,5 @@
     p 
         font-size: 1.5rem
 
-    @include size($inline: 100%)
-    @include margin($block: 20rem, $inline: 10rem)
+    @include l-mix.size($inline: 100%)
+    @include l-mix.margin($block: 20rem, $inline: 10rem)

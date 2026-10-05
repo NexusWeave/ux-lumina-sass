@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.11.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.10.0...v4.11.0) (2026-10-05)
+
+
+### Features
+
+* **mixins:** add aspect-ratio mixin, expand card and theme-colors parameters, and update documentation. ([67aad0a](https://github.com/NexusWeave/ux-lumina-sass/commit/67aad0abd0de0732ca4b585adad1eb9279972423))
+* **utilities:** add frame, appearance, border-radius, base-input, and grid-layout mixins with docs and tests. ([2f511b8](https://github.com/NexusWeave/ux-lumina-sass/commit/2f511b88703ecef762abf7c6141252cec49f51f7))
+
 ## [4.10.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.9.5...v4.10.0) (2026-10-05)
 
 

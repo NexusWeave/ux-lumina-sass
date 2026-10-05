@@ -6,6 +6,7 @@ body:
   - type: markdown
     attributes:
       value: Thank you for suggesting a feature enhancement for Lumina SASS!
+
   - type: textarea
     id: feature-description
     attributes:
@@ -13,6 +14,7 @@ body:
       description: Describe the feature, mixin, or utility token map you would like to see added.
     validations:
       required: true
+
   - type: textarea
     id: use-case
     attributes:
@@ -20,6 +22,7 @@ body:
       description: Why is this feature useful? What problem does it solve for users?
     validations:
       required: true
+
   - type: textarea
     id: example-syntax
     attributes:

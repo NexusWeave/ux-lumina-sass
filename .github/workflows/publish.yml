@@ -2,9 +2,11 @@ name: Publish to NPM
 
 on:
   workflow_run:
-    workflows: ["Release"]
+    workflows: ["Automated test"]
     types:
       - completed
+
+    branches: [ master ]
 
 jobs:
   publish:

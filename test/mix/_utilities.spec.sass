@@ -194,8 +194,8 @@
             color: base.$dark-grey
 
           code
-            padding: 0.2em 0.4em
-            border-radius: 0.3em
+            padding: 0.2rem 0.4rem
+            border-radius: 0.3rem
             font-family: "Menlo", "Monaco", "Noto Mono", "Courier New", "Consolas", "Ubuntu Mono", "Source Code Pro", "Fira Code", "Inconsolata", monospace
 
   @include true.test('Applies transition shorthand')
@@ -224,3 +224,59 @@
 
 
 
+
+  @include true.test('Applies appearance mixin')
+    @include true.assert
+      @include true.output
+        .custom-appearance
+          @include utilities.appearance(none)
+
+      @include true.expect
+        .custom-appearance
+          appearance: none
+          -moz-appearance: none
+          -webkit-appearance: none
+
+  @include true.test('Applies frame mixin with border, outline, outline-color, and box-shadow')
+    @include true.assert
+      @include true.output
+        .frame-box
+          @include utilities.frame($border: 1px solid #ccc, $outline: 2px dashed #000, $outline-color: #ff0000, $outline-offset: 2px, $box-shadow: 0 4px 6px rgba(0,0,0,0.1), $border-radius: 0.5rem)
+
+      @include true.expect
+        .frame-box
+          border-radius: 0.5rem
+          border: 1px solid #ccc
+          outline: 2px dashed #000
+          outline-color: #ff0000
+          outline-offset: 2px
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1)
+
+  @include true.test('Applies border-radius mixin')
+    @include true.assert
+      @include true.output
+        .rounded-box
+          @include utilities.border-radius(0.75rem)
+
+      @include true.expect
+        .rounded-box
+          border-radius: 0.75rem
+
+  @include true.test('Applies grid-layout mixin')
+    @include true.assert
+      @include true.output
+        .grid-container
+          @include utilities.grid-layout($temp-col: 1fr 1fr, $gap: 1rem, $temp-rows: auto, $temp-area: "a b")
+        .grid-child
+          @include utilities.grid-layout($grid-area: a, $temp-rows: null)
+
+      @include true.expect
+        .grid-container
+          gap: 1rem
+          grid-template-rows: auto
+          grid-template-areas: "a b" !important
+          grid-template-columns: 1fr 1fr !important
+          display: grid
+          padding: 0.5rem
+        .grid-child
+          grid-area: a

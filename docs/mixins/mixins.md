@@ -11,10 +11,15 @@ This document provides a technical reference index for all mixins in the `lumina
 - `background-color`: Automatic contrast-aware background setter (`src/mix/_utilities.sass`).
 - `size`: Logical width (`inline-size`) and height (`block-size`) dimensions (`src/mix/_utilities.sass`).
 - `aspect-ratio`: Responsive aspect-ratio setter with object-fit and sizing (`src/mix/_utilities.sass`).
+- `appearance`: Cross-browser appearance mixin managing vendor prefixes (`src/mix/_utilities.sass`).
+- `frame`: Boundary and elevation styling for border, outline, outline-color, and box-shadow (`src/mix/_utilities.sass`).
+- `border-radius`: Utility mixin for standard border-radius styling (`src/mix/_utilities.sass`).
+- `grid-layout`: Utility mixin for CSS grid container and item configurations (`src/mix/_utilities.sass`).
 - `mobile-first`: Mobile-first `min-width` media query helper (`src/mix/_breakpoints.sass`).
 - `desktop-first`: Desktop-first `max-width` media query helper with automatic boundary adjustment (`src/mix/_breakpoints.sass`).
 - `apply-global-theme`: System scaffolding theme orchestrator (`src/mix/_global-theme.sass`).
 - `base-btn`: Standard button base mixin (`src/mix/_buttons.sass`).
+- `base-input`: Standard form input base mixin with optional null parameters (`src/mix/_forms.sass`).
 
 ## Detailed Documentation Sections
 

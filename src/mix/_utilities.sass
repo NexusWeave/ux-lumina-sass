@@ -7,6 +7,7 @@
 @use 'typography' as typo
 @use 'contrast' as contrast
 @use '../func/color' as func-color
+@use 'position' as pos
 
 
 /// Sets background color and automatically handles text color contrast if not provided.
@@ -169,9 +170,7 @@
         box-sizing: border-box
 
     @if $all or $margin
-        margin: 0
-        margin-block: 0
-        margin-inline: 0
+        @include margin($margin: 0, $block: 0, $inline: 0)
 
     @if $all or $padding
         padding: 0
@@ -210,14 +209,10 @@
         text-decoration: none
 
     @if $all or $size
-        inline-size: auto
-        block-size: auto
-        max-inline-size: 100%
-        max-block-size: 100%
+        @include size($inline: auto, $block: auto, $max-inline: 100%, $max-block: 100%)
 
     @if $all or $appearance or $button
-        appearance: none
-        -webkit-appearance: none
+        @include appearance(none)
     
     @if $all or $vertical-align
         vertical-align: baseline
@@ -251,8 +246,8 @@
             @if map.has-key($colors, 'code-bg')
                 @include background-color(map.get($colors, 'code-bg'))
 
-            padding: 0.2em 0.4em
-            border-radius: 0.3em
+            padding: 0.2rem 0.4rem
+            @include border-radius(0.3rem)
             @include typo.monospace($size: null)
 
 /// Sets CSS transition shorthand or granular transition properties.
@@ -287,8 +282,101 @@
 @mixin aspect-ratio($width: 16, $length: 9, $object-fit: cover, $border-radius: null)
 
     @if $border-radius != null
-        border-radius: $border-radius
+        @include border-radius($border-radius)
 
     object-fit: $object-fit
     @include size($inline: 100%)
     aspect-ratio: calc($width / $length)
+
+@mixin appearance($appearance: none)
+    appearance: $appearance
+    -moz-appearance: $appearance
+    -webkit-appearance: $appearance
+
+@mixin frame($border: null, $border-color: null, $border-width: null, $border-style: null, $border-radius: null, $border-top: null, $border-right: null, $border-bottom: null, $border-left: null, $border-block: null, $border-inline: null, $outline: null, $outline-color: null, $outline-style: null, $outline-width: null, $outline-offset: null, $box-shadow: null)
+    @if $border-radius != null
+        border-radius: $border-radius
+
+    @if $border != null
+        border: $border
+
+    @if $border-width != null
+        border-width: $border-width
+
+    @if $border-style != null
+        border-style: $border-style
+
+    @if $border-color != null
+        border-color: $border-color
+
+    @if $border-top != null
+        border-top: $border-top
+
+    @if $border-right != null
+        border-right: $border-right
+
+    @if $border-bottom != null
+        border-bottom: $border-bottom
+
+    @if $border-left != null
+        border-left: $border-left
+
+    @if $border-block != null
+        border-block: $border-block
+
+    @if $border-inline != null
+        border-inline: $border-inline
+
+    @if $outline != null
+        outline: $outline
+
+    @if $outline-width != null
+        outline-width: $outline-width
+
+    @if $outline-style != null
+        outline-style: $outline-style
+
+    @if $outline-color != null
+        outline-color: $outline-color
+
+    @if $outline-offset != null
+        outline-offset: $outline-offset
+
+    @if $box-shadow != null
+        box-shadow: $box-shadow
+
+/// Utility mixin for border
+/// @param {String|List} $border - CSS border shorthand or definition.
+@mixin border($border)
+    @include frame($border: $border)
+
+/// Utility mixin for border-radius
+/// @param {Length|List} $radius - The border radius value or list of corner radii.
+@mixin border-radius($radius)
+    @include frame($border-radius: $radius)
+
+/// Utility mixin for CSS grid layouts.
+/// @param {String|null} $temp-area [null] - Grid template areas definition.
+/// @param {String|List|null} $temp-col [null] - Grid template columns definition.
+/// @param {String|Length|null} $temp-rows [100%] - Grid template rows definition.
+/// @param {Length|null} $gap [null] - Gap between grid tracks.
+/// @param {String|null} $grid-area [null] - Grid area assignment for items.
+@mixin grid-layout($temp-area: null, $temp-col: null, $temp-rows: 100%, $gap: null, $grid-area: null)
+    @if $grid-area
+        grid-area: $grid-area
+    
+    @if $gap
+        gap: $gap
+
+    @if $temp-rows
+        grid-template-rows: $temp-rows
+
+    @if $temp-area
+        grid-template-areas: $temp-area !important
+
+    @if $temp-col
+        grid-template-columns: $temp-col !important
+
+    @if $temp-col and $gap
+        display: grid
+        padding: 0.5rem

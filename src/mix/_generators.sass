@@ -5,6 +5,7 @@
 
 // Internal dependencies
 @use 'typography' as typo
+@use 'utilities' as utils
 @use '../color/base' as base
 @use '../map/inputs' as inputs
 @use '../map/icons' as icon-map
@@ -32,10 +33,8 @@
       @include typo.font($font-family, $size: 1.2rem !important)
 
   @else
-    @if $silent
+    @if not $silent
       @warn "gen-icons: Icon '#{$name}' not found in icon mapping."
-    @else
-      @error "gen-icons: Fatal error! Icon '#{$name}' not found in icon mapping."
 
 /// Generates icon utility classes with pseudo-element glyphs.
 /// @param {String|List|null} $name [null] - Single icon name, list of names, or null for all.
@@ -65,10 +64,9 @@
       @each $single in $names
         @include _icon-base($single, $color, $font-family, $debug, $silent, $map, $include-content)
   @else
-    @if $silent
+    @if not $silent
       @warn "gen-icons: Icon mapping not found."
-    @else
-      @error "gen-icons: Fatal error! Icon mapping not found."
+
 
 /// Generates flexbox properties based on registered flexbox mapping.
 /// @param {String} $name - Flexbox layout configuration key.
@@ -78,10 +76,9 @@
     @each $property, $value in $props
       #{$property}: $value
   @else
-    @if $silent
+
+    @if not $silent
       @warn "#{$name} not found in flexbox mapping."
-    @else
-      @error "#{$name} not found in flexbox mapping."
 
 /// Generates atomic utility classes for flexbox properties.
 /// @param {String} $prefix - Class name prefix.
@@ -105,14 +102,17 @@
   @if $name == null
     @if $debug
       @debug "gen-inputs: Generating all input utility classes..."
+
     @each $cat, $list in inputs.$inputs
       @each $input in $list
+
         .#{$input}-input
           @each $prop, $val in $props
             #{$prop}: $val
           @if $placeholder-color != null
             &::placeholder
               color: $placeholder-color
+
           &::focus
             outline: $focus-outline
   @else
@@ -133,9 +133,11 @@
     .#{$name}-input
       @each $prop, $val in $props
         #{$prop}: $val
+
       @if $placeholder-color != null
         &::placeholder
           color: $placeholder-color
+  
       @if $focus-outline != null
         &::focus
           outline: $focus-outline
@@ -159,33 +161,32 @@
   )
   $props: map.merge($default-range-props, $custom)
 
-  $track-block-size: map.get($props, 'track-block-size')
   $thumb-size: map.get($props, 'thumb-size')
+  $track-block-size: map.get($props, 'track-block-size')
 
   // Calculate margin to perfectly center the thumb on the track in Webkit
   $thumb-margin: calc((#{$track-block-size} - #{$thumb-size}) / 2)
 
   // Target the range input itself
-  -webkit-appearance: none
-  appearance: none
+  cursor: pointer
   background: transparent
   inline-size: map.get($props, 'inline-size')
-  cursor: pointer
+
+  @include utils.appearance(none)
 
   // The Track
   &::-webkit-slider-runnable-track,
   &::-moz-range-track
-    block-size: $track-block-size
     background: map.get($props, 'track-color')
-    border-radius: map.get($props, 'track-radius')
+    @include utils.border-radius(map.get($props, 'track-radius'))
 
+    @include utils.size($block: $track-block-size)
   // The Thumb
   &::-webkit-slider-thumb,
   &::-moz-range-thumb
-    -webkit-appearance: none
-    appearance: none
-    inline-size: $thumb-size
-    block-size: $thumb-size
     background: map.get($props, 'thumb-color')
-    border-radius: map.get($props, 'thumb-radius')
-    margin-block-start: $thumb-margin
+    @include utils.border-radius(map.get($props, 'thumb-radius'))
+
+    @include utils.appearance(none)
+    @include utils.margin($b-start: $thumb-margin)
+    @include utils.size($inline: $thumb-size, $block: $thumb-size)

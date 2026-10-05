@@ -23,10 +23,13 @@
 @mixin input-range($bg: transparent, $thumb-color: null, $track-color: null, $thumb-inline: 0.9375rem, $thumb-block: 1.875rem, $thumb-radius: 1rem, $thumb-opacity: null, $thumb-margin-top: null, $track-block: 0.9rem, $track-radius: 1rem, $inline: 100%, $block: auto, $cursor: pointer, $outline: none)
     cursor: $cursor
     @include utils.reset($appearance: true)
+
     @if $bg == transparent
         background: transparent
+
     @else if $bg != null
         @include utils.background-color($bg)
+
     @include utils.size($inline: $inline, $block: $block)
 
     @if $outline != null
@@ -39,13 +42,17 @@
 
     &::-webkit-slider-runnable-track, &::-moz-range-track
         cursor: $cursor
-        -webkit-appearance: none
+        @include utils.appearance(none)
+
         @if $resolved-tr == transparent
             background: transparent
+
         @else if $resolved-tr != null
             @include utils.background-color($resolved-tr)
+
         @if $track-radius != null
-            border-radius: $track-radius
+            @include utils.border-radius($track-radius)
+
         @if $track-block != null
             @include utils.size($block: $track-block)
 
@@ -55,32 +62,67 @@
 
     &::-webkit-slider-thumb
         cursor: $cursor
-        -webkit-appearance: none
+        @include utils.appearance(none)
+
         @if $resolved-th == transparent
             background: transparent
         @else if $resolved-th != null
             @include utils.background-color($resolved-th)
+
         @if $thumb-opacity != null
             opacity: $thumb-opacity
+
         @if $thumb-radius != null
-            border-radius: $thumb-radius
+            @include utils.border-radius($thumb-radius)
+
         @include utils.size($inline: $thumb-inline, $block: $thumb-block)
+
         @if $thumb-margin-top != null
             @include utils.margin($b-start: $thumb-margin-top)
 
     &::-moz-range-thumb
         border: none
         cursor: $cursor
+
         @if $resolved-th == transparent
             background: transparent
+
         @else if $resolved-th != null
             @include utils.background-color($resolved-th)
+
         @if $thumb-opacity != null
             opacity: $thumb-opacity
+
         @if $thumb-radius != null
-            border-radius: $thumb-radius
+            @include utils.border-radius($thumb-radius)
+
         @include utils.size($inline: $thumb-inline, $block: $thumb-block)
 
+/// Base input primitive mixin for form elements.
+/// All parameters default to null for clean composition.
+/// @param {Color|null} $bg [null] - Background color.
+/// @param {Color|null} $color [null] - Text color.
+/// @param {String|null} $border [null] - Border definition.
+/// @param {Length|null} $radius [null] - Border radius.
+/// @param {Color|null} $focus-border [null] - Border color on focus.
+/// @param {String|null} $cursor [null] - Cursor type.
+/// @param {Boolean} $suppress-notice [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin base-input($bg: null, $color: null, $border: null, $radius: null, $focus-border: null, $cursor: null, $suppress-notice: false)
+    &:focus
+        @if $focus-border != null
+            @include utils.frame($border-color: $focus-border, $box-shadow: 0 0 0 0.2rem rgba($focus-border, 0.25))
+            @include utils.reset($outline: true)
+
+    @if $cursor != null
+        cursor: $cursor
+
+    @if $border != null or $radius != null
+        @include utils.frame($border: $border, $border-radius: $radius)
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease
+
+    @if $bg != null
+        @include utils.background-color($bg, $color, $suppress-notice: $suppress-notice)
 
 /// Textual input styling (text, email, password, search, tel, url, number, date)
 /// @param {Color} $bg [c.$soft-white] - Background color.
@@ -92,21 +134,10 @@
 /// @param {Color} $focus-border [c.$sea-green] - Border color on focus.
 /// @param {Boolean} $suppress-notice [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
 @mixin input-text($bg: c.$soft-white, $color: c.$dark-grey, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.5rem 0.75rem, $inline: 100%, $focus-border: c.$sea-green, $suppress-notice: false)
-    &:focus
-        @if $focus-border != null
-            border-color: $focus-border
-            box-shadow: 0 0 0 0.2rem rgba($focus-border, 0.25)
-
-        @include utils.reset($outline:true)
-
-    border: $border
+    @include base-input($bg: $bg, $color: $color, $border: $border, $radius: $radius, $focus-border: $focus-border, $suppress-notice: $suppress-notice)
     padding: $padding
-    border-radius: $radius
-    transition: border-color 0.2s ease, box-shadow 0.2s ease
-
     @include typo.font($size: 1rem)
     @include utils.size($inline: $inline)
-    @include utils.background-color($bg, $color, $suppress-notice: $suppress-notice)
 
 /// Checkbox and Radio input styling
 /// @param {Color} $accent [c.$sea-green] - Accent color.
@@ -123,10 +154,8 @@
 /// @param {String} $border [0.0625rem solid rgba(0, 0, 0, 0.15)] - Border definition.
 /// @param {String} $cursor [pointer] - Cursor type.
 @mixin input-color($size: 2.5rem, $radius: 0.375rem, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $cursor: pointer)
-    cursor: $cursor
-    border: $border
+    @include base-input($border: $border, $radius: $radius, $cursor: $cursor)
     padding: 0.125rem
-    border-radius: $radius
     background: transparent
     @include utils.size($size, $size)
 
@@ -134,12 +163,9 @@
         @include utils.reset($padding:true)
 
     &::-webkit-color-swatch, &::-moz-color-swatch
-        border: none
+        @include utils.reset($border: true)
         @if $radius != null
-            border-radius: $radius
-        @else
-            @include utils.reset($border:true)
-
+            @include utils.border-radius($radius)
 
 /// File input styling
 /// @param {Color} $bg [c.$soft-white] - Input background color.
@@ -150,8 +176,8 @@
 /// @param {Boolean} $suppress-notice [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
 @mixin input-file($bg: c.$soft-white, $btn-bg: c.$sea-green, $btn-color: null, $radius: 0.375rem, $cursor: pointer, $suppress-notice: false)
     cursor: $cursor
-    border-radius: $radius
     @include typo.font($size: 0.9rem)
+    @include utils.border-radius($radius)
     @include utils.background-color($bg, $suppress-notice: $suppress-notice)
 
     &::file-selector-button, &::-webkit-file-upload-button
@@ -161,13 +187,11 @@
 
         cursor: $cursor
         padding: 0.5rem 1rem
-        border-radius: $radius
         transition: opacity 0.2s ease
-
         @include utils.reset($border:true)
+        @include utils.border-radius($radius)
         @include utils.margin($inline: 0 0.5rem)
         @include utils.background-color($btn-bg, $btn-color, $suppress-notice: $suppress-notice)
-
 
 /// Select dropdown styling
 /// @param {Color} $bg [c.$soft-white] - Background color.
@@ -180,16 +204,14 @@
 /// @param {Color} $focus-border [c.$sea-green] - Focus border color.
 /// @param {Boolean} $suppress-notice [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
 @mixin input-select($bg: c.$soft-white, $color: c.$dark-grey, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.5rem 2rem 0.5rem 0.75rem, $inline: 100%, $cursor: pointer, $focus-border: c.$sea-green, $suppress-notice: false)
-    @include input-text($bg: $bg, $color: $color, $border: $border, $radius: $radius, $padding: $padding, $inline: $inline, $focus-border: $focus-border, $suppress-notice: $suppress-notice)
     cursor: $cursor
-    appearance: none
-    -webkit-appearance: none
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")
+    background-size: 1rem
     background-repeat: no-repeat
     background-position: right 0.75rem center
-    background-size: 1rem
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")
 
-
+    @include utils.appearance(none)
+    @include input-text($bg: $bg, $color: $color, $border: $border, $radius: $radius, $padding: $padding, $inline: $inline, $focus-border: $focus-border, $suppress-notice: $suppress-notice)
 /// Textarea styling
 /// @param {Color} $bg [c.$soft-white] - Background color.
 /// @param {Color} $color [c.$dark-grey] - Text color.
@@ -201,11 +223,9 @@
 /// @param {String} $resize [vertical] - CSS resize behavior.
 /// @param {Color} $focus-border [c.$sea-green] - Focus border color.
 @mixin input-textarea($bg: c.$soft-white, $color: c.$dark-grey, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.75rem, $min-block: 6rem, $inline: 100%, $resize: vertical, $focus-border: c.$sea-green)
-
     resize: $resize
     @include utils.size($min-block: $min-block)
     @include input-text($bg: $bg, $color: $color, $border: $border, $radius: $radius, $padding: $padding, $inline: $inline, $focus-border: $focus-border)
-
 
 /// Generic input-styles routing mixin for embedding into parent selectors
 @mixin input-styles($color: null, $type: 'range')
@@ -243,7 +263,6 @@
         textarea
             @include input-textarea()
 
-
 /// Applies global form input styles.
 /// @param {Color} $bg - The background color for the page context.
 /// @param {Color} $text - The text color.
@@ -255,17 +274,14 @@
     input, textarea, select, button, datalist, optgroup, option
         &:hover
             $hover-color: func-color.contrast-color-fallback($bg, $accent-color)
-            outline-offset: 0.0625rem
-            outline: 0.0625rem solid rgba($hover-color, 0.5)
+            @include utils.frame($outline: 0.0625rem solid rgba($hover-color, 0.5), $outline-offset: 0.0625rem)
 
         &:focus
             $outline-color: func-color.contrast-color-fallback($bg, $accent-color)
-            outline-offset: 0.125rem
-            outline: 0.125rem solid $outline-color
+            @include utils.frame($outline: 0.125rem solid $outline-color, $outline-offset: 0.125rem)
 
-        padding: 0.5em
-        border-radius: 0.3em
-        border: 0.0625rem solid rgba($text, 0.2)
+        padding: 0.5rem
+        @include utils.frame($border: 0.0625rem solid rgba($text, 0.2), $border-radius: 0.3rem)
         @include utils.background-color($input-bg, $text)
 
     // Labels and typography
@@ -278,14 +294,13 @@
 
     // Structural elements
     fieldset
-        padding: 1em
-        border-radius: 0.3em
-        border: 0.0625rem solid rgba($text, 0.2)
+        padding: 1rem
+        @include utils.frame($border: 0.0625rem solid rgba($text, 0.2), $border-radius: 0.3rem)
 
         @include utils.margin($block-end: 1rem)
 
     // Helper text or output
     output
         color: $text
-        padding: 0.5em 0
+        padding: 0.5rem 0
         display: inline-block

@@ -50,7 +50,7 @@
 
         @media (hover: hover)
             &:hover
-                border-radius: 0.5em
+                @include border-radius(0.5em)
                 @include background-color($bg-color, $color-hover, $suppress-notice: $suppress-notice)
 
         &:visited

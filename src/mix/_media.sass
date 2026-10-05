@@ -1,5 +1,6 @@
 /// Internal dependencies
 @use './_typography' as typo
+@use 'utilities' as utils
 
 
 /// Background image utility for setting multiple background properties at once.
@@ -30,7 +31,7 @@
         display: grid
         cursor: pointer
         overflow: hidden
-        border-radius: 1rem
+        @include utils.border-radius(1rem)
         background-color: black
         grid-template-areas: "media"
 
@@ -52,14 +53,12 @@
         .video-feedback
             z-index: 2
             opacity: 1
-            border: none
-            outline: none
+            @include utils.frame($border: none, $outline: none, $border-radius: 100%)
             line-height: 1
             padding: 0.8rem
             grid-area: media
             font-size: 5.5rem
             place-self: center
-            border-radius: 100%
             pointer-events: none
             color: rgba($feedback-color, 0.95)
             background: rgba($feeback-overlay, 0.3) !important
@@ -114,11 +113,9 @@
                         color: $accent-color
 
                     padding: 0
-                    border: none
-                    outline: none
+                    @include utils.frame($border: none, $outline: none, $border-radius: 0)
                     line-height: 1
                     cursor: pointer
-                    border-radius: 0
                     color: transparent
                     background: transparent
                     @include typo.font($size: 2.8rem)

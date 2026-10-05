@@ -13,14 +13,16 @@
 /// @param {Map} $overrides [()] - A map for overriding 'background' or 'text' colors.
 /// @param {String} $shape ['square'] - Shape of the card ('square', 'circle', 'triangle', 'rectangle').
 @mixin card(
-    $accent-color: null, 
-    $context-bg: c.$soft-white, $overrides: (), 
-    $shape: 'square', 
+    $border: null,
+    $margin: null,
+    $overrides: (),
     $padding: null, 
-    $margin: null, 
-    $border: null, 
+    $shape: 'square',
     $box-shadow: null, 
-    $suppress-notice: false)
+    $transition: null, 
+    $accent-color: null, 
+    $suppress-notice: false,
+    $context-bg: c.$soft-white,  )
     // Derive defaults based on provided accent or context
     $colors: func-color.derive-card-colors($accent-color, $context-bg)
     
@@ -34,15 +36,15 @@
         $text: map.get($overrides, 'text')
     
     @if $shape == 'square'
-        border-radius: 5%
+        @include utils.border-radius(5%)
         @include utils.aspect-ratio(1, 1)
 
     @else if $shape == 'circle'
-        border-radius: 50%
+        @include utils.border-radius(50%)
         @include utils.aspect-ratio(1, 1)
 
     @else if $shape == 'rectangle'
-        border-radius: 5%
+        @include utils.border-radius(5%)
         @include utils.aspect-ratio(16, 9)
 
     @else if $shape == 'triangle'
@@ -55,11 +57,8 @@
     @if $margin != null
         @include utils.margin($margin: $margin)
 
-    @if $border != null
-        border: $border
-
-    @if $box-shadow != null
-        box-shadow: $box-shadow
+    @if $border != null or $box-shadow != null
+        @include utils.frame($border: $border, $box-shadow: $box-shadow)
 
     @if $transition != null
         @include utils.transition($transition, $behavior: null)

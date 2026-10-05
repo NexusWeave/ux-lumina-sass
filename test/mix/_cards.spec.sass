@@ -22,10 +22,13 @@
             
             @include true.expect
                 .card
+                    border-radius: 5%
+                    object-fit: cover
+                    inline-size: 100%
+                    block-size: auto
+                    aspect-ratio: 1
                     background-color: $bg
                     color: $text
-                    border-radius: 5%
-                    aspect-ratio: 1 / 1
 
     @include true.it('should apply circle shape and custom accent color')
         $accent: c.$logo-red
@@ -39,7 +42,10 @@
             
             @include true.expect
                 .card-circle
+                    border-radius: 50%
+                    object-fit: cover
+                    inline-size: 100%
+                    block-size: auto
+                    aspect-ratio: 1
                     background-color: $bg
                     color: $text
-                    border-radius: 50%
-                    aspect-ratio: 1 / 1

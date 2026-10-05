@@ -188,3 +188,102 @@ Sets object-fit, logical full inline size, optional border-radius, and calculate
 - `$border-radius`: Length|String|null - Optional border radius to apply. Defaults to `null`.
 
 
+
+### appearance
+
+Cross-browser appearance mixin managing standard and vendor-prefixed properties (`appearance`, `-moz-appearance`, `-webkit-appearance`).
+
+#### Usage
+
+```sass
+@use "lumina-sass/mixins" as l-mix
+
+.custom-select
+	@include l-mix.appearance(none)
+```
+
+#### Parameters
+
+- `$appearance`: String - CSS appearance property value (`none`, `auto`, etc.). Defaults to `none`.
+
+### frame
+
+Comprehensive utility mixin for structural border, individual border properties, accessibility outline, outline-color, and box-shadow elevation.
+
+#### Usage
+
+```sass
+@use "lumina-sass/mixins" as l-mix
+
+// Custom focus frame
+.input-focus
+	@include l-mix.frame($border-color: #0078d7, $box-shadow: 0 0 0 0.2rem rgba(0, 120, 215, 0.25))
+
+// Complete boundary frame
+.card-frame
+	@include l-mix.frame($border: 0.0625rem solid #ccc, $border-radius: 0.5rem, $box-shadow: 0 4px 6px rgba(0,0,0,0.1))
+```
+
+#### Parameters
+
+- `$border`: String|List|null - CSS border shorthand. Defaults to `null`.
+- `$border-color`: Color|String|null - CSS border color. Defaults to `null`.
+- `$border-width`: Length|String|null - CSS border width. Defaults to `null`.
+- `$border-style`: String|null - CSS border style. Defaults to `null`.
+- `$border-radius`: Length|List|null - CSS border radius. Defaults to `null`.
+- `$border-top`: String|List|null - CSS top border. Defaults to `null`.
+- `$border-right`: String|List|null - CSS right border. Defaults to `null`.
+- `$border-bottom`: String|List|null - CSS bottom border. Defaults to `null`.
+- `$border-left`: String|List|null - CSS left border. Defaults to `null`.
+- `$border-block`: String|List|null - CSS logical block border. Defaults to `null`.
+- `$border-inline`: String|List|null - CSS logical inline border. Defaults to `null`.
+- `$outline`: String|List|null - CSS outline shorthand. Defaults to `null`.
+- `$outline-color`: Color|String|null - CSS outline-color rule. Defaults to `null`.
+- `$outline-style`: String|null - CSS outline style. Defaults to `null`.
+- `$outline-width`: Length|String|null - CSS outline width. Defaults to `null`.
+- `$outline-offset`: Length|null - CSS outline-offset distance. Defaults to `null`.
+- `$box-shadow`: String|List|null - CSS box-shadow property. Defaults to `null`.
+
+### border-radius
+
+Utility mixin for setting border-radius using standard rem units or custom curves.
+
+#### Usage
+
+```sass
+@use "lumina-sass/mixins" as l-mix
+
+.avatar
+	@include l-mix.border-radius(50%)
+
+.card-box
+	@include l-mix.border-radius(0.5rem)
+```
+
+#### Parameters
+
+- `$radius`: Length|List - CSS border radius value or list of corner radii.
+
+### grid-layout
+
+Utility mixin for configuring CSS Grid containers and items with template columns, rows, template areas, gaps, and padding.
+
+#### Usage
+
+```sass
+@use "lumina-sass/mixins" as l-mix
+
+.dashboard
+	@include l-mix.grid-layout($temp-col: 250px 1fr, $gap: 1.5rem, $temp-rows: auto 1fr auto)
+
+.sidebar
+	@include l-mix.grid-layout($grid-area: 'sidebar', $temp-rows: null)
+```
+
+#### Parameters
+
+- `$temp-area`: String|null - Grid template areas (`grid-template-areas`). Defaults to `null`.
+- `$temp-col`: String|List|null - Grid template columns (`grid-template-columns`). Defaults to `null`.
+- `$temp-rows`: String|Length|null - Grid template rows (`grid-template-rows`). Defaults to `100%`.
+- `$gap`: Length|null - Track gap (`gap`). Defaults to `null`.
+- `$grid-area`: String|null - Grid item placement area (`grid-area`). Defaults to `null`.

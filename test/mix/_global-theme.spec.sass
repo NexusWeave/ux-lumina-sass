@@ -16,7 +16,6 @@
             
             @include true.expect
                 body
-                    font-family: "Nunito", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
                     background-color: c.$soft-white
                     color: func-color.best-contrast-color(c.$soft-white)
 
@@ -28,7 +27,6 @@
             
             @include true.expect
                 body
-                    font-family: "Nunito", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
                     background-color: #000
                     color: #fff
 
@@ -43,3 +41,18 @@
                     font-family: "Arial", sans-serif
                     background-color: c.$soft-white
                     color: func-color.best-contrast-color(c.$soft-white)
+
+    @include true.it('should support passing nested @content')
+        @include true.assert
+            @include true.output
+                body
+                    @include apply-theme-colors(#000, #fff)
+                        a
+                            color: red
+            
+            @include true.expect
+                body
+                    background-color: #000
+                    color: #fff
+                    a
+                        color: red

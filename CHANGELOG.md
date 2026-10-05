@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.10.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.9.5...v4.10.0) (2026-10-05)
+
+
+### Features
+
+* **docs:** document inspect-color dictionary, non-breaking warnings, and notice suppression ([4e7661b](https://github.com/NexusWeave/ux-lumina-sass/commit/4e7661b8979040f7d8ef37667fd5be5ed423fcd5))
+
+
+### Bug Fixes
+
+* **contrast:** emit warning instead of error and add transparent surface notice ([7dcecc2](https://github.com/NexusWeave/ux-lumina-sass/commit/7dcecc256452615f960665f2f144ce1770739f36))
+* **entry:** resolve mixin imports in src/_index.sass ([6b8af1b](https://github.com/NexusWeave/ux-lumina-sass/commit/6b8af1bf9bb62518fee6c54a101f3082d1f0c20c))
+* **links:** support transparent surfaces and forward suppress-notice ([0b4074a](https://github.com/NexusWeave/ux-lumina-sass/commit/0b4074abfb2990b6d1286b9130527f208397ddae))
+
 ### [4.9.5](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.9.4...v4.9.5) (2026-09-29)
 
 ### [4.9.4](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.9.3...v4.9.4) (2026-09-29)

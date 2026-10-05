@@ -90,7 +90,8 @@
 /// @param {Length} $padding [0.5rem 0.75rem] - Padding.
 /// @param {Length} $inline [100%] - Inline-size.
 /// @param {Color} $focus-border [c.$sea-green] - Border color on focus.
-@mixin input-text($bg: c.$soft-white, $color: c.$dark-grey, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.5rem 0.75rem, $inline: 100%, $focus-border: c.$sea-green)
+/// @param {Boolean} $suppress-notice [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin input-text($bg: c.$soft-white, $color: c.$dark-grey, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.5rem 0.75rem, $inline: 100%, $focus-border: c.$sea-green, $suppress-notice: false)
     &:focus
         @if $focus-border != null
             border-color: $focus-border
@@ -105,7 +106,7 @@
 
     @include typo.font($size: 1rem)
     @include utils.size($inline: $inline)
-    @include utils.background-color($bg, $color)
+    @include utils.background-color($bg, $color, $suppress-notice: $suppress-notice)
 
 /// Checkbox and Radio input styling
 /// @param {Color} $accent [c.$sea-green] - Accent color.
@@ -146,11 +147,12 @@
 /// @param {Color} $btn-color [c.$white] - Upload button text color.
 /// @param {Length} $radius [0.375rem] - Border radius.
 /// @param {String} $cursor [pointer] - Cursor type.
-@mixin input-file($bg: c.$soft-white, $btn-bg: c.$sea-green, $btn-color: null, $radius: 0.375rem, $cursor: pointer)
+/// @param {Boolean} $suppress-notice [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin input-file($bg: c.$soft-white, $btn-bg: c.$sea-green, $btn-color: null, $radius: 0.375rem, $cursor: pointer, $suppress-notice: false)
     cursor: $cursor
     border-radius: $radius
     @include typo.font($size: 0.9rem)
-    @include utils.background-color($bg)
+    @include utils.background-color($bg, $suppress-notice: $suppress-notice)
 
     &::file-selector-button, &::-webkit-file-upload-button
 
@@ -164,7 +166,7 @@
 
         @include utils.reset($border:true)
         @include utils.margin($inline: 0 0.5rem)
-        @include utils.background-color($btn-bg, $btn-color)
+        @include utils.background-color($btn-bg, $btn-color, $suppress-notice: $suppress-notice)
 
 
 /// Select dropdown styling
@@ -176,8 +178,9 @@
 /// @param {Length} $inline [100%] - Inline-size.
 /// @param {String} $cursor [pointer] - Cursor type.
 /// @param {Color} $focus-border [c.$sea-green] - Focus border color.
-@mixin input-select($bg: c.$soft-white, $color: c.$dark-grey, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.5rem 2rem 0.5rem 0.75rem, $inline: 100%, $cursor: pointer, $focus-border: c.$sea-green)
-    @include input-text($bg: $bg, $color: $color, $border: $border, $radius: $radius, $padding: $padding, $inline: $inline, $focus-border: $focus-border)
+/// @param {Boolean} $suppress-notice [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin input-select($bg: c.$soft-white, $color: c.$dark-grey, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.5rem 2rem 0.5rem 0.75rem, $inline: 100%, $cursor: pointer, $focus-border: c.$sea-green, $suppress-notice: false)
+    @include input-text($bg: $bg, $color: $color, $border: $border, $radius: $radius, $padding: $padding, $inline: $inline, $focus-border: $focus-border, $suppress-notice: $suppress-notice)
     cursor: $cursor
     appearance: none
     -webkit-appearance: none

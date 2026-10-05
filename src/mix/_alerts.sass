@@ -9,6 +9,7 @@
 @use '../func/color' as func-color
 @use '../func/icons' as func-icons
 
+
 /// Mixin for alert icons
 @mixin _alert-icon($icon, $size: 1.5rem)
     $icon-props: func-icons.find($icon)
@@ -23,10 +24,12 @@
 
 /// Applies alert styles with automated theme-aware contrast and strong typography.
 /// @param {Color} $bg-color [alerts.$warning] - The alert background color.
+/// @param {Color|null} $text-color [null] - Optional text color.
 /// @param {String|null} $icon [null] - Optional icon name (expects bootstrap-icons).
 /// @param {String} $inline-size [35rem] - The inline size of the alert.
 /// @param {Number} $icon-size [2rem] - The font size of the icon.
-@mixin alert($bg-color: alerts.$warning, $text-color: null, $icon: null, $inline-size: 35rem, $icon-size: 2rem)
+/// @param {Boolean} $suppress-notice [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin alert($bg-color: alerts.$warning, $text-color: null, $icon: null, $inline-size: 35rem, $icon-size: 2rem, $suppress-notice: false)
 
     @if $icon != null
         display: grid
@@ -46,4 +49,4 @@
     @include typo.font($weight: 800)
     @include utils.margin($margin: auto)
     @include utils.size($inline: $inline-size)
-    @include utils.background-color($bg-color, $text-color)
+    @include utils.background-color($bg-color, $text-color, $suppress-notice: $suppress-notice)

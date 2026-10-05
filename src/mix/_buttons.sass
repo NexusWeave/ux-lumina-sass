@@ -3,12 +3,11 @@
 
 // Internal dependencies
 @use '../color' as c
-@use 'utilities' as utils
-
-@use 'typography' as typo
 @use 'position' as pos
-
+@use 'utilities' as utils
+@use 'typography' as typo
 @use '../func/color' as func-color
+
 
 /// Styles an interactive button with automated contrast, hover, and active states.
 /// @param {Color} $bg-color [c.$light-blue] - Button background color.
@@ -16,7 +15,8 @@
 /// @param {Color|null} $border-color [null] - Optional border color.
 /// @param {Length} $size [1em] - Text font size.
 /// @param {String|Number} $weight [bold] - Text font weight.
-@mixin base-btn($bg-color: c.$light-blue, $text-color: null, $border-color: null, $size: 1em, $weight: bold)
+/// @param {Boolean} $suppress-notice [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin base-btn($bg-color: c.$light-blue, $text-color: null, $border-color: null, $size: 1em, $weight: bold, $suppress-notice: false)
 
     @if $border-color == null
         @include utils.reset($border: true)
@@ -33,20 +33,20 @@
 
     @include pos.relative()
     @include typo.font($size: $size, $weight: $weight)
-    @include utils.background-color($bg-color, $text-color)
+    @include utils.background-color($bg-color, $text-color, $suppress-notice: $suppress-notice)
     
 
     &:hover
         transform: scale(1.05)
         $hover-bg: color.adjust($bg-color, $lightness: -5%)
 
-        @include utils.background-color($hover-bg)
+        @include utils.background-color($hover-bg, $suppress-notice: $suppress-notice)
         
     &:active
         transform: scale(0.95)
         $active-bg: color.adjust($bg-color, $lightness: -10%)
 
-        @include utils.background-color($active-bg)
+        @include utils.background-color($active-bg, $suppress-notice: $suppress-notice)
 
     &:disabled
         opacity: 0.3

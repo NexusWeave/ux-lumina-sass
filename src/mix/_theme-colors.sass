@@ -2,7 +2,9 @@
 @use 'utilities' as *
 @use 'typography' as typo
 
+
 /// Core theme logic for body background, text color, and font
-@mixin apply-theme-colors($bg, $text, $font: null)
+/// @param {Boolean} $suppress-notice [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin apply-theme-colors($bg, $text, $font: null, $suppress-notice: false)
     @include typo.font($font, $size: null)
-    @include background-color($bg, $text)
+    @include background-color($bg, $text, $suppress-notice: $suppress-notice)

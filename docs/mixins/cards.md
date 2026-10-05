@@ -31,3 +31,4 @@ The `card` mixin renders cards that automatically adapt to the global page backg
 | `$context-bg` | Color | (Optional) Page background context if no accent color is provided. Defaults to library `soft-white` token. |
 | `$overrides` | Map | (Optional) Map for overriding 'background' or 'text' colors. Defaults to `()`. |
 | `$shape` | String | (Optional) Shape of the card: `'square'`, `'circle'`, `'rectangle'`, or `'triangle'`. Defaults to `'square'`. |
+| `$suppress-notice` | Boolean | (Optional) Suppresses accessibility notice for transparent/inherited backgrounds. Defaults to `false`. |

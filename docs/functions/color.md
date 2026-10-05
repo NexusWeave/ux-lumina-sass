@@ -99,3 +99,26 @@ Returns the preferred accent color if provided; otherwise resolves the highest-c
 ### `derive-card-colors($accent-color: null, $context-bg: c.$soft-white)`
 
 Calculates a harmonious card background and contrasting text color from an accent or context background.
+
+---
+
+### `inspect-color($val)`
+
+Inspects a color, CSS keyword, or value and returns a dictionary with its type and accessibility metadata:
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `type` | String | Sass data type (`color`, `string`, `null`, etc.) |
+| `value` | Any | The raw value inspected |
+| `is-transparent` | Boolean | `true` if keyword `transparent` or has alpha `0` |
+| `is-inherit` | Boolean | `true` if keyword `inherit` |
+| `is-special` | Boolean | `true` if transparent or inherit |
+
+#### Usage
+
+```sass
+@use 'lumina-sass/func' as func
+
+$info: func.inspect-color(transparent)
+// Returns ('type': 'color', 'value': transparent, 'is-transparent': true, 'is-inherit': false, 'is-special': true)
+```

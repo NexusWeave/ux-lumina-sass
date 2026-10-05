@@ -35,3 +35,4 @@ The following color tokens are available for alerts in `src/color/alerts.sass`:
 | `$icon` | String \| null | Optional icon name (e.g., 'warning', 'success', 'info', 'error'). Defaults to `null`. |
 | `$inline-size` | String | The inline size of the alert. Defaults to `35rem`. |
 | `$icon-size` | Number | The font size of the icon. Defaults to `2rem`. |
+| `$suppress-notice` | Boolean | Suppresses accessibility notice for transparent/inherited backgrounds. Defaults to `false`. |

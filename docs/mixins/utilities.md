@@ -75,7 +75,7 @@ Convenience helper to center an element horizontally using logical `margin-inlin
 
 ### background-color
 
-Applies a background color and automatically calculates contrasting text color.
+Applies a background color and automatically calculates contrasting text color. When explicit text color is provided, verifies WCAG AA contrast compliance (emitting a warning if below 4.5:1, or a notice if the background/text is transparent or inherit).
 
 #### Usage
 
@@ -84,7 +84,17 @@ Applies a background color and automatically calculates contrasting text color.
 
 .card
 	@include l-mix.background-color($bg-color: #333333)
+
+.transparent-box
+	@include l-mix.background-color(transparent, #ffffff, $suppress-notice: true)
 ```
+
+#### Parameters
+
+- `$bg-color`: Color|String - The background color. Defaults to `c.$soft-white`.
+- `$text-color`: Color|String|null - Optional text color. Automatically calculated using best contrast if null.
+- `$threshold`: Number - Minimum contrast ratio. Defaults to `4.5` (WCAG AA).
+- `$suppress-notice`: Boolean - Suppresses compile-time notice for `transparent` or `inherit` surfaces. Defaults to `false`.
 
 ### size
 

@@ -29,3 +29,4 @@ button.reset-button
 - `$border-color`: Color|null - Optional border color. Defaults to `null` (resets border).
 - `$size`: Length - The font size for the button text. Defaults to `1em`.
 - `$weight`: String|Number - The font weight. Defaults to `bold`.
+- `$suppress-notice`: Boolean - Suppresses accessibility notice for transparent/inherited backgrounds. Defaults to `false`.

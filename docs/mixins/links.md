@@ -23,7 +23,9 @@ The `link-color` mixin applies theme-aware colors to anchor tags, handling hover
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| `$color` | Color | Base link color. Defaults to `light-blue`. |
-| `$color-hover` | Color | Hover state color. Defaults to 10% darker than base. |
+| `$color` | Color | Base link color. Defaults to `light-blue-contrast`. |
+| `$color-hover` | Color | Hover state color. Defaults to 13% darker than base. |
 | `$color-active` | Color | Active state color. Defaults to 20% darker than base. |
 | `$color-visited` | Color | Visited state color. Defaults to base color. |
+| `$bg-color` | Color/String | Background color links sit on (used for contrast check). Defaults to `transparent`. |
+| `$suppress-notice` | Boolean | Suppresses accessibility notice for transparent/inherited backgrounds. Defaults to `false`. |

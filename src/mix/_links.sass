@@ -15,8 +15,9 @@
 /// @param {Color|null} $color-hover [null] - Hover link color.
 /// @param {Color|null} $color-active [null] - Active link color.
 /// @param {Color|null} $color-visited [null] - Visited link color.
-/// @param {Color|null} $bg-color [null] - Background color the links are placed on (used for contrast calculation).
-@mixin link-color($color: null, $color-hover: null, $color-active: null, $color-visited: null, $bg-color: null)
+/// @param {Color|null} $bg-color [transparent] - Background color the links are placed on (used for contrast calculation).
+/// @param {Boolean} $suppress-notice [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin link-color($color: null, $color-hover: null, $color-active: null, $color-visited: null, $bg-color: transparent, $suppress-notice: false)
 
     @if $color == null
         $color: c.$light-blue-contrast
@@ -30,23 +31,19 @@
     @if $color-visited == null
         $color-visited: $color
 
-    $blend: c.$soft-white
-    @if $bg-color != null
-        $blend: $bg-color
-
     $disabled-color: alerts.$disabled
-    @if meta.type-of($blend) == 'color'
-        $disabled-color: func-color.best-contrast-color($blend, $light: rgba(c.$white, 0.6), $dark: alerts.$disabled)
+    @if meta.type-of($bg-color) == 'color'
+        $disabled-color: func-color.best-contrast-color($bg-color, $light: rgba(c.$white, 0.6), $dark: alerts.$disabled)
 
     a
         [aria-disabled="true"]
             cursor: not-allowed
             pointer-events: none
             @include typo.text-adjustments($decoration: none)
-            @include background-color(transparent, $disabled-color, $blend-bg: $blend, $threshold: 1)
+            @include background-color($bg-color, $disabled-color, $threshold: 1, $suppress-notice: $suppress-notice)
 
         &:active
-            @include background-color(transparent, $color-active, $blend-bg: $blend)
+            @include background-color($bg-color, $color-active, $suppress-notice: $suppress-notice)
         
         &.external-link
             @include typo.text-adjustments($decoration: underline)
@@ -54,11 +51,11 @@
         @media (hover: hover)
             &:hover
                 border-radius: 0.5em
-                @include background-color(transparent, $color-hover, $blend-bg: $blend)
+                @include background-color($bg-color, $color-hover, $suppress-notice: $suppress-notice)
 
         &:visited
-            @include background-color(transparent, $color-visited, $blend-bg: $blend)
+            @include background-color($bg-color, $color-visited, $suppress-notice: $suppress-notice)
 
         cursor: pointer
         @include typo.text-adjustments($quiet: true)
-        @include background-color(transparent, $color, $blend-bg: $blend)
+        @include background-color($bg-color, $color, $suppress-notice: $suppress-notice)

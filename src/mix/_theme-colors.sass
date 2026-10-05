@@ -1,8 +1,13 @@
 // Internal dependencies
-@use 'utilities' as *
+@use 'utilities' as utils
 @use 'typography' as typo
 
+
 /// Core theme logic for body background, text color, and font
-@mixin apply-theme-colors($bg, $text, $font: null)
-    @include typo.font($font, $size: null)
-    @include background-color($bg, $text)
+/// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin apply-theme-colors($bg, $color, $font: null, $suppress: false)
+    @if $font != null
+        @include typo.font($font, $size: null)
+
+    @include utils.background-color($bg, $color, $suppress: $suppress)
+    @content

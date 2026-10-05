@@ -1,0 +1,79 @@
+// Built-in Dependencies
+@use 'sass:color'
+
+// Internal dependencies
+@use '../color' as c
+@use 'buttons' as btn
+@use 'position' as pos
+@use 'generators' as gen
+@use 'breakpoints' as bp
+@use 'utilities' as utils
+@use 'typography' as typo
+@use '../func/color' as func-color
+
+
+/// Generates hamburger toggle button mixin for mobile/tablet screens.
+/// @param {String|Number} $breakpoint ['tablet'] - Breakpoint name (e.g. 'tablet', 'mobile'), px (768px), or rem (48rem) to hide the button.
+/// @param {Color} $bg-color [transparent] - Background color for the button.
+/// @param {Number} $z-index [2] - Z-index layer depth for the open overlay.
+/// @param {Color} $color [c.$dark-grey] - Text and icon color.
+/// @param {Length} $top [1rem] - Top offset for the button.
+/// @param {Length} $right [1rem] - Right offset for the button.
+
+@mixin nav-hamburg($breakpoint: 'tablet', $bg-color: transparent, $z-index: 2, $color: c.$dark-grey, $pos: relative, $top: 1rem, $right: 1rem, $font-family: 'Bootstrap', $size: 2rem)
+
+    display: flex
+
+    b
+        color: $color !important
+        @include typo.font($font: $font-family, $size: $size !important)
+
+    span
+        color: $color !important
+        @include typo.font($size: 1.1rem !important, $weight: bold !important)
+
+    @include utils.reset($margin: true)
+    @include gen.gen-flexbox('inline-flex') 
+    @include btn.base-btn($bg-color: $bg-color, $text-color: $color, $border-color: $color)
+    @include pos.position($position: $pos, $top: $top !important, $right: $right !important)
+
+    @include bp.mobile-first($breakpoint)
+        display: none
+
+    gap: 0.5rem
+    cursor: pointer
+    z-index: $z-index
+    align-items: center
+    padding: 0.5rem 1rem
+    justify-content: center
+
+/// Flexible mixin for styling an open mobile menu state.
+/// @param {String} $open-cls ['is-open'] - The cls name denoting open state.
+/// @param {String} $nav-bar-cls ['nav-bar'] - cls name for the navigation container.
+/// @param {String} $nav-list-cls ['nav-list'] - cls name for the navigation list.
+/// @param {String} $nav-item-cls ['nav-item'] - cls name for item list elements.
+/// @param {String} $nav-link-cls ['nav-link'] - cls name for link elements.
+/// @param {Color} $bg-color [c.$groovy-70s-earth-brown] - Background color when menu is open.
+/// @param {Number} $z-index [10] - Z-index layer depth for the open overlay.
+/// @param {Number} $font-size [2rem] - Font size for navigation links when open.
+@mixin hamburg-is-open($open-cls: 'is-open', $nav-bar-cls: 'nav-bar', $nav-list-cls: 'nav-list', $nav-item-cls: 'nav-item', $nav-link-cls: 'nav-link', $bg-color: c.$groovy-70s-earth-brown, $z-index: 10, $font-size: 2rem)
+    &.#{$open-cls}
+        .#{$nav-bar-cls}
+            .#{$nav-list-cls}
+                .#{$nav-item-cls}
+                    .#{$nav-link-cls}
+                        padding: 0
+                        max-inline-size: none
+                        @include utils.margin(1rem 0)
+                        @include typo.font($size: $font-size)
+
+                align-items: center
+                @include gen.gen-flexbox('flex-col')
+
+        inset: 0
+        z-index: $z-index
+        display: flex !important
+        background-color: $bg-color
+
+        @include pos.fixed()
+        @include utils.size($inline: 100%)

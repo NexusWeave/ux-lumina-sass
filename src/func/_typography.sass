@@ -5,6 +5,9 @@
 // Internal dependencies
 @use '../map/fonts' as fonts
 
+/// Generates default font stack for a generic category.
+/// @param {String} $category - Category name ('sans-serif', 'serif', 'mono').
+/// @return {List|null} - Font stack list with generic fallback.
 @function get-default-stack($category)
   @if not map.has-key(fonts.$fonts, $category)
     @return null
@@ -15,6 +18,9 @@
     $generic: monospace
   @return list.append($keys, $generic)
 
+/// Checks if a font name exists in registered font maps.
+/// @param {String|null} $font - Font name or alias to verify.
+/// @return {Boolean} - True if font is recognized.
 @function is-known-font($font)
   @if $font == null
     @return false
@@ -27,7 +33,9 @@
       @return true
   @return false
 
-// Helper: return the generic family for a given font name using the fonts map.
+/// Resolves generic family fallback for a given font name or alias.
+/// @param {String|null} $font - Target font name.
+/// @return {String|List} - Generic category or system fallback list.
 @function font-family-of($font)
   @if $font == null
     @return ('Nunito', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif)

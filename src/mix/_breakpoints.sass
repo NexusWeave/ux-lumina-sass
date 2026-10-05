@@ -1,53 +1,103 @@
 // Built-in Dependencies
 @use 'sass:map'
+@use 'sass:meta'
+@use 'sass:string'
 
 // Internal dependencies
 @use '../map/devices-breakpoints' as bp
 
-// Base mixin – low‑level implementation of media queries.
-@mixin media-queries-base($breakpoint, $value: null)
-  @if $value != null
-    @media (#{$breakpoint}: #{$value})
-      @content
-  @else if map.has-key(bp.$breakpoints, $breakpoint)
-    $breakpoint-value: map.get(bp.$breakpoints, $breakpoint)
-    @media (max-inline-size: $breakpoint-value)
-      @content
-  @else
-    @media #{$breakpoint}
-      @content
 
-// Public dispatcher
-@mixin media-queries($feature, $value: null)
-  @include media-queries-base($feature, $value)
-    @content
+/// Base mixin – Single Source of Truth for all media query generations.
+/// Default behavior is Mobile-First (min-width). Automatically applies -0.02rem boundary reduction for max-width queries.
+/// @param {String|Length} $breakpoint [null] - Breakpoint name, feature key, or custom query string.
+/// @param {Length|String} $value [null] - Direct value when breakpoint is omitted or custom feature value.
+/// @param {String} $type ['min-width'] - Default media feature type (Mobile-First min-width).
+@mixin media-queries-base($breakpoint: null, $value: null, $type: 'min-width')
+    $final-value: $value
 
+    @if $breakpoint != null and map.has-key(bp.$breakpoints, $breakpoint)
+        $final-value: map.get(bp.$breakpoints, $breakpoint)
+
+    @else if $breakpoint != null and $value == null
+        $final-value: $breakpoint
+
+    @if $value != null and $breakpoint != null and not map.has-key(bp.$breakpoints, $breakpoint)
+        @media (#{$breakpoint}: #{$value})
+            @content
+
+    @else if meta.type-of($final-value) == 'number'
+        @if $type == 'max-width'
+            $final-value: $final-value - 0.02rem
+
+        @media (#{$type}: #{$final-value})
+            @content
+
+    @else if meta.type-of($breakpoint) == 'string' and (string.index($breakpoint, '(') != null or string.index($breakpoint, ':') != null)
+        @media #{$breakpoint}
+            @content
+
+    @else if $final-value != null and meta.type-of($final-value) != 'number'
+        @error "Expected a number with unit (e.g. 48rem or 768px) for `#{$breakpoint}`, got `#{meta.type-of($final-value)}`: `#{$final-value}`."
+
+    @else
+        @error "Invalid breakpoint `#{$breakpoint}` in media-queries mixin. Available breakpoints: #{map.keys(bp.$breakpoints)}"
+
+/// Generates min-width query via media-queries-base (Mobile-First).
+@mixin mobile-first($breakpoint, $value: null)
+    @include media-queries-base($breakpoint, $value, $type: 'min-width')
+        @content
+
+/// Generates max-width query via media-queries-base (Desktop-First fallback with -0.02rem boundary reduction).
+@mixin desktop-first($breakpoint, $value: null)
+    @include media-queries-base($breakpoint, $value, $type: 'max-width')
+        @content
+
+/// Generates media query for a range between two breakpoints via media-queries-base.
+@mixin media-between($min-breakpoint, $max-breakpoint)
+    $min-val: $min-breakpoint
+    @if map.has-key(bp.$breakpoints, $min-breakpoint)
+        $min-val: map.get(bp.$breakpoints, $min-breakpoint)
+
+    $max-val: $max-breakpoint
+    @if map.has-key(bp.$breakpoints, $max-breakpoint)
+        $max-val: map.get(bp.$breakpoints, $max-breakpoint)
+
+    @if meta.type-of($max-val) == 'number'
+        $max-val: $max-val - 0.02rem
+
+    @include media-queries-base('(min-width: #{$min-val}) and (max-width: #{$max-val})')
+        @content
+
+/// Helper for prefers-color-scheme via media-queries-base.
 @mixin prefers-color-scheme($mode)
-  @include media-queries-base('(prefers-color-scheme: #{$mode})')
-    @content
+    @include media-queries-base('(prefers-color-scheme: #{$mode})')
+        @content
 
+/// Helper for prefers-orientation via media-queries-base.
 @mixin prefers-orientation($orientation)
-  @include media-queries-base('orientation', $orientation)
-    @content
+    @include media-queries-base('orientation', $orientation)
+        @content
 
+/// Device-specific query dispatcher via media-queries-base.
 @mixin device-media($device, $orientation: portrait)
-  $data: map.get(bp.$devices, $device)
+    $data: map.get(bp.$devices, $device)
 
-  @if $data == null
-    @error "Device `#{$device}` not found in $devices map."
+    @if $data == null
+        @error "Device `#{$device}` not found in $devices map."
 
-  $inline-size: map.get($data, inline-size)
-  $block-size: map.get($data, block-size)
+    $inline-size: map.get($data, inline-size)
+    $block-size: map.get($data, block-size)
 
-  @if $orientation == portrait
-    $max-inline-size: $inline-size + 0.125rem
-    $max-block-size: $block-size + 0.125rem
-    @media only screen and (min-inline-size: $inline-size) and (max-inline-size: $max-inline-size) and (min-block-size: $block-size) and (max-block-size: $max-block-size) and (orientation: portrait)
-      @content
-  @else if $orientation == landscape
-    $max-block-size: $inline-size + 0.125rem
-    $max-inline-size: $block-size + 0.125rem
-    @media only screen and (min-inline-size: $block-size) and (max-inline-size: $max-inline-size) and (min-block-size: $inline-size) and (max-block-size: $max-block-size) and (orientation: landscape)
-      @content
-  @else
-    @error "Invalid orientation `#{$orientation}` – use portrait or landscape."
+    @if $orientation == portrait
+        $max-inline-size: $inline-size + 0.125rem
+        $max-block-size: $block-size + 0.125rem
+        @include media-queries-base('only screen and (min-width: #{$inline-size}) and (max-width: #{$max-inline-size}) and (min-height: #{$block-size}) and (max-height: #{$max-block-size}) and (orientation: portrait)')
+            @content
+
+    @else if $orientation == landscape
+        $max-block-size: $inline-size + 0.125rem
+        $max-inline-size: $block-size + 0.125rem
+        @include media-queries-base('only screen and (min-width: #{$block-size}) and (max-width: #{$max-inline-size}) and (min-height: #{$inline-size}) and (max-height: #{$max-block-size}) and (orientation: landscape)')
+            @content
+    @else
+        @error "Invalid orientation `#{$orientation}` – use portrait or landscape."

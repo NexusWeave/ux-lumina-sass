@@ -1,7 +1,267 @@
 // Internal dependencies
 @use '../color' as c
-@use 'utilities' as *
+@use 'utilities' as utils
+@use 'typography' as typo
 @use '../func/color' as func-color
+
+
+/// Range input styling (applied directly on input[type="range"])
+/// @param {Color|String} $bg [transparent] - Background color of the range container.
+/// @param {Color} $thumb-color [null] - Color of the thumb slider.
+/// @param {Color} $track-color [null] - Color of the slider track.
+/// @param {Length} $thumb-inline [0.9375rem] - Width (inline-size) of the thumb.
+/// @param {Length} $thumb-block [1.875rem] - Height (block-size) of the thumb.
+/// @param {Length} $thumb-radius [1rem] - Border radius of the thumb.
+/// @param {Number} $thumb-opacity [null] - Opacity of the thumb.
+/// @param {Length} $thumb-margin-top [null] - Top offset for the thumb (margin-block-start).
+/// @param {Length} $track-block [0.9rem] - Height (block-size) of the track.
+/// @param {Length} $track-radius [1rem] - Border radius of the track.
+/// @param {Length} $inline [100%] - Overall inline-size.
+/// @param {Length} $block [auto] - Overall block-size.
+/// @param {String} $cursor [pointer] - Cursor type.
+/// @param {String} $outline [none] - Focus outline.
+@mixin input-range($bg: transparent, $thumb-color: null, $track-color: null, $thumb-inline: 0.9375rem, $thumb-block: 1.875rem, $thumb-radius: 1rem, $thumb-opacity: null, $thumb-margin-top: null, $track-block: 0.9rem, $track-radius: 1rem, $inline: 100%, $block: auto, $cursor: pointer, $outline: none)
+    cursor: $cursor
+    @include utils.reset($appearance: true)
+
+    @if $bg == transparent
+        background: transparent
+
+    @else if $bg != null
+        @include utils.background-color($bg)
+
+    @include utils.size($inline: $inline, $block: $block)
+
+    @if $outline != null
+        &:focus
+            outline: $outline
+
+    $resolved-tr: $bg
+    @if $track-color != null
+        $resolved-tr: $track-color
+
+    &::-webkit-slider-runnable-track, &::-moz-range-track
+        cursor: $cursor
+        @include utils.appearance(none)
+
+        @if $resolved-tr == transparent
+            background: transparent
+
+        @else if $resolved-tr != null
+            @include utils.background-color($resolved-tr)
+
+        @if $track-radius != null
+            @include utils.bo-ra($track-radius)
+
+        @if $track-block != null
+            @include utils.size($block: $track-block)
+
+    $resolved-th: $bg
+    @if $thumb-color != null
+        $resolved-th: $thumb-color
+
+    &::-webkit-slider-thumb
+        cursor: $cursor
+        @include utils.appearance(none)
+
+        @if $resolved-th == transparent
+            background: transparent
+        @else if $resolved-th != null
+            @include utils.background-color($resolved-th)
+
+        @if $thumb-opacity != null
+            opacity: $thumb-opacity
+
+        @if $thumb-radius != null
+            @include utils.bo-ra($thumb-radius)
+
+        @include utils.size($inline: $thumb-inline, $block: $thumb-block)
+
+        @if $thumb-margin-top != null
+            @include utils.margin($b-start: $thumb-margin-top)
+
+    &::-moz-range-thumb
+        border: none
+        cursor: $cursor
+
+        @if $resolved-th == transparent
+            background: transparent
+
+        @else if $resolved-th != null
+            @include utils.background-color($resolved-th)
+
+        @if $thumb-opacity != null
+            opacity: $thumb-opacity
+
+        @if $thumb-radius != null
+            @include utils.bo-ra($thumb-radius)
+
+        @include utils.size($inline: $thumb-inline, $block: $thumb-block)
+
+/// Base input primitive mixin for form elements.
+/// All parameters default to null for clean composition.
+/// @param {Color|null} $bg [null] - Background color.
+/// @param {Color|null} $color [null] - Text color.
+/// @param {String|null} $border [null] - Border definition.
+/// @param {Length|null} $radius [null] - Border radius.
+/// @param {Color|null} $focus-border [null] - Border color on focus.
+/// @param {String|null} $cursor [null] - Cursor type.
+/// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin base-input($bg: null, $color: null, $border: null, $radius: null, $focus-border: null, $cursor: null, $suppress: false)
+    &:focus
+        @if $focus-border != null
+            @include utils.frame($border-color: $focus-border, $box-shadow: 0 0 0 0.2rem rgba($focus-border, 0.25))
+            @include utils.reset($outline: true)
+
+    @if $cursor != null
+        cursor: $cursor
+
+    @if $border != null or $radius != null
+        @include utils.frame($border: $border, $border-radius: $radius)
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease
+
+    @if $bg != null
+        @include utils.background-color($bg, $color, $suppress: $suppress)
+
+/// Textual input styling (text, email, password, search, tel, url, number, date)
+/// @param {Color} $bg [c.$soft-white] - Background color.
+/// @param {Color} $color [c.$dark-grey] - Text color.
+/// @param {String} $border [0.0625rem solid rgba(0, 0, 0, 0.15)] - Border definition.
+/// @param {Length} $radius [0.375rem] - Border radius.
+/// @param {Length} $padding [0.5rem 0.75rem] - Padding.
+/// @param {Length} $inline [100%] - Inline-size.
+/// @param {Color} $focus-border [c.$sea-green] - Border color on focus.
+/// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin input-text($bg: c.$soft-white, $color: c.$dark-grey, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.5rem 0.75rem, $inline: 100%, $focus-border: c.$sea-green, $suppress: false)
+    @include base-input($bg: $bg, $color: $color, $border: $border, $radius: $radius, $focus-border: $focus-border, $suppress: $suppress)
+    padding: $padding
+    @include typo.font($size: 1rem)
+    @include utils.size($inline: $inline)
+
+/// Checkbox and Radio input styling
+/// @param {Color} $accent [c.$sea-green] - Accent color.
+/// @param {Length} $size [1.1rem] - Width and height.
+/// @param {String} $cursor [pointer] - Cursor type.
+@mixin input-check($accent: c.$sea-green, $size: 1.1rem, $cursor: pointer)
+    cursor: $cursor
+    accent-color: $accent
+    @include utils.size($size, $size)
+
+/// Color picker input styling
+/// @param {Length} $size [2.5rem] - Size of the color picker button.
+/// @param {Length} $radius [0.375rem] - Border radius.
+/// @param {String} $border [0.0625rem solid rgba(0, 0, 0, 0.15)] - Border definition.
+/// @param {String} $cursor [pointer] - Cursor type.
+@mixin input-color($size: 2.5rem, $radius: 0.375rem, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $cursor: pointer)
+    @include base-input($border: $border, $radius: $radius, $cursor: $cursor)
+    padding: 0.125rem
+    background: transparent
+    @include utils.size($size, $size)
+
+    &::-webkit-color-swatch-wrapper
+        @include utils.reset($padding:true)
+
+    &::-webkit-color-swatch, &::-moz-color-swatch
+        @include utils.reset($border: true)
+        @if $radius != null
+            @include utils.bo-ra($radius)
+
+/// File input styling
+/// @param {Color} $bg [c.$soft-white] - Input background color.
+/// @param {Color} $btn-bg [c.$sea-green] - Upload button background color.
+/// @param {Color} $btn-color [c.$white] - Upload button text color.
+/// @param {Length} $radius [0.375rem] - Border radius.
+/// @param {String} $cursor [pointer] - Cursor type.
+/// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin input-file($bg: c.$soft-white, $btn-bg: c.$sea-green, $btn-color: null, $radius: 0.375rem, $cursor: pointer, $suppress: false)
+    cursor: $cursor
+    @include typo.font($size: 0.9rem)
+    @include utils.bo-ra($radius)
+    @include utils.background-color($bg, $suppress: $suppress)
+
+    &::file-selector-button, &::-webkit-file-upload-button
+
+        &:hover
+            opacity: 0.9
+
+        cursor: $cursor
+        padding: 0.5rem 1rem
+        transition: opacity 0.2s ease
+        @include utils.reset($border:true)
+        @include utils.bo-ra($radius)
+        @include utils.margin($inline: 0 0.5rem)
+        @include utils.background-color($btn-bg, $btn-color, $suppress: $suppress)
+
+/// Select dropdown styling
+/// @param {Color} $bg [c.$soft-white] - Background color.
+/// @param {Color} $color [c.$dark-grey] - Text color.
+/// @param {String} $border [0.0625rem solid rgba(0, 0, 0, 0.15)] - Border definition.
+/// @param {Length} $radius [0.375rem] - Border radius.
+/// @param {Length} $padding [0.5rem 2rem 0.5rem 0.75rem] - Padding including arrow space.
+/// @param {Length} $inline [100%] - Inline-size.
+/// @param {String} $cursor [pointer] - Cursor type.
+/// @param {Color} $focus-border [c.$sea-green] - Focus border color.
+/// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin input-select($bg: c.$soft-white, $color: c.$dark-grey, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.5rem 2rem 0.5rem 0.75rem, $inline: 100%, $cursor: pointer, $focus-border: c.$sea-green, $suppress: false)
+    cursor: $cursor
+    background-size: 1rem
+    background-repeat: no-repeat
+    background-position: right 0.75rem center
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")
+
+    @include utils.appearance(none)
+    @include input-text($bg: $bg, $color: $color, $border: $border, $radius: $radius, $padding: $padding, $inline: $inline, $focus-border: $focus-border, $suppress: $suppress)
+/// Textarea styling
+/// @param {Color} $bg [c.$soft-white] - Background color.
+/// @param {Color} $color [c.$dark-grey] - Text color.
+/// @param {String} $border [0.0625rem solid rgba(0, 0, 0, 0.15)] - Border definition.
+/// @param {Length} $radius [0.375rem] - Border radius.
+/// @param {Length} $padding [0.75rem] - Padding.
+/// @param {Length} $min-block [6rem] - Minimum block-size (height).
+/// @param {Length} $inline [100%] - Inline-size.
+/// @param {String} $resize [vertical] - CSS resize behavior.
+/// @param {Color} $focus-border [c.$sea-green] - Focus border color.
+@mixin input-textarea($bg: c.$soft-white, $color: c.$dark-grey, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.75rem, $min-block: 6rem, $inline: 100%, $resize: vertical, $focus-border: c.$sea-green)
+    resize: $resize
+    @include utils.size($min-block: $min-block)
+    @include input-text($bg: $bg, $color: $color, $border: $border, $radius: $radius, $padding: $padding, $inline: $inline, $focus-border: $focus-border)
+
+/// Generic input-styles routing mixin for embedding into parent selectors
+@mixin input-styles($color: null, $type: 'range')
+    @if $type == 'range'
+        input[type="range"]
+            @include input-range($thumb-color: $color, $track-color: $color)
+
+    @else if $type == 'text' or $type == 'password' or $type == 'email' or $type == 'number' or $type == 'search' or $type == 'tel' or $type == 'url' or $type == 'date' or $type == 'datetime-local' or $type == 'month' or $type == 'time' or $type == 'week'
+        input[type="#{$type}"]
+            @include input-text($color: $color)
+
+    @else if $type == 'checkbox' or $type == 'radio'
+        $check-color: c.$sea-green
+        @if $color != null
+            $check-color: $color
+        input[type="#{$type}"]
+            @include input-check($accent: $check-color)
+
+    @else if $type == 'color'
+        input[type="color"]
+            @include input-color()
+
+    @else if $type == 'file'
+        $file-btn: c.$sea-green
+        @if $color != null
+            $file-btn: $color
+        input[type="file"]
+            @include input-file($btn-bg: $file-btn)
+
+    @else if $type == 'select'
+        select
+            @include input-select()
+
+    @else if $type == 'textarea'
+        textarea
+            @include input-textarea()
 
 /// Applies global form input styles.
 /// @param {Color} $bg - The background color for the page context.
@@ -12,38 +272,35 @@
     
     // Core input elements
     input, textarea, select, button, datalist, optgroup, option
-        padding: 0.5em
-        border-radius: 0.3em
-        border: 0.0625rem solid rgba($text, 0.2)
-        @include background-color($input-bg, $text)
-
         &:hover
             $hover-color: func-color.contrast-color-fallback($bg, $accent-color)
-            outline-offset: 0.0625rem
-            outline: 0.0625rem solid rgba($hover-color, 0.5)
+            @include utils.frame($outline: 0.0625rem solid rgba($hover-color, 0.5), $outline-offset: 0.0625rem)
 
         &:focus
             $outline-color: func-color.contrast-color-fallback($bg, $accent-color)
-            outline-offset: 0.125rem
-            outline: 0.125rem solid $outline-color
+            @include utils.frame($outline: 0.125rem solid $outline-color, $outline-offset: 0.125rem)
+
+        padding: 0.5rem
+        @include utils.frame($border: 0.0625rem solid rgba($text, 0.2), $border-radius: 0.3rem)
+        @include utils.background-color($input-bg, $text)
 
     // Labels and typography
     label, legend
         color: $text
         cursor: pointer
-        font-weight: 600
-        margin-block-end: 0.25em
+        font-weight: 600 
         display: inline-block
+        @include utils.margin($block-end: 0.25rem)
 
     // Structural elements
     fieldset
-        border: 0.0625rem solid rgba($text, 0.2)
-        border-radius: 0.3em
-        padding: 1em
-        margin-block-end: 1em
+        padding: 1rem
+        @include utils.frame($border: 0.0625rem solid rgba($text, 0.2), $border-radius: 0.3rem)
+
+        @include utils.margin($block-end: 1rem)
 
     // Helper text or output
     output
         color: $text
+        padding: 0.5rem 0
         display: inline-block
-        padding: 0.5em 0

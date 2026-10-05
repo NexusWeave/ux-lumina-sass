@@ -5,24 +5,12 @@ This document provides a technical overview of the generator mixins offered by *
 
 ## Generator Mixins
 
-The following mixins facilitate the automated generation of utility classes and component styles.
+The following mixins facilitate the automated generation of utility classes and component styles:
 
-### Icon Generator
-
-- `gen-icons($name: null, $color: null, $font-family: 'icons', $debug: false, $silent: false)`
-  - This mixin generates utility classes for icons. If the `$name` parameter is omitted, it systematically generates classes for every icon defined within the configuration map.
-  - The optional `$color` parameter allows for the overriding of the default icon coloration.
-
-### Flexbox Generator
-
-- `gen-flexbox($name, $silent: false)`
-  - This mixin generates a predefined set of flexbox utility classes corresponding to the specified `$name` entry within the flexbox configuration map.
-
-### Input Generator
-
-- `gen-inputs($name: null, $placeholder-color: null, $custom: (), $debug: false, $silent: false)`
-  - This mixin generates utility classes (`.{type}-input`) for input elements. If the `$name` parameter is set to `null`, it generates styles for all inputs defined in the input configuration map.
-  - The `$placeholder-color` parameter configures the color of the placeholder text.
-  - The `$custom` parameter enables the overriding of default properties, such as focus outlines and borders.
+| Generator Mixin | Parameters | Description |
+| :--- | :--- | :--- |
+| `gen-icons` | `$name: null`<br>`$color: null`<br>`$font-family: 'icons'`<br>`$debug: false`<br>`$silent: false` | Generates utility classes for icons. If `$name` is omitted, generates classes for all icons in the configuration map. `$color` overrides default coloration. |
+| `gen-flexbox` | `$name`<br>`$silent: false` | Generates flexbox utility classes corresponding to the specified `$name` entry in the flexbox configuration map. |
+| `gen-inputs` | `$name: null`<br>`$placeholder-color: null`<br>`$custom: ()`<br>`$debug: false`<br>`$silent: false` | Generates utility classes (`.{type}-input`) for input elements. If `$name` is `null`, generates styles for all inputs in the input configuration map. |
 
 These mixins are architected within `src/mix/_generators.sass` and are exported through the `lumina-sass/mix` sub-path.

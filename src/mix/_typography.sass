@@ -5,90 +5,142 @@
 @use 'sass:string'
 
 // Internal dependencies
+@use 'size'
 @use '../map/fonts' as fonts
 @use '../func/typography' as func-typo
 
-@mixin text-wrap-safe($inline: 0)
-  p, h1, h2, h3, h4, h5, h6, figcaption, a, li
-    hyphens: auto
-    word-wrap: anywhere
-    white-space: pre-wrap
-    overflow-wrap: anywhere
-    min-inline-size: $inline
 
-@mixin font( $font:null, $size: 1rem, $family: null, $style: null, $weight: null, $line-height: null, $variant: null, $quiet: false)
-  $detected-family: func-typo.font-family-of($font)
+/// Secure line wrapping and hyphenation for textual tags.
+/// @param {Length|null} $inline [null] - Optional minimum inline size.
+@mixin text-wrap-safe($inline: null)
+    p, h1, h2, h3, h4, h5, h6, figcaption, a, li
+        hyphens: auto
+        word-wrap: anywhere
+        white-space: pre-wrap
+        overflow-wrap: anywhere
 
-  @if func-typo.is-known-font($font)
-    $family: $detected-family
+        @if $inline != null and $inline != 0
+            @include size.min-size($inline)
 
-    @if map.has-key(fonts.$fonts, $font)
-      $font: null
+
+/// Shorthand typography setter for font-family, sizes, weights, and rendering quality.
+/// @param {String|List|null} $font [null] - Font name or custom stack.
+/// @param {Length|null} $size [null] - Font size.
+/// @param {String|null} $family [null] - Fallback generic family category.
+/// @param {String|null} $render [null] - text-rendering property.
+/// @param {String|null} $moz-smoothing [null] - Firefox font smoothing.
+/// @param {String|null} $webkit-smoothing [null] - Webkit font smoothing.
+@mixin font( $font:null, $size: null,  $family: null, 
+            $style: null, $weight: null, $line-height: null, 
+            $variant: null, $render: null, $moz-smoothing: null, 
+            $webkit-smoothing: null, $quiet: false)
+
+    $detected-family: func-typo.font-family-of($font)
+
+    @if func-typo.is-known-font($font)
+        $family: $detected-family
+
+        @if map.has-key(fonts.$fonts, $font)
+            $font: null
   
-  @else if $family == null
-    $family: $detected-family
+    @else if $family == null
+        $family: $detected-family
 
-    @if $font != null and $quiet == false
-      @warn "Font '#{$font}' not found in configuration map. Defaulting to stack: '#{$font}', #{$family}."
+        @if $font != null and $quiet == false
+            @warn "Font '#{$font}' not found in configuration map. Defaulting to stack: '#{$font}', #{$family}."
 
-  @if meta.type-of($font) == 'list'
-    $last: list.nth($font, list.length($font))
+    @if meta.type-of($font) == 'list'
+        $last: list.nth($font, list.length($font))
 
-    @if $last == $family
-      $family: null
+        @if $last == $family
+            $family: null
   
-  @if $font == $family
-    $family: null
+    @if $font == $family
+        $family: null
 
-  @if $font != null
-    font-family: $font, $family
-  @else
-    font-family: $family
+    @if $font != null
+        font-family: $font, $family
 
-  @if $size != null
-    font-size: $size
+    @else
+        font-family: $family
 
-  @if $weight != null
-    font-weight: $weight
+    @if $render != null
+        text-rendering: $render
 
-  @if $style != null
-    font-style: $style
+    @if $webkit-smoothing != null
+        -webkit-font-smoothing: $webkit-smoothing
+
+    @if $moz-smoothing != null
+        -moz-osx-font-smoothing: $moz-smoothing
+
+    @if $size != null
+        font-size: $size
+
+    @if $weight != null
+        font-weight: $weight
+
+    @if $style != null
+        font-style: $style
   
-  @if $line-height != null
-    line-height: $line-height
+    @if $line-height != null
+        line-height: $line-height
 
-  @if $variant != null
-    font-variant: $variant
+    @if $variant != null
+        font-variant: $variant
 
-@mixin sans-serif($font: null, $size: 1rem, $weight: null, $style: null)
-  @if $font == null
-    $font: func-typo.get-default-stack('sans-serif')
-  @include font($font, $size, sans-serif, $style, $weight)
+/// Applies sans-serif typography stack.
+/// @param {String|null} $font [null] - Specific font or fallback stack.
+/// @param {Length|null} $size [null] - Font size.
+/// @param {String|Number|null} $weight [null] - Font weight.
+/// @param {String|null} $style [null] - Font style.
+@mixin sans-serif($font: null, $size: null, $weight: null, $style: null)
+    @if $font == null
+        $font: func-typo.get-default-stack('sans-serif')
 
-@mixin serif($font: null, $size: 1rem, $weight: null, $style: null)
-  @if $font == null
-    $font: func-typo.get-default-stack('serif')
-  @include font($font, $size, serif, $style, $weight)
+    @include font($font: $font, $size: $size, $family: sans-serif, $style: $style, $weight: $weight)
 
-@mixin monospace($font: null, $size: 1rem, $weight: null, $style: null)
-  @if $font == null
-    $font: func-typo.get-default-stack('mono')
-  @include font($font, $size, monospace, $style, $weight)
+/// Applies serif typography stack.
+/// @param {String|null} $font [null] - Specific font or fallback stack.
+/// @param {Length|null} $size [null] - Font size.
+/// @param {String|Number|null} $weight [null] - Font weight.
+/// @param {String|null} $style [null] - Font style.
+@mixin serif($font: null, $size: null, $weight: null, $style: null)
+    @if $font == null
+        $font: func-typo.get-default-stack('serif')
 
-@mixin line-clamp($lines: 3)
-  display: -webkit-box
-  -webkit-line-clamp: $lines
-  -webkit-box-orient: vertical
-  overflow: hidden
+    @include font($font: $font, $size: $size, $family: serif, $style: $style, $weight: $weight)
 
+/// Applies monospace typography stack.
+/// @param {String|null} $font [null] - Specific font or fallback stack.
+/// @param {Length|null} $size [null] - Font size.
+/// @param {String|Number|null} $weight [null] - Font weight.
+/// @param {String|null} $style [null] - Font style.
+@mixin monospace($font: null, $size: null, $weight: null, $style: null)
+    @if $font == null
+        $font: func-typo.get-default-stack('mono')
+
+    @include font($font: $font, $size: $size, $family: monospace, $style: $style, $weight: $weight)
+
+/// @param {Number} $lines [3] - Number of lines before truncation.
+/// @param {String} $box-orient [vertical] - Box orientation.
+@mixin line-clamp($lines: 3, $box-orient: vertical)
+    overflow: hidden
+    display: -webkit-box
+    -webkit-line-clamp: $lines
+    -webkit-box-orient: $box-orient
+
+/// Adjusts text alignment and text decoration with fallback defaults.
+/// @param {String|null} $alignment [null] - text-align property.
+/// @param {String|null} $decoration [null] - text-decoration property.
 @mixin text-adjustments($alignment: null, $decoration: null, $quiet: false)
-  @if $alignment != null
-    text-align: $alignment
+    @if $alignment != null
+        text-align: $alignment
 
-  @if $decoration != null
-    text-decoration: $decoration
+    @if $decoration != null
+        text-decoration: $decoration
 
-  @if $alignment == null and $decoration == null
-    text-decoration: none
-    @if $quiet == false
-      @warn "No parameters provided for text-adjustments mixin. Default value present."
+    @if $alignment == null and $decoration == null
+        @if $quiet == false
+            @warn "No parameters provided for text-adjustments mixin. Default value present."
+
+        text-decoration: none

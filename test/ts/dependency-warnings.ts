@@ -1,12 +1,12 @@
 import { execSync } from 'child_process';
+import { existsSync } from 'fs';
 
 function checkDependencyWarnings(): void {
   console.log('Checking for SASS dependency warnings...');
 
   try {
-    // Run sass compiler on the demo style which includes everything.
-    // 2>&1 ensures stderr (where warnings go) is captured in stdout.
-    const output: string = execSync('npx sass demo/style.sass demo/style.css 2>&1', { encoding: 'utf-8' });
+    const targetFile = existsSync('demo/style.sass') ? 'demo/style.sass' : 'src/_index.sass';
+    const output: string = execSync(`npx sass ${targetFile} 2>&1`, { encoding: 'utf-8' });
     
     if (output.toLowerCase().includes('warning:')) {
       console.error('❌ FAIL: SASS Dependency warnings detected.');

@@ -1,23 +1,39 @@
 // Built-in Dependencies
+@use 'sass:map'
 @use 'sass:meta'
 
 // Internal dependencies
+@forward 'size'
+@forward 'spacing'
+@use 'size' as *
+
 @use '../color' as c
+@use 'position' as pos
+@use 'spacing' as space
 @use 'typography' as typo
+@use 'contrast' as contrast
 @use '../func/color' as func-color
 
+
 /// Sets background color and automatically handles text color contrast if not provided.
+/// Validates WCAG contrast when explicit text color is provided.
 /// @param {Color|String} $bg-color [c.$soft-white] - The background color to apply.
 /// @param {Color|String} $text-color [null] - Optional text color. If null, calculated based on contrast.
-/// @param {Color} $blend-bg [c.$soft-white] - Background to blend against if $bg-color is semi-transparent.
-@mixin background-color($bg-color: c.$soft-white, $text-color: null, $blend-bg: c.$soft-white)
+/// @param {Number} $threshold [4.5] - The minimum acceptable contrast ratio (standard WCAG AA compliance is 4.5:1).
+/// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin background-color($bg-color: c.$soft-white, $text-color: null, $threshold: 4.5, $suppress: false)
     background-color: $bg-color
 
     @if $text-color != null
+        $bg-info: func-color.inspect-color($bg-color)
+        $text-info: func-color.inspect-color($text-color)
+
+        @if (map.get($bg-info, 'type') == 'color' or map.get($bg-info, 'is-special')) and (map.get($text-info, 'type') == 'color' or map.get($text-info, 'is-special'))
+            @include contrast.assert-contrast($text-color, $bg-color, $threshold: $threshold, $suppress: $suppress)
         color: $text-color
 
     @else if meta.type-of($bg-color) == 'color'
-        color: func-color.best-contrast-color($bg-color, $background: $blend-bg)
+        color: func-color.best-contrast-color($bg-color)
 
 /// Applies icon font properties.
 /// @param {String} $icon-content - The unicode character for the icon.
@@ -25,5 +41,253 @@
 /// @param {Number} $size [1rem] - The font size of the icon.
 @mixin icon-style($icon-content, $font-family: 'icons', $size: 1rem)
     &::before
-        @include typo.font($font-family, $size: $size)
         content: $icon-content
+        @include typo.font($font-family, $size: $size)
+
+
+
+/// Comprehensive universal CSS reset mixin for all CSS rules.
+/// All parameters default to false for safety and require explicit activation.
+@mixin reset($all: false, $box-sizing: false, $margin: false, $padding: false, $border: false, $outline: false, $font: false, $color: false, $background: false, $button: false, $list-style: false, $text-decoration: false, $size: false, $appearance: false, $vertical-align: false, $user-select: false, $cursor: false, $position: false, $html-elements: false, $text: c.$dark-grey, $colors: ())
+    @if $all or $box-sizing
+        box-sizing: border-box
+
+    @if $all or $margin
+        @include space.margin($margin: 0, $block: 0, $inline: 0)
+
+    @if $all or $padding
+        @include space.padding($padding: 0, $block: 0, $inline: 0)
+
+    @if $all or $border or $button
+        border: none
+
+    @if $all or $outline or $button
+        outline: 0
+        outline-color: transparent
+
+    @if $all or $font
+        font: inherit
+        font-size: 100%
+        font-weight: normal
+        line-height: inherit
+
+    @if $all or $color or $button
+        color: inherit
+
+    @if $all or $background or $button
+        background-image: none
+        background: transparent
+        background-color: transparent
+
+    @if $all or $button
+        font: inherit
+        cursor: pointer
+
+    @if $all or $list-style
+        list-style: none
+
+    @if $all or $text-decoration
+        text-decoration: none
+
+    @if $all or $size
+        @include size($inline: auto, $block: auto, $max-inline: 100%, $max-block: 100%)
+
+    @if $all or $appearance or $button
+        @include appearance(none)
+    
+    @if $all or $vertical-align
+        vertical-align: baseline
+    
+    @if $all or $user-select
+        user-select: auto
+    
+    @if $all or $cursor
+        cursor: auto
+    
+    @if $all or $position
+        @include pos.position($position: static, $top: auto, $right: auto, $bottom: auto, $left: auto, $z-index: auto, $inset-block: auto, $inset-inline: auto)
+
+    @if $all or $html-elements
+        abbr
+            @if map.has-key($colors, 'abbr-underline')
+                text-decoration-color: map.get($colors, 'abbr-underline')
+
+            cursor: help
+            text-decoration: underline dotted
+            @include background-color(transparent, $text, $suppress: true)
+            
+
+        code
+            @if map.has-key($colors, 'code-bg')
+                @include background-color(map.get($colors, 'code-bg'))
+
+            padding: 0.2rem 0.4rem
+            @include bo-ra(0.3rem)
+            @include typo.monospace($size: null)
+
+/// Sets CSS transition shorthand or granular transition properties.
+/// @param {String|List|null} $transition - Full transition shorthand or null when using individual properties.
+/// @param {String|List|null} $property [null] - Target CSS property to transition.
+/// @param {Length|String|null} $duration [null] - Transition duration.
+/// @param {String|null} $timing-function [null] - Transition timing function curve.
+/// @param {Length|String|null} $delay [null] - Transition start delay.
+/// @param {String|null} $behavior [null] - Transition behavior mode.
+@mixin transition($transition: null, $property: null, $duration: null, $timing-function: null, $delay: null, $behavior: null)
+    @if $transition == null and $property == null and $duration == null and $timing-function == null and $delay == null and $behavior == null
+        @warn "No valid properties provided to transition mixin."
+
+    @if $transition != null
+        transition: $transition
+
+    @if $property != null
+        transition-property: $property
+
+    @if $duration != null
+        transition-duration: $duration
+
+    @if $timing-function != null
+        transition-timing-function: $timing-function
+
+    @if $delay != null
+        transition-delay: $delay
+
+    @if $behavior != null
+        transition-behavior: $behavior
+
+@mixin aspect-ratio($width: 16, $length: 9, $object-fit: cover)
+    object-fit: $object-fit
+    @include size($inline: 100%)
+    aspect-ratio: calc($width / $length)
+
+@mixin appearance($appearance: none)
+    appearance: $appearance
+    -moz-appearance: $appearance
+    -webkit-appearance: $appearance
+
+@mixin frame(
+    $border: null, 
+    $border-color: null, 
+    $border-width: null, 
+    $border-style: null, 
+    $border-radius: null, 
+    $border-top: null, 
+    $border-right: null, 
+    $border-bottom: null, 
+    $border-left: null, 
+    $border-block: null, 
+    $border-inline: null, 
+    $outline: null, 
+    $outline-color: null, 
+    $outline-style: null, 
+    $outline-width: null, 
+    $outline-offset: null, 
+    $box-shadow: null)
+    @if $border-radius != null
+        border-radius: $border-radius
+
+    @if $border != null
+        border: $border
+
+    @if $border-width != null
+        border-width: $border-width
+
+    @if $border-style != null
+        border-style: $border-style
+
+    @if $border-color != null
+        border-color: $border-color
+
+    @if $border-top != null
+        border-top: $border-top
+
+    @if $border-right != null
+        border-right: $border-right
+
+    @if $border-bottom != null
+        border-bottom: $border-bottom
+
+    @if $border-left != null
+        border-left: $border-left
+
+    @if $border-block != null
+        border-block: $border-block
+
+    @if $border-inline != null
+        border-inline: $border-inline
+
+    @if $outline != null
+        outline: $outline
+
+    @if $outline-width != null
+        outline-width: $outline-width
+
+    @if $outline-style != null
+        outline-style: $outline-style
+
+    @if $outline-color != null
+        outline-color: $outline-color
+
+    @if $outline-offset != null
+        outline-offset: $outline-offset
+
+    @if $box-shadow != null
+        box-shadow: $box-shadow
+
+/// Utility mixin for border-radius
+/// @param {Length|List} $radius - The border radius value or list of corner radii.
+@mixin bo-sh($box-shadow)
+    @include frame($box-shadow: $box-shadow)
+
+/// Utility mixin for border-radius
+/// @param {Length|List} $radius - The border radius value or list of corner radii.
+@mixin bo-props($border: null, $border-color: null, $border-width: null, $border-style: null, $border-radius: null, $border-top: null, $border-right: null, $border-bottom: null, $border-left: null, $border-block: null, $border-inline: null)
+    @include frame(
+        $border: $border,
+        $border-top: $border-top,
+        $border-left: $border-left,
+        $border-block: $border-block,
+        $border-right: $border-right,
+        $border-color: $border-color,
+        $border-width: $border-width,
+        $border-style: $border-style,
+        $border-radius: $border-radius,
+        $border-bottom: $border-bottom,
+        $border-inline: $border-inline
+    )
+
+/// Utility mixin for border-radius
+/// @param {Length|List} $radius - The border radius value or list of corner radii.
+@mixin outline($outline: null, $outline-color: null, $outline-style: null, $outline-width: null, $outline-offset: null)
+    @if $outline != null or $outline-color != null or $outline-style != null
+        @include frame($outline: $outline, $outline-color: $outline-color, $outline-style: $outline-style, $outline-width: $outline-width, $outline-offset: $outline-offset)
+
+/// Utility mixin for border-radius
+/// @param {Length|List} $radius - The border radius value or list of corner radii.
+@mixin bo-ra($radius)
+    @include frame($border-radius: $radius)
+
+/// Utility mixin for CSS grid layouts.
+/// @param {String|null} $temp-area [null] - Grid template areas definition.
+/// @param {String|List|null} $temp-col [null] - Grid template columns definition.
+/// @param {String|Length|null} $temp-rows [100%] - Grid template rows definition.
+/// @param {Length|null} $gap [null] - Gap between grid tracks.
+/// @param {String|null} $grid-area [null] - Grid area assignment for items.
+@mixin grid-layout($temp-area: null, $temp-col: null, $temp-rows: 100%, $gap: null, $grid-area: null)
+    @if $grid-area
+        grid-area: $grid-area
+    
+    @if $gap
+        gap: $gap
+
+    @if $temp-rows
+        grid-template-rows: $temp-rows
+
+    @if $temp-area
+        grid-template-areas: $temp-area !important
+
+    @if $temp-col
+        grid-template-columns: $temp-col !important
+
+    @if $temp-col and $gap
+        display: grid
+        padding: 0.5rem

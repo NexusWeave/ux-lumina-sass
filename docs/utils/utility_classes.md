@@ -53,42 +53,51 @@ For maximum flexibility, use these atomic classes to build custom layouts.
 ### Alignment and Justification
 
 #### Horizontal Patterns
-- `.flex-row-justify-center`
-- `.flex-row-align-center`
-- `.flex-row-justify-space-between`
-- `.flex-row-align-flex-end-justify-center`
-- `.flex-row-reversed-align-center-justify-center`
-- `.flex-row-align-center-justify-space-between`
-- `.flex-row-reversed-align-center-justify-space-around`
-- `.flex-row-reversed-align-center-justify-space-between`
-- `.flex-row-reversed-align-center-justify-space-evenly`
+
+| Utility Class | Layout Behavior |
+| :--- | :--- |
+| `.flex-row-justify-center` | Horizontal row centered along main axis |
+| `.flex-row-align-center` | Horizontal row centered along cross axis |
+| `.flex-row-justify-space-between` | Horizontal row with space-between justification |
+| `.flex-row-align-flex-end-justify-center` | Horizontal row aligned to flex-end and centered |
+| `.flex-row-reversed-align-center-justify-center` | Reversed horizontal row centered horizontally and vertically |
+| `.flex-row-align-center-justify-space-between` | Horizontal row centered vertically with space-between |
+| `.flex-row-reversed-align-center-justify-space-around` | Reversed horizontal row with space-around justification |
+| `.flex-row-reversed-align-center-justify-space-between` | Reversed horizontal row with space-between justification |
+| `.flex-row-reversed-align-center-justify-space-evenly` | Reversed horizontal row with space-evenly justification |
 
 #### Vertical Patterns
-- `.flex-col-justify-center`
-- `.flex-col-align-end`
-- `.flex-col-align-center`
-- `.flex-col-justify-space-evenly`
-- `.flex-col-align-center-justify-center`
-- `.flex-col-justify-space-evenly-align-center`
+
+| Utility Class | Layout Behavior |
+| :--- | :--- |
+| `.flex-col-justify-center` | Vertical column centered along main axis |
+| `.flex-col-align-end` | Vertical column aligned to flex-end cross axis |
+| `.flex-col-align-center` | Vertical column centered along cross axis |
+| `.flex-col-justify-space-evenly` | Vertical column spaced evenly along main axis |
+| `.flex-col-align-center-justify-center` | Vertical column centered both horizontally and vertically |
+| `.flex-col-justify-space-evenly-align-center` | Vertical column spaced evenly with centered alignment |
 
 #### Wrapped Patterns
-- `.flex-wrap-row-justify-center`
-- `.flex-wrap-row-justify-flex-end`
-- `.flex-wrap-row-align-end`
-- `.flex-wrap-row-justify-flex-start`
-- `.flex-wrap-row-align-center`
-- `.flex-wrap-row-justify-space-evenly`
-- `.flex-wrap-row-justify-space-around`
-- `.flex-wrap-row-justify-space-between`
-- `.flex-wrap-col-align-content-center`
-- `.flex-wrap-row-align-center-justify-center`
-- `.flex-wrap-col-align-center-justify-space-evenly`
-- `.flex-wrap-row-align-end-justify-space-evenly`
-- `.flex-wrap-row-align-end-justify-space-between`
-- `.flex-wrap-row-align-center-justify-space-around`
-- `.flex-wrap-row-align-center-justify-space-evenly`
-- `.flex-wrap-row-align-center-justify-space-between`
-- `.flex-wrap-row-align-content-start-justify-space-evenly`
+
+| Utility Class | Layout Behavior |
+| :--- | :--- |
+| `.flex-wrap-row-justify-center` | Wrapping horizontal row centered along main axis |
+| `.flex-wrap-row-justify-flex-end` | Wrapping horizontal row justified to flex-end |
+| `.flex-wrap-row-align-end` | Wrapping horizontal row aligned to flex-end |
+| `.flex-wrap-row-justify-flex-start` | Wrapping horizontal row justified to flex-start |
+| `.flex-wrap-row-align-center` | Wrapping horizontal row centered vertically |
+| `.flex-wrap-row-justify-space-evenly` | Wrapping horizontal row spaced evenly |
+| `.flex-wrap-row-justify-space-around` | Wrapping horizontal row with space-around |
+| `.flex-wrap-row-justify-space-between` | Wrapping horizontal row with space-between |
+| `.flex-wrap-col-align-content-center` | Wrapping vertical column with centered content |
+| `.flex-wrap-row-align-center-justify-center` | Wrapping horizontal row centered horizontally and vertically |
+| `.flex-wrap-col-align-center-justify-space-evenly` | Wrapping vertical column spaced evenly with centered items |
+| `.flex-wrap-row-align-end-justify-space-evenly` | Wrapping horizontal row aligned to end and spaced evenly |
+| `.flex-wrap-row-align-end-justify-space-between` | Wrapping horizontal row aligned to end with space-between |
+| `.flex-wrap-row-align-center-justify-space-around` | Wrapping horizontal row centered with space-around |
+| `.flex-wrap-row-align-center-justify-space-evenly` | Wrapping horizontal row centered with space-evenly |
+| `.flex-wrap-row-align-center-justify-space-between` | Wrapping horizontal row centered with space-between |
+| `.flex-wrap-row-align-content-start-justify-space-evenly` | Wrapping horizontal row aligned to content-start and spaced evenly |
 
 ## Implementation Example
 

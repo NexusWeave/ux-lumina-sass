@@ -1,0 +1,35 @@
+name: Feature Request
+description: Suggest an idea or new mixin feature for Lumina SASS
+title: "[FEATURE] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for suggesting a feature enhancement for Lumina SASS!
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature Proposal
+      description: Describe the feature, mixin, or utility token map you would like to see added.
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case & Rationale
+      description: Why is this feature useful? What problem does it solve for users?
+    validations:
+      required: true
+
+  - type: textarea
+    id: example-syntax
+    attributes:
+      label: Proposed Sass Syntax Example
+      description: Provide an example of how the proposed mixin or function should be called.
+      placeholder: |
+        .element
+          @include l-mix.new-feature($param: value)
+    validations:
+      required: false

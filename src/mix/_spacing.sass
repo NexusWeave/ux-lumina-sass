@@ -1,0 +1,78 @@
+/// Sets element margins using logical and physical properties.
+@mixin margin($margin: null, $block: null, $inline: null, $block-start: null, $block-end: null, $inline-start: null, $inline-end: null, $top: null, $right: null, $bottom: null, $left: null)
+    @if $margin != null
+        margin: $margin
+
+    @if $block != null
+        margin-block: $block
+
+    @if $inline != null
+        margin-inline: $inline
+
+    @if $block-start != null
+        margin-block-start: $block-start
+    
+    @if $block-end != null
+        margin-block-end: $block-end
+
+    @if $inline-start != null
+        margin-inline-start: $inline-start
+
+    @if $inline-end != null
+        margin-inline-end: $inline-end
+
+    @if $top != null
+        margin-top: $top
+
+    @if $right != null
+        margin-right: $right
+
+    @if $bottom != null
+        margin-bottom: $bottom
+
+    @if $left != null
+        margin-left: $left
+
+
+/// Convenience helper to center an element horizontally using logical margin-inline.
+@mixin margin-center($block: null)
+    @include margin($inline: auto)
+
+    @if $block != null
+        @include margin($block: $block)
+
+
+@mixin padding($padding: null, $block: null, $inline: null, $block-start: null, $block-end: null, $inline-start: null, $inline-end: null, $top: null, $right: null, $bottom: null, $left: null)
+    @if $padding != null
+        padding: $padding
+
+    @if $block != null
+        padding-block: $block
+
+    @if $inline != null
+        padding-inline: $inline
+
+    @if $block-start != null
+        padding-block-start: $block-start
+    
+    @if $block-end != null
+        padding-block-end: $block-end
+
+    @if $inline-start != null
+        padding-inline-start: $inline-start
+
+    @if $inline-end != null
+        padding-inline-end: $inline-end
+
+    @if $top != null
+        padding-top: $top
+
+    @if $right != null
+        padding-right: $right
+
+    @if $bottom != null
+        padding-bottom: $bottom
+
+    @if $left != null
+        padding-left: $left
+

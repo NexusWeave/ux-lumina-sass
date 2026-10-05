@@ -1,33 +1,35 @@
 # Cards Mixin
 
-The `card` mixin renders cards that automatically adapt to the global page background context or a specified accent color, ensuring accessible contrast using the library's design tokens.
+The `card` mixin renders cards with customizable shapes, padding, borders, shadows, transitions, background, and text colors.
 
 ## Usage
 
 ```sass
 @use 'lumina-sass/mix' as *;
 
-// Automatically adapts to global theme background
-.my-card {
-    @include card();
-}
+// Basic card with background and text color
+.my-card
+    @include card($bg-color: #fff, $color: #333)
 
-// Uses a specific accent color and shape
-.circle-card {
-    @include card($accent-color: blue, $shape: 'circle');
-}
+// Circle card with shape and padding
+.circle-card
+    @include card($bg-color: #f7f7f7, $color: #111, $shape: 'circle', $padding: 1.5rem)
 
-// Custom overrides
-.custom-card {
-    @include card($overrides: ('background': white, 'text': black));
-}
+// Card with custom border and shadow
+.shadow-card
+    @include card($bg-color: #fff, $color: #222, $border: 1px solid #ddd, $box-shadow: 0 4px 6px rgba(0,0,0,0.1))
 ```
 
 ## Parameters
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| `$accent-color` | Color\|null | (Optional) Accent color to derive card colors. Defaults to `null`. |
-| `$context-bg` | Color | (Optional) Page background context if no accent color is provided. Defaults to library `soft-white` token. |
-| `$overrides` | Map | (Optional) Map for overriding 'background' or 'text' colors. Defaults to `()`. |
+| `$border` | String\|null | (Optional) Card border definition. Defaults to `null`. |
+| `$margin` | Length\|String\|null | (Optional) Card margin using logical margin utilities. Defaults to `null`. |
+| `$padding` | Length\|String\|null | (Optional) Card padding. Defaults to `null`. |
 | `$shape` | String | (Optional) Shape of the card: `'square'`, `'circle'`, `'rectangle'`, or `'triangle'`. Defaults to `'square'`. |
+| `$box-shadow` | String\|null | (Optional) Card box shadow style. Defaults to `null`. |
+| `$transition` | String\|List\|null | (Optional) Card transition style. Defaults to `null`. |
+| `$color` | Color\|null | (Optional) Card text color. Defaults to `null`. |
+| `$bg-color` | Color\|null | (Optional) Card background color. Defaults to `null`. |
+| `$suppress` | Boolean | (Optional) Suppresses accessibility notice for transparent/inherited backgrounds. Defaults to `false`. |

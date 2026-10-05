@@ -1,17 +1,8 @@
 {
-  "folders": [
-    {
-      "path": "../"
-    }
-  ],
+  "folders": [ { "path": "../" } ],
   "settings": {
-    "files.exclude": {
-      "**/.github": true,
-      "**/.DS_Store": true,
-      "**/node_modules": true,
-      "**/demo/.well-known": true
-    },
     "editor.tabSize": 2,
-    "editor.insertSpaces": true
+    "editor.insertSpaces": true,
+    "files.exclude": { "**/.github": true, "**/.DS_Store": true, "**/node_modules": true, "**/demo/.well-known": true }
   }
 }

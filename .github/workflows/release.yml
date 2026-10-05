@@ -1,16 +1,24 @@
 name: Release
 
 on:
-  push:
-    branches:
-      - master
+  workflow_run:
+    workflows: ["Automated test"]
+    types:
+      - completed
+
+    branches: [ master ]
+
   workflow_dispatch:
 
 jobs:
   release:
+    name: Create Release & Bump Version
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && !contains(github.event.workflow_run.head_commit.message, '[skip ci]') && !contains(github.event.workflow_run.head_commit.message, 'chore(release)')) }}
+    
     permissions:
       contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -18,15 +26,12 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Run Tests
-        run: npm test
 
       - name: Configure Git identity
         run: |
@@ -38,7 +43,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push changes and tags
+      - name: Push release commit and tags
         run: git push --follow-tags origin master
 
       - name: Get Latest Tag
@@ -50,5 +55,6 @@ jobs:
         with:
           tag_name: ${{ steps.get_version.outputs.VERSION }}
           generate_release_notes: true
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

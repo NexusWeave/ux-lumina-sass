@@ -5,6 +5,7 @@
 
 // Internal dependencies
 @use 'typography' as typo
+@use 'utilities' as utils
 @use '../color/base' as base
 @use '../map/inputs' as inputs
 @use '../map/icons' as icon-map
@@ -12,54 +13,48 @@
 @use '../func/icons' as func-icons
 @use '../map/flexbox' as flexbox-mapping
 
+
 @mixin _icon-base($name, $color, $font-family, $debug: false, $silent: false, $map: icon-map.$icons, $include-content: true)
   $props: func-icons.find($name, $map)
+
   @if $props
     @if $debug
       @debug "gen-icons: Generating icon .#{$name}"
+
     .#{$name}
       &::before
-        @if $color
-          color: $color !important
+        color: $color !important
 
-        @include typo.font($font-family)
         @if $include-content
           content: map.get($props, icon)
-  @else
-    @if $silent
-      @warn "gen-icons: Icon '#{$name}' not found in icon mapping."
-    @else
-      @error "gen-icons: Fatal error! Icon '#{$name}' not found in icon mapping."
 
+      gap:0.5rem
+      display: inline-flex
+      @include typo.font($font-family, $size: 1.2rem !important)
+
+  @else
+    @if not $silent
+      @warn "gen-icons: Icon '#{$name}' not found in icon mapping."
+
+/// Generates icon utility classes with pseudo-element glyphs.
+/// @param {String|List|null} $name [null] - Single icon name, list of names, or null for all.
+/// @param {Color} $color [rgb(64, 64, 64)] - Icon text color.
+/// @param {String} $font-family ['bootstrap-icons'] - Icon font-family name.
 @mixin gen-icons($name: null, $color: rgb(64, 64, 64), $font-family: 'bootstrap-icons', $debug: false, $silent: false, $map: icon-map.$icons, $include-content: true)
   @if $map
-  
     @if $name == null
       @if $debug
         @debug "gen-icons: Generating all icons..."
+
       @each $key, $value in $map
         @if meta.type-of($value) == 'map'
-          @if map.has-key($value, 'icon')
-            // Flat structure: icon-name -> (icon: value)
-            .#{$key}
-              &::before
-                @if $color
-                  color: $color !important
 
-                @include typo.font($font-family)
-                @if $include-content
-                  content: map.get($value, icon)
+          @if map.has-key($value, 'icon') // Flat structure: icon-name -> (icon: value)
+            @include _icon-base($key, $color, $font-family, $debug, $silent, $map, $include-content) 
           @else
-            // Nested structure: category -> (icon-name -> (icon: value))
-            @each $icon, $props in $value
-              .#{$icon}
-                &::before
-                  @if $color
-                    color: $color !important
 
-                  @include typo.font($font-family)
-                  @if $include-content
-                    content: map.get($props, icon)
+            @each $icon, $props in $value // Nested structure: category -> (icon-name -> (icon: value))
+              @include _icon-base($icon, $color, $font-family, $debug, $silent, $map, $include-content)
               
     @else
       $names: $name
@@ -69,27 +64,35 @@
       @each $single in $names
         @include _icon-base($single, $color, $font-family, $debug, $silent, $map, $include-content)
   @else
-    @if $silent
+    @if not $silent
       @warn "gen-icons: Icon mapping not found."
-    @else
-      @error "gen-icons: Fatal error! Icon mapping not found."
 
+
+/// Generates flexbox properties based on registered flexbox mapping.
+/// @param {String} $name - Flexbox layout configuration key.
 @mixin gen-flexbox($name, $silent: false)
   $props: map.get(flexbox-mapping.$flexbox, $name)
   @if $props
     @each $property, $value in $props
       #{$property}: $value
   @else
-    @if $silent
-      @warn "#{$name} not found in flexbox mapping."
-    @else
-      @error "#{$name} not found in flexbox mapping."
 
+    @if not $silent
+      @warn "#{$name} not found in flexbox mapping."
+
+/// Generates atomic utility classes for flexbox properties.
+/// @param {String} $prefix - Class name prefix.
+/// @param {String} $property - Target CSS property name.
+/// @param {Map} $map - Values mapping.
 @mixin gen-flexbox-atomic($prefix, $property, $map)
   @each $key, $value in $map
     .#{$prefix}-#{$key}
       #{$property}: $value
 
+/// Generates styled input classes with placeholder and focus states.
+/// @param {String|null} $name [null] - Specific input type name or null for all.
+/// @param {Color|null} $placeholder-color [null] - Optional placeholder text color.
+/// @param {Map} $custom [()] - Custom property overrides.
 @mixin gen-inputs($name: null, $placeholder-color: null, $custom: (), $debug: false, $silent: false)
   $props: map.merge(inputs.$default-input-props, $custom)
 
@@ -99,14 +102,17 @@
   @if $name == null
     @if $debug
       @debug "gen-inputs: Generating all input utility classes..."
+
     @each $cat, $list in inputs.$inputs
       @each $input in $list
+
         .#{$input}-input
           @each $prop, $val in $props
             #{$prop}: $val
           @if $placeholder-color != null
             &::placeholder
               color: $placeholder-color
+
           &::focus
             outline: $focus-outline
   @else
@@ -127,9 +133,11 @@
     .#{$name}-input
       @each $prop, $val in $props
         #{$prop}: $val
+
       @if $placeholder-color != null
         &::placeholder
           color: $placeholder-color
+  
       @if $focus-outline != null
         &::focus
           outline: $focus-outline
@@ -153,33 +161,32 @@
   )
   $props: map.merge($default-range-props, $custom)
 
-  $track-block-size: map.get($props, 'track-block-size')
   $thumb-size: map.get($props, 'thumb-size')
+  $track-block-size: map.get($props, 'track-block-size')
 
   // Calculate margin to perfectly center the thumb on the track in Webkit
   $thumb-margin: calc((#{$track-block-size} - #{$thumb-size}) / 2)
 
   // Target the range input itself
-  -webkit-appearance: none
-  appearance: none
+  cursor: pointer
   background: transparent
   inline-size: map.get($props, 'inline-size')
-  cursor: pointer
+
+  @include utils.appearance(none)
 
   // The Track
   &::-webkit-slider-runnable-track,
   &::-moz-range-track
-    block-size: $track-block-size
     background: map.get($props, 'track-color')
-    border-radius: map.get($props, 'track-radius')
+    @include utils.bo-ra(map.get($props, 'track-radius'))
 
+    @include utils.size($block: $track-block-size)
   // The Thumb
   &::-webkit-slider-thumb,
   &::-moz-range-thumb
-    -webkit-appearance: none
-    appearance: none
-    inline-size: $thumb-size
-    block-size: $thumb-size
     background: map.get($props, 'thumb-color')
-    border-radius: map.get($props, 'thumb-radius')
-    margin-block-start: $thumb-margin
+    @include utils.bo-ra(map.get($props, 'thumb-radius'))
+
+    @include utils.appearance(none)
+    @include utils.margin($b-start: $thumb-margin)
+    @include utils.size($inline: $thumb-size, $block: $thumb-size)

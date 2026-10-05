@@ -2,6 +2,650 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.11.3](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.11.2...v4.11.3) (2026-10-05)
+
+### [4.11.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.11.1...v4.11.2) (2026-10-05)
+
+### [4.11.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.11.0...v4.11.1) (2026-10-05)
+
+## [4.11.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.10.0...v4.11.0) (2026-10-05)
+
+
+### Features
+
+* **mixins:** add aspect-ratio mixin, expand card and theme-colors parameters, and update documentation. ([67aad0a](https://github.com/NexusWeave/ux-lumina-sass/commit/67aad0abd0de0732ca4b585adad1eb9279972423))
+* **utilities:** add frame, appearance, border-radius, base-input, and grid-layout mixins with docs and tests. ([2f511b8](https://github.com/NexusWeave/ux-lumina-sass/commit/2f511b88703ecef762abf7c6141252cec49f51f7))
+
+## [4.10.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.9.5...v4.10.0) (2026-10-05)
+
+
+### Features
+
+* **docs:** document inspect-color dictionary, non-breaking warnings, and notice suppression ([4e7661b](https://github.com/NexusWeave/ux-lumina-sass/commit/4e7661b8979040f7d8ef37667fd5be5ed423fcd5))
+
+
+### Bug Fixes
+
+* **contrast:** emit warning instead of error and add transparent surface notice ([7dcecc2](https://github.com/NexusWeave/ux-lumina-sass/commit/7dcecc256452615f960665f2f144ce1770739f36))
+* **entry:** resolve mixin imports in src/_index.sass ([6b8af1b](https://github.com/NexusWeave/ux-lumina-sass/commit/6b8af1bf9bb62518fee6c54a101f3082d1f0c20c))
+* **links:** support transparent surfaces and forward suppress-notice ([0b4074a](https://github.com/NexusWeave/ux-lumina-sass/commit/0b4074abfb2990b6d1286b9130527f208397ddae))
+
+### [4.9.5](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.9.4...v4.9.5) (2026-09-29)
+
+### [4.9.4](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.9.3...v4.9.4) (2026-09-29)
+
+
+### Bug Fixes
+
+* **contrast:** adaptive disabled link color with low threshold ([108b43e](https://github.com/NexusWeave/ux-lumina-sass/commit/108b43ea95e2c0f12105c052162ea3d7f3ff9250))
+
+### [4.9.3](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.9.2...v4.9.3) (2026-09-29)
+
+
+### Bug Fixes
+
+* **contrast:** support custom blend-bg in assert-contrast and link-color for dark backgrounds ([5573d99](https://github.com/NexusWeave/ux-lumina-sass/commit/5573d9965f19ccae9e7427887567458513f6266d))
+
+### [4.9.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.9.1...v4.9.2) (2026-09-29)
+
+### [4.9.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.9.0...v4.9.1) (2026-09-29)
+
+## [4.9.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.8.0...v4.9.0) (2026-09-29)
+
+
+### Features
+
+* **func:** add colorblind simulation functions and tests ([4fa5f12](https://github.com/NexusWeave/ux-lumina-sass/commit/4fa5f1212bd83cfccc1d0b12b693ffa68abe890c))
+
+
+### Bug Fixes
+
+* **accessibility:** improve WCAG contrast compliance across mixins and palette ([6bc7f25](https://github.com/NexusWeave/ux-lumina-sass/commit/6bc7f25f82c4a01c96a34fc5323612f33e17ce97))
+
+## [4.8.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.7.0...v4.8.0) (2026-09-29)
+
+
+### Features
+
+* **navigation:** add font-family & size parameters to nav-hamburg with tests. ([009be7f](https://github.com/NexusWeave/ux-lumina-sass/commit/009be7f7276282e78c7b66c150750f220d837adb))
+
+## [4.7.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.6.0...v4.7.0) (2026-09-29)
+
+
+### Features
+
+* **typography:** add font smoothing, line-clamp & default stack updates with tests. ([98d5d01](https://github.com/NexusWeave/ux-lumina-sass/commit/98d5d01097c3093e832918a8068bb685d2c54742))
+* **utilities:** add button reset support & transition mixin with test coverage. ([07602ea](https://github.com/NexusWeave/ux-lumina-sass/commit/07602ea96c506504b50e311edee11e7c8dfac950))
+
+
+### Bug Fixes
+
+* **navigation:** remove border from hamburger button & align test expectations. ([cd2f1e0](https://github.com/NexusWeave/ux-lumina-sass/commit/cd2f1e0ae9d6c2b0c97cd811015d5c3f6ef42eb0))
+
+## [4.6.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.181...v4.6.0) (2026-09-28)
+
+
+### Features
+
+* **navigation:** update nav-hamburg breakpoint to 768px (48rem) mobile-first architecture ([7c37469](https://github.com/NexusWeave/ux-lumina-sass/commit/7c37469c558dded6191d03175de9dc14198e0c0a))
+
+### [4.5.181](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.179...v4.5.181) (2026-09-28)
+
+
+### Bug Fixes
+
+* looping ([7bd9626](https://github.com/NexusWeave/ux-lumina-sass/commit/7bd962627eb30760d756264a826424ef1734718c))
+
+### [4.5.180](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.179...v4.5.180) (2026-09-28)
+
+### [4.5.179](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.178...v4.5.179) (2026-09-28)
+
+### [4.5.178](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.177...v4.5.178) (2026-09-28)
+
+### [4.5.177](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.176...v4.5.177) (2026-09-28)
+
+### [4.5.176](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.175...v4.5.176) (2026-09-28)
+
+### [4.5.175](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.174...v4.5.175) (2026-09-28)
+
+### [4.5.174](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.173...v4.5.174) (2026-09-28)
+
+### [4.5.173](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.172...v4.5.173) (2026-09-28)
+
+### [4.5.172](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.171...v4.5.172) (2026-09-28)
+
+### [4.5.171](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.170...v4.5.171) (2026-09-28)
+
+### [4.5.170](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.169...v4.5.170) (2026-09-28)
+
+### [4.5.169](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.168...v4.5.169) (2026-09-28)
+
+### [4.5.168](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.167...v4.5.168) (2026-09-28)
+
+### [4.5.167](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.166...v4.5.167) (2026-09-28)
+
+### [4.5.166](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.165...v4.5.166) (2026-09-28)
+
+### [4.5.165](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.164...v4.5.165) (2026-09-28)
+
+### [4.5.164](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.163...v4.5.164) (2026-09-28)
+
+### [4.5.163](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.162...v4.5.163) (2026-09-28)
+
+### [4.5.162](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.161...v4.5.162) (2026-09-28)
+
+### [4.5.161](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.160...v4.5.161) (2026-09-28)
+
+### [4.5.160](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.159...v4.5.160) (2026-09-28)
+
+### [4.5.159](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.158...v4.5.159) (2026-09-28)
+
+### [4.5.158](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.157...v4.5.158) (2026-09-28)
+
+### [4.5.157](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.156...v4.5.157) (2026-09-28)
+
+### [4.5.156](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.155...v4.5.156) (2026-09-28)
+
+### [4.5.155](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.154...v4.5.155) (2026-09-28)
+
+### [4.5.154](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.153...v4.5.154) (2026-09-28)
+
+### [4.5.153](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.152...v4.5.153) (2026-09-28)
+
+### [4.5.152](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.151...v4.5.152) (2026-09-28)
+
+### [4.5.151](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.150...v4.5.151) (2026-09-28)
+
+### [4.5.150](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.149...v4.5.150) (2026-09-28)
+
+### [4.5.149](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.148...v4.5.149) (2026-09-28)
+
+### [4.5.148](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.147...v4.5.148) (2026-09-28)
+
+### [4.5.147](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.146...v4.5.147) (2026-09-28)
+
+### [4.5.146](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.145...v4.5.146) (2026-09-28)
+
+### [4.5.145](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.144...v4.5.145) (2026-09-28)
+
+### [4.5.144](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.143...v4.5.144) (2026-09-28)
+
+### [4.5.143](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.142...v4.5.143) (2026-09-28)
+
+### [4.5.142](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.141...v4.5.142) (2026-09-28)
+
+### [4.5.141](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.140...v4.5.141) (2026-09-28)
+
+### [4.5.140](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.139...v4.5.140) (2026-09-28)
+
+### [4.5.139](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.138...v4.5.139) (2026-09-28)
+
+### [4.5.138](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.137...v4.5.138) (2026-09-28)
+
+### [4.5.137](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.136...v4.5.137) (2026-09-28)
+
+### [4.5.136](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.135...v4.5.136) (2026-09-28)
+
+### [4.5.135](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.134...v4.5.135) (2026-09-28)
+
+### [4.5.134](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.133...v4.5.134) (2026-09-28)
+
+### [4.5.133](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.132...v4.5.133) (2026-09-28)
+
+### [4.5.132](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.131...v4.5.132) (2026-09-28)
+
+### [4.5.131](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.130...v4.5.131) (2026-09-28)
+
+### [4.5.130](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.129...v4.5.130) (2026-09-28)
+
+### [4.5.129](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.128...v4.5.129) (2026-09-28)
+
+### [4.5.128](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.127...v4.5.128) (2026-09-28)
+
+### [4.5.127](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.126...v4.5.127) (2026-09-28)
+
+### [4.5.126](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.125...v4.5.126) (2026-09-28)
+
+### [4.5.125](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.124...v4.5.125) (2026-09-28)
+
+### [4.5.124](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.123...v4.5.124) (2026-09-28)
+
+### [4.5.123](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.122...v4.5.123) (2026-09-28)
+
+### [4.5.122](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.121...v4.5.122) (2026-09-28)
+
+### [4.5.121](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.120...v4.5.121) (2026-09-28)
+
+### [4.5.120](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.119...v4.5.120) (2026-09-28)
+
+### [4.5.119](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.118...v4.5.119) (2026-09-28)
+
+### [4.5.118](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.117...v4.5.118) (2026-09-28)
+
+### [4.5.117](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.116...v4.5.117) (2026-09-28)
+
+### [4.5.116](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.115...v4.5.116) (2026-09-28)
+
+### [4.5.115](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.114...v4.5.115) (2026-09-28)
+
+### [4.5.114](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.113...v4.5.114) (2026-09-28)
+
+### [4.5.113](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.112...v4.5.113) (2026-09-28)
+
+### [4.5.112](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.111...v4.5.112) (2026-09-28)
+
+### [4.5.111](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.110...v4.5.111) (2026-09-28)
+
+### [4.5.110](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.109...v4.5.110) (2026-09-28)
+
+### [4.5.109](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.108...v4.5.109) (2026-09-28)
+
+### [4.5.108](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.107...v4.5.108) (2026-09-28)
+
+### [4.5.107](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.106...v4.5.107) (2026-09-28)
+
+### [4.5.106](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.105...v4.5.106) (2026-09-28)
+
+### [4.5.105](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.104...v4.5.105) (2026-09-28)
+
+### [4.5.104](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.103...v4.5.104) (2026-09-28)
+
+### [4.5.103](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.102...v4.5.103) (2026-09-28)
+
+### [4.5.102](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.101...v4.5.102) (2026-09-28)
+
+### [4.5.101](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.100...v4.5.101) (2026-09-28)
+
+### [4.5.100](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.99...v4.5.100) (2026-09-28)
+
+### [4.5.99](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.98...v4.5.99) (2026-09-28)
+
+### [4.5.98](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.97...v4.5.98) (2026-09-28)
+
+### [4.5.97](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.96...v4.5.97) (2026-09-28)
+
+### [4.5.96](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.95...v4.5.96) (2026-09-28)
+
+### [4.5.95](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.94...v4.5.95) (2026-09-28)
+
+### [4.5.94](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.93...v4.5.94) (2026-09-28)
+
+### [4.5.93](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.92...v4.5.93) (2026-09-28)
+
+### [4.5.92](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.91...v4.5.92) (2026-09-28)
+
+### [4.5.91](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.90...v4.5.91) (2026-09-28)
+
+### [4.5.90](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.89...v4.5.90) (2026-09-28)
+
+### [4.5.89](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.88...v4.5.89) (2026-09-28)
+
+### [4.5.88](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.87...v4.5.88) (2026-09-28)
+
+### [4.5.87](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.86...v4.5.87) (2026-09-28)
+
+### [4.5.86](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.85...v4.5.86) (2026-09-28)
+
+### [4.5.85](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.84...v4.5.85) (2026-09-28)
+
+### [4.5.84](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.83...v4.5.84) (2026-09-28)
+
+### [4.5.83](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.82...v4.5.83) (2026-09-28)
+
+### [4.5.82](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.81...v4.5.82) (2026-09-28)
+
+### [4.5.81](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.80...v4.5.81) (2026-09-28)
+
+### [4.5.80](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.79...v4.5.80) (2026-09-28)
+
+### [4.5.79](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.78...v4.5.79) (2026-09-28)
+
+### [4.5.78](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.77...v4.5.78) (2026-09-28)
+
+### [4.5.77](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.76...v4.5.77) (2026-09-28)
+
+### [4.5.76](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.75...v4.5.76) (2026-09-28)
+
+### [4.5.75](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.74...v4.5.75) (2026-09-28)
+
+### [4.5.74](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.73...v4.5.74) (2026-09-28)
+
+### [4.5.73](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.72...v4.5.73) (2026-09-28)
+
+### [4.5.72](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.71...v4.5.72) (2026-09-28)
+
+### [4.5.71](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.70...v4.5.71) (2026-09-28)
+
+### [4.5.70](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.69...v4.5.70) (2026-09-28)
+
+### [4.5.69](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.68...v4.5.69) (2026-09-28)
+
+### [4.5.68](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.67...v4.5.68) (2026-09-28)
+
+### [4.5.67](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.66...v4.5.67) (2026-09-28)
+
+### [4.5.66](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.65...v4.5.66) (2026-09-28)
+
+### [4.5.65](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.64...v4.5.65) (2026-09-28)
+
+### [4.5.64](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.63...v4.5.64) (2026-09-28)
+
+### [4.5.63](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.62...v4.5.63) (2026-09-28)
+
+### [4.5.62](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.61...v4.5.62) (2026-09-28)
+
+### [4.5.61](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.60...v4.5.61) (2026-09-28)
+
+### [4.5.60](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.59...v4.5.60) (2026-09-28)
+
+### [4.5.59](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.58...v4.5.59) (2026-09-28)
+
+### [4.5.58](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.57...v4.5.58) (2026-09-28)
+
+### [4.5.57](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.56...v4.5.57) (2026-09-28)
+
+### [4.5.56](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.55...v4.5.56) (2026-09-28)
+
+### [4.5.55](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.54...v4.5.55) (2026-09-28)
+
+### [4.5.54](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.53...v4.5.54) (2026-09-28)
+
+### [4.5.53](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.52...v4.5.53) (2026-09-28)
+
+### [4.5.52](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.51...v4.5.52) (2026-09-28)
+
+### [4.5.51](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.50...v4.5.51) (2026-09-28)
+
+### [4.5.50](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.49...v4.5.50) (2026-09-28)
+
+### [4.5.49](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.48...v4.5.49) (2026-09-28)
+
+### [4.5.48](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.47...v4.5.48) (2026-09-28)
+
+### [4.5.47](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.46...v4.5.47) (2026-09-28)
+
+### [4.5.46](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.45...v4.5.46) (2026-09-28)
+
+### [4.5.45](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.44...v4.5.45) (2026-09-28)
+
+### [4.5.44](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.43...v4.5.44) (2026-09-28)
+
+### [4.5.43](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.42...v4.5.43) (2026-09-28)
+
+### [4.5.42](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.41...v4.5.42) (2026-09-28)
+
+### [4.5.41](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.40...v4.5.41) (2026-09-28)
+
+### [4.5.40](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.39...v4.5.40) (2026-09-28)
+
+### [4.5.39](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.38...v4.5.39) (2026-09-28)
+
+### [4.5.38](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.37...v4.5.38) (2026-09-28)
+
+### [4.5.37](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.36...v4.5.37) (2026-09-28)
+
+### [4.5.36](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.35...v4.5.36) (2026-09-28)
+
+### [4.5.35](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.34...v4.5.35) (2026-09-28)
+
+### [4.5.34](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.33...v4.5.34) (2026-09-28)
+
+### [4.5.33](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.32...v4.5.33) (2026-09-28)
+
+### [4.5.32](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.31...v4.5.32) (2026-09-28)
+
+### [4.5.31](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.30...v4.5.31) (2026-09-28)
+
+### [4.5.30](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.29...v4.5.30) (2026-09-28)
+
+### [4.5.29](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.28...v4.5.29) (2026-09-28)
+
+### [4.5.28](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.27...v4.5.28) (2026-09-28)
+
+### [4.5.27](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.26...v4.5.27) (2026-09-28)
+
+### [4.5.26](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.25...v4.5.26) (2026-09-28)
+
+### [4.5.25](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.24...v4.5.25) (2026-09-28)
+
+### [4.5.24](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.23...v4.5.24) (2026-09-28)
+
+### [4.5.23](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.22...v4.5.23) (2026-09-28)
+
+### [4.5.22](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.21...v4.5.22) (2026-09-28)
+
+### [4.5.21](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.20...v4.5.21) (2026-09-28)
+
+### [4.5.20](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.19...v4.5.20) (2026-09-28)
+
+### [4.5.19](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.18...v4.5.19) (2026-09-28)
+
+### [4.5.18](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.17...v4.5.18) (2026-09-28)
+
+### [4.5.17](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.16...v4.5.17) (2026-09-28)
+
+### [4.5.16](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.15...v4.5.16) (2026-09-28)
+
+### [4.5.15](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.14...v4.5.15) (2026-09-28)
+
+### [4.5.14](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.13...v4.5.14) (2026-09-28)
+
+### [4.5.13](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.12...v4.5.13) (2026-09-28)
+
+### [4.5.12](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.11...v4.5.12) (2026-09-28)
+
+### [4.5.11](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.10...v4.5.11) (2026-09-28)
+
+### [4.5.10](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.9...v4.5.10) (2026-09-28)
+
+### [4.5.9](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.8...v4.5.9) (2026-09-28)
+
+### [4.5.8](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.1...v4.5.8) (2026-09-28)
+
+
+### Bug Fixes
+
+* **ci:** add git pull --rebase before push in release workflow ([412c039](https://github.com/NexusWeave/ux-lumina-sass/commit/412c0395ce84d39d28376a6c7d36984dffe70690))
+* **ci:** fetch latest master ref before npm publish ([bc79d67](https://github.com/NexusWeave/ux-lumina-sass/commit/bc79d67cd11c754b45f224659cfc32b8a3bd3e3b))
+* **ci:** fix indentation under workflow_run trigger in release.yml ([4b4440b](https://github.com/NexusWeave/ux-lumina-sass/commit/4b4440b7bf735379fcd3ea3e7ab7d8c7559c9992))
+* **ci:** make publish workflow dependent on release workflow ([f87ffec](https://github.com/NexusWeave/ux-lumina-sass/commit/f87ffecc64ec8cc5c48b340f55ae50440efd6ff1))
+* **ci:** skip tag creation in release workflow to prevent duplicate tag failure ([5b25cca](https://github.com/NexusWeave/ux-lumina-sass/commit/5b25ccaf1afa117527efae87b1e3002e4e53dfe7))
+* **ci:** trigger release workflow and add workflow_dispatch ([c6d9e60](https://github.com/NexusWeave/ux-lumina-sass/commit/c6d9e6026ed2ed3bb468474ae866e10a185f61fb))
+* **release:** trigger pipeline release flow ([1bde8d5](https://github.com/NexusWeave/ux-lumina-sass/commit/1bde8d5933d6caef6032bb102eda9b331090d7ef))
+
+### [4.5.7](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.1...v4.5.7) (2026-09-28)
+
+
+### Bug Fixes
+
+* **ci:** fetch latest master ref before npm publish ([bc79d67](https://github.com/NexusWeave/ux-lumina-sass/commit/bc79d67cd11c754b45f224659cfc32b8a3bd3e3b))
+* **ci:** fix indentation under workflow_run trigger in release.yml ([4b4440b](https://github.com/NexusWeave/ux-lumina-sass/commit/4b4440b7bf735379fcd3ea3e7ab7d8c7559c9992))
+* **ci:** make publish workflow dependent on release workflow ([f87ffec](https://github.com/NexusWeave/ux-lumina-sass/commit/f87ffecc64ec8cc5c48b340f55ae50440efd6ff1))
+* **ci:** skip tag creation in release workflow to prevent duplicate tag failure ([5b25cca](https://github.com/NexusWeave/ux-lumina-sass/commit/5b25ccaf1afa117527efae87b1e3002e4e53dfe7))
+* **ci:** trigger release workflow and add workflow_dispatch ([c6d9e60](https://github.com/NexusWeave/ux-lumina-sass/commit/c6d9e6026ed2ed3bb468474ae866e10a185f61fb))
+* **release:** trigger pipeline release flow ([1bde8d5](https://github.com/NexusWeave/ux-lumina-sass/commit/1bde8d5933d6caef6032bb102eda9b331090d7ef))
+
+### [4.5.6](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.1...v4.5.6) (2026-09-28)
+
+
+### Bug Fixes
+
+* **ci:** fetch latest master ref before npm publish ([bc79d67](https://github.com/NexusWeave/ux-lumina-sass/commit/bc79d67cd11c754b45f224659cfc32b8a3bd3e3b))
+* **ci:** fix indentation under workflow_run trigger in release.yml ([4b4440b](https://github.com/NexusWeave/ux-lumina-sass/commit/4b4440b7bf735379fcd3ea3e7ab7d8c7559c9992))
+* **ci:** make publish workflow dependent on release workflow ([f87ffec](https://github.com/NexusWeave/ux-lumina-sass/commit/f87ffecc64ec8cc5c48b340f55ae50440efd6ff1))
+* **ci:** skip tag creation in release workflow to prevent duplicate tag failure ([5b25cca](https://github.com/NexusWeave/ux-lumina-sass/commit/5b25ccaf1afa117527efae87b1e3002e4e53dfe7))
+* **ci:** trigger release workflow and add workflow_dispatch ([c6d9e60](https://github.com/NexusWeave/ux-lumina-sass/commit/c6d9e6026ed2ed3bb468474ae866e10a185f61fb))
+* **release:** trigger pipeline release flow ([1bde8d5](https://github.com/NexusWeave/ux-lumina-sass/commit/1bde8d5933d6caef6032bb102eda9b331090d7ef))
+
+### [4.5.5](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.1...v4.5.5) (2026-09-28)
+
+
+### Bug Fixes
+
+* **ci:** fetch latest master ref before npm publish ([bc79d67](https://github.com/NexusWeave/ux-lumina-sass/commit/bc79d67cd11c754b45f224659cfc32b8a3bd3e3b))
+* **ci:** fix indentation under workflow_run trigger in release.yml ([4b4440b](https://github.com/NexusWeave/ux-lumina-sass/commit/4b4440b7bf735379fcd3ea3e7ab7d8c7559c9992))
+* **ci:** make publish workflow dependent on release workflow ([f87ffec](https://github.com/NexusWeave/ux-lumina-sass/commit/f87ffecc64ec8cc5c48b340f55ae50440efd6ff1))
+* **ci:** skip tag creation in release workflow to prevent duplicate tag failure ([5b25cca](https://github.com/NexusWeave/ux-lumina-sass/commit/5b25ccaf1afa117527efae87b1e3002e4e53dfe7))
+* **ci:** trigger release workflow and add workflow_dispatch ([c6d9e60](https://github.com/NexusWeave/ux-lumina-sass/commit/c6d9e6026ed2ed3bb468474ae866e10a185f61fb))
+* **release:** trigger pipeline release flow ([1bde8d5](https://github.com/NexusWeave/ux-lumina-sass/commit/1bde8d5933d6caef6032bb102eda9b331090d7ef))
+
+### [4.5.4](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.1...v4.5.4) (2026-09-28)
+
+
+### Bug Fixes
+
+* **ci:** fetch latest master ref before npm publish ([bc79d67](https://github.com/NexusWeave/ux-lumina-sass/commit/bc79d67cd11c754b45f224659cfc32b8a3bd3e3b))
+* **ci:** fix indentation under workflow_run trigger in release.yml ([4b4440b](https://github.com/NexusWeave/ux-lumina-sass/commit/4b4440b7bf735379fcd3ea3e7ab7d8c7559c9992))
+* **ci:** make publish workflow dependent on release workflow ([f87ffec](https://github.com/NexusWeave/ux-lumina-sass/commit/f87ffecc64ec8cc5c48b340f55ae50440efd6ff1))
+* **ci:** skip tag creation in release workflow to prevent duplicate tag failure ([5b25cca](https://github.com/NexusWeave/ux-lumina-sass/commit/5b25ccaf1afa117527efae87b1e3002e4e53dfe7))
+* **ci:** trigger release workflow and add workflow_dispatch ([c6d9e60](https://github.com/NexusWeave/ux-lumina-sass/commit/c6d9e6026ed2ed3bb468474ae866e10a185f61fb))
+* **release:** trigger pipeline release flow ([1bde8d5](https://github.com/NexusWeave/ux-lumina-sass/commit/1bde8d5933d6caef6032bb102eda9b331090d7ef))
+
+### [4.5.3](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.1...v4.5.3) (2026-09-28)
+
+
+### Bug Fixes
+
+* **ci:** fetch latest master ref before npm publish ([bc79d67](https://github.com/NexusWeave/ux-lumina-sass/commit/bc79d67cd11c754b45f224659cfc32b8a3bd3e3b))
+* **ci:** fix indentation under workflow_run trigger in release.yml ([4b4440b](https://github.com/NexusWeave/ux-lumina-sass/commit/4b4440b7bf735379fcd3ea3e7ab7d8c7559c9992))
+* **ci:** make publish workflow dependent on release workflow ([f87ffec](https://github.com/NexusWeave/ux-lumina-sass/commit/f87ffecc64ec8cc5c48b340f55ae50440efd6ff1))
+* **ci:** skip tag creation in release workflow to prevent duplicate tag failure ([5b25cca](https://github.com/NexusWeave/ux-lumina-sass/commit/5b25ccaf1afa117527efae87b1e3002e4e53dfe7))
+* **ci:** trigger release workflow and add workflow_dispatch ([c6d9e60](https://github.com/NexusWeave/ux-lumina-sass/commit/c6d9e6026ed2ed3bb468474ae866e10a185f61fb))
+* **release:** trigger pipeline release flow ([1bde8d5](https://github.com/NexusWeave/ux-lumina-sass/commit/1bde8d5933d6caef6032bb102eda9b331090d7ef))
+
+### [4.5.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.1...v4.5.2) (2026-09-28)
+
+
+### Bug Fixes
+
+* **ci:** fetch latest master ref before npm publish ([bc79d67](https://github.com/NexusWeave/ux-lumina-sass/commit/bc79d67cd11c754b45f224659cfc32b8a3bd3e3b))
+* **ci:** fix indentation under workflow_run trigger in release.yml ([4b4440b](https://github.com/NexusWeave/ux-lumina-sass/commit/4b4440b7bf735379fcd3ea3e7ab7d8c7559c9992))
+* **ci:** make publish workflow dependent on release workflow ([f87ffec](https://github.com/NexusWeave/ux-lumina-sass/commit/f87ffecc64ec8cc5c48b340f55ae50440efd6ff1))
+* **ci:** trigger release workflow and add workflow_dispatch ([c6d9e60](https://github.com/NexusWeave/ux-lumina-sass/commit/c6d9e6026ed2ed3bb468474ae866e10a185f61fb))
+* **release:** trigger pipeline release flow ([1bde8d5](https://github.com/NexusWeave/ux-lumina-sass/commit/1bde8d5933d6caef6032bb102eda9b331090d7ef))
+
+### [4.5.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.5.0...v4.5.1) (2026-09-27)
+
+## [4.5.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.3.0...v4.5.0) (2026-09-27)
+
+
+### Features
+
+* **mixins:** refactor mixins, add navigation module, and expand parametric reset with position fallback ([1e44b61](https://github.com/NexusWeave/ux-lumina-sass/commit/1e44b61013573f9fd7307903d3a55f6b2b97417e))
+
+## [4.3.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.2.3...v4.3.0) (2026-09-27)
+
+
+### Features
+
+* **mixins:** add media-between mixin for custom breakpoint range handling ([9cb4391](https://github.com/NexusWeave/ux-lumina-sass/commit/9cb43912089efc1b21aebaee9f4f42b633b507de))
+
+
+### Bug Fixes
+
+* **mixins:** prevent breakpoint collision in media-down mixin and fix deprecation warnings ([53fb8fa](https://github.com/NexusWeave/ux-lumina-sass/commit/53fb8fa1a7d3e1ca7e1f32eabc3bb279f59ab1a2))
+
+### [4.2.3](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.2.2...v4.2.3) (2026-09-27)
+
+### [4.2.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.2.1...v4.2.2) (2026-09-27)
+
+
+### Bug Fixes
+
+* **breakpoints:** replace deprecated Sass if() function with standard [@if](https://github.com/if) directive ([b3ae905](https://github.com/NexusWeave/ux-lumina-sass/commit/b3ae905058f2cf332f7d9a68ad6dadf8fea92fe1))
+
+### [4.2.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.2.0...v4.2.1) (2026-09-27)
+
+## [4.2.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.1.2...v4.2.0) (2026-09-27)
+
+
+### Features
+
+* **breakpoints:** refactor to mobile-first media queries and add hd/8k breakpoints ([5583b87](https://github.com/NexusWeave/ux-lumina-sass/commit/5583b8730540bc419014e731536b505e8690c50c))
+
+
+### Bug Fixes
+
+* **generators:** fix indentation in icon generator mixin ([3c22d46](https://github.com/NexusWeave/ux-lumina-sass/commit/3c22d4654bbebbbe7a30f30d4b3241490201b040))
+* **generators:** reuse icon-base mixin in gen-icons ([f32a1f9](https://github.com/NexusWeave/ux-lumina-sass/commit/f32a1f99281b61b7ca1e40b2bf503c73278c2b47))
+
+### [4.1.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.1.1...v4.1.2) (2026-09-25)
+
+### [4.1.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.1.0...v4.1.1) (2026-09-24)
+
+
+### Bug Fixes
+
+* **margin:** replace deprecated if() with [@if](https://github.com/if) blocks. ([3f089ba](https://github.com/NexusWeave/ux-lumina-sass/commit/3f089bafb12695b2632612dab2a60a43a656795c))
+
+## [4.1.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.0.0...v4.1.0) (2026-09-24)
+
+
+### Features
+
+* **mix:** add margin & comprehensive form input mixins with unit tests. ([18c7829](https://github.com/NexusWeave/ux-lumina-sass/commit/18c7829de8578c62d1667fc539caf8601c3575a1))
+
+## [4.0.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.7.0...v4.0.0) (2026-09-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* **map:** Removed legacy breakpoint shortcodes (xs, sm, md, lg, xl, S, M, L, XL, 2XL, 3XL), tablet, and desktop variations from $breakpoints. Consumers must use the 7 standardized semantic keys: mobile-s, mobile, tablet-landscape, desktop-s, desktop, fhd, 4k.
+
+### Features
+
+* **map:** standardize semantic breakpoint names & remove legacy codes. ([f55a6d4](https://github.com/NexusWeave/ux-lumina-sass/commit/f55a6d4dfd0eac3ae80afa9f5820475d5e2034a2))
+
+## [3.7.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.6.1...v3.7.0) (2026-09-24)
+
+
+### Features
+
+* **mixins:** add position utilities & min/max logical dimension helpers. ([28a5ca5](https://github.com/NexusWeave/ux-lumina-sass/commit/28a5ca58d26cb351b1f76b94fc06eeb7062357c5))
+
+### [3.6.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.6.0...v3.6.1) (2026-09-24)
+
+## [3.6.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.5.3...v3.6.0) (2026-09-24)
+
+
+### Features
+
+* **mixins:** add size mixin for logical inline & block dimensions. ([94e1acd](https://github.com/NexusWeave/ux-lumina-sass/commit/94e1acd5a76967d42fc089e19468f0c0cf7ed36e))
+
+### [3.5.3](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.5.2...v3.5.3) (2026-09-11)
+
+### [3.5.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.5.1...v3.5.2) (2026-09-11)
+
+
+### Bug Fixes
+
+* **video-wrapper:** resolving UI issues, where wrapper is below video. ([3d1f736](https://github.com/NexusWeave/ux-lumina-sass/commit/3d1f73616155433f64c748e7923b997d5cfa496c))
+
+### [3.5.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.5.0...v3.5.1) (2026-09-11)
+
+## [3.5.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.4.2...v3.5.0) (2026-09-01)
+
+
+### Features
+
+* **icons:** introduce hamburger & x icons. ([389b19e](https://github.com/NexusWeave/ux-lumina-sass/commit/389b19ecc5a076969cfa18b16cfc5117984b8a62))
+
+### [3.4.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.4.1...v3.4.2) (2026-08-27)
+
+### [3.4.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.4.0...v3.4.1) (2026-08-26)
+
+## [3.4.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.3.5...v3.4.0) (2026-08-26)
+
+
+### Features
+
+* **video-wrapper:** add video-wrapper. ([86726ac](https://github.com/NexusWeave/ux-lumina-sass/commit/86726ac4d31dcd3029bea5964783be173ef9a439))
+
+
+### Bug Fixes
+
+* **media:** fix intendation error. ([b880924](https://github.com/NexusWeave/ux-lumina-sass/commit/b880924cb2670361709f45b9b29bb4a2ecfd4e25))
+
 ### [3.3.5](https://github.com/NexusWeave/ux-lumina-sass/compare/v3.3.4...v3.3.5) (2026-06-18)
 
 

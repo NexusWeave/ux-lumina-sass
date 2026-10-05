@@ -3,41 +3,44 @@
 
 // Internal dependencies
 @use '../color' as c
-@use 'utilities' as *
+@use 'position' as pos
+@use 'utilities' as utils
 @use 'typography' as typo
 @use '../func/color' as func-color
 
 
-@mixin base-btn($bg-color: c.$light-blue, $text-color: null, $border-color: null, $size: 1em, $weight: bold)
-
-    @if $border-color == null
-        border: none
-    @else
-        border: 0.0625rem solid $border-color
-
-    margin: 0.5em
-    cursor: pointer
-    position: relative
-    padding: 0.5em 1.5em
-    border-radius: 0.5em
-    display: inline-block
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s
-    
-    @include background-color($bg-color, $text-color)
-    @include typo.font($size: $size, $weight: $weight)
-    
-
+/// Styles an interactive button with automated contrast, hover, and active states.
+/// @param {Color} $bg-color [c.$light-blue] - Button background color.
+/// @param {Color|null} $text-color [null] - Text color (auto-calculated if null).
+/// @param {Color|null} $border-color [null] - Optional border color.
+/// @param {Length} $size [1em] - Text font size.
+/// @param {String|Number} $weight [bold] - Text font weight.
+/// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin base-btn($bg-color: c.$light-blue, $text-color: null, $border-color: null, $size: 1em, $weight: bold, $suppress: false)
     &:hover
         transform: scale(1.05)
         $hover-bg: color.adjust($bg-color, $lightness: -5%)
-        @include background-color($hover-bg)
 
+        @include utils.background-color($hover-bg, $suppress: $suppress)
+        
     &:active
         transform: scale(0.95)
-        $active-bg: color.adjust($bg-color, $lightness: -10%)
-        @include background-color($active-bg)
+        @include utils.background-color(color.adjust($bg-color, $lightness: -10%), $text-color, $suppress: $suppress)
 
     &:disabled
         opacity: 0.3
         cursor: not-allowed
         pointer-events: none
+
+    cursor: pointer
+    display: inline-block
+    padding: 0.5rem 1.5rem
+    @include pos.relative()
+    @include utils.bo-ra(.5rem)
+    @include utils.margin(.5rem)
+    @include typo.font($size: $size, $weight: $weight)
+    @include utils.background-color($bg-color, $text-color, $suppress: $suppress)
+    @include utils.transition('transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s')
+
+    @if $border-color != null
+        @include utils.bo-props($border: 0.0625rem solid $border-color)

@@ -9,6 +9,7 @@
 @use 'theme-colors' as theme-colors
 @use '../func/color' as func-color
 
+
 /// Bootstraps the entire theme start by orchestrating the sub-modules
 @mixin apply-global-theme($body-bg: c.$soft-white, $text-color: null, $accent-color: null, $custom-colors: (), $font: null)
     $colors: func-color.theme-colors($body-bg, $text-color, $accent-color, $custom-colors)

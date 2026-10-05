@@ -42,18 +42,15 @@
     @else
         @error "Invalid breakpoint `#{$breakpoint}` in media-queries mixin. Available breakpoints: #{map.keys(bp.$breakpoints)}"
 
-
 /// Generates min-width query via media-queries-base (Mobile-First).
 @mixin mobile-first($breakpoint, $value: null)
     @include media-queries-base($breakpoint, $value, $type: 'min-width')
         @content
 
-
 /// Generates max-width query via media-queries-base (Desktop-First fallback with -0.02rem boundary reduction).
 @mixin desktop-first($breakpoint, $value: null)
     @include media-queries-base($breakpoint, $value, $type: 'max-width')
         @content
-
 
 /// Generates media query for a range between two breakpoints via media-queries-base.
 @mixin media-between($min-breakpoint, $max-breakpoint)
@@ -71,18 +68,15 @@
     @include media-queries-base('(min-width: #{$min-val}) and (max-width: #{$max-val})')
         @content
 
-
 /// Helper for prefers-color-scheme via media-queries-base.
 @mixin prefers-color-scheme($mode)
     @include media-queries-base('(prefers-color-scheme: #{$mode})')
         @content
 
-
 /// Helper for prefers-orientation via media-queries-base.
 @mixin prefers-orientation($orientation)
     @include media-queries-base('orientation', $orientation)
         @content
-
 
 /// Device-specific query dispatcher via media-queries-base.
 @mixin device-media($device, $orientation: portrait)

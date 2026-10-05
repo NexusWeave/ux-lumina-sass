@@ -157,3 +157,22 @@
 
     $text: best-contrast-color($bg)
     @return ('background': $bg, 'text': $text)
+
+/// Inspects a color or CSS color keyword and returns a dictionary of its type and properties.
+/// @param {*} $val - The color value to inspect.
+/// @return {Map} - Map containing type, value, is-transparent, is-inherit, and is-special.
+@function inspect-color($val)
+    $type: meta.type-of($val)
+    $is-trans: false
+    $is-inh: false
+
+    @if $val == transparent or $val == 'transparent'
+        $is-trans: true
+
+    @else if $type == 'color' and color.channel($val, 'alpha', $space: rgb) == 0
+        $is-trans: true
+
+    @else if $val == inherit or $val == 'inherit'
+        $is-inh: true
+
+    @return ('type': $type, 'value': $val, 'is-transparent': $is-trans, 'is-inherit': $is-inh, 'is-special': ($is-trans or $is-inh))

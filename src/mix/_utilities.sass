@@ -13,18 +13,21 @@
 /// Validates WCAG contrast when explicit text color is provided.
 /// @param {Color|String} $bg-color [c.$soft-white] - The background color to apply.
 /// @param {Color|String} $text-color [null] - Optional text color. If null, calculated based on contrast.
-/// @param {Color} $blend-bg [c.$soft-white] - Background to blend against if $bg-color is semi-transparent.
 /// @param {Number} $threshold [4.5] - The minimum acceptable contrast ratio (standard WCAG AA compliance is 4.5:1).
-@mixin background-color($bg-color: c.$soft-white, $text-color: null, $blend-bg: c.$soft-white, $threshold: 4.5)
+/// @param {Boolean} $suppress-notice [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin background-color($bg-color: c.$soft-white, $text-color: null, $threshold: 4.5, $suppress-notice: false)
     background-color: $bg-color
 
     @if $text-color != null
-        @if meta.type-of($bg-color) == 'color' and meta.type-of($text-color) == 'color'
-            @include contrast.assert-contrast($text-color, $bg-color, $threshold: $threshold, $blend-bg: $blend-bg)
+        $bg-info: func-color.inspect-color($bg-color)
+        $text-info: func-color.inspect-color($text-color)
+
+        @if (map.get($bg-info, 'type') == 'color' or map.get($bg-info, 'is-special')) and (map.get($text-info, 'type') == 'color' or map.get($text-info, 'is-special'))
+            @include contrast.assert-contrast($text-color, $bg-color, $threshold: $threshold, $suppress-notice: $suppress-notice)
         color: $text-color
 
     @else if meta.type-of($bg-color) == 'color'
-        color: func-color.best-contrast-color($bg-color, $background: $blend-bg)
+        color: func-color.best-contrast-color($bg-color)
 
 /// Applies icon font properties.
 /// @param {String} $icon-content - The unicode character for the icon.
@@ -241,7 +244,7 @@
 
             cursor: help
             text-decoration: underline dotted
-            @include background-color(transparent, $text)
+            @include background-color(transparent, $text, $suppress-notice: true)
             
 
         code

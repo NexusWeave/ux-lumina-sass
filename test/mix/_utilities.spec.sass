@@ -77,17 +77,6 @@
           background-color: inherit
           color: transparent
 
-  @include true.test('Handles transparent background correctly with blending')
-    @include true.assert
-      @include true.output
-        .transparent-bg
-          @include utilities.background-color(transparent, $blend-bg: #000000)
-      
-      @include true.expect
-        .transparent-bg
-          background-color: transparent
-          color: base.$white
-
   @include true.test('Sets inline and block sizes with optional min/max limits')
     @include true.assert
       @include true.output

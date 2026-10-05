@@ -162,4 +162,29 @@ Sets CSS transition shorthand or granular transition properties (`property`, `du
 - `$delay`: Length|String - Delay time before start. Defaults to `null`.
 - `$behavior`: String - Transition behavior mode (e.g. `allow-discrete`). Defaults to `null`.
 
+### aspect-ratio
+
+Sets object-fit, logical full inline size, optional border-radius, and calculates CSS `aspect-ratio`.
+
+#### Usage
+
+```sass
+@use 'lumina-sass/mixins' as l-mix
+
+// Default 16:9 widescreen ratio
+.media-container
+	@include l-mix.aspect-ratio()
+
+// Custom 4:3 ratio with rounded borders
+.thumbnail-box
+	@include l-mix.aspect-ratio($width: 4, $length: 3, $object-fit: contain, $border-radius: 0.5rem)
+```
+
+#### Parameters
+
+- `$width`: Number - Aspect ratio width component. Defaults to `16`.
+- `$length`: Number - Aspect ratio height/length component. Defaults to `9`.
+- `$object-fit`: String - CSS `object-fit` value (`cover`, `contain`, `fill`, etc.). Defaults to `cover`.
+- `$border-radius`: Length|String|null - Optional border radius to apply. Defaults to `null`.
+
 

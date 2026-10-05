@@ -58,7 +58,11 @@ Invoke utilities as follows:
   - `_breakpoints.sass`: Dedicated purely to media queries.
   - `_media.sass`: Dedicated purely to styling media objects (e.g., background-images).
   - `_links.sass`: Dedicated to link (`a` tag) styles.
-  - `_utilities.sass`: Miscellaneous generic helper styles.
+  - `_cards.sass` (`@mixin card(...)`): Dedicated to cards with automated text contrast, aspect-ratio shapes, and spacing overrides.
+  - `_utilities.sass`: Miscellaneous generic helper styles, including `reset`, `margin`, `size`, and `aspect-ratio`.
+- **Namespace Calling Conventions**:
+  - In consumer stylesheets and components, import mixins with `@use 'lumina-sass/mixins' as l-mix` (or `@use 'lumina-sass/mix' as mix`) and invoke them with `l-mix.` or `mix.`.
+  - When cross-referencing internal utility mixins across modules (e.g., in `_cards.sass`), import via `@use 'utilities' as utils` and invoke with `utils.`.
 - **AI Rule**: Whenever generating code for a user using this framework, prefer the "everyday" names. If the user wants a full bootstrap, include `mix.apply-global-theme()`. If they just want pure theme values, use `mix.apply-theme-colors()`.
 
 ---

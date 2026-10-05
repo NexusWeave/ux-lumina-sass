@@ -284,3 +284,11 @@
     @if $behavior != null
         transition-behavior: $behavior
 
+@mixin aspect-ratio($width: 16, $length: 9, $object-fit: cover, $border-radius: null)
+
+    @if $border-radius != null
+        border-radius: $border-radius
+
+    object-fit: $object-fit
+    @include size($inline: 100%)
+    aspect-ratio: calc($width / $length)

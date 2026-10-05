@@ -10,6 +10,7 @@ This document provides a technical reference index for all mixins in the `lumina
 - `nav-hamburg`: Responsive hamburger navigation menu button (`src/mix/_navigation.sass`).
 - `background-color`: Automatic contrast-aware background setter (`src/mix/_utilities.sass`).
 - `size`: Logical width (`inline-size`) and height (`block-size`) dimensions (`src/mix/_utilities.sass`).
+- `aspect-ratio`: Responsive aspect-ratio setter with object-fit and sizing (`src/mix/_utilities.sass`).
 - `mobile-first`: Mobile-first `min-width` media query helper (`src/mix/_breakpoints.sass`).
 - `desktop-first`: Desktop-first `max-width` media query helper with automatic boundary adjustment (`src/mix/_breakpoints.sass`).
 - `apply-global-theme`: System scaffolding theme orchestrator (`src/mix/_global-theme.sass`).

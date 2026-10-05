@@ -90,7 +90,7 @@
     "lint:sass": "tsx test/ts/syntax-check.ts",
     "dev": "npm run build && npm run serve",
     "module-test": "tsx test/ts/module-test.ts",
-    "build": "sass demo/style.sass demo/style.css",
+    "build": "npm run lint:sass",
     "test:warnings": "tsx test/ts/dependency-warnings.ts",
     "test": "vitest run test/sass.spec.ts && npm run test:warnings && npm run lint:sass && npm run module-test"
   },

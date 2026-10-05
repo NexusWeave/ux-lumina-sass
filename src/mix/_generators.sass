@@ -178,14 +178,14 @@
   &::-webkit-slider-runnable-track,
   &::-moz-range-track
     background: map.get($props, 'track-color')
-    @include utils.border-radius(map.get($props, 'track-radius'))
+    @include utils.bo-ra(map.get($props, 'track-radius'))
 
     @include utils.size($block: $track-block-size)
   // The Thumb
   &::-webkit-slider-thumb,
   &::-moz-range-thumb
     background: map.get($props, 'thumb-color')
-    @include utils.border-radius(map.get($props, 'thumb-radius'))
+    @include utils.bo-ra(map.get($props, 'thumb-radius'))
 
     @include utils.appearance(none)
     @include utils.margin($b-start: $thumb-margin)

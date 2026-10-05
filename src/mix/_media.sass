@@ -1,6 +1,6 @@
 /// Internal dependencies
-@use './_typography' as typo
 @use 'utilities' as utils
+@use './_typography' as typo
 
 
 /// Background image utility for setting multiple background properties at once.
@@ -26,14 +26,8 @@
     @if $origin != null
         background-origin: $origin
 
-@mixin video-wrapper($feeback-overlay, $feedback-color, $section-trans-overlay, $input-accent-color, $accent-color,$icon-color)
+@mixin video-wrapper($feeback-overlay, $feedback-color, $section-trans-overlay, $input-accent-color, $accent-color, $icon-color, $bg-color: transparent)
     .video-wrapper
-        display: grid
-        cursor: pointer
-        overflow: hidden
-        @include utils.border-radius(1rem)
-        background-color: black
-        grid-template-areas: "media"
 
         &:hover
             > section
@@ -43,27 +37,14 @@
         video
             display: block
             grid-area: media
-            inline-size: 100%
             object-fit: cover
+            @include utils.size($inline: 100%)
 
         button.video-feedback
             cursor: pointer
             background-color: transparent
 
         .video-feedback
-            z-index: 2
-            opacity: 1
-            @include utils.frame($border: none, $outline: none, $border-radius: 100%)
-            line-height: 1
-            padding: 0.8rem
-            grid-area: media
-            font-size: 5.5rem
-            place-self: center
-            pointer-events: none
-            color: rgba($feedback-color, 0.95)
-            background: rgba($feeback-overlay, 0.3) !important
-            transition: opacity 0.25s ease, transform 0.2s ease, background 0.2s ease
-            
             // Force icon span & ::before to the correct size
             // (gen-icons hardcodes font-size: 1rem on ::before)
             span
@@ -74,6 +55,17 @@
             &:hover, &:focus
                 transform: scale(1.1)
 
+            z-index: 2
+            opacity: 1
+            line-height: 1
+            padding: 0.8rem
+            grid-area: media
+            font-size: 5.5rem
+            place-self: center
+            pointer-events: none
+            @include utils.bo-ra(100%)
+            @include utils.transition('opacity 0.25s ease, transform 0.2s ease, background 0.2s ease')
+            @include utils.background-color(rgba($feeback-overlay, 0.3) !important, rgba($feedback-color, 0.95))
         > section
             margin: 0
             z-index: 1
@@ -132,3 +124,10 @@
         *   // Global reset for video wrapper children to counter index.sass margin: auto
             padding: 0
             margin: auto
+
+        display: grid
+        cursor: pointer
+        overflow: hidden
+        @include utils.bo-ra(1rem)
+        background-color: $bg-color
+        grid-template-areas: "media"

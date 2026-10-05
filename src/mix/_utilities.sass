@@ -1,13 +1,18 @@
 // Built-in Dependencies
-@use 'sass:meta'
 @use 'sass:map'
+@use 'sass:meta'
 
 // Internal dependencies
+@forward 'size'
+@forward 'spacing'
+@use 'size' as *
+
 @use '../color' as c
+@use 'position' as pos
+@use 'spacing' as space
 @use 'typography' as typo
 @use 'contrast' as contrast
 @use '../func/color' as func-color
-@use 'position' as pos
 
 
 /// Sets background color and automatically handles text color contrast if not provided.
@@ -15,8 +20,8 @@
 /// @param {Color|String} $bg-color [c.$soft-white] - The background color to apply.
 /// @param {Color|String} $text-color [null] - Optional text color. If null, calculated based on contrast.
 /// @param {Number} $threshold [4.5] - The minimum acceptable contrast ratio (standard WCAG AA compliance is 4.5:1).
-/// @param {Boolean} $suppress-notice [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
-@mixin background-color($bg-color: c.$soft-white, $text-color: null, $threshold: 4.5, $suppress-notice: false)
+/// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin background-color($bg-color: c.$soft-white, $text-color: null, $threshold: 4.5, $suppress: false)
     background-color: $bg-color
 
     @if $text-color != null
@@ -24,7 +29,7 @@
         $text-info: func-color.inspect-color($text-color)
 
         @if (map.get($bg-info, 'type') == 'color' or map.get($bg-info, 'is-special')) and (map.get($text-info, 'type') == 'color' or map.get($text-info, 'is-special'))
-            @include contrast.assert-contrast($text-color, $bg-color, $threshold: $threshold, $suppress-notice: $suppress-notice)
+            @include contrast.assert-contrast($text-color, $bg-color, $threshold: $threshold, $suppress: $suppress)
         color: $text-color
 
     @else if meta.type-of($bg-color) == 'color'
@@ -39,129 +44,7 @@
         content: $icon-content
         @include typo.font($font-family, $size: $size)
 
-/// Sets logical dimensions (inline-size and block-size) with optional min/max constraints.
-/// @param {Length|String|null} $inline [null] - Inline dimension.
-/// @param {Length|String|null} $block [auto] - Block dimension.
-@mixin size($inline: null, $block: auto, $min-inline: null, $min-block: null, $max-inline: null, $max-block: null, $min-inline-size: null, $min-block-size: null, $max-inline-size: null, $max-block-size: null, $inline-size: null, $block-size: null)
-    $actual-inline: $inline
-    @if $inline-size != null
-        $actual-inline: $inline-size
 
-    $actual-block: $block
-    @if $block-size != null
-        $actual-block: $block-size
-
-    $actual-min-inline: $min-inline
-    @if $min-inline-size != null
-        $actual-min-inline: $min-inline-size
-
-    $actual-min-block: $min-block
-    @if $min-block-size != null
-        $actual-min-block: $min-block-size
-
-    $actual-max-inline: $max-inline
-    @if $max-inline-size != null
-        $actual-max-inline: $max-inline-size
-
-    $actual-max-block: $max-block
-    @if $max-block-size != null
-        $actual-max-block: $max-block-size
-
-    @if $actual-inline != null
-        inline-size: $actual-inline
-
-    @if $actual-block != null
-        block-size: $actual-block
-
-    @if $actual-min-inline != null
-        min-inline-size: $actual-min-inline
-
-    @if $actual-min-block != null
-        min-block-size: $actual-min-block
-
-    @if $actual-max-inline != null
-        max-inline-size: $actual-max-inline
-
-    @if $actual-max-block != null
-        max-block-size: $actual-max-block
-
-/// Sets logical minimum dimensions (min-inline-size and min-block-size).
-/// @param {Length|String|null} $inline [null] - Minimum inline size.
-/// @param {Length|String|null} $block [null] - Minimum block size.
-@mixin min-size($inline: null, $block: null)
-    @if $inline != null
-        @include size($min-inline: $inline)
-
-    @if $block != null
-        @include size($min-block: $block)
-
-/// Sets logical maximum dimensions (max-inline-size and max-block-size).
-/// @param {Length|String|null} $inline [null] - Maximum inline size.
-/// @param {Length|String|null} $block [null] - Maximum block size.
-@mixin max-size($inline: null, $block: null)
-    @if $inline != null
-        @include size($max-inline: $inline)
-
-    @if $block != null
-        @include size($max-block: $block)
-
-/// Sets element margins using logical and physical properties.
-@mixin margin($margin: null, $block: null, $inline: null, $block-start: null, $block-end: null, $inline-start: null, $inline-end: null, $b-start: null, $b-end: null, $i-start: null, $i-end: null, $top: null, $right: null, $bottom: null, $left: null)
-    $actual-bs: $block-start
-    @if $b-start != null
-        $actual-bs: $b-start
-
-    $actual-be: $block-end
-    @if $b-end != null
-        $actual-be: $b-end
-
-    $actual-is: $inline-start
-    @if $i-start != null
-        $actual-is: $i-start
-
-    $actual-ie: $inline-end
-    @if $i-end != null
-        $actual-ie: $i-end
-
-    @if $margin != null
-        margin: $margin
-
-    @if $block != null
-        margin-block: $block
-
-    @if $inline != null
-        margin-inline: $inline
-
-    @if $actual-bs != null
-        margin-block-start: $actual-bs
-
-    @if $actual-be != null
-        margin-block-end: $actual-be
-
-    @if $actual-is != null
-        margin-inline-start: $actual-is
-
-    @if $actual-ie != null
-        margin-inline-end: $actual-ie
-
-    @if $top != null
-        margin-top: $top
-
-    @if $right != null
-        margin-right: $right
-
-    @if $bottom != null
-        margin-bottom: $bottom
-
-    @if $left != null
-        margin-left: $left
-
-/// Convenience helper to center an element horizontally using logical margin-inline.
-@mixin margin-center($block: null)
-    @include margin($inline: auto)
-
-    @if $block != null
-        @include margin($block: $block)
 
 /// Comprehensive universal CSS reset mixin for all CSS rules.
 /// All parameters default to false for safety and require explicit activation.
@@ -170,12 +53,10 @@
         box-sizing: border-box
 
     @if $all or $margin
-        @include margin($margin: 0, $block: 0, $inline: 0)
+        @include space.margin($margin: 0, $block: 0, $inline: 0)
 
     @if $all or $padding
-        padding: 0
-        padding-block: 0
-        padding-inline: 0
+        @include space.padding($padding: 0, $block: 0, $inline: 0)
 
     @if $all or $border or $button
         border: none
@@ -194,9 +75,9 @@
         color: inherit
 
     @if $all or $background or $button
+        background-image: none
         background: transparent
         background-color: transparent
-        background-image: none
 
     @if $all or $button
         font: inherit
@@ -224,13 +105,7 @@
         cursor: auto
     
     @if $all or $position
-        top: auto
-        left: auto
-        right: auto
-        inset: auto
-        bottom: auto
-        z-index: auto
-        position: static
+        @include pos.position($position: static, $top: auto, $right: auto, $bottom: auto, $left: auto, $z-index: auto, $inset-block: auto, $inset-inline: auto)
 
     @if $all or $html-elements
         abbr
@@ -239,7 +114,7 @@
 
             cursor: help
             text-decoration: underline dotted
-            @include background-color(transparent, $text, $suppress-notice: true)
+            @include background-color(transparent, $text, $suppress: true)
             
 
         code
@@ -247,7 +122,7 @@
                 @include background-color(map.get($colors, 'code-bg'))
 
             padding: 0.2rem 0.4rem
-            @include border-radius(0.3rem)
+            @include bo-ra(0.3rem)
             @include typo.monospace($size: null)
 
 /// Sets CSS transition shorthand or granular transition properties.
@@ -257,7 +132,7 @@
 /// @param {String|null} $timing-function [null] - Transition timing function curve.
 /// @param {Length|String|null} $delay [null] - Transition start delay.
 /// @param {String|null} $behavior [null] - Transition behavior mode.
-@mixin transition($transition, $property: null, $duration: null, $timing-function: null, $delay: null, $behavior: null)
+@mixin transition($transition: null, $property: null, $duration: null, $timing-function: null, $delay: null, $behavior: null)
     @if $transition == null and $property == null and $duration == null and $timing-function == null and $delay == null and $behavior == null
         @warn "No valid properties provided to transition mixin."
 
@@ -279,11 +154,7 @@
     @if $behavior != null
         transition-behavior: $behavior
 
-@mixin aspect-ratio($width: 16, $length: 9, $object-fit: cover, $border-radius: null)
-
-    @if $border-radius != null
-        @include border-radius($border-radius)
-
+@mixin aspect-ratio($width: 16, $length: 9, $object-fit: cover)
     object-fit: $object-fit
     @include size($inline: 100%)
     aspect-ratio: calc($width / $length)
@@ -293,7 +164,24 @@
     -moz-appearance: $appearance
     -webkit-appearance: $appearance
 
-@mixin frame($border: null, $border-color: null, $border-width: null, $border-style: null, $border-radius: null, $border-top: null, $border-right: null, $border-bottom: null, $border-left: null, $border-block: null, $border-inline: null, $outline: null, $outline-color: null, $outline-style: null, $outline-width: null, $outline-offset: null, $box-shadow: null)
+@mixin frame(
+    $border: null, 
+    $border-color: null, 
+    $border-width: null, 
+    $border-style: null, 
+    $border-radius: null, 
+    $border-top: null, 
+    $border-right: null, 
+    $border-bottom: null, 
+    $border-left: null, 
+    $border-block: null, 
+    $border-inline: null, 
+    $outline: null, 
+    $outline-color: null, 
+    $outline-style: null, 
+    $outline-width: null, 
+    $outline-offset: null, 
+    $box-shadow: null)
     @if $border-radius != null
         border-radius: $border-radius
 
@@ -345,14 +233,37 @@
     @if $box-shadow != null
         box-shadow: $box-shadow
 
-/// Utility mixin for border
-/// @param {String|List} $border - CSS border shorthand or definition.
-@mixin border($border)
-    @include frame($border: $border)
+/// Utility mixin for border-radius
+/// @param {Length|List} $radius - The border radius value or list of corner radii.
+@mixin bo-sh($box-shadow)
+    @include frame($box-shadow: $box-shadow)
 
 /// Utility mixin for border-radius
 /// @param {Length|List} $radius - The border radius value or list of corner radii.
-@mixin border-radius($radius)
+@mixin bo-props($border: null, $border-color: null, $border-width: null, $border-style: null, $border-radius: null, $border-top: null, $border-right: null, $border-bottom: null, $border-left: null, $border-block: null, $border-inline: null)
+    @include frame(
+        $border: $border,
+        $border-top: $border-top,
+        $border-left: $border-left,
+        $border-block: $border-block,
+        $border-right: $border-right,
+        $border-color: $border-color,
+        $border-width: $border-width,
+        $border-style: $border-style,
+        $border-radius: $border-radius,
+        $border-bottom: $border-bottom,
+        $border-inline: $border-inline
+    )
+
+/// Utility mixin for border-radius
+/// @param {Length|List} $radius - The border radius value or list of corner radii.
+@mixin outline($outline: null, $outline-color: null, $outline-style: null, $outline-width: null, $outline-offset: null)
+    @if $outline != null or $outline-color != null or $outline-style != null
+        @include frame($outline: $outline, $outline-color: $outline-color, $outline-style: $outline-style, $outline-width: $outline-width, $outline-offset: $outline-offset)
+
+/// Utility mixin for border-radius
+/// @param {Length|List} $radius - The border radius value or list of corner radii.
+@mixin bo-ra($radius)
     @include frame($border-radius: $radius)
 
 /// Utility mixin for CSS grid layouts.

@@ -11,15 +11,14 @@ Import path: `@use 'lumina-sass/func' as func`
 ### `simulate-colorblind($color, $type)`
 The primary simulation function that applies a matrix transformation to an RGB/RGBA color.
 
-- **Parameters:**
-  - `$color`: The color to evaluate (`Color`).
-  - `$type`: The deficiency type (`String`). Options:
-    - `'protanopia'` (L-cone deficiency / red-blind)
-    - `'deuteranopia'` (M-cone deficiency / green-blind)
-    - `'tritanopia'` (S-cone deficiency / blue-blind)
-    - `'achromatopsia'` (Monochromacy / total color blindness)
-  - *Default:* `'deuteranopia'`
-- **Returns:** The transformed `Color`.
+#### Parameters
+
+| Parameter | Type | Default | Options / Description |
+| :--- | :--- | :--- | :--- |
+| `$color` | Color | *Required* | The color to evaluate. |
+| `$type` | String | `'deuteranopia'` | Deficiency type: `'protanopia'` (red-blind), `'deuteranopia'` (green-blind), `'tritanopia'` (blue-blind), `'achromatopsia'` (total color blindness). |
+
+**Returns:** The transformed `Color`.
 
 ---
 
@@ -27,10 +26,12 @@ The primary simulation function that applies a matrix transformation to an RGB/R
 
 For clean, readable stylesheets, dedicated helper functions wrap `simulate-colorblind`:
 
-- `protanopia($color)` – Simulates red-blindness.
-- `deuteranopia($color)` – Simulates green-blindness.
-- `tritanopia($color)` – Simulates blue-blindness.
-- `achromatopsia($color)` – Simulates monochromacy.
+| Helper Function | Signature | Description |
+| :--- | :--- | :--- |
+| `protanopia` | `protanopia($color)` | Simulates L-cone deficiency (red-blindness). |
+| `deuteranopia` | `deuteranopia($color)` | Simulates M-cone deficiency (green-blindness). |
+| `tritanopia` | `tritanopia($color)` | Simulates S-cone deficiency (blue-blindness). |
+| `achromatopsia` | `achromatopsia($color)` | Simulates monochromacy (total color blindness). |
 
 ---
 

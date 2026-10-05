@@ -32,3 +32,18 @@ $school-icon: func.find('school') // Returns "\F671"
 ### `get-icon-map($category: null)`
 
 Returns registered icon maps. When a specific category name is provided (such as `'general'`, `'dev'`, or `'ui'`), returns the corresponding map subset; otherwise returns all categories.
+
+#### Parameters
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$category` | String \| null | `null` | Optional category key (e.g., `'academic'`, `'document'`, `'general'`). If null, returns all registered categories. |
+
+#### Usage
+
+```sass
+@use 'lumina-sass/func' as func
+
+$all-icons: func.get-icon-map()
+$academic-icons: func.get-icon-map('academic')
+```

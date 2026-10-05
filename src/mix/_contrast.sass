@@ -11,15 +11,15 @@
 /// @param {Color} $foreground - The foreground color to be evaluated.
 /// @param {Color} $background - The background color against which contrast is measured.
 /// @param {Number} $threshold [4.5] - The minimum acceptable contrast ratio (standard WCAG AA compliance is 4.5:1).
-/// @param {Boolean} $suppress-notice [false] - When true, suppresses the accessibility notice for transparent or inherit backgrounds.
-@mixin assert-contrast($foreground, $background, $threshold: 4.5, $suppress-notice: false)
+/// @param {Boolean} $suppress [false] - When true, suppresses the accessibility notice for transparent or inherit backgrounds.
+@mixin assert-contrast($foreground, $background, $threshold: 4.5, $suppress: false)
     $fg-dict: func-color.inspect-color($foreground)
     $bg-dict: func-color.inspect-color($background)
 
     $has-special: map.get($fg-dict, 'is-special') or map.get($bg-dict, 'is-special')
 
     @if $has-special
-        @if not $suppress-notice
+        @if not $suppress
             $reason: ""
             @if map.get($bg-dict, 'is-special') and map.get($fg-dict, 'is-special')
                 $reason: "Both text `#{$foreground}` and background `#{$background}` were specified as transparent or inherited."

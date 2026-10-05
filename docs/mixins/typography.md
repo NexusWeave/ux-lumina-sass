@@ -5,14 +5,16 @@ This document details the typography mixins provided by Lumina SASS and outlines
 
 ## Mixins
 
-- `text-wrap-safe($inline: null)` – Enables hyphenation and secure line-wrapping for block-level textual content, with optional minimum inline dimension.
-- `font($font: null, $size: null, $family: null, $style: null, $weight: null, $line-height: null, $variant: null, $render: null, $moz-smoothing: null, $webkit-smoothing: null, $quiet: false)` – A comprehensive shorthand for defining font styling, rendering quality, and font-smoothing options. If `$font` is omitted or unrecognized, it falls back to a system stack.
-- `sans-serif($font: null, $size: null, $weight: null, $style: null)` – Applies a sans-serif typeface stack with configurable size, weight, and style.
-- `serif($font: null, $size: null, $weight: null, $style: null)` – Applies a serif typeface stack.
-- `monospace($font: null, $size: null, $weight: null, $style: null)` – Applies a monospace typeface stack.
-- `webkit-line-clamp($lines: 3, $box-orient: vertical)` – Restricts text to a specified number of lines using `-webkit-line-clamp`, appending an ellipsis automatically.
-- `line-clamp($lines: 3, $box-orient: vertical)` – Shorthand alias to `webkit-line-clamp`.
-- `text-adjustments($alignment: null, $decoration: null, $quiet: false)` – Provides quick adjustments for text alignment and text decoration.
+| Mixin | Parameters | Description |
+| :--- | :--- | :--- |
+| `text-wrap-safe` | `$inline: null` | Enables hyphenation and secure line-wrapping for block-level text content, utilizing `size.min-size($inline)` when `$inline` is provided. |
+| `font` | `$font: null`<br>`$size: null`<br>`$family: null`<br>`$style: null`<br>`$weight: null`<br>`$line-height: null`<br>`$variant: null`<br>`$render: null`<br>`$moz-smoothing: null`<br>`$webkit-smoothing: null`<br>`$quiet: false` | Comprehensive shorthand defining font styling, rendering quality, and font-smoothing options. Falls back to default system stack if `$font` is omitted. |
+| `sans-serif` | `$font: null`<br>`$size: null`<br>`$weight: null`<br>`$style: null` | Applies a sans-serif typeface stack with configurable size, weight, and style. |
+| `serif` | `$font: null`<br>`$size: null`<br>`$weight: null`<br>`$style: null` | Applies a serif typeface stack. |
+| `monospace` | `$font: null`<br>`$size: null`<br>`$weight: null`<br>`$style: null` | Applies a monospace typeface stack. |
+| `webkit-line-clamp` | `$lines: 3`<br>`$box-orient: vertical` | Restricts text to a specified line count via `-webkit-line-clamp` and appends an ellipsis. |
+| `line-clamp` | `$lines: 3`<br>`$box-orient: vertical` | Shorthand alias to `webkit-line-clamp`. |
+| `text-adjustments` | `$alignment: null`<br>`$decoration: null`<br>`$quiet: false` | Quick adjustments for text alignment and text decoration. |
 
 ## Font Fallback and Warning Protocols
 

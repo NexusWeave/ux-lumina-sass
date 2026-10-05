@@ -16,8 +16,8 @@
 /// @param {Color|null} $color-active [null] - Active link color.
 /// @param {Color|null} $color-visited [null] - Visited link color.
 /// @param {Color|null} $bg-color [transparent] - Background color the links are placed on (used for contrast calculation).
-/// @param {Boolean} $suppress-notice [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
-@mixin link-color($color: null, $color-hover: null, $color-active: null, $color-visited: null, $bg-color: transparent, $suppress-notice: false)
+/// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin link-color($color: null, $color-hover: null, $color-active: null, $color-visited: null, $bg-color: transparent, $suppress: false)
 
     @if $color == null
         $color: c.$light-blue-contrast
@@ -40,22 +40,22 @@
             cursor: not-allowed
             pointer-events: none
             @include typo.text-adjustments($decoration: none)
-            @include background-color($bg-color, $disabled-color, $threshold: 1, $suppress-notice: $suppress-notice)
+            @include background-color($bg-color, $disabled-color, $threshold: 1, $suppress: $suppress)
 
         &:active
-            @include background-color($bg-color, $color-active, $suppress-notice: $suppress-notice)
+            @include background-color($bg-color, $color-active, $suppress: $suppress)
         
         &.external-link
             @include typo.text-adjustments($decoration: underline)
 
         @media (hover: hover)
             &:hover
-                @include border-radius(0.5em)
-                @include background-color($bg-color, $color-hover, $suppress-notice: $suppress-notice)
+                @include bo-ra(0.5em)
+                @include background-color($bg-color, $color-hover, $suppress: $suppress)
 
         &:visited
-            @include background-color($bg-color, $color-visited, $suppress-notice: $suppress-notice)
+            @include background-color($bg-color, $color-visited, $suppress: $suppress)
 
         cursor: pointer
         @include typo.text-adjustments($quiet: true)
-        @include background-color($bg-color, $color, $suppress-notice: $suppress-notice)
+        @include background-color($bg-color, $color, $suppress: $suppress)

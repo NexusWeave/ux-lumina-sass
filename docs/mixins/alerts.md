@@ -22,7 +22,8 @@ The following color tokens are available for alerts in `src/color/alerts.sass`:
 | :--- | :--- | :--- |
 | `$warning` | `rgb(255, 193, 7)` | Yellow warning color. |
 | `$error` | `rgb(220, 53, 69)` | Red error color. |
-| `$info` | `rgb(13, 202, 240)` | Blue informational color. |
+| `$info` | `rgb(13, 202, 240)` | Blue informational color. |y
+
 | `$success` | `rgb(25, 135, 84)` | Green success color. |
 | `$disabled` | `rgb(160, 160, 160)` | Grey disabled color. |
 
@@ -35,4 +36,4 @@ The following color tokens are available for alerts in `src/color/alerts.sass`:
 | `$icon` | String \| null | Optional icon name (e.g., 'warning', 'success', 'info', 'error'). Defaults to `null`. |
 | `$inline-size` | String | The inline size of the alert. Defaults to `35rem`. |
 | `$icon-size` | Number | The font size of the icon. Defaults to `2rem`. |
-| `$suppress-notice` | Boolean | Suppresses accessibility notice for transparent/inherited backgrounds. Defaults to `false`. |
+| `$suppress` | Boolean | Suppresses accessibility notice for transparent/inherited backgrounds. Defaults to `false`. |

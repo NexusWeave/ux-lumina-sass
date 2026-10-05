@@ -5,6 +5,7 @@
 @use 'sass:string'
 
 // Internal dependencies
+@use 'size'
 @use '../map/fonts' as fonts
 @use '../func/typography' as func-typo
 
@@ -17,8 +18,10 @@
         word-wrap: anywhere
         white-space: pre-wrap
         overflow-wrap: anywhere
+
         @if $inline != null and $inline != 0
-            min-inline-size: $inline
+            @include size.min-size($inline)
+
 
 /// Shorthand typography setter for font-family, sizes, weights, and rendering quality.
 /// @param {String|List|null} $font [null] - Font name or custom stack.
@@ -118,20 +121,13 @@
 
     @include font($font: $font, $size: $size, $family: monospace, $style: $style, $weight: $weight)
 
-/// Truncates text across multiple lines using webkit line clamp.
 /// @param {Number} $lines [3] - Number of lines before truncation.
 /// @param {String} $box-orient [vertical] - Box orientation.
-@mixin webkit-line-clamp($lines: 3, $box-orient: vertical)
+@mixin line-clamp($lines: 3, $box-orient: vertical)
     overflow: hidden
     display: -webkit-box
     -webkit-line-clamp: $lines
     -webkit-box-orient: $box-orient
-
-/// Alias for webkit-line-clamp.
-/// @param {Number} $lines [3] - Number of lines before truncation.
-/// @param {String} $box-orient [vertical] - Box orientation.
-@mixin line-clamp($lines: 3, $box-orient: vertical)
-    @include webkit-line-clamp($lines: $lines, $box-orient: $box-orient)
 
 /// Adjusts text alignment and text decoration with fallback defaults.
 /// @param {String|null} $alignment [null] - text-align property.

@@ -28,8 +28,8 @@
 /// @param {String|null} $icon [null] - Optional icon name (expects bootstrap-icons).
 /// @param {String} $inline-size [35rem] - The inline size of the alert.
 /// @param {Number} $icon-size [2rem] - The font size of the icon.
-/// @param {Boolean} $suppress-notice [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
-@mixin alert($bg-color: alerts.$warning, $text-color: null, $icon: null, $inline-size: 35rem, $icon-size: 2rem, $suppress-notice: false)
+/// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
+@mixin alert($bg-color: alerts.$warning, $text-color: null, $icon: null, $inline-size: 35rem, $icon-size: 2rem, $suppress: false)
 
     @if $icon != null
         display: grid
@@ -43,10 +43,9 @@
 
     gap: 1rem
     padding: .5rem
-    @include utils.border-radius(.5rem)
-    border: .0625rem solid rgba(0, 0, 0, 0.1)
-
+    @include utils.bo-ra(.5rem)
+    @include utils.bo-props($border: .0625rem solid rgba(0, 0, 0, 0.1))
     @include typo.font($weight: 800)
     @include utils.margin($margin: auto)
     @include utils.size($inline: $inline-size)
-    @include utils.background-color($bg-color, $text-color, $suppress-notice: $suppress-notice)
+    @include utils.background-color($bg-color, $text-color, $suppress: $suppress)

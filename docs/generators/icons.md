@@ -5,20 +5,25 @@ This document outlines the functionality of the `gen-icons` mixin within Lumina 
 
 ## Icon Generator Mixin
 
-The `gen-icons($name: null, $color: null, $font-family: 'bootstrap-icons')` mixin provides a robust mechanism for generating icon utility classes.
+The `gen-icons` mixin provides a robust mechanism for generating icon utility classes.
 
-- **Automated Generation:** When the `$name` parameter is omitted, the mixin systematically creates utility classes for all icons defined within the icon map located at `src/map/icons`.
-- **Targeted Generation:** Providing a specific `$name` ensures that only the requested icon class is generated.
-- **Customization:**
-  - The `$color` parameter allows for the overriding of the default icon color.
-  - The `$font-family` parameter defaults to `bootstrap-icons` but can be adjusted to support alternative icon sets.
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$name` | String \| null | `null` | Target icon name. When omitted, systematically generates classes for all icons in `src/map/icons`. |
+| `$color` | Color \| null | `null` | Optional color override for the icon glyphs. |
+| `$font-family` | String | `'bootstrap-icons'` | Icon font family applied to generated classes. |
+| `$debug` | Boolean | `false` | When true, outputs diagnostic compile info. |
+| `$silent` | Boolean | `false` | When true, suppresses warnings. |
 
 ## Icon Style Mixin
 
-The `icon-style($icon-content, $font-family: 'icons')` mixin applies icon font properties to an element, typically used within a pseudo-element.
+The `icon-style` mixin applies icon font properties to an element, typically used within a pseudo-element.
 
-- **Direct Usage:** Allows for manually specifying the unicode content of an icon.
-- **Custom Font Support:** Supports overriding the default font family.
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$icon-content` | String | *Required* | Unicode character code or glyph for the icon (e.g. `"\f123"`). |
+| `$font-family` | String | `'icons'` | Font family to use for the icon. |
+| `$size` | Length | `1rem` | Font size of the icon. |
 
 ```sass
 @use 'lumina-sass/mix' as mix;

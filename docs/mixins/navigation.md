@@ -19,14 +19,17 @@ Generates a responsive hamburger navigation toggle button with configurable brea
 
 #### Parameters
 
-- `$breakpoint`: String|Length - Breakpoint name or length value above which the button is hidden (`min-width` query). Defaults to `'tablet'`.
-- `$bg-color`: Color - Background color of the button. Defaults to `transparent`.
-- `$z-index`: Number - Z-index stack depth. Defaults to `2`.
-- `$color`: Color - Icon and text color for child elements. Defaults to `#ffffff`.
-- `$pos`: String - CSS position mode. Defaults to `relative`.
-- `$top`: Length - Top offset position. Defaults to `1rem`.
-- `$right`: Length - Right offset position. Defaults to `1rem`.
-- `$font-family`: String - Font family key or stack applied to the icon element (`b`). Defaults to `'Bootstrap'`.
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$breakpoint` | String \| Length | `'tablet'` | Breakpoint name or length above which button is hidden (`min-width` query). |
+| `$bg-color` | Color | `transparent` | Background color of the button. |
+| `$z-index` | Number | `2` | Z-index stack depth. |
+| `$color` | Color | `c.$dark-grey` | Icon and text color for child elements. |
+| `$pos` | String | `relative` | CSS position mode. |
+| `$top` | Length | `1rem` | Top offset position. |
+| `$right` | Length | `1rem` | Right offset position. |
+| `$font-family` | String | `'Bootstrap'` | Font family key applied to icon element (`b`). |
+| `$size` | Length | `2rem` | Font size applied to icon element (`b`). |
 
 ### hamburg-is-open / hamburger-is-open
 
@@ -43,11 +46,13 @@ Styles the mobile menu overlay when active. Fully customizable with target class
 
 #### Parameters
 
-- `$open-cls`: String - Class name denoting the open state. Defaults to `'is-open'`.
-- `$nav-bar-cls`: String - Container class name. Defaults to `'nav-bar'`.
-- `$nav-list-cls`: String - List wrapper class name. Defaults to `'nav-list'`.
-- `$nav-item-cls`: String - Item element class name. Defaults to `'nav-item'`.
-- `$nav-link-cls`: String - Link element class name. Defaults to `'nav-link'`.
-- `$bg-color`: Color - Background overlay color. Defaults to `$groovy-70s-earth-brown`.
-- `$z-index`: Number - Overlay stack depth. Defaults to `10`.
-- `$font-size`: Length|Number - Link font size. Defaults to `2rem`.
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$open-cls` | String | `'is-open'` | Class name denoting the open state. |
+| `$nav-bar-cls` | String | `'nav-bar'` | Container class name. |
+| `$nav-list-cls` | String | `'nav-list'` | List wrapper class name. |
+| `$nav-item-cls` | String | `'nav-item'` | Item element class name. |
+| `$nav-link-cls` | String | `'nav-link'` | Link element class name. |
+| `$bg-color` | Color | `c.$groovy-70s-earth-brown` | Background overlay color. |
+| `$z-index` | Number | `10` | Overlay stack depth. |
+| `$font-size` | Length \| Number | `2rem` | Link font size. |

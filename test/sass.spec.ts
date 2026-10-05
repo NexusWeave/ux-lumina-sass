@@ -74,11 +74,11 @@ describe('WCAG Contrast Warning Assertions', () => {
     expect(warnings.some(w => /WCAG Accessibility Notice: The background was specified as/i.test(w))).toBe(true);
   });
 
-  it('suppresses accessibility notice for transparent background when suppress-notice is true', () => {
+  it('suppresses accessibility notice for transparent background when suppress is true', () => {
     const suppressedSass = `
       @use 'src/mix/contrast' as contrast;
       .suppressed-element {
-        @include contrast.assert-contrast(#ffffff, transparent, $suppress-notice: true);
+        @include contrast.assert-contrast(#ffffff, transparent, $suppress: true);
       }
     `;
 

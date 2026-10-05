@@ -26,10 +26,10 @@ The `assert-contrast` mixin serves as the primary mechanism for ensuring color a
 | `$foreground` | Color/String | *Required* | The color assigned to text or iconography. |
 | `$background` | Color/String | *Required* | The underlying background color. |
 | `$threshold` | Number | `4.5` (Default) | The minimum permissible ratio (e.g., 3 for large text, 7 for AAA compliance). |
-| `$suppress-notice` | Boolean | `false` (Default) | When true, suppresses the accessibility notice for `transparent` or `inherit` backgrounds/text. |
+| `$suppress` | Boolean | `false` (Default) | When true, suppresses the accessibility notice for `transparent` or `inherit` backgrounds/text. |
 
 ### Handling Transparent & Inherited Colors
-When `$background` or `$foreground` is `transparent` or `inherit`, Sass cannot inspect the runtime DOM surface at compile time. Instead of crashing, `assert-contrast` emits an informative notice reminding developers to specify the surface color. Developers can pass `$suppress-notice: true` to silence this notice when intentional.
+When `$background` or `$foreground` is `transparent` or `inherit`, Sass cannot inspect the runtime DOM surface at compile time. Instead of crashing, `assert-contrast` emits an informative notice reminding developers to specify the surface color. Developers can pass `$suppress: true` to silence this notice when intentional.
 
 ---
 

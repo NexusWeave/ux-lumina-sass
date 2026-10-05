@@ -24,116 +24,34 @@ The universal `reset` mixin resets all or specific CSS properties and HTML base 
 
 #### Parameters
 
-- `$all`: Boolean - Resets all supported CSS properties simultaneously. Defaults to `false`.
-- `$box-sizing`: Boolean - Sets `box-sizing: border-box`. Defaults to `false`.
-- `$margin`: Boolean - Resets `margin`, `margin-block`, and `margin-inline` to `0`. Defaults to `false`.
-- `$padding`: Boolean - Resets `padding`, `padding-block`, and `padding-inline` to `0`. Defaults to `false`.
-- `$border`: Boolean - Resets `border` to `none`. Defaults to `false`.
-- `$outline`: Boolean - Resets `outline` to `0` and `outline-color: transparent`. Defaults to `false`.
-- `$font`: Boolean - Resets `font: inherit`, `font-size: 100%`, `font-weight: normal`, `line-height: inherit`. Defaults to `false`.
-- `$color`: Boolean - Resets `color: inherit`. Defaults to `false`.
-- `$background`: Boolean - Resets background to `transparent` with `background-image: none`. Defaults to `false`.
-- `$button`: Boolean - Resets native button styles (`border: none`, `outline: 0`, `color: inherit`, `background: transparent`, `font: inherit`, `cursor: pointer`, `appearance: none`). Defaults to `false`.
-- `$list-style`: Boolean - Resets `list-style: none`. Defaults to `false`.
-- `$text-decoration`: Boolean - Resets `text-decoration: none`. Defaults to `false`.
-- `$size`: Boolean - Resets logical dimensions (`inline-size: auto`, `block-size: auto`, `max-inline-size: 100%`, `max-block-size: 100%`). Defaults to `false`.
-- `$appearance`: Boolean - Sets `appearance: none`. Defaults to `false`.
-- `$vertical-align`: Boolean - Sets `vertical-align: baseline`. Defaults to `false`.
-- `$user-select`: Boolean - Sets `user-select: auto`. Defaults to `false`.
-- `$cursor`: Boolean - Sets `cursor: auto`. Defaults to `false`.
-- `$position`: Boolean - Resets `position: static`, `top: auto`, `right: auto`, `bottom: auto`, `left: auto`, `inset: auto`, `z-index: auto`. Defaults to `false`.
-- `$html-elements`: Boolean - Applies default base styling resets for `abbr` and `code`. Defaults to `false`.
-- `$text`: Color - Base text color for `abbr` resets. Defaults to `$dark-grey`.
-- `$colors`: Map - Optional color map for `abbr-underline` and `code-bg`. Defaults to `()`.
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$all` | Boolean | `false` | Resets all supported CSS properties simultaneously. |
+| `$box-sizing` | Boolean | `false` | Sets `box-sizing: border-box`. |
+| `$margin` | Boolean | `false` | Resets `margin`, `margin-block`, and `margin-inline` to `0`. |
+| `$padding` | Boolean | `false` | Resets `padding`, `padding-block`, and `padding-inline` to `0`. |
+| `$border` | Boolean | `false` | Resets `border` to `none`. |
+| `$outline` | Boolean | `false` | Resets `outline` to `0` and `outline-color: transparent`. |
+| `$font` | Boolean | `false` | Resets `font: inherit`, `font-size: 100%`, `font-weight: normal`, `line-height: inherit`. |
+| `$color` | Boolean | `false` | Resets `color: inherit`. |
+| `$background` | Boolean | `false` | Resets background to `transparent` with `background-image: none`. |
+| `$button` | Boolean | `false` | Resets native button styles (`border`, `outline`, `color`, `background`, `font`, `cursor`, `appearance`). |
+| `$list-style` | Boolean | `false` | Resets `list-style: none`. |
+| `$text-decoration` | Boolean | `false` | Resets `text-decoration: none`. |
+| `$size` | Boolean | `false` | Resets logical dimensions (`inline-size: auto`, `block-size: auto`, `max-inline-size: 100%`, `max-block-size: 100%`). |
+| `$appearance` | Boolean | `false` | Sets `appearance: none`. |
+| `$vertical-align` | Boolean | `false` | Sets `vertical-align: baseline`. |
+| `$user-select` | Boolean | `false` | Sets `user-select: auto`. |
+| `$cursor` | Boolean | `false` | Sets `cursor: auto`. |
+| `$position` | Boolean | `false` | Resets `position: static`, `top: auto`, `right: auto`, `bottom: auto`, `left: auto`, `inset: auto`, `z-index: auto`. |
+| `$html-elements` | Boolean | `false` | Applies default base styling resets for `abbr` and `code`. |
+| `$text` | Color | `c.$dark-grey` | Base text color for `abbr` resets. |
+| `$colors` | Map | `()` | Optional color map for `abbr-underline` and `code-bg`. |
 
-### margin
-
-Sets element margins using physical or logical properties.
-
-#### Usage
-
-```sass
-@use 'lumina-sass/mixins' as l-mix
-
-.card
-	@include l-mix.margin($block: 1rem, $inline: auto)
-	@include l-mix.margin($b-start: 2rem)
-```
-
-### margin-center
-
-Convenience helper to center an element horizontally using logical `margin-inline`.
-
-#### Usage
-
-```sass
-@use 'lumina-sass/mixins' as l-mix
-
-.container
-	@include l-mix.margin-center($block: 2rem)
-```
-
-### background-color
-
-Applies a background color and automatically calculates contrasting text color. When explicit text color is provided, verifies WCAG AA contrast compliance (emitting a warning if below 4.5:1, or a notice if the background/text is transparent or inherit).
-
-#### Usage
-
-```sass
-@use 'lumina-sass/mixins' as l-mix
-
-.card
-	@include l-mix.background-color($bg-color: #333333)
-
-.transparent-box
-	@include l-mix.background-color(transparent, #ffffff, $suppress-notice: true)
-```
-
-#### Parameters
-
-- `$bg-color`: Color|String - The background color. Defaults to `c.$soft-white`.
-- `$text-color`: Color|String|null - Optional text color. Automatically calculated using best contrast if null.
-- `$threshold`: Number - Minimum contrast ratio. Defaults to `4.5` (WCAG AA).
-- `$suppress-notice`: Boolean - Suppresses compile-time notice for `transparent` or `inherit` surfaces. Defaults to `false`.
-
-### size
-
-Sets CSS logical dimensions (`inline-size` and `block-size`), with optional `min-*` and `max-*` constraints.
-
-#### Usage
-
-```sass
-@use 'lumina-sass/mixins' as l-mix
-
-.card-container
-	@include l-mix.size($inline: 100%, $block: 20rem, $min-inline: 320px, $max-inline: 1200px)
-```
-
-### min-size
-
-Sets logical minimum dimensions (`min-inline-size` and `min-block-size`).
-
-#### Usage
-
-```sass
-@use 'lumina-sass/mixins' as l-mix
-
-.card-box
-	@include l-mix.min-size($inline: 15rem, $block: 8rem)
-```
-
-### max-size
-
-Sets logical maximum dimensions (`max-inline-size` and `max-block-size`).
-
-#### Usage
-
-```sass
-@use 'lumina-sass/mixins' as l-mix
-
-.modal-content
-	@include l-mix.max-size($inline: 40rem, $block: 90vh)
-```
+> [!NOTE]
+> Sizing and Spacing mixins have been decoupled into dedicated submodules:
+> - See [Size Documentation](./size.md) for `size`, `min-size`, and `max-size`.
+> - See [Spacing Documentation](./spacing.md) for `margin`, `margin-center`, and `padding`.
 
 ### transition
 
@@ -155,12 +73,14 @@ Sets CSS transition shorthand or granular transition properties (`property`, `du
 
 #### Parameters
 
-- `$transition`: String|List|null - Full transition shorthand, or null when using sub-properties. Required parameter without default.
-- `$property`: String|List - Target CSS property to transition. Defaults to `null`.
-- `$duration`: Length|String - Duration value. Defaults to `null`.
-- `$timing-function`: String - Timing function curve. Defaults to `null`.
-- `$delay`: Length|String - Delay time before start. Defaults to `null`.
-- `$behavior`: String - Transition behavior mode (e.g. `allow-discrete`). Defaults to `null`.
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$transition` | String \| List \| null | *Required* | Full transition shorthand, or null when using sub-properties. |
+| `$property` | String \| List \| null | `null` | Target CSS property to transition. |
+| `$duration` | Length \| String \| null | `null` | Duration value. |
+| `$timing-function` | String \| null | `null` | Timing function curve. |
+| `$delay` | Length \| String \| null | `null` | Delay time before start. |
+| `$behavior` | String \| null | `null` | Transition behavior mode (e.g. `allow-discrete`). |
 
 ### aspect-ratio
 
@@ -177,17 +97,16 @@ Sets object-fit, logical full inline size, optional border-radius, and calculate
 
 // Custom 4:3 ratio with rounded borders
 .thumbnail-box
-	@include l-mix.aspect-ratio($width: 4, $length: 3, $object-fit: contain, $border-radius: 0.5rem)
+	@include l-mix.aspect-ratio($width: 4, $length: 3, $object-fit: contain)
 ```
 
 #### Parameters
 
-- `$width`: Number - Aspect ratio width component. Defaults to `16`.
-- `$length`: Number - Aspect ratio height/length component. Defaults to `9`.
-- `$object-fit`: String - CSS `object-fit` value (`cover`, `contain`, `fill`, etc.). Defaults to `cover`.
-- `$border-radius`: Length|String|null - Optional border radius to apply. Defaults to `null`.
-
-
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$width` | Number | `16` | Aspect ratio width component. |
+| `$length` | Number | `9` | Aspect ratio height/length component. |
+| `$object-fit` | String | `cover` | CSS `object-fit` value (`cover`, `contain`, `fill`, etc.). |
 
 ### appearance
 
@@ -204,7 +123,9 @@ Cross-browser appearance mixin managing standard and vendor-prefixed properties 
 
 #### Parameters
 
-- `$appearance`: String - CSS appearance property value (`none`, `auto`, etc.). Defaults to `none`.
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$appearance` | String | `none` | CSS appearance property value (`none`, `auto`, etc.). |
 
 ### frame
 
@@ -226,25 +147,27 @@ Comprehensive utility mixin for structural border, individual border properties,
 
 #### Parameters
 
-- `$border`: String|List|null - CSS border shorthand. Defaults to `null`.
-- `$border-color`: Color|String|null - CSS border color. Defaults to `null`.
-- `$border-width`: Length|String|null - CSS border width. Defaults to `null`.
-- `$border-style`: String|null - CSS border style. Defaults to `null`.
-- `$border-radius`: Length|List|null - CSS border radius. Defaults to `null`.
-- `$border-top`: String|List|null - CSS top border. Defaults to `null`.
-- `$border-right`: String|List|null - CSS right border. Defaults to `null`.
-- `$border-bottom`: String|List|null - CSS bottom border. Defaults to `null`.
-- `$border-left`: String|List|null - CSS left border. Defaults to `null`.
-- `$border-block`: String|List|null - CSS logical block border. Defaults to `null`.
-- `$border-inline`: String|List|null - CSS logical inline border. Defaults to `null`.
-- `$outline`: String|List|null - CSS outline shorthand. Defaults to `null`.
-- `$outline-color`: Color|String|null - CSS outline-color rule. Defaults to `null`.
-- `$outline-style`: String|null - CSS outline style. Defaults to `null`.
-- `$outline-width`: Length|String|null - CSS outline width. Defaults to `null`.
-- `$outline-offset`: Length|null - CSS outline-offset distance. Defaults to `null`.
-- `$box-shadow`: String|List|null - CSS box-shadow property. Defaults to `null`.
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$border` | String \| List \| null | `null` | CSS border shorthand. |
+| `$border-color` | Color \| String \| null | `null` | CSS border color. |
+| `$border-width` | Length \| String \| null | `null` | CSS border width. |
+| `$border-style` | String \| null | `null` | CSS border style. |
+| `$border-radius` | Length \| List \| null | `null` | CSS border radius. |
+| `$border-top` | String \| List \| null | `null` | CSS top border. |
+| `$border-right` | String \| List \| null | `null` | CSS right border. |
+| `$border-bottom` | String \| List \| null | `null` | CSS bottom border. |
+| `$border-left` | String \| List \| null | `null` | CSS left border. |
+| `$border-block` | String \| List \| null | `null` | CSS logical block border. |
+| `$border-inline` | String \| List \| null | `null` | CSS logical inline border. |
+| `$outline` | String \| List \| null | `null` | CSS outline shorthand. |
+| `$outline-color` | Color \| String \| null | `null` | CSS outline-color rule. |
+| `$outline-style` | String \| null | `null` | CSS outline style. |
+| `$outline-width` | Length \| String \| null | `null` | CSS outline width. |
+| `$outline-offset` | Length \| null | `null` | CSS outline-offset distance. |
+| `$box-shadow` | String \| List \| null | `null` | CSS box-shadow property. |
 
-### border-radius
+### bo-ra
 
 Utility mixin for setting border-radius using standard rem units or custom curves.
 
@@ -254,15 +177,56 @@ Utility mixin for setting border-radius using standard rem units or custom curve
 @use "lumina-sass/mixins" as l-mix
 
 .avatar
-	@include l-mix.border-radius(50%)
+	@include l-mix.bo-ra(50%)
 
 .card-box
-	@include l-mix.border-radius(0.5rem)
+	@include l-mix.bo-ra(0.5rem)
 ```
 
 #### Parameters
 
-- `$radius`: Length|List - CSS border radius value or list of corner radii.
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$radius` | Length \| List | *Required* | CSS border radius value or list of corner radii. |
+
+### bo-sh
+
+Utility mixin for setting box-shadow.
+
+#### Usage
+
+```sass
+@use "lumina-sass/mixins" as l-mix
+
+.card-shadow
+	@include l-mix.bo-sh(0 4px 6px rgba(0, 0, 0, 0.1))
+```
+
+### bo-props
+
+Utility mixin for granular border configuration.
+
+#### Usage
+
+```sass
+@use "lumina-sass/mixins" as l-mix
+
+.custom-border
+	@include l-mix.bo-props($border: 1px solid #ccc, $border-radius: 0.5rem)
+```
+
+### outline
+
+Utility mixin for setting outline and outline offsets.
+
+#### Usage
+
+```sass
+@use "lumina-sass/mixins" as l-mix
+
+.focus-outline
+	@include l-mix.outline($outline: 2px solid #005fcc, $outline-offset: 2px)
+```
 
 ### grid-layout
 
@@ -282,8 +246,10 @@ Utility mixin for configuring CSS Grid containers and items with template column
 
 #### Parameters
 
-- `$temp-area`: String|null - Grid template areas (`grid-template-areas`). Defaults to `null`.
-- `$temp-col`: String|List|null - Grid template columns (`grid-template-columns`). Defaults to `null`.
-- `$temp-rows`: String|Length|null - Grid template rows (`grid-template-rows`). Defaults to `100%`.
-- `$gap`: Length|null - Track gap (`gap`). Defaults to `null`.
-- `$grid-area`: String|null - Grid item placement area (`grid-area`). Defaults to `null`.
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$temp-area` | String \| null | `null` | Grid template areas (`grid-template-areas`). |
+| `$temp-col` | String \| List \| null | `null` | Grid template columns (`grid-template-columns`). |
+| `$temp-rows` | String \| Length \| null | `100%` | Grid template rows (`grid-template-rows`). |
+| `$gap` | Length \| null | `null` | Track gap (`gap`). |
+| `$grid-area` | String \| null | `null` | Grid item placement area (`grid-area`). |

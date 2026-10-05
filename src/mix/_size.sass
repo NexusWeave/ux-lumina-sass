@@ -1,0 +1,27 @@
+/// Sets logical dimensions (inline-size and block-size) with optional min/max constraints.
+@mixin size($inline: null, $block: auto, $min-inline: null, $min-block: null, $max-inline: null, $max-block: null)
+    @if $inline != null
+        inline-size: $inline
+
+    @if $block != null
+        block-size: $block
+
+    @if $min-inline != null
+        min-inline-size: $min-inline
+
+    @if $min-block != null
+        min-block-size: $min-block
+
+    @if $max-inline != null
+        max-inline-size: $max-inline
+
+    @if $max-block != null
+        max-block-size: $max-block
+
+/// Sets logical minimum dimensions.
+@mixin min-size($inline: null, $block: null)
+    @include size($block: null, $min-inline: $inline, $min-block: $block)
+
+/// Sets logical maximum dimensions.
+@mixin max-size($inline: null, $block: null)
+    @include size($block: null, $max-inline: $inline, $max-block: $block)

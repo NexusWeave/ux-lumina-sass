@@ -90,11 +90,11 @@
           min-block-size: 10rem
           max-inline-size: 60rem
 
-  @include true.test('Sets dimensions using full min-inline-size and min-block-size argument names')
+  @include true.test('Sets dimensions using full size argument names')
     @include true.assert
       @include true.output
         .box-full-args
-          @include utilities.size($inline-size: 50%, $block-size: 300px, $min-inline-size: 200px, $min-block-size: 100px, $max-inline-size: 800px, $max-block-size: 600px)
+          @include utilities.size($inline: 50%, $block: 300px, $min-inline: 200px, $min-block: 100px, $max-inline: 800px, $max-block: 600px)
       
       @include true.expect
         .box-full-args
@@ -114,13 +114,9 @@
       
       @include true.expect
         .box-min-max
-          block-size: auto
           min-inline-size: 15rem
-          block-size: auto
           min-block-size: 8rem
-          block-size: auto
           max-inline-size: 50rem
-          block-size: auto
           max-block-size: 25rem
 
   @include true.test('Sets margin and margin-center mixins')
@@ -162,22 +158,23 @@
           font-weight: normal
           line-height: inherit
           color: inherit
+          background-image: none
           background: transparent
           background-color: transparent
-          background-image: none
           list-style: none
           text-decoration: none
           inline-size: auto
           block-size: auto
           max-inline-size: 100%
           max-block-size: 100%
-          top: auto
-          left: auto
-          right: auto
-          inset: auto
-          bottom: auto
-          z-index: auto
           position: static
+          inset-block: auto
+          inset-inline: auto
+          top: auto
+          right: auto
+          bottom: auto
+          left: auto
+          z-index: auto
 
   @include true.test('Applies universal reset mixin with html element resets')
     @include true.assert
@@ -252,11 +249,11 @@
           outline-offset: 2px
           box-shadow: 0 4px 6px rgba(0,0,0,0.1)
 
-  @include true.test('Applies border-radius mixin')
+  @include true.test('Applies bo-ra mixin')
     @include true.assert
       @include true.output
         .rounded-box
-          @include utilities.border-radius(0.75rem)
+          @include utilities.bo-ra(0.75rem)
 
       @include true.expect
         .rounded-box

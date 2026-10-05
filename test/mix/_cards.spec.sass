@@ -11,14 +11,11 @@
 
 @include true.describe('card mixin')
 
-    @include true.it('should apply square shape by default with derived colors')
-        $colors: func-color.derive-card-colors(null, c.$soft-white)
-        $bg: map.get($colors, 'background')
-        $text: map.get($colors, 'text')
+    @include true.it('should apply square shape by default with colors')
         @include true.assert
             @include true.output
                 .card
-                    @include card()
+                    @include card($bg-color: c.$soft-white, $color: c.$dark-grey)
             
             @include true.expect
                 .card
@@ -27,18 +24,15 @@
                     inline-size: 100%
                     block-size: auto
                     aspect-ratio: 1
-                    background-color: $bg
-                    color: $text
+                    background-color: c.$soft-white
+                    color: c.$dark-grey
 
-    @include true.it('should apply circle shape and custom accent color')
+    @include true.it('should apply circle shape and custom colors')
         $accent: c.$logo-red
-        $colors: func-color.derive-card-colors($accent, c.$soft-white)
-        $bg: map.get($colors, 'background')
-        $text: map.get($colors, 'text')
         @include true.assert
             @include true.output
                 .card-circle
-                    @include card($accent-color: $accent, $shape: 'circle')
+                    @include card($bg-color: c.$soft-white, $color: $accent, $shape: 'circle')
             
             @include true.expect
                 .card-circle
@@ -47,5 +41,5 @@
                     inline-size: 100%
                     block-size: auto
                     aspect-ratio: 1
-                    background-color: $bg
-                    color: $text
+                    background-color: c.$soft-white
+                    color: $accent

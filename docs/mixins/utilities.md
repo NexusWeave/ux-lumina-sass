@@ -84,18 +84,22 @@ Sets CSS transition shorthand or granular transition properties (`property`, `du
 
 ### aspect-ratio
 
-Sets object-fit, logical full inline size, optional border-radius, and calculates CSS `aspect-ratio`.
+Sets object-fit, optional dimensions (`inline`, `block`), and calculates CSS `aspect-ratio` using either custom proportions or preset shape ratios (`'wide'`, `'portrait'`, `'square'`).
 
 #### Usage
 
 ```sass
 @use 'lumina-sass/mixins' as l-mix
 
-// Default 16:9 widescreen ratio
+// Preset shape: 16:9 widescreen
 .media-container
-	@include l-mix.aspect-ratio()
+	@include l-mix.aspect-ratio($shape: 'wide')
 
-// Custom 4:3 ratio with rounded borders
+// Preset shape: 1:1 square with custom inline width
+.avatar-box
+	@include l-mix.aspect-ratio($shape: 'square', $inline: 4rem)
+
+// Custom 4:3 ratio with object-fit contain
 .thumbnail-box
 	@include l-mix.aspect-ratio($width: 4, $length: 3, $object-fit: contain)
 ```
@@ -104,9 +108,12 @@ Sets object-fit, logical full inline size, optional border-radius, and calculate
 
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
-| `$width` | Number | `16` | Aspect ratio width component. |
-| `$length` | Number | `9` | Aspect ratio height/length component. |
+| `$width` | Number \| null | `null` | Aspect ratio width proportion. |
+| `$length` | Number \| null | `null` | Aspect ratio height proportion. |
 | `$object-fit` | String | `cover` | CSS `object-fit` value (`cover`, `contain`, `fill`, etc.). |
+| `$inline` | Length \| null | `null` | Optional inline-size (width) constraint. |
+| `$block` | Length \| null | `null` | Optional block-size (height) constraint. |
+| `$shape` | String \| null | `null` | Predefined ratio preset (`'wide'` for 16:9, `'portrait'` for 9:16, `'square'` for 1:1, or auto). |
 
 ### appearance
 
@@ -191,7 +198,7 @@ Utility mixin for setting border-radius using standard rem units or custom curve
 
 ### bo-sh
 
-Utility mixin for setting box-shadow.
+Utility mixin for setting box-shadow with null-safe validation.
 
 #### Usage
 
@@ -202,31 +209,81 @@ Utility mixin for setting box-shadow.
 	@include l-mix.bo-sh(0 4px 6px rgba(0, 0, 0, 0.1))
 ```
 
+#### Parameters
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$box-shadow` | String \| List | *Required* | CSS box-shadow definition. |
+
 ### bo-props
 
-Utility mixin for granular border configuration.
+Utility mixin for composite and granular border configuration, supporting shorthand, individual sides, logical properties, and border-radius.
 
 #### Usage
 
 ```sass
 @use "lumina-sass/mixins" as l-mix
 
-.custom-border
-	@include l-mix.bo-props($border: 1px solid #ccc, $border-radius: 0.5rem)
+// Shorthand border with radius
+.card
+	@include l-mix.bo-props($border: 1px solid #ccc, $radius: 0.5rem)
+
+// Granular properties from design tokens
+.badge
+	@include l-mix.bo-props($width: 1px, $style: dashed, $color: #0078d7, $radius: 9999px)
+
+// Logical block divider
+.section-divider
+	@include l-mix.bo-props($block: 1px solid #e2e8f0)
 ```
+
+#### Parameters
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$border` | String \| List \| null | `null` | Full border shorthand. |
+| `$color` | Color \| String \| null | `null` | Border color property. |
+| `$width` | Length \| String \| null | `null` | Border width property. |
+| `$style` | String \| null | `null` | Border style property. |
+| `$radius` | Length \| List \| null | `null` | Border radius property. |
+| `$top` | String \| List \| null | `null` | Top border property. |
+| `$right` | String \| List \| null | `null` | Right border property. |
+| `$bottom` | String \| List \| null | `null` | Bottom border property. |
+| `$left` | String \| List \| null | `null` | Left border property. |
+| `$block` | String \| List \| null | `null` | Logical block border property. |
+| `$inline` | String \| List \| null | `null` | Logical inline border property. |
 
 ### outline
 
-Utility mixin for setting outline and outline offsets.
+Flexible utility mixin for focus rings and accessibility outlines. Supports shorthand, individual sub-properties (`$color`, `$style`, `$width`, `$offset`), or hybrid combinations.
 
 #### Usage
 
 ```sass
 @use "lumina-sass/mixins" as l-mix
 
-.focus-outline
-	@include l-mix.outline($outline: 2px solid #005fcc, $outline-offset: 2px)
+// Accessible WCAG focus indicator with offset
+.button:focus-visible
+	@include l-mix.outline($color: #0078d7, $style: solid, $width: 2px, $offset: 2px)
+
+// Full shorthand outline
+.interactive:focus-visible
+	@include l-mix.outline($outline: 2px solid #005fcc)
+
+// Standalone offset adjustment
+.custom-focus
+	@include l-mix.outline($offset: 4px)
 ```
+
+#### Parameters
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$outline` | String \| List \| null | `null` | Full outline shorthand. |
+| `$color` | Color \| String \| null | `null` | Outline color property. |
+| `$style` | String \| null | `null` | Outline style property. |
+| `$width` | Length \| String \| null | `null` | Outline width property. |
+| `$offset` | Length \| String \| null | `null` | Outline offset spacing. |
 
 ### grid-layout
 

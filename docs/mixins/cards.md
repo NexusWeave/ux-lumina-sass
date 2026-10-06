@@ -30,6 +30,8 @@ The `card` mixin renders cards with customizable shapes, padding, borders, shado
 | `$shape` | String | (Optional) Shape of the card: `'square'`, `'circle'`, `'rectangle'`, or `'triangle'`. Defaults to `'square'`. |
 | `$box-shadow` | String\|null | (Optional) Card box shadow style. Defaults to `null`. |
 | `$transition` | String\|List\|null | (Optional) Card transition style. Defaults to `null`. |
+| `$inline` | Length\|null | (Optional) Inline size (width) override for the card. Defaults to `null`. |
+| `$block` | Length\|null | (Optional) Block size (height) override for the card. Defaults to `null`. |
 | `$color` | Color\|null | (Optional) Card text color. Defaults to `null`. |
 | `$bg-color` | Color\|null | (Optional) Card background color. Defaults to `null`. |
 | `$suppress` | Boolean | (Optional) Suppresses accessibility notice for transparent/inherited backgrounds. Defaults to `false`. |

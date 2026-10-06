@@ -13,24 +13,25 @@
 /// @param {Map} $overrides [()] - A map for overriding 'background' or 'text' colors.
 /// @param {String} $shape ['square'] - Shape of the card ('square', 'circle', 'triangle', 'rectangle').
 @mixin card(
-    $border: null, $margin: null, $padding: null, 
-    $shape: 'square', $box-shadow: null,  $transition: null, 
-    $color: null, $bg-color: null, $suppress: false)
+    $color, $bg-color, $border: null,
+    $margin: null, $padding: null, $shape: 'square', 
+    $box-shadow: null,  $transition: null, $inline: null, 
+    $block: null, $radius $suppress: false)
 
     @if $shape == 'square'
         @include utils.bo-ra(5%)
-        @include utils.aspect-ratio(1, 1)
+        @include utils.aspect-ratio($shape: $shape, $inline: $inline, $block: $block)
 
     @else if $shape == 'circle'
         @include utils.bo-ra(50%)
-        @include utils.aspect-ratio(1, 1)
+        @include utils.aspect-ratio($shape: 'square', $inline: $inline, $block: $block)
 
     @else if $shape == 'rectangle'
         @include utils.bo-ra(5%)
-        @include utils.aspect-ratio(16, 9)
+        @include utils.aspect-ratio($shape: 'wide', $inline: $inline, $block: $block)
 
     @else if $shape == 'triangle'
-        @include utils.aspect-ratio(1, 1)
+        @include utils.aspect-ratio($shape: 'square', $inline: $inline, $block: $block)
         clip-path: polygon(50% 0%, 0% 100%, 100% 100%)
 
     @if $padding != null
@@ -44,5 +45,8 @@
 
     @if $transition != null
         @include utils.transition($transition, $behavior: null)
+
+    @if $radius != null
+        @include utils.bo-ra($radius)
 
     @include utils.background-color($bg-color, $color, $suppress: $suppress)

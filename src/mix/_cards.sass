@@ -16,18 +16,25 @@
     $color, $bg-color, $border: null,
     $margin: null, $padding: null, $shape: 'square', 
     $box-shadow: null,  $transition: null, $inline: null, 
-    $block: null, $radius $suppress: false)
+    $block: null, $radius: null, $suppress: false)
+
+    @if $radius != null
+        @include utils.bo-ra($radius)
+
+    @else if $shape == 'square'
+        @include utils.bo-ra(.5rem)
+    @else if $shape == 'circle'
+        @include utils.bo-ra(50%)
+    @else if $shape == 'rectangle'
+        @include utils.bo-ra(.5rem)
 
     @if $shape == 'square'
-        @include utils.bo-ra(5%)
         @include utils.aspect-ratio($shape: $shape, $inline: $inline, $block: $block)
 
     @else if $shape == 'circle'
-        @include utils.bo-ra(50%)
         @include utils.aspect-ratio($shape: 'square', $inline: $inline, $block: $block)
 
     @else if $shape == 'rectangle'
-        @include utils.bo-ra(5%)
         @include utils.aspect-ratio($shape: 'wide', $inline: $inline, $block: $block)
 
     @else if $shape == 'triangle'
@@ -45,8 +52,5 @@
 
     @if $transition != null
         @include utils.transition($transition, $behavior: null)
-
-    @if $radius != null
-        @include utils.bo-ra($radius)
 
     @include utils.background-color($bg-color, $color, $suppress: $suppress)

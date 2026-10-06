@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.11.4](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.11.3...v4.11.4) (2026-10-06)
+
+
+### Bug Fixes
+
+* **generator:** 🐛 standardize range thumb margin to block-start. ([2763af4](https://github.com/NexusWeave/ux-lumina-sass/commit/2763af47d36053bf0e4407bfe8590e46886a9e27))
+* **mixins:** 🐛 resolving typo. ([19a8b60](https://github.com/NexusWeave/ux-lumina-sass/commit/19a8b6005e7927390435995948942f86c9ccc639))
+* **schema:** 🐛 standardize margin logical property name to block-start ([0559536](https://github.com/NexusWeave/ux-lumina-sass/commit/0559536db8d0ba45de84d11b691a7c2d4e0f9359))
+
 ### [4.11.3](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.11.2...v4.11.3) (2026-10-05)
 
 ### [4.11.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.11.1...v4.11.2) (2026-10-05)

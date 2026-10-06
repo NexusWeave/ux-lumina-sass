@@ -2,7 +2,8 @@
 @use '../../node_modules/sass-true' as true
 
 // Internal dependencies
-@use '../../src/mix/margin' as m
+@use '../../src/mix/spacing' as m
+
 
 @include true.describe('Margin Utilities')
   @include true.it('Applies shorthand and logical margin properties')
@@ -24,7 +25,7 @@
     @include true.assert
       @include true.output
         .article
-          @include m.margin($b-start: 2rem, $b-end: 1rem, $i-start: 0.5rem)
+          @include m.margin($block-start: 2rem, $block-end: 1rem, $inline-start: 0.5rem)
         .footer
           @include m.margin($top: 10px, $left: 20px)
       

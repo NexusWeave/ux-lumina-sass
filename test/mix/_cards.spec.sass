@@ -5,9 +5,10 @@
 @use '../../node_modules/sass-true' as true
 
 // Internal dependencies
-@use '../../src/mix' as *
+@use '../../src/mix' as mix
 @use '../../src/color' as c
 @use '../../src/func/color' as func-color
+
 
 @include true.describe('card mixin')
 
@@ -15,7 +16,7 @@
         @include true.assert
             @include true.output
                 .card
-                    @include card($bg-color: c.$soft-white, $color: c.$dark-grey)
+                    @include mix.card($bg-color: c.$soft-white, $color: c.$dark-grey)
             
             @include true.expect
                 .card
@@ -30,7 +31,7 @@
         @include true.assert
             @include true.output
                 .card-circle
-                    @include card($bg-color: c.$soft-white, $color: $accent, $shape: 'circle')
+                    @include mix.card($bg-color: c.$soft-white, $color: $accent, $shape: 'circle')
             
             @include true.expect
                 .card-circle

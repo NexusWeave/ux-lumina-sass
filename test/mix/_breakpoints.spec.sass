@@ -9,6 +9,7 @@
 @use '../../src/mix/_breakpoints' as breakpoints
 @use '../../src/map/devices-breakpoints' as devices-breakpoints
 
+
 @include true.describe('Media Queries')
   @include true.it('Generates min-width media query for breakpoint mobile (mobile-first)')
     $mobile: map.get(devices-breakpoints.$breakpoints, 'mobile')

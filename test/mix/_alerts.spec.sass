@@ -2,9 +2,10 @@
 @use '../../node_modules/sass-true' as true
 
 // Internal dependencies
-@use '../../src/mix' as *
+@use '../../src/mix' as mix
 @use '../../src/color/alerts' as alerts
 @use '../../src/func/color' as func-color
+
 
 @include true.describe('alert mixin')
 
@@ -12,7 +13,7 @@
         @include true.assert
             @include true.output
                 .alert
-                    @include alert()
+                    @include mix.alert()
             
             @include true.expect
                 .alert
@@ -36,7 +37,7 @@
         @include true.assert
             @include true.output
                 .alert-with-icon
-                    @include alert($icon: 'warning')
+                    @include mix.alert($icon: 'warning')
             
             @include true.expect
                 .alert-with-icon

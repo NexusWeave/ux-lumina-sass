@@ -5,6 +5,7 @@
 @use '../src/func/color' as func-color
 @use '../src/mix/contrast' as mix-contrast
 
+
 @include true.test-module('Color Contrast Utilities')
   @include true.test('Calculates relative luminance of white as 1')
     @include true.assert-equal(func-color.luminance(#fff), 1)

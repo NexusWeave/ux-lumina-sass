@@ -5,10 +5,11 @@
 @use '../../node_modules/sass-true' as true
 
 // Internal dependencies
-@use '../../src/mix' as *
+@use '../../src/mix' as mix
 @use '../../src/color' as c
 @use '../../src/color/alerts' as alerts
 @use '../../src/func/color' as func-color
+
 
 @include true.describe('elements mixin')
 
@@ -19,7 +20,7 @@
         @include true.assert
             @include true.output
                 .test
-                    @include link-color()
+                    @include mix.link-color()
             
             @include true.expect
                 .test
@@ -55,7 +56,7 @@
         @include true.assert
             @include true.output
                 .test
-                    @include link-color()
+                    @include mix.link-color()
             
             // This test explicitly ensures `article` and `span` are NOT selected
             @include true.expect

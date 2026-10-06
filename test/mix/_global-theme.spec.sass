@@ -2,9 +2,11 @@
 @use '../../node_modules/sass-true' as true
 
 // Internal dependencies
-@use '../../src/mix' as *
-@use '../../src/func/color' as func-color
+@use '../../src/mix' as mix
 @use '../../src/color' as c
+@use '../../src/func/color' as func-color
+
+
 
 @include true.describe('theme-colors mixin')
 
@@ -12,7 +14,7 @@
         @include true.assert
             @include true.output
                 body
-                    @include apply-theme-colors(c.$soft-white, func-color.best-contrast-color(c.$soft-white))
+                    @include mix.apply-theme-colors(c.$soft-white, func-color.best-contrast-color(c.$soft-white))
             
             @include true.expect
                 body
@@ -23,7 +25,7 @@
         @include true.assert
             @include true.output
                 body
-                    @include apply-theme-colors(#000, #fff)
+                    @include mix.apply-theme-colors(#000, #fff)
             
             @include true.expect
                 body
@@ -34,7 +36,7 @@
         @include true.assert
             @include true.output
                 body
-                    @include apply-theme-colors(c.$soft-white, func-color.best-contrast-color(c.$soft-white), $font: 'Arial')
+                    @include mix.apply-theme-colors(c.$soft-white, func-color.best-contrast-color(c.$soft-white), $font: 'Arial')
             
             @include true.expect
                 body
@@ -46,7 +48,7 @@
         @include true.assert
             @include true.output
                 body
-                    @include apply-theme-colors(#000, #fff)
+                    @include mix.apply-theme-colors(#000, #fff)
                         a
                             color: red
             

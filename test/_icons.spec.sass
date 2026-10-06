@@ -9,6 +9,7 @@
 @use '../src/func' as func-module
 @use '../src/map/icons' as icon-map
 
+
 @include true.test-module('Icons Verification')
   @include true.test('All icons in the configuration map can be resolved')
     @each $category, $icons-in-cat in icon-map.$icons

@@ -7,6 +7,7 @@
 // Internal dependencies
 @use '../src/map' as map-module
 
+
 @include true.test-module('Configuration Maps')
   @include true.test('Icons map contains expected categories')
     @include true.assert-true(map.has-key(map-module.$icons, 'academic'))

@@ -1,22 +1,18 @@
-import { describe, it, expect } from 'vitest';
+import path from 'path';
 import * as sass from 'sass';
 import { runSass } from 'sass-true';
-import path from 'path';
 import { fileURLToPath } from 'url';
+import { describe, it, expect } from 'vitest';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const sassTestFile = path.resolve(__dirname, 'index.spec.sass');
 
 runSass(
-  { describe, it, sass },
-  sassTestFile,
+  { describe, it, sass }, sassTestFile,
   {
-    loadPaths: [
-      path.resolve(__dirname, '..'),
-      path.resolve(__dirname, '../src'),
-      path.resolve(__dirname, '../node_modules')
-    ],
+    loadPaths: [ path.resolve(__dirname, '..'), path.resolve(__dirname, '../src'), path.resolve(__dirname, '../node_modules')],
     importers: [new sass.NodePackageImporter(path.resolve(__dirname, '..'))]
   }
 );
@@ -33,11 +29,7 @@ describe('WCAG Contrast Warning Assertions', () => {
     const warnings: string[] = [];
     sass.compileString(invalidSass, {
       syntax: 'scss',
-      logger: {
-        warn(message) {
-          warnings.push(message);
-        }
-      },
+      logger: { warn(message) { warnings.push(message); } },
       loadPaths: [
         path.resolve(__dirname, '..'),
         path.resolve(__dirname, '../src'),
@@ -59,11 +51,7 @@ describe('WCAG Contrast Warning Assertions', () => {
     const warnings: string[] = [];
     sass.compileString(transparentSass, {
       syntax: 'scss',
-      logger: {
-        warn(message) {
-          warnings.push(message);
-        }
-      },
+      logger: { warn(message) { warnings.push(message); }},
       loadPaths: [
         path.resolve(__dirname, '..'),
         path.resolve(__dirname, '../src'),
@@ -85,11 +73,7 @@ describe('WCAG Contrast Warning Assertions', () => {
     const warnings: string[] = [];
     sass.compileString(suppressedSass, {
       syntax: 'scss',
-      logger: {
-        warn(message) {
-          warnings.push(message);
-        }
-      },
+      logger: { warn(message) { warnings.push(message); }},
       loadPaths: [
         path.resolve(__dirname, '..'),
         path.resolve(__dirname, '../src'),

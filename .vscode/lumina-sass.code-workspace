@@ -3,6 +3,19 @@
   "settings": {
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
-    "files.exclude": { "**/.github": true, "**/.DS_Store": true, "**/node_modules": true, "**/demo/.well-known": true }
+    "files.exclude": {
+      "**/.github": true,
+      "**/.DS_Store": true,
+      "**/node_modules": true,
+      "**/demo/.well-known": true
+    },
+    "conventionalCommits.scopes": [
+      "mixins",
+      "cards",
+      "schema",
+      "generator",
+      "documentation",
+      "workspace"
+    ]
   }
 }

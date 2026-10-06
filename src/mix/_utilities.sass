@@ -154,34 +154,70 @@
     @if $behavior != null
         transition-behavior: $behavior
 
-@mixin aspect-ratio($width: 16, $length: 9, $object-fit: cover)
-    object-fit: $object-fit
-    @include size($inline: 100%)
-    aspect-ratio: calc($width / $length)
+/// Sets responsive aspect ratio, dimensions, and object-fit behavior.
+/// @param {Number|null} $width [null] - Aspect ratio width proportion.
+/// @param {Number|null} $length [null] - Aspect ratio height proportion.
+/// @param {String} $object-fit [cover] - CSS object-fit value (e.g. cover, contain).
+/// @param {Length|null} $inline [null] - Optional inline-size (width).
+/// @param {String|null} $shape [null] - Predefined ratio preset ('wide', 'portrait', 'auto').
+@mixin aspect-ratio($width: null, $length: null, $object-fit: cover, $inline: null, $block: null, $shape: null)
+    @if $width != null and $length != null
+        aspect-ratio: calc($width / $length)
 
+    @else
+        @if $shape == 'wide'
+            aspect-ratio: calc(16 / 9)
+
+        @else if $shape == 'portrait'
+            aspect-ratio: calc(9 / 16)
+        
+        @else if $shape == 'square'
+            aspect-ratio: calc(1 / 1)
+        
+        @else
+            aspect-ratio: auto !important
+
+    @if $inline != null
+        @include size($inline: $inline)
+
+    @if $block != null
+        @include size($block: $block)
+
+    object-fit: $object-fit
+
+/// Resets or sets element appearance across browsers.
+/// @param {String} $appearance [none] - CSS appearance value.
 @mixin appearance($appearance: none)
     appearance: $appearance
     -moz-appearance: $appearance
     -webkit-appearance: $appearance
 
+/// Core framing mixin applying borders, outlines, border-radius, and box-shadow.
+/// @param {String|List|null} $border [null] - Full border shorthand.
+/// @param {Color|String|null} $border-color [null] - Border color property.
+/// @param {Length|String|null} $border-width [null] - Border width property.
+/// @param {String|null} $border-style [null] - Border style property.
+/// @param {Length|List|null} $border-radius [null] - Border radius property.
+/// @param {String|List|null} $border-top [null] - Border top property.
+/// @param {String|List|null} $border-right [null] - Border right property.
+/// @param {String|List|null} $border-bottom [null] - Border bottom property.
+/// @param {String|List|null} $border-left [null] - Border left property.
+/// @param {String|List|null} $border-block [null] - Logical border block property.
+/// @param {String|List|null} $border-inline [null] - Logical border inline property.
+/// @param {String|List|null} $outline [null] - Full outline shorthand.
+/// @param {Color|String|null} $outline-color [null] - Outline color.
+/// @param {String|null} $outline-style [null] - Outline style.
+/// @param {Length|String|null} $outline-width [null] - Outline width.
+/// @param {Length|String|null} $outline-offset [null] - Outline offset spacing.
+/// @param {String|List|null} $box-shadow [null] - Box shadow value.
 @mixin frame(
-    $border: null, 
-    $border-color: null, 
-    $border-width: null, 
-    $border-style: null, 
-    $border-radius: null, 
-    $border-top: null, 
-    $border-right: null, 
-    $border-bottom: null, 
-    $border-left: null, 
-    $border-block: null, 
-    $border-inline: null, 
-    $outline: null, 
-    $outline-color: null, 
-    $outline-style: null, 
-    $outline-width: null, 
-    $outline-offset: null, 
-    $box-shadow: null)
+    $border: null, $border-color: null,  $border-width: null, 
+    $border-style: null, $border-radius: null, $border-top: null, 
+    $border-right: null, $border-bottom: null, $border-left: null, 
+    $border-block: null, $border-inline: null, $outline: null, 
+    $outline-color: null, $outline-style: null, $outline-width: null, 
+    $outline-offset: null, $box-shadow: null)
+
     @if $border-radius != null
         border-radius: $border-radius
 
@@ -233,38 +269,61 @@
     @if $box-shadow != null
         box-shadow: $box-shadow
 
-/// Utility mixin for border-radius
-/// @param {Length|List} $radius - The border radius value or list of corner radii.
+/// Utility mixin for box-shadow
+/// @param {String|List} $box-shadow - The box-shadow value to apply.
 @mixin bo-sh($box-shadow)
-    @include frame($box-shadow: $box-shadow)
+    @if $box-shadow != null
+        @include frame($box-shadow: $box-shadow)
 
-/// Utility mixin for border-radius
-/// @param {Length|List} $radius - The border radius value or list of corner radii.
-@mixin bo-props($border: null, $border-color: null, $border-width: null, $border-style: null, $border-radius: null, $border-top: null, $border-right: null, $border-bottom: null, $border-left: null, $border-block: null, $border-inline: null)
-    @include frame(
-        $border: $border,
-        $border-top: $border-top,
-        $border-left: $border-left,
-        $border-block: $border-block,
-        $border-right: $border-right,
-        $border-color: $border-color,
-        $border-width: $border-width,
-        $border-style: $border-style,
-        $border-radius: $border-radius,
-        $border-bottom: $border-bottom,
-        $border-inline: $border-inline
-    )
+/// Utility mixin for composite and granular border properties with optional radius.
+/// @param {String|List|null} $border [null] - Full border shorthand (e.g. 1px solid #000).
+/// @param {Color|String|null} $color [null] - Border color property.
+/// @param {Length|String|null} $width [null] - Border width property.
+/// @param {String|null} $style [null] - Border style property (e.g. solid, dashed).
+/// @param {Length|List|null} $radius [null] - Border radius property.
+/// @param {String|List|null} $top [null] - Border top property.
+/// @param {String|List|null} $right [null] - Border right property.
+/// @param {String|List|null} $bottom [null] - Border bottom property.
+/// @param {String|List|null} $left [null] - Border left property.
+/// @param {String|List|null} $block [null] - Logical border block property.
+/// @param {String|List|null} $inline [null] - Logical border inline property.
+@mixin bo-props($border: null, $color: null, $width: null, $style: null, $radius: null, $top: null, $right: null, $bottom: null, $left: null, $block: null, $inline: null)
+    @if $border != null or $color != null or $width != null or $style != null or $radius != null or $top != null or $right != null or $bottom != null or $left != null or $block != null or $inline != null
+        @include frame(
+            $border: $border,
+            $border-top: $top,
+            $border-left: $left,
+            $border-block: $block,
+            $border-right: $right,
+            $border-color: $color,
+            $border-width: $width,
+            $border-style: $style,
+            $border-radius: $radius,
+            $border-bottom: $bottom,
+            $border-inline: $inline
+        )
 
-/// Utility mixin for border-radius
-/// @param {Length|List} $radius - The border radius value or list of corner radii.
-@mixin outline($outline: null, $outline-color: null, $outline-style: null, $outline-width: null, $outline-offset: null)
-    @if $outline != null or $outline-color != null or $outline-style != null
-        @include frame($outline: $outline, $outline-color: $outline-color, $outline-style: $outline-style, $outline-width: $outline-width, $outline-offset: $outline-offset)
+/// Utility mixin for focus and outline properties supporting shorthand and granular definitions.
+/// @param {String|List|null} $outline [null] - Full outline shorthand (e.g. 2px solid #0078d7).
+/// @param {Color|String|null} $color [null] - Outline color.
+/// @param {String|null} $style [null] - Outline style (e.g. solid, dashed).
+/// @param {Length|String|null} $width [null] - Outline width.
+/// @param {Length|String|null} $offset [null] - Outline offset spacing.
+@mixin outline($outline: null, $color: null, $style: null, $width: null, $offset: null)
+    @if $outline != null or $color != null or $style != null or $width != null or $offset != null
+        @include frame(
+            $outline: $outline,
+            $outline-color: $color,
+            $outline-style: $style,
+            $outline-width: $width,
+            $outline-offset: $offset
+        )
 
-/// Utility mixin for border-radius
+/// Utility mixin for border-radius.
 /// @param {Length|List} $radius - The border radius value or list of corner radii.
 @mixin bo-ra($radius)
-    @include frame($border-radius: $radius)
+    @if $radius != null
+        @include frame($border-radius: $radius)
 
 /// Utility mixin for CSS grid layouts.
 /// @param {String|null} $temp-area [null] - Grid template areas definition.

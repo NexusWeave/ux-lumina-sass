@@ -68,7 +68,7 @@
     $l2: luminance($color2, $bg)
 
     $ratio: math.div(math.max($l1, $l2) + 0.05, math.min($l1, $l2) + 0.05)
-    
+
     // Round to 2 decimal places
     @return math.div(math.round($ratio * 100), 100)
 
@@ -83,7 +83,7 @@
     $opaque-bg: $bg-color
     @if color.channel($bg-color, "alpha") < 1
         $opaque-bg: color.mix($bg-color, $background, math.percentage(color.channel($bg-color, "alpha")))
-        
+
     $ratio-light: contrast-ratio($opaque-bg, $light)
     $ratio-dark: contrast-ratio($opaque-bg, $dark)
     
@@ -127,9 +127,9 @@
         'cards': $card-colors,
         'abbr-underline': $abbr-underline,
         'alerts': (
-            'warning': alerts.$warning,
-            'error': alerts.$error,
             'info': alerts.$info,
+            'error': alerts.$error,
+            'warning': alerts.$warning,
             'success': alerts.$success
         )
     )
@@ -151,23 +151,117 @@
     $bg: null
     @if $accent-color
         $bg: color.mix($accent-color, base.$pure-white, 15%)
+
     @else
         // Derive a card background from the context background
         @if luminance($context-bg) > 0.5
             $bg: color.scale($context-bg, $lightness: -5%)
+
         @else
             $bg: color.scale($context-bg, $lightness: 5%)
 
     $text: best-contrast-color($bg)
     @return ('background': $bg, 'text': $text)
 
+/// Generates a tint of a color by mixing it with pure white.
+/// @param {Color} $color - The base color to tint.
+/// @param {Number} $percentage - Percentage of white to mix in (0% to 100%).
+/// @return {Color} - The tinted color.
+@function tint($color, $percentage)
+    @if meta.type-of($color) != 'color'
+        @error "tint: Expected $color to be a color, but got #{meta.type-of($color)}."
+
+    $pct: $percentage
+    @if math.is-unitless($pct)
+        $pct: $pct * 1%
+
+    @return color.mix(base.$pure-white, $color, $pct)
+
+/// Generates a shade of a color by mixing it with dark black.
+/// @param {Color} $color - The base color to shade.
+/// @param {Number} $percentage - Percentage of black to mix in (0% to 100%).
+/// @return {Color} - The shaded color.
+@function shade($color, $percentage)
+    @if meta.type-of($color) != 'color'
+        @error "shade: Expected $color to be a color, but got #{meta.type-of($color)}."
+
+    $pct: $percentage
+    @if math.is-unitless($pct)
+        $pct: $pct * 1%
+
+    @return color.mix(base.$black-900, $color, $pct)
+
+/// Changes the alpha transparency of a given color.
+/// @param {Color} $color - The base color.
+/// @param {Number} $alpha - The target alpha value (0 to 1).
+/// @return {Color} - The color with adjusted alpha channel.
+@function alpha($color, $alpha)
+    @if meta.type-of($color) != 'color'
+        @error "alpha: Expected $color to be a color, but got #{meta.type-of($color)}."
+
+    @return color.change($color, $alpha: $alpha)
+
+/// Composites a foreground color (which may have transparency) over an opaque background.
+/// Returns the resulting opaque color as perceived by the human eye.
+/// @param {Color} $foreground - The foreground color (may contain alpha).
+/// @param {Color} $background [base.$pure-white] - The underlying background color.
+/// @return {Color} - The flattened, composite opaque color.
+@function composite-over($foreground, $background: base.$pure-white)
+    @if meta.type-of($foreground) != 'color' or meta.type-of($background) != 'color'
+        @error "composite-over: Both arguments must be colors."
+
+    $a: color.channel($foreground, "alpha", $space: rgb)
+    @if $a >= 1
+        @return $foreground
+
+    $fg-opaque: color.change($foreground, $alpha: 1)
+    @return color.mix($fg-opaque, $background, math.percentage($a))
+
+/// Adjusts a foreground color iteratively (via tinting or shading) to guarantee a minimum contrast ratio against a background.
+/// @param {Color} $fg-color - The text or element color to adjust.
+/// @param {Color} $bg-color - The background surface color.
+/// @param {Number} $min-ratio [4.5] - The target minimum contrast ratio (e.g. 4.5 for WCAG AA, 7.0 for WCAG AAA).
+/// @param {Color} $composite-bg [base.$pure-white] - Background used if $bg-color or $fg-color has transparency.
+/// @return {Color} - The adjusted color meeting or exceeding the minimum contrast ratio.
+@function ensure-contrast($fg-color, $bg-color, $min-ratio: 4.5, $composite-bg: base.$pure-white)
+    $flat-fg: composite-over($fg-color, $flat-bg)
+    $flat-bg: composite-over($bg-color, $composite-bg)
+    $current-ratio: contrast-ratio($flat-fg, $flat-bg)
+
+    @if $current-ratio >= $min-ratio
+        @return $fg-color
+
+    $step: 1
+    $adjusted: $fg-color
+    $is-light-bg: luminance($flat-bg) > 0.5
+
+    @while $step <= 5 // Iteratively adjust lightness up to 5 steps of 8%
+        @if $is-light-bg
+            $adjusted: shade($adjusted, 8%)
+
+        @else
+            $adjusted: tint($adjusted, 8%)
+
+        $test-fg: composite-over($adjusted, $flat-bg)
+        @if contrast-ratio($test-fg, $flat-bg) >= $min-ratio
+            @return $adjusted
+
+        $step: $step + 1
+
+    // If still insufficient after 5 iterations, fallback to extreme high contrast
+    @if $is-light-bg
+        @return base.$gray-900
+
+    @else
+        @return base.$pure-white
+
 /// Inspects a color or CSS color keyword and returns a dictionary of its type and properties.
 /// @param {*} $val - The color value to inspect.
 /// @return {Map} - Map containing type, value, is-transparent, is-inherit, and is-special.
 @function inspect-color($val)
-    $type: meta.type-of($val)
-    $is-trans: false
     $is-inh: false
+    $is-trans: false
+    $type: meta.type-of($val)
 
     @if $val == transparent or $val == 'transparent'
         $is-trans: true

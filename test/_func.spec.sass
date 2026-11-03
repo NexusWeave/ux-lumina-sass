@@ -1,4 +1,5 @@
 // Built-in Dependencies
+@use 'sass:color'
 @use 'sass:map'
 @use 'sass:meta'
 @use 'sass:list'
@@ -28,6 +29,30 @@
       // Specifically test the edge-case from the bug report (bright cyan)
       // Bright cyan (rgb(13, 202, 240)) has a high luminance, so it should force dark text, not white.
       @include true.assert-equal(func-module.best-contrast-color(rgb(13, 202, 240)), base.$gray-700)
+
+    @include true.test('Generates tints and shades correctly')
+      $blue: base.$blue-500
+      $tinted: func-module.tint($blue, 20%)
+      $shaded: func-module.shade($blue, 20%)
+      @include true.assert-true(meta.type-of($tinted) == 'color')
+      @include true.assert-true(meta.type-of($shaded) == 'color')
+      @include true.assert-true(func-module.luminance($tinted) > func-module.luminance($blue))
+      @include true.assert-true(func-module.luminance($shaded) < func-module.luminance($blue))
+
+    @include true.test('Handles alpha and composite-over')
+      $semi-trans: func-module.alpha(base.$blue-700, 0.5)
+      $flat: func-module.composite-over($semi-trans, base.$pure-white)
+      @include true.assert-equal(color.channel($semi-trans, 'alpha'), 0.5)
+      @include true.assert-equal(color.channel($flat, 'alpha'), 1.0)
+      @include true.assert-true(func-module.luminance($flat) > func-module.luminance(base.$blue-700))
+
+    @include true.test('Guarantees WCAG AA via ensure-contrast')
+      $light-bg: base.$slate-50
+      // A bright green that normally fails AA against light bg
+      $weak-fg: rgb(130, 230, 130)
+      $adjusted-fg: func-module.ensure-contrast($weak-fg, $light-bg, $min-ratio: 4.5)
+      $ratio: func-module.contrast-ratio($adjusted-fg, $light-bg)
+      @include true.assert-true($ratio >= 4.5)
 
   @include true.test-module('Universell Utforming (Accessibility)')
     @include true.test('Ensures standard text meets WCAG AA contrast (4.5:1)')

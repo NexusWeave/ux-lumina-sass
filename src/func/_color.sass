@@ -224,8 +224,9 @@
 /// @param {Color} $composite-bg [base.$pure-white] - Background used if $bg-color or $fg-color has transparency.
 /// @return {Color} - The adjusted color meeting or exceeding the minimum contrast ratio.
 @function ensure-contrast($fg-color, $bg-color, $min-ratio: 4.5, $composite-bg: base.$pure-white)
-    $flat-fg: composite-over($fg-color, $flat-bg)
     $flat-bg: composite-over($bg-color, $composite-bg)
+    $flat-fg: composite-over($fg-color, $flat-bg)
+
     $current-ratio: contrast-ratio($flat-fg, $flat-bg)
 
     @if $current-ratio >= $min-ratio

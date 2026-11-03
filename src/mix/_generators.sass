@@ -38,9 +38,9 @@
 
 /// Generates icon utility classes with pseudo-element glyphs.
 /// @param {String|List|null} $name [null] - Single icon name, list of names, or null for all.
-/// @param {Color} $color [rgb(64, 64, 64)] - Icon text color.
+/// @param {Color} $color [base.$gray-700] - Icon text color.
 /// @param {String} $font-family ['bootstrap-icons'] - Icon font-family name.
-@mixin gen-icons($name: null, $color: rgb(64, 64, 64), $font-family: 'bootstrap-icons', $debug: false, $silent: false, $map: icon-map.$icons, $include-content: true)
+@mixin gen-icons($name: null, $color: base.$gray-700, $font-family: 'bootstrap-icons', $debug: false, $silent: false, $map: icon-map.$icons, $include-content: true)
   @if $map
     @if $name == null
       @if $debug
@@ -97,7 +97,7 @@
   $props: map.merge(inputs.$default-input-props, $custom)
 
   // Determine focus outline (custom overrides default)
-  $focus-outline: map.get($custom, 'focus-outline') or rgb(0, 120, 215)
+  $focus-outline: map.get($custom, 'focus-outline') or base.$blue-510
 
   @if $name == null
     @if $debug
@@ -151,10 +151,10 @@
 /// @param {Map} $custom - Custom overrides for the track and thumb properties.
 @mixin gen-range-slider($custom: ())
   $default-range-props: (
-    'track-color': #ddd,
+    'track-color': base.$gray-300,
     'track-block-size': 0.4rem,
     'track-radius': 0.2rem,
-    'thumb-color': #0078d7,
+    'thumb-color': base.$blue-510,
     'thumb-size': 1.2rem,
     'thumb-radius': 50%,
     'inline-size': 100%

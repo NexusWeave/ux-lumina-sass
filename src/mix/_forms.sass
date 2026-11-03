@@ -125,25 +125,25 @@
         @include utils.background-color($bg, $color, $suppress: $suppress)
 
 /// Textual input styling (text, email, password, search, tel, url, number, date)
-/// @param {Color} $bg [c.$soft-white] - Background color.
-/// @param {Color} $color [c.$dark-grey] - Text color.
+/// @param {Color} $bg [c.$slate-100] - Background color.
+/// @param {Color} $color [c.$gray-700] - Text color.
 /// @param {String} $border [0.0625rem solid rgba(0, 0, 0, 0.15)] - Border definition.
 /// @param {Length} $radius [0.375rem] - Border radius.
 /// @param {Length} $padding [0.5rem 0.75rem] - Padding.
 /// @param {Length} $inline [100%] - Inline-size.
-/// @param {Color} $focus-border [c.$sea-green] - Border color on focus.
+/// @param {Color} $focus-border [c.$teal-500] - Border color on focus.
 /// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
-@mixin input-text($bg: c.$soft-white, $color: c.$dark-grey, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.5rem 0.75rem, $inline: 100%, $focus-border: c.$sea-green, $suppress: false)
+@mixin input-text($bg: c.$slate-100, $color: c.$gray-700, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.5rem 0.75rem, $inline: 100%, $focus-border: c.$teal-500, $suppress: false)
     @include base-input($bg: $bg, $color: $color, $border: $border, $radius: $radius, $focus-border: $focus-border, $suppress: $suppress)
     padding: $padding
     @include typo.font($size: 1rem)
     @include utils.size($inline: $inline)
 
 /// Checkbox and Radio input styling
-/// @param {Color} $accent [c.$sea-green] - Accent color.
+/// @param {Color} $accent [c.$teal-500] - Accent color.
 /// @param {Length} $size [1.1rem] - Width and height.
 /// @param {String} $cursor [pointer] - Cursor type.
-@mixin input-check($accent: c.$sea-green, $size: 1.1rem, $cursor: pointer)
+@mixin input-check($accent: c.$teal-500, $size: 1.1rem, $cursor: pointer)
     cursor: $cursor
     accent-color: $accent
     @include utils.size($size, $size)
@@ -168,13 +168,13 @@
             @include utils.bo-ra($radius)
 
 /// File input styling
-/// @param {Color} $bg [c.$soft-white] - Input background color.
-/// @param {Color} $btn-bg [c.$sea-green] - Upload button background color.
-/// @param {Color} $btn-color [c.$white] - Upload button text color.
+/// @param {Color} $bg [c.$slate-100] - Input background color.
+/// @param {Color} $btn-bg [c.$teal-500] - Upload button background color.
+/// @param {Color} $btn-color [c.$pure-white] - Upload button text color.
 /// @param {Length} $radius [0.375rem] - Border radius.
 /// @param {String} $cursor [pointer] - Cursor type.
 /// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
-@mixin input-file($bg: c.$soft-white, $btn-bg: c.$sea-green, $btn-color: null, $radius: 0.375rem, $cursor: pointer, $suppress: false)
+@mixin input-file($bg: c.$slate-100, $btn-bg: c.$teal-500, $btn-color: null, $radius: 0.375rem, $cursor: pointer, $suppress: false)
     cursor: $cursor
     @include typo.font($size: 0.9rem)
     @include utils.bo-ra($radius)
@@ -194,16 +194,16 @@
         @include utils.background-color($btn-bg, $btn-color, $suppress: $suppress)
 
 /// Select dropdown styling
-/// @param {Color} $bg [c.$soft-white] - Background color.
-/// @param {Color} $color [c.$dark-grey] - Text color.
+/// @param {Color} $bg [c.$slate-100] - Background color.
+/// @param {Color} $color [c.$gray-700] - Text color.
 /// @param {String} $border [0.0625rem solid rgba(0, 0, 0, 0.15)] - Border definition.
 /// @param {Length} $radius [0.375rem] - Border radius.
 /// @param {Length} $padding [0.5rem 2rem 0.5rem 0.75rem] - Padding including arrow space.
 /// @param {Length} $inline [100%] - Inline-size.
 /// @param {String} $cursor [pointer] - Cursor type.
-/// @param {Color} $focus-border [c.$sea-green] - Focus border color.
+/// @param {Color} $focus-border [c.$teal-500] - Focus border color.
 /// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
-@mixin input-select($bg: c.$soft-white, $color: c.$dark-grey, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.5rem 2rem 0.5rem 0.75rem, $inline: 100%, $cursor: pointer, $focus-border: c.$sea-green, $suppress: false)
+@mixin input-select($bg: c.$slate-100, $color: c.$gray-700, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.5rem 2rem 0.5rem 0.75rem, $inline: 100%, $cursor: pointer, $focus-border: c.$teal-500, $suppress: false)
     cursor: $cursor
     background-size: 1rem
     background-repeat: no-repeat
@@ -213,16 +213,16 @@
     @include utils.appearance(none)
     @include input-text($bg: $bg, $color: $color, $border: $border, $radius: $radius, $padding: $padding, $inline: $inline, $focus-border: $focus-border, $suppress: $suppress)
 /// Textarea styling
-/// @param {Color} $bg [c.$soft-white] - Background color.
-/// @param {Color} $color [c.$dark-grey] - Text color.
+/// @param {Color} $bg [c.$slate-100] - Background color.
+/// @param {Color} $color [c.$gray-700] - Text color.
 /// @param {String} $border [0.0625rem solid rgba(0, 0, 0, 0.15)] - Border definition.
 /// @param {Length} $radius [0.375rem] - Border radius.
 /// @param {Length} $padding [0.75rem] - Padding.
 /// @param {Length} $min-block [6rem] - Minimum block-size (height).
 /// @param {Length} $inline [100%] - Inline-size.
 /// @param {String} $resize [vertical] - CSS resize behavior.
-/// @param {Color} $focus-border [c.$sea-green] - Focus border color.
-@mixin input-textarea($bg: c.$soft-white, $color: c.$dark-grey, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.75rem, $min-block: 6rem, $inline: 100%, $resize: vertical, $focus-border: c.$sea-green)
+/// @param {Color} $focus-border [c.$teal-500] - Focus border color.
+@mixin input-textarea($bg: c.$slate-100, $color: c.$gray-700, $border: 0.0625rem solid rgba(0, 0, 0, 0.15), $radius: 0.375rem, $padding: 0.75rem, $min-block: 6rem, $inline: 100%, $resize: vertical, $focus-border: c.$teal-500)
     resize: $resize
     @include utils.size($min-block: $min-block)
     @include input-text($bg: $bg, $color: $color, $border: $border, $radius: $radius, $padding: $padding, $inline: $inline, $focus-border: $focus-border)
@@ -238,7 +238,7 @@
             @include input-text($color: $color)
 
     @else if $type == 'checkbox' or $type == 'radio'
-        $check-color: c.$sea-green
+        $check-color: c.$teal-500
         @if $color != null
             $check-color: $color
         input[type="#{$type}"]
@@ -249,7 +249,7 @@
             @include input-color()
 
     @else if $type == 'file'
-        $file-btn: c.$sea-green
+        $file-btn: c.$teal-500
         @if $color != null
             $file-btn: $color
         input[type="file"]
@@ -267,8 +267,8 @@
 /// @param {Color} $bg - The background color for the page context.
 /// @param {Color} $text - The text color.
 /// @param {Color|null} $accent-color [null] - The accent color for focus/hover outlines.
-@mixin style-forms($bg: c.$soft-white, $text: c.$dark-grey, $accent-color: null)
-    $input-bg: func-color.best-contrast-color($bg, $light: c.$white, $dark: c.$soft-white)
+@mixin style-forms($bg: c.$slate-100, $text: c.$gray-700, $accent-color: null)
+    $input-bg: func-color.best-contrast-color($bg, $light: c.$pure-white, $dark: c.$slate-100)
     
     // Core input elements
     input, textarea, select, button, datalist, optgroup, option

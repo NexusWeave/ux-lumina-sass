@@ -1,12 +1,10 @@
 // Built-in Dependencies
+
 @use 'sass:map'
 @use 'sass:meta'
 
 // Internal dependencies
-@forward 'size'
-@forward 'spacing'
 @use 'size' as *
-
 @use '../color' as c
 @use 'position' as pos
 @use 'spacing' as space
@@ -14,14 +12,17 @@
 @use 'contrast' as contrast
 @use '../func/color' as func-color
 
+@forward 'size'
+@forward 'spacing'
+
 
 /// Sets background color and automatically handles text color contrast if not provided.
 /// Validates WCAG contrast when explicit text color is provided.
-/// @param {Color|String} $bg-color [c.$soft-white] - The background color to apply.
+/// @param {Color|String} $bg-color [c.$slate-100] - The background color to apply.
 /// @param {Color|String} $text-color [null] - Optional text color. If null, calculated based on contrast.
 /// @param {Number} $threshold [4.5] - The minimum acceptable contrast ratio (standard WCAG AA compliance is 4.5:1).
 /// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
-@mixin background-color($bg-color: c.$soft-white, $text-color: null, $threshold: 4.5, $suppress: false)
+@mixin background-color($bg-color: c.$slate-100, $text-color: null, $threshold: 4.5, $suppress: false)
     background-color: $bg-color
 
     @if $text-color != null
@@ -48,7 +49,7 @@
 
 /// Comprehensive universal CSS reset mixin for all CSS rules.
 /// All parameters default to false for safety and require explicit activation.
-@mixin reset($all: false, $box-sizing: false, $margin: false, $padding: false, $border: false, $outline: false, $font: false, $color: false, $background: false, $button: false, $list-style: false, $text-decoration: false, $size: false, $appearance: false, $vertical-align: false, $user-select: false, $cursor: false, $position: false, $html-elements: false, $text: c.$dark-grey, $colors: ())
+@mixin reset($all: false, $box-sizing: false, $margin: false, $padding: false, $border: false, $outline: false, $font: false, $color: false, $background: false, $button: false, $list-style: false, $text-decoration: false, $size: false, $appearance: false, $vertical-align: false, $user-select: false, $cursor: false, $position: false, $html-elements: false, $text: c.$gray-700, $colors: ())
     @if $all or $box-sizing
         box-sizing: border-box
 

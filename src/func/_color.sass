@@ -1,8 +1,8 @@
 // Built-in Dependencies
-@use 'sass:math'
-@use 'sass:color'
-@use 'sass:meta'
 @use 'sass:map'
+@use 'sass:math'
+@use 'sass:meta'
+@use 'sass:color'
 
 // Internal dependencies
 @use '../color' as c
@@ -12,9 +12,9 @@
 /// Calculates the relative luminance of a color.
 /// Handles semi-transparent colors by blending them against a white background by default.
 /// @param {Color} $color - The color to calculate luminance for.
-/// @param {Color} $background [base.$white] - The background color to blend against if $color is semi-transparent.
+/// @param {Color} $background [base.$pure-white] - The background color to blend against if $color is semi-transparent.
 /// @return {Number} - The relative luminance (0 to 1).
-@function luminance($color, $background: base.$white)
+@function luminance($color, $background: base.$pure-white)
     @if meta.type-of($color) != 'color'
         @error "luminance: Expected $color to be a color, but got #{meta.type-of($color)}."
 
@@ -30,18 +30,21 @@
     $r: 0
     @if $red <= 0.03928
         $r: math.div($red, 12.92)
+
     @else
         $r: math.pow(math.div($red + 0.055, 1.055), 2.4)
 
     $g: 0
     @if $green <= 0.03928
         $g: math.div($green, 12.92)
+
     @else
         $g: math.pow(math.div($green + 0.055, 1.055), 2.4)
 
     $b: 0
     @if $blue <= 0.03928
         $b: math.div($blue, 12.92)
+
     @else
         $b: math.pow(math.div($blue + 0.055, 1.055), 2.4)
 
@@ -57,7 +60,7 @@
     @if meta.type-of($color1) != 'color' or meta.type-of($color2) != 'color'
         @error "contrast-ratio: Both arguments must be colors."
 
-    $bg: base.$white
+    $bg: base.$pure-white
     @if $background != null
         $bg: $background
 
@@ -71,12 +74,12 @@
 
 /// Determines the best contrast color (light or dark) for a given background.
 /// @param {Color} $bg-color - The background color.
-/// @param {Color} $light [base.$white] - The color to return if background is dark.
-/// @param {Color} $dark [base.$dark-grey] - The color to return if background is light.
-/// @param {Color} $background [base.$white] - The background color to blend against if $bg-color is semi-transparent.
+/// @param {Color} $light [base.$pure-white] - The color to return if background is dark.
+/// @param {Color} $dark [base.$gray-700] - The color to return if background is light.
+/// @param {Color} $background [base.$pure-white] - The background color to blend against if $bg-color is semi-transparent.
 /// @param {Boolean} $debug [false] - Set to true to log the calculated contrast ratios to the console.
 /// @return {Color} - The color with better contrast.
-@function best-contrast-color($bg-color, $light: base.$white, $dark: base.$dark-grey, $background: base.$white, $debug: false)
+@function best-contrast-color($bg-color, $light: base.$pure-white, $dark: base.$gray-700, $background: base.$pure-white, $debug: false)
     $opaque-bg: $bg-color
     @if color.channel($bg-color, "alpha") < 1
         $opaque-bg: color.mix($bg-color, $background, math.percentage(color.channel($bg-color, "alpha")))
@@ -93,12 +96,12 @@
         @return $dark
 
 /// Sets up global webpage theme colors.
-/// @param {Color} $body-bg [c.$soft-white] - The background color for the page.
+/// @param {Color} $body-bg [c.$slate-100] - The background color for the page.
 /// @param {Color} $text-color [null] - The text color. If null, automatically calculated.
 /// @param {Color|null} $accent-color [null] - The accent color to use for anchors and other links.
 /// @param {Map} $custom-colors [()] - A map of custom colors to merge into the theme-colors.
 /// @return {Map} - A map containing all theme colors.
-@function theme-colors($body-bg: c.$soft-white, $text-color: null, $accent-color: null, $custom-colors: ())
+@function theme-colors($body-bg: c.$slate-100, $text-color: null, $accent-color: null, $custom-colors: ())
     $final-text: best-contrast-color($body-bg)
     @if $text-color != null
         $final-text: $text-color
@@ -107,7 +110,7 @@
     $anchor: $accent-color
     @if $anchor == null
         // Default to a blue that contrasts well
-        $anchor: best-contrast-color($body-bg, $light: c.$light-blue, $dark: color.adjust(c.$light-blue, $lightness: -10%))
+        $anchor: best-contrast-color($body-bg, $light: c.$blue-450, $dark: color.adjust(c.$blue-450, $lightness: -10%))
     
     // Derive card colors
     $card-colors: derive-card-colors($accent-color, $body-bg)
@@ -141,13 +144,13 @@
     @if $accent != null
         @return $accent
     // Ensure we use a high-contrast color that works against both light and dark backgrounds
-    @return best-contrast-color($bg, $light: c.$white, $dark: base.$dark-grey)
+    @return best-contrast-color($bg, $light: c.$pure-white, $dark: base.$gray-700)
 
 /// Derives card background and text colors based on an accent color or context background.
-@function derive-card-colors($accent-color: null, $context-bg: c.$soft-white)
+@function derive-card-colors($accent-color: null, $context-bg: c.$slate-100)
     $bg: null
     @if $accent-color
-        $bg: color.mix($accent-color, base.$white, 15%)
+        $bg: color.mix($accent-color, base.$pure-white, 15%)
     @else
         // Derive a card background from the context background
         @if luminance($context-bg) > 0.5

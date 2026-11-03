@@ -20,7 +20,7 @@
 @mixin link-color($color: null, $color-hover: null, $color-active: null, $color-visited: null, $bg-color: transparent, $suppress: false)
 
     @if $color == null
-        $color: c.$light-blue-contrast
+        $color: c.$blue-800
     
     @if $color-hover == null
         $color-hover: color.adjust($color, $lightness: -13%)
@@ -33,7 +33,7 @@
 
     $disabled-color: alerts.$disabled
     @if meta.type-of($bg-color) == 'color'
-        $disabled-color: func-color.best-contrast-color($bg-color, $light: rgba(c.$white, 0.6), $dark: alerts.$disabled)
+        $disabled-color: func-color.best-contrast-color($bg-color, $light: rgba(c.$pure-white, 0.6), $dark: alerts.$disabled)
 
     a
         [aria-disabled="true"]

@@ -1,29 +1,41 @@
-$github-gray: rgb(105, 105, 105)
-$github-gray-active: rgb(45, 45, 45)
-$github-gray-hover: rgb(120, 120, 120)
-$github-light-green: rgb(231, 243, 243)
+// Internal dependencies
+@use '../base'
+
+$github-gray: base.$gray-600
+$github-gray-active: base.$gray-850
+$github-gray-hover: base.$gray-500
+$github-light-green: base.$green-light-tint
 
 //  Social media colors
-$discord-blue: rgb(88, 101, 242)
-$discord-blue-hover: rgba(88, 101, 242, 0.8)
-$discord-blue-active: rgba(88, 101, 242, 0.6)
- 
-$facebook-blue: rgb(59, 89, 152)
-$facebook-blue-hover: rgba(59, 89, 152, 0.8)
-$facebook-blue-active: rgba(59, 89, 152, 0.6)
+$discord-blue: base.$indigo-550
+$discord-blue-hover: rgba(base.$indigo-550, .8)
+$discord-blue-active: rgba(base.$indigo-550, .6)
 
-$instagram-purple: rgb(193, 53, 132)
-$instagram-purple-hover: rgba(193, 53, 132, 0.8)
-$instagram-purple-active: rgba(193, 53, 132, 0.6)
+$facebook-blue: base.$blue-580
+$facebook-blue-hover: rgba(base.$blue-580, .8)
+$facebook-blue-active: rgba(base.$blue-580, .6)
 
-$messenger-blue: rgb(0, 132, 255)
-$messenger-blue-hover: rgba(0, 132, 255, 0.8)
-$messenger-blue-active: rgba(0, 132, 255, 0.6)
+$instagram-purple: base.$purple-700
+$instagram-purple-hover: rgba(base.$purple-700, .8)
+$instagram-purple-active: rgba(base.$purple-700, .6)
 
-$youtube-red: rgb(255, 0, 0)
-$youtube-red-hover: rgb(120, 6, 6)
-$youtube-red-active: rgba(255, 0, 0, 0.6)
+$messenger-blue: base.$blue-420
+$messenger-blue-hover: rgba(base.$blue-420, .8)
+$messenger-blue-active: rgba(base.$blue-420, .6)
 
-$linked-in-blue: rgb(0, 0, 128)
-$linked-in-blue-active: rgb(0, 0, 115)
-$linked-in-blue-hover: rgb(25, 25, 140)
+$youtube-red: base.$red-500
+$youtube-red-hover: base.$red-hover-dark
+$youtube-red-active: rgba(base.$red-500, .6)
+
+$linked-in-blue: base.$blue-750
+$linked-in-blue-hover: base.$blue-730
+$linked-in-blue-active: base.$blue-740
+
+
+// Project specific colors
+$lumina-blue: base.$blue-450
+$lumina-logo-red: base.$red-700
+$lumina-sea-green: base.$teal-500
+$lumina-dark-orange: base.$coral-600
+$lumina-light-orange: base.$coral-400
+$lumina-deep-midnight-blue: base.$blue-900

@@ -14,12 +14,12 @@
         @include true.assert
             @include true.output
                 body
-                    @include mix.apply-theme-colors(c.$soft-white, func-color.best-contrast-color(c.$soft-white))
+                    @include mix.apply-theme-colors(c.$slate-100, func-color.best-contrast-color(c.$slate-100))
             
             @include true.expect
                 body
-                    background-color: c.$soft-white
-                    color: func-color.best-contrast-color(c.$soft-white)
+                    background-color: c.$slate-100
+                    color: func-color.best-contrast-color(c.$slate-100)
 
     @include true.it('should apply custom theme colors')
         @include true.assert
@@ -36,13 +36,13 @@
         @include true.assert
             @include true.output
                 body
-                    @include mix.apply-theme-colors(c.$soft-white, func-color.best-contrast-color(c.$soft-white), $font: 'Arial')
+                    @include mix.apply-theme-colors(c.$slate-100, func-color.best-contrast-color(c.$slate-100), $font: 'Arial')
             
             @include true.expect
                 body
                     font-family: "Arial", sans-serif
-                    background-color: c.$soft-white
-                    color: func-color.best-contrast-color(c.$soft-white)
+                    background-color: c.$slate-100
+                    color: func-color.best-contrast-color(c.$slate-100)
 
     @include true.it('should support passing nested @content')
         @include true.assert

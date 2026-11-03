@@ -14,7 +14,7 @@
 @include true.describe('elements mixin')
 
     @include true.it('should apply link-color styles')
-        $color: c.$light-blue-contrast
+        $color: c.$blue-800
         $hover: color.adjust($color, $lightness: -13%)
         $active: color.adjust($color, $lightness: -20%)
         @include true.assert
@@ -50,7 +50,7 @@
                         color: $color
 
     @include true.it('should not apply link color to child elements inside anchors')
-        $color: c.$light-blue-contrast
+        $color: c.$blue-800
         $hover: color.adjust($color, $lightness: -13%)
         $active: color.adjust($color, $lightness: -20%)
         @include true.assert

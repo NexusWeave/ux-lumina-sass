@@ -10,13 +10,13 @@
 
 
 /// Styles an interactive button with automated contrast, hover, and active states.
-/// @param {Color} $bg-color [c.$light-blue] - Button background color.
+/// @param {Color} $bg-color [c.$blue-450] - Button background color.
 /// @param {Color|null} $text-color [null] - Text color (auto-calculated if null).
 /// @param {Color|null} $border-color [null] - Optional border color.
 /// @param {Length} $size [1em] - Text font size.
 /// @param {String|Number} $weight [bold] - Text font weight.
 /// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
-@mixin base-btn($bg-color: c.$light-blue, $text-color: null, $border-color: null, $size: 1em, $weight: bold, $suppress: false)
+@mixin base-btn($bg-color: c.$blue-450, $text-color: null, $border-color: null, $size: 1em, $weight: bold, $suppress: false)
     &:hover
         transform: scale(1.05)
         $hover-bg: color.adjust($bg-color, $lightness: -5%)

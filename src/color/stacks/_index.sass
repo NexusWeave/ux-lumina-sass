@@ -1,39 +1,42 @@
-//  Theme color  | Compiled language
-$cplus-blue: rgb(0, 89, 156)
-$c-silver: rgb(168, 185, 204)
-$fortran-purple: rgb(115, 79, 150)
+// Internal dependencies
+@use '../base'
 
-$compiled-orange: rgb(238, 140, 43)
-$compiled-light-orange: rgb(238, 177, 138)
+//  Theme color  | Compiled language
+$cplus-blue: base.$blue-650
+$c-silver: base.$gray-400
+$fortran-purple: base.$purple-600
+
+$compiled-orange: base.$orange-500
+$compiled-light-orange: base.$orange-300
 
 //  Theme colors | Interpreted language
-$go-teal: rgb(0, 173, 216)
-$microsoft-green: rgb(23, 134, 0)
-$typescript-blue: rgb(81, 43, 212)
-$microsoft-purple: rgb(81, 43, 212)
-$cyan-blue-azure: rgb(55, 118, 171)
-$javascript-yellow:rgb(247, 223, 30)
-$interpreted-light-green: rgb(109, 222, 157)
+$go-teal: base.$cyan-500
+$cyan-blue-azure: base.$blue-480
+$microsoft-green: base.$green-850
+$typescript-blue: base.$purple-550
+$microsoft-purple: base.$purple-550
+$javascript-yellow: base.$yellow-350
+$interpreted-light-green: base.$emerald-350
 
 //  Theme colors | Database
-$db-red: rgba(204, 41, 39, .8)
-$db-light-red: rgba(255, 0, 0, .6)
+$db-red: base.$red-alpha80
+$db-light-red: base.$red-alpha60
 
 //  Theme colors | WorkFlow
-$workflow-blue: rgb(110, 147, 171)
-$jupyter-peach: rgb(255, 204, 152)
-$workflow-light-blue: rgba(0, 191, 255, 0.6)
+$workflow-blue: base.$blue-350
+$jupyter-peach: base.$orange-250
+$workflow-light-blue: base.$blue-cyan-alpha60
 
 //  Theme colors | Scripting
-$lua-blue: rgb(0, 0, 128)
-$shell-green: rgb(78, 254, 9)
-$powershell-blue: rgb(1, 36, 86)
-$scripting-light-yellow: rgb(255, 227, 128)
+$lua-blue: base.$blue-750
+$shell-green: base.$lime-350
+$powershell-blue: base.$blue-850
+$scripting-light-yellow: base.$yellow-200
 
 // Theme Colors | Templating
-$meson-red: rgb(179, 32, 36)
-$jinja-red: rgb(179, 32, 36)
-$roff-grey: rgb(110, 110, 110)
-$smarty-orange: rgb(245, 185, 69)
+$meson-red: base.$red-850
+$jinja-red: base.$red-850
+$roff-grey: base.$gray-550
+$smarty-orange: base.$orange-350
 
-$frontend-sky-blue: rgb(92, 201, 238)
+$frontend-sky-blue: base.$blue-300

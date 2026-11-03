@@ -30,7 +30,7 @@
       @include true.expect
         .dark-bg
           background-color: #000000
-          color: base.$white
+          color: base.$pure-white
 
   @include true.test('Automatically picks dark grey text for light background')
     @include true.assert
@@ -41,7 +41,7 @@
       @include true.expect
         .light-bg
           background-color: #ffffff
-          color: base.$dark-grey
+          color: base.$gray-700
 
   @include true.test('Uses default white background when no arguments passed')
     @include true.assert
@@ -51,8 +51,8 @@
       
       @include true.expect
         .default-bg
-          background-color: base.$soft-white
-          color: base.$dark-grey
+          background-color: base.$slate-100
+          color: base.$gray-700
 
   @include true.test('Handles inherit background correctly')
     @include true.assert
@@ -189,7 +189,7 @@
             cursor: help
             text-decoration: underline dotted
             background-color: transparent
-            color: base.$dark-grey
+            color: base.$gray-700
 
           code
             padding: 0.2rem 0.4rem

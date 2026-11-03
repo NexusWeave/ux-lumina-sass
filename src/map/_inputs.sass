@@ -1,3 +1,6 @@
+// Internal dependencies
+@use '../color/base' as base
+
 $booleanControls: ( 'radio', 'checkbox' )
 $buttons: ( 'file', 'submit', 'reset', 'button')
 $input-utility-types: ( 'range', 'color', 'hidden' )
@@ -14,14 +17,14 @@ $inputs: (
 )
 
 $default-input-props: (
-  border: rgb(204, 204, 204) solid 0.0625rem,
+  border: base.$gray-300 solid 0.0625rem,
   padding: 0.5rem 1rem,
   "border-radius": 0.5rem,
-  "background-color": rgb(255, 255, 255),
+  "background-color": base.$pure-white,
   "font-size": 1rem,
   "line-height": 1.5,
   "box-sizing": border-box,
-  outline: 0.0625rem solid rgb(0, 120, 215),
-  "focus-outline": rgb(0, 120, 215),
+  outline: 0.0625rem solid base.$blue-510,
+  "focus-outline": base.$blue-510,
   cursor: text
 )

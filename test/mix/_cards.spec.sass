@@ -16,27 +16,27 @@
         @include true.assert
             @include true.output
                 .card
-                    @include mix.card($bg-color: c.$soft-white, $color: c.$dark-grey)
+                    @include mix.card($bg-color: c.$slate-100, $color: c.$gray-700)
             
             @include true.expect
                 .card
                     border-radius: 0.5rem
                     aspect-ratio: 1
                     object-fit: cover
-                    background-color: c.$soft-white
-                    color: c.$dark-grey
+                    background-color: c.$slate-100
+                    color: c.$gray-700
 
     @include true.it('should apply circle shape and custom colors')
-        $accent: c.$logo-red
+        $accent: c.$red-700
         @include true.assert
             @include true.output
                 .card-circle
-                    @include mix.card($bg-color: c.$soft-white, $color: $accent, $shape: 'circle')
+                    @include mix.card($bg-color: c.$slate-100, $color: $accent, $shape: 'circle')
             
             @include true.expect
                 .card-circle
                     border-radius: 50%
                     aspect-ratio: 1
                     object-fit: cover
-                    background-color: c.$soft-white
+                    background-color: c.$slate-100
                     color: $accent

@@ -1,12 +1,14 @@
-// Neutral palette
-$neutral-white: rgb(245, 245, 245)
-$neutral-off-white: rgb(252, 252, 252)
-$neutral-soft-white: rgb(255, 248, 241)
-$neutral-white-mute: rgb(242, 242, 242)
+// Internal dependencies
+@use '../base'
 
+// Neutral palette
+$neutral-white: base.$slate-100
+$neutral-off-white: base.$slate-50
+$neutral-soft-white: base.$slate-25
+$neutral-white-mute: base.$slate-75
 
 // Text palette
-$text-light-1: rgb(60, 60, 60)
-$text-dark-grey: rgb(40, 40, 40)
-$text-light-2: rgba(60, 60, 60, 0.66)
-$text-base-dark-grey: rgb(64, 64, 64)
+$text-light-1: base.$gray-800
+$text-dark-grey: base.$gray-900
+$text-base-dark-grey: base.$gray-700
+$text-light-2: rgba(base.$gray-800, .66)

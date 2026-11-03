@@ -45,7 +45,7 @@ The universal `reset` mixin resets all or specific CSS properties and HTML base 
 | `$cursor` | Boolean | `false` | Sets `cursor: auto`. |
 | `$position` | Boolean | `false` | Resets `position: static`, `top: auto`, `right: auto`, `bottom: auto`, `left: auto`, `inset: auto`, `z-index: auto`. |
 | `$html-elements` | Boolean | `false` | Applies default base styling resets for `abbr` and `code`. |
-| `$text` | Color | `c.$dark-grey` | Base text color for `abbr` resets. |
+| `$text` | Color | `c.$gray-700` | Base text color for `abbr` resets. |
 | `$colors` | Map | `()` | Optional color map for `abbr-underline` and `code-bg`. |
 
 > [!NOTE]

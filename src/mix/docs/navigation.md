@@ -24,7 +24,7 @@ Generates a responsive hamburger navigation toggle button with configurable brea
 | `$breakpoint` | String \| Length | `'tablet'` | Breakpoint name or length above which button is hidden (`min-width` query). |
 | `$bg-color` | Color | `transparent` | Background color of the button. |
 | `$z-index` | Number | `2` | Z-index stack depth. |
-| `$color` | Color | `c.$dark-grey` | Icon and text color for child elements. |
+| `$color` | Color | `c.$gray-700` | Icon and text color for child elements. |
 | `$pos` | String | `relative` | CSS position mode. |
 | `$top` | Length | `1rem` | Top offset position. |
 | `$right` | Length | `1rem` | Right offset position. |

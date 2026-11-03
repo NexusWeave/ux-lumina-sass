@@ -26,7 +26,7 @@ button.reset-button
 
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
-| `$bg-color` | Color | `c.$light-blue` | The background color. |
+| `$bg-color` | Color | `c.$blue-450` | The background color. |
 | `$text-color` | Color \| null | `null` | The text color (auto-calculated via WCAG contrast). |
 | `$border-color` | Color \| null | `null` | Optional border color (resets border when null). |
 | `$size` | Length | `1em` | The font size for the button text. |

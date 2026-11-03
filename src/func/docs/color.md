@@ -8,7 +8,7 @@ Import path: `@use 'lumina-sass/func' as func` or `@use 'lumina-sass/func/color'
 
 ## Functions
 
-### `best-contrast-color($bg-color, $light: base.$white, $dark: base.$dark-grey, $background: base.$white, $debug: false)`
+### `best-contrast-color($bg-color, $light: base.$pure-white, $dark: base.$gray-700, $background: base.$pure-white, $debug: false)`
 
 Calculates the WCAG 2.1 contrast ratio of a background against two options (typically white and dark grey) and returns the one providing superior readability.
 
@@ -17,9 +17,9 @@ Calculates the WCAG 2.1 contrast ratio of a background against two options (typi
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `$bg-color` | Color | *Required* | The background color to evaluate. |
-| `$light` | Color | `c.$white` | The text color returned if the background is dark. |
-| `$dark` | Color | `c.$dark-grey` | The text color returned if the background is light. |
-| `$background` | Color | `c.$white` | Background blended against if `$bg-color` is semi-transparent. |
+| `$light` | Color | `c.$pure-white` | The text color returned if the background is dark. |
+| `$dark` | Color | `c.$gray-700` | The text color returned if the background is light. |
+| `$background` | Color | `c.$pure-white` | Background blended against if `$bg-color` is semi-transparent. |
 | `$debug` | Boolean | `false` | When true, logs calculated ratios to the console. |
 
 #### Usage
@@ -33,7 +33,7 @@ $text: func.best-contrast-color($bg) // Returns #ffffff
 
 ---
 
-### `luminance($color, $background: base.$white)`
+### `luminance($color, $background: base.$pure-white)`
 
 Calculates the relative luminance (ranging from `0` for absolute black to `1` for absolute white) of a color according to the WCAG 2.1 formula. Semi-transparent colors are automatically alpha-blended against a white background by default.
 
@@ -42,7 +42,7 @@ Calculates the relative luminance (ranging from `0` for absolute black to `1` fo
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `$color` | Color | *Required* | The color to calculate luminance for. |
-| `$background` | Color | `c.$white` | Blend background for semi-transparent colors. |
+| `$background` | Color | `c.$pure-white` | Blend background for semi-transparent colors. |
 
 #### Usage
 
@@ -76,7 +76,7 @@ $ratio: func.contrast-ratio(#000000, #ffffff) // 21
 
 ---
 
-### `theme-colors($body-bg: c.$soft-white, $text-color: null, $accent-color: null, $custom-colors: ())`
+### `theme-colors($body-bg: c.$slate-100, $text-color: null, $accent-color: null, $custom-colors: ())`
 
 Generates an accessible, complete map of theme colors based on a base background color. Derives high-contrast anchor colors, card backgrounds, code backgrounds, alert colors, and abbreviations.
 
@@ -96,7 +96,7 @@ Returns the preferred accent color if provided; otherwise resolves the highest-c
 
 ---
 
-### `derive-card-colors($accent-color: null, $context-bg: c.$soft-white)`
+### `derive-card-colors($accent-color: null, $context-bg: c.$slate-100)`
 
 Calculates a harmonious card background and contrasting text color from an accent or context background.
 

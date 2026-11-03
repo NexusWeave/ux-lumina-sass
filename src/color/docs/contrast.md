@@ -6,7 +6,6 @@ Lumina Sass incorporates specialized utilities to ensure that color combinations
 ---
 
 ## Automated Verification (Mixin)
-
 The `assert-contrast` mixin serves as the primary mechanism for ensuring color accessibility. It evaluates the contrast ratio between two specified colors and triggers a Sass `@warn` with actionable diagnostics if the ratio fails to meet the defined threshold, or an accessibility notice if the background/text is transparent or inherited. This mixin is architected within the `mix` module.
 
 ### Implementation

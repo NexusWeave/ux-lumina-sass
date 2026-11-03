@@ -122,3 +122,112 @@ Inspects a color, CSS keyword, or value and returns a dictionary with its type a
 $info: func.inspect-color(transparent)
 // Returns ('type': 'color', 'value': transparent, 'is-transparent': true, 'is-inherit': false, 'is-special': true)
 ```
+
+---
+
+### `tint($color, $percentage)`
+
+Lightens a color by mixing it with pure white (`base.$pure-white`) according to the given percentage.
+
+#### Parameters
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$color` | Color | *Required* | The base color to tint. |
+| `$percentage` | Number (%) | *Required* | Percentage of white to mix in (0% to 100%). |
+
+#### Usage
+
+```sass
+@use 'lumina-sass/func' as func
+
+$tinted: func.tint(#0078d7, 20%) // Mixes 20% white into #0078d7
+```
+
+---
+
+### `shade($color, $percentage)`
+
+Darkens a color by mixing it with pure black (`base.$black`) according to the given percentage.
+
+#### Parameters
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$color` | Color | *Required* | The base color to shade. |
+| `$percentage` | Number (%) | *Required* | Percentage of black to mix in (0% to 100%). |
+
+#### Usage
+
+```sass
+@use 'lumina-sass/func' as func
+
+$shaded: func.shade(#0078d7, 20%) // Mixes 20% black into #0078d7
+```
+
+---
+
+### `alpha($color, $alpha)`
+
+Returns a new color with the specified alpha channel opacity (using modern `sass:color` channel manipulation).
+
+#### Parameters
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$color` | Color | *Required* | The base color. |
+| `$alpha` | Number | *Required* | Alpha value between 0 (transparent) and 1 (opaque). |
+
+#### Usage
+
+```sass
+@use 'lumina-sass/func' as func
+
+$semi-trans: func.alpha(#0078d7, 0.5) // rgba(0, 120, 215, 0.5)
+```
+
+---
+
+### `composite-over($foreground, $background: base.$pure-white)`
+
+Composites a semi-transparent foreground color over an opaque background color using standard alpha blending:
+$$\text{Color} = \alpha \cdot \text{fg} + (1 - \alpha) \cdot \text{bg}$$
+
+#### Parameters
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$foreground` | Color | *Required* | The potentially semi-transparent color. |
+| `$background` | Color | `c.$pure-white` | The background color underneath. |
+
+#### Usage
+
+```sass
+@use 'lumina-sass/func' as func
+
+$solid: func.composite-over(rgba(0, 0, 0, 0.5), #ffffff) // #808080
+```
+
+---
+
+### `ensure-contrast($fg-color, $bg-color, $min-ratio: 4.5, $composite-bg: base.$pure-white)`
+
+Adjusts a foreground color (handling tints, shades, and semi-transparent alpha channels) to ensure it satisfies a target WCAG contrast ratio against a background color. If the current contrast is insufficient, it iteratively shades or tints the color until `$min-ratio` is reached.
+
+#### Parameters
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$fg-color` | Color | *Required* | The foreground color to check and adjust. |
+| `$bg-color` | Color | *Required* | The background color to test against. |
+| `$min-ratio` | Number | `4.5` | Target contrast ratio (default 4.5 for WCAG AA normal text). |
+| `$composite-bg` | Color | `c.$pure-white` | Base background used when compositing semi-transparent backgrounds. |
+
+#### Usage
+
+```sass
+@use 'lumina-sass/func' as func
+
+// Darkens the light blue until it achieves at least 4.5:1 ratio over white
+$readable-blue: func.ensure-contrast(#60a5fa, #ffffff, 4.5)
+```

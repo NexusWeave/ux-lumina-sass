@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.12.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.11.6...v4.12.0) (2026-11-03)
+
+
+### Features
+
+* **func:** add tint, shade, alpha, composite-over, and ensure-contrast functions ([71614f5](https://github.com/NexusWeave/ux-lumina-sass/commit/71614f53c7e60cd085a4614b2abbbf3b17515ac3))
+
+
+### Bug Fixes
+
+* **func:** define flat-bg before flat-fg in ensure-contrast ([4a62d22](https://github.com/NexusWeave/ux-lumina-sass/commit/4a62d22c182aafa9aa474e14ddf512569ba221d0))
+
 ### [4.11.6](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.11.5...v4.11.6) (2026-11-03)
 
 ### [4.11.5](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.11.4...v4.11.5) (2026-10-06)

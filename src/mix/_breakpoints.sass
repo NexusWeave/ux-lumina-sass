@@ -71,7 +71,16 @@
 /// Helper for prefers-color-scheme via media-queries-base.
 @mixin prefers-color-scheme($mode)
     @include media-queries-base('(prefers-color-scheme: #{$mode})')
-        @content
+        @if $mode == dark
+            body:not([data-theme="light"]) &
+                @content
+
+        @else if $mode == light
+            body:not([data-theme="dark"]) &
+                @content
+        
+        @else
+            @error "Invalid prefers-color-scheme mode `#{$mode}` – use 'light' or 'dark'."
 
 /// Helper for prefers-orientation via media-queries-base.
 @mixin prefers-orientation($orientation)

@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.12.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.12.0...v4.12.1) (2026-11-06)
+
+
+### Bug Fixes
+
+* 🐛 default prefers-color-scheme to dark & introduce theme guards. ([ff3b512](https://github.com/NexusWeave/ux-lumina-sass/commit/ff3b51297654a9ab50462ba7571b523a5a42da18))
+* improving perfers-color-scheme's reliability. ([99d45ee](https://github.com/NexusWeave/ux-lumina-sass/commit/99d45ee46d2a1bcd084d5627b7e9ff85ba2eeb8a))
+
 ## [4.12.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.11.6...v4.12.0) (2026-11-03)
 
 

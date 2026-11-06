@@ -69,7 +69,18 @@
         @media (min-width: $mobile) and (max-width: $desktop-down)
           color: purple
 
-  @include true.it('Generates prefers-color-scheme')
+  @include true.it('Generates prefers-color-scheme (default dark)')
+    @include true.assert
+      @include true.output
+        @include breakpoints.prefers-color-scheme
+          background: black
+      
+      @include true.expect
+        @media (prefers-color-scheme: dark)
+          body:not([data-theme="light"]) &
+            background: black
+
+  @include true.it('Generates prefers-color-scheme (explicit dark)')
     @include true.assert
       @include true.output
         @include breakpoints.prefers-color-scheme(dark)
@@ -77,7 +88,19 @@
       
       @include true.expect
         @media (prefers-color-scheme: dark)
-          background: black
+          body:not([data-theme="light"]) &
+            background: black
+
+  @include true.it('Generates prefers-color-scheme (explicit light)')
+    @include true.assert
+      @include true.output
+        @include breakpoints.prefers-color-scheme(light)
+          background: white
+      
+      @include true.expect
+        @media (prefers-color-scheme: light)
+          body:not([data-theme="dark"]) &
+            background: white
 
   @include true.it('Generates device-media for iphone')
     $iphone: map.get(devices-breakpoints.$devices, 'iphone')

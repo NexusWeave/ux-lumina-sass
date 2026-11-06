@@ -69,15 +69,33 @@
         @content
 
 /// Helper for prefers-color-scheme via media-queries-base.
-@mixin prefers-color-scheme($mode)
+/// Defaults to dark mode for theme overrides.
+/// @param {String} $mode ['dark'] - Color scheme mode ('dark' or 'light').
+@mixin prefers-color-scheme($mode: dark)
     @include media-queries-base('(prefers-color-scheme: #{$mode})')
         @if $mode == dark
-            body:not([data-theme="light"]) &
-                @content
+            @if & == null
+                body:not([data-theme="light"])
+                    @content
+
+            @else if '#{&}' == 'body'
+                @at-root body:not([data-theme="light"])
+                    @content
+
+            @else
+                body:not([data-theme="light"]) &
+                    @content
 
         @else if $mode == light
-            body:not([data-theme="dark"]) &
-                @content
+            @if & == null
+                body:not([data-theme="dark"])
+                    @content
+            @else if '#{&}' == 'body'
+                @at-root body:not([data-theme="dark"])
+                    @content
+            @else
+                body:not([data-theme="dark"]) &
+                    @content
         
         @else
             @error "Invalid prefers-color-scheme mode `#{$mode}` – use 'light' or 'dark'."

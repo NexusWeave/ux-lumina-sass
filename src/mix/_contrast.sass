@@ -4,6 +4,7 @@
 
 // Internal dependencies
 @use '../func/color' as func-color
+@use '../func/typography' as func-typo
 
 
 /// Issues a warning if the contrast ratio between two colors fails to meet the specified threshold.
@@ -32,4 +33,21 @@
     @else
         $ratio: func-color.contrast-ratio($foreground, $background)
         @if $ratio < $threshold
-            @warn "WCAG Accessibility Failure: The contrast ratio of #{$ratio} between #{$foreground} and #{$background} does not meet the required threshold of #{$threshold}:1 (WCAG AA)."
+            $level: "WCAG AA"
+            @if $threshold >= 7
+                $level: "WCAG AAA"
+            @warn "WCAG Accessibility Failure: The contrast ratio of #{$ratio} between #{$foreground} and #{$background} does not meet the required threshold of #{$threshold}:1 (#{$level})."
+
+/// Asserts that a class or element adheres to WCAG Level AAA (7.0:1 for normal text, 4.5:1 for large text).
+/// Automatically determines the appropriate threshold based on the font size and weight.
+/// @param {Color} $foreground - The text color.
+/// @param {Color} $background - The background color.
+/// @param {Number|Length|null} $size [null] - Optional font size (e.g. 1.5rem, 24px) for large text evaluation.
+/// @param {String|Number|null} $weight [null] - Optional font weight (e.g. 'bold', 700).
+/// @param {Boolean} $suppress [false] - Suppresses notice for transparent/inherit surfaces.
+@mixin assert-contrast-aaa($foreground, $background, $size: null, $weight: null, $suppress: false)
+    $threshold: 7.0
+    @if func-typo.is-large-font($size, $weight)
+        $threshold: 4.5
+
+    @include assert-contrast($foreground, $background, $threshold: $threshold, $suppress: $suppress)

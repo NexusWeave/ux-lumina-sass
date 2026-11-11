@@ -6,6 +6,7 @@
 
 // Internal dependencies
 @use 'size'
+@use 'contrast'
 @use '../map/fonts' as fonts
 @use '../func/typography' as func-typo
 
@@ -30,10 +31,14 @@
 /// @param {String|null} $render [null] - text-rendering property.
 /// @param {String|null} $moz-smoothing [null] - Firefox font smoothing.
 /// @param {String|null} $webkit-smoothing [null] - Webkit font smoothing.
+/// @param {Color|null} $color [null] - Optional text color to output.
+/// @param {Color|null} $background [null] - Optional background color. When provided along with $color, validates WCAG contrast.
+/// @param {String|Number|null} $contrast [null] - Contrast level ('AA', 'AAA', or a numeric ratio). Defaults to 'AA' (or 4.5/7.0 based on $level) if $background is provided.
 @mixin font( $font:null, $size: null,  $family: null, 
             $style: null, $weight: null, $line-height: null, 
             $variant: null, $render: null, $moz-smoothing: null, 
-            $webkit-smoothing: null, $quiet: false)
+            $webkit-smoothing: null, $quiet: false,
+            $color: null, $background: null, $contrast: null)
 
     $detected-family: func-typo.font-family-of($font)
 
@@ -42,7 +47,7 @@
 
         @if map.has-key(fonts.$fonts, $font)
             $font: null
-  
+
     @else if $family == null
         $family: $detected-family
 
@@ -54,7 +59,7 @@
 
         @if $last == $family
             $family: null
-  
+
     @if $font == $family
         $family: null
 
@@ -81,12 +86,25 @@
 
     @if $style != null
         font-style: $style
-  
+
     @if $line-height != null
         line-height: $line-height
 
     @if $variant != null
         font-variant: $variant
+
+    @if $color != null
+        color: $color
+
+        @if $background != null
+            @if $contrast == 'AAA' or $contrast == 7 or $contrast == 7.0
+                @include contrast.assert-contrast-aaa($color, $background, $size: $size, $weight: $weight)
+
+            @else if meta.type-of($contrast) == 'number'
+                @include contrast.assert-contrast($color, $background, $threshold: $contrast)
+
+            @else
+                @include contrast.assert-contrast($color, $background, $threshold: 4.5)
 
 /// Applies sans-serif typography stack.
 /// @param {String|null} $font [null] - Specific font or fallback stack.

@@ -17,6 +17,12 @@ The `assert-contrast` mixin serves as the primary mechanism for ensuring color a
   color: $fg-color
   // Emits a warning if contrast ratio is below WCAG AA (4.5:1)
   @include mix.assert-contrast($fg-color, $bg-color)
+
+  // Emits a warning if contrast ratio fails WCAG Level AAA (7.0:1)
+  @include mix.assert-contrast-aaa($fg-color, $bg-color)
+
+  // Large headlines automatically use relaxed 4.5:1 AAA threshold
+  @include mix.assert-contrast-aaa($fg-color, $bg-color, $size: 2rem)
 ```
 
 ### Parameters
@@ -52,7 +58,7 @@ Calculates the relative luminance of a specific color.
 
 - **WCAG AA (4.5:1):** The standard requirement for conventional text.
 - **WCAG Large Text (3:1):** Permissible for text exceeding 18pt, or bold text exceeding 14pt.
-- **WCAG AAA (7.1:1):** The rigorous standard for designs prioritizing maximum accessibility.
+- **WCAG AAA (7.0:1):** The rigorous standard for designs prioritizing maximum accessibility (7.0:1 for normal text, 4.5:1 for large text).
 
 By incorporating `@include mix.assert-contrast` within your mixins, you ensure that every design component maintains accessibility compliance by default.
 

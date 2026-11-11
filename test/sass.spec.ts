@@ -40,6 +40,97 @@ describe('WCAG Contrast Warning Assertions', () => {
     expect(warnings.some(w => /Accessibility Failure.*WCAG/i.test(w))).toBe(true);
   });
 
+  it('emits an accessibility warning indicating WCAG AAA when threshold >= 7 is evaluated', () => {
+    const aaaFailingSass = `
+      @use 'src/mix/contrast' as contrast;
+      .failing-element {
+        // #60a5fa against #ffffff has ratio ~2.4:1, which fails AAA threshold of 7.0
+        @include contrast.assert-contrast(#60a5fa, #ffffff, $threshold: 7.0);
+      }
+    `;
+
+    const warnings: string[] = [];
+    sass.compileString(aaaFailingSass, {
+      syntax: 'scss',
+      logger: { warn(message) { warnings.push(message); } },
+      loadPaths: [
+        path.resolve(__dirname, '..'),
+        path.resolve(__dirname, '../src'),
+        path.resolve(__dirname, '../node_modules')
+      ]
+    });
+
+    expect(warnings.some(w => /Accessibility Failure.*WCAG AAA/i.test(w))).toBe(true);
+  });
+
+  it('emits a WCAG AAA warning when assert-contrast-aaa fails on normal font size', () => {
+    const aaaMixinSass = `
+      @use 'src/mix/contrast' as contrast;
+      .failing-class {
+        // #687280 on white is ~4.8:1, fails AAA (requires 7.0:1 for normal text)
+        @include contrast.assert-contrast-aaa(#687280, #ffffff);
+      }
+    `;
+
+    const warnings: string[] = [];
+    sass.compileString(aaaMixinSass, {
+      syntax: 'scss',
+      logger: { warn(message) { warnings.push(message); } },
+      loadPaths: [
+        path.resolve(__dirname, '..'),
+        path.resolve(__dirname, '../src'),
+        path.resolve(__dirname, '../node_modules')
+      ]
+    });
+
+    expect(warnings.some(w => /Accessibility Failure.*WCAG AAA/i.test(w))).toBe(true);
+  });
+
+  it('passes assert-contrast-aaa without warnings when font is large (4.8:1 >= 4.5:1 large threshold)', () => {
+    const aaaLargeSass = `
+      @use 'src/mix/contrast' as contrast;
+      .passing-large-class {
+        // #687280 on white is ~4.8:1, passes AAA for large font (>= 1.5rem threshold is 4.5:1)
+        @include contrast.assert-contrast-aaa(#687280, #ffffff, $size: 2rem);
+      }
+    `;
+
+    const warnings: string[] = [];
+    sass.compileString(aaaLargeSass, {
+      syntax: 'scss',
+      logger: { warn(message) { warnings.push(message); } },
+      loadPaths: [
+        path.resolve(__dirname, '..'),
+        path.resolve(__dirname, '../src'),
+        path.resolve(__dirname, '../node_modules')
+      ]
+    });
+
+    expect(warnings.some(w => /Accessibility Failure/i.test(w))).toBe(false);
+  });
+
+  it('validates WCAG AAA directly inside typography font mixin', () => {
+    const fontMixinSass = `
+      @use 'src/mix/typography' as typo;
+      .typography-class {
+        @include typo.font($size: 1rem, $color: #687280, $background: #ffffff, $contrast: 'AAA');
+      }
+    `;
+
+    const warnings: string[] = [];
+    sass.compileString(fontMixinSass, {
+      syntax: 'scss',
+      logger: { warn(message) { warnings.push(message); } },
+      loadPaths: [
+        path.resolve(__dirname, '..'),
+        path.resolve(__dirname, '../src'),
+        path.resolve(__dirname, '../node_modules')
+      ]
+    });
+
+    expect(warnings.some(w => /Accessibility Failure.*WCAG AAA/i.test(w))).toBe(true);
+  });
+
   it('emits an accessibility notice when background is transparent', () => {
     const transparentSass = `
       @use 'src/mix/contrast' as contrast;

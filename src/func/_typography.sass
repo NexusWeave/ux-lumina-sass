@@ -1,9 +1,81 @@
 // Built-in Dependencies
 @use 'sass:map'
 @use 'sass:list'
+@use 'sass:math'
+@use 'sass:meta'
 
 // Internal dependencies
+@use 'color' as func-color
 @use '../map/fonts' as fonts
+
+
+/// Determines whether a given font size (and optional weight) qualifies as "large text" under WCAG:
+/// - >= 18pt (~24px, or 1.5rem assuming 16px root)
+/// - >= 14pt bold (~18.5px, or ~1.2rem assuming 16px root, with weight >= 700 or 'bold')
+/// @param {Number|Length|null} $size - The font size (rem, px, pt, or unitless rem).
+/// @param {String|Number|null} $weight [null] - The font weight ('bold', 700, 800, etc.).
+/// @return {Boolean} - True if the font qualifies as large scale text under WCAG.
+@function is-large-font($size: null, $weight: null)
+  @if $size == null
+    @return false
+
+  @if meta.type-of($size) != 'number'
+    @return false
+
+  $is-bold: false
+  @if $weight == 'bold' or $weight == 'bolder'
+    $is-bold: true
+  @else if meta.type-of($weight) == 'number' and $weight >= 700
+    $is-bold: true
+
+  // Standardize size to points/pixels/rems
+  $unit: math.unit($size)
+  $val: math.div($size, ($size * 0 + 1)) // strip unit
+
+  @if $unit == 'pt'
+    @if $val >= 18
+      @return true
+
+    @if $is-bold and $val >= 14
+      @return true
+
+    @return false
+
+  @if $unit == 'px'
+    @if $val >= 24
+      @return true
+
+    @if $is-bold and $val >= 18.5
+      @return true
+
+    @return false
+
+  // Default to rem or em (or unitless rem)
+  @if $val >= 1.5
+    @return true
+
+  @if $is-bold and $val >= 1.2
+    @return true
+
+  @return false
+
+/// Checks if a font color against a background satisfies WCAG Level AAA (7.0:1 for normal text, 4.5:1 for large text).
+/// @param {Color} $foreground - The text color.
+/// @param {Color} $background - The background color.
+/// @param {Number|Length|null} $size [null] - Font size.
+/// @param {String|Number|null} $weight [null] - Font weight.
+/// @return {Boolean} - True if contrast meets WCAG Level AAA.
+@function meets-contrast-aaa($foreground, $background, $size: null, $weight: null)
+  @if meta.type-of($foreground) != 'color' or meta.type-of($background) != 'color'
+    @return false
+
+  $ratio: func-color.contrast-ratio($foreground, $background)
+  $threshold: 7.0
+
+  @if is-large-font($size, $weight)
+    $threshold: 4.5
+
+  @return $ratio >= $threshold
 
 /// Generates default font stack for a generic category.
 /// @param {String} $category - Category name ('sans-serif', 'serif', 'mono').

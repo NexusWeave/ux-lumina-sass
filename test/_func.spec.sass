@@ -54,6 +54,13 @@
       $ratio: func-module.contrast-ratio($adjusted-fg, $light-bg)
       @include true.assert-true($ratio >= 4.5)
 
+    @include true.test('Guarantees WCAG AAA via ensure-contrast (7.0:1)')
+      $light-bg: base.$slate-50
+      $weak-fg: rgb(130, 230, 130)
+      $adjusted-fg-aaa: func-module.ensure-contrast($weak-fg, $light-bg, $min-ratio: 7.0)
+      $ratio-aaa: func-module.contrast-ratio($adjusted-fg-aaa, $light-bg)
+      @include true.assert-true($ratio-aaa >= 7.0)
+
   @include true.test-module('Universell Utforming (Accessibility)')
     @include true.test('Ensures standard text meets WCAG AA contrast (4.5:1)')
       // $gray-700 on $slate-100 should be > 4.5
@@ -63,6 +70,15 @@
       // $slate-100 on #000000 should be > 4.5
       $ratio-light-on-dark: func-module.contrast-ratio(base.$slate-100, #000000)
       @include true.assert-true($ratio-light-on-dark >= 4.5)
+
+    @include true.test('Ensures high-contrast text meets WCAG AAA contrast (7.0:1)')
+      // #000000 on $slate-100 is > 7.0 (19.26)
+      $ratio-aaa-dark-on-light: func-module.contrast-ratio(#000000, base.$slate-100)
+      @include true.assert-true($ratio-aaa-dark-on-light >= 7.0)
+
+      // $pure-white on #000000 is 21.0
+      $ratio-aaa-white-on-black: func-module.contrast-ratio(base.$pure-white, #000000)
+      @include true.assert-true($ratio-aaa-white-on-black >= 7.0)
 
   @include true.test-module('Icon Functions')
     @include true.test('Finds icon glyph by name')
@@ -85,3 +101,26 @@
       $stack: func-module.get-default-stack('mono')
       @include true.assert-true(meta.type-of($stack) == 'list')
       @include true.assert-true(list.index($stack, 'monospace') != null)
+
+    @include true.test('Detects WCAG large font scale via is-large-font')
+      @include true.assert-true(func-module.is-large-font(24px))
+      @include true.assert-true(func-module.is-large-font(1.5rem))
+      @include true.assert-true(func-module.is-large-font(18pt))
+      @include true.assert-true(func-module.is-large-font(1.2rem, 'bold'))
+      @include true.assert-true(func-module.is-large-font(1.2rem, 700))
+      @include true.assert-false(func-module.is-large-font(1rem))
+      @include true.assert-false(func-module.is-large-font(1.2rem, 400))
+      @include true.assert-false(func-module.is-large-font(null))
+
+    @include true.test('Evaluates WCAG AAA font contrast adherence via meets-contrast-aaa')
+      // Pure black on pure white is 21:1, passes AAA
+      @include true.assert-true(func-module.meets-contrast-aaa(#000000, #ffffff))
+      // Medium gray #595959 on white has ratio ~7.0:1 (passes normal AAA)
+      // Light blue #60a5fa on white has ratio ~2.4:1 (fails AAA)
+      @include true.assert-false(func-module.meets-contrast-aaa(#60a5fa, #ffffff))
+      // #595959 on white passes normal AAA (7.0:1)
+      @include true.assert-true(func-module.meets-contrast-aaa(#595959, #ffffff))
+      // #687280 on white has ratio ~4.8:1: fails normal AAA (< 7.0), but passes large text AAA (>= 4.5)
+      @include true.assert-false(func-module.meets-contrast-aaa(#687280, #ffffff))
+      @include true.assert-true(func-module.meets-contrast-aaa(#687280, #ffffff, $size: 2rem))
+      @include true.assert-true(func-module.meets-contrast-aaa(#687280, #ffffff, $size: 1.25rem, $weight: 'bold'))

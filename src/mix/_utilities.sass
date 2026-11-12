@@ -18,23 +18,35 @@
 
 /// Sets background color and automatically handles text color contrast if not provided.
 /// Validates WCAG contrast when explicit text color is provided.
-/// @param {Color|String} $bg-color [c.$slate-100] - The background color to apply.
-/// @param {Color|String} $text-color [null] - Optional text color. If null, calculated based on contrast.
-/// @param {Number} $threshold [4.5] - The minimum acceptable contrast ratio (standard WCAG AA compliance is 4.5:1).
-/// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
-@mixin background-color($bg-color: c.$slate-100, $text-color: null, $threshold: 4.5, $suppress: false)
-    background-color: $bg-color
+/// Enforces at least 4.5:1 (WCAG AA) as minimum threshold, allowing higher values like 7.0 for WCAG AAA.
+/// Automatically suppresses contrast warnings for transparent and inherited values, while retaining $suppress for backwards compatibility.
+/// @param {Color|String} $bg-color [transparent] - The background color to apply.
+/// @param {Color|String} $text-color [inherit] - Optional text color. If not provided or inherit, calculated based on contrast if bg is a color.
+/// @param {Number} $threshold [4.5] - The contrast threshold to enforce (minimum 4.5:1 for AA, 7.0:1 for AAA).
+/// @param {Boolean} $suppress [false] - Backwards compatibility parameter. Automatically true for transparent or inherit.
+@mixin background-color($bg-color: transparent, $text-color: inherit, $threshold: 4.5, $suppress: false)
+    // Enforce that threshold cannot be lowered below 4.5:1 (WCAG AA)
+    @if $threshold < 4.5
+        $threshold: 4.5
 
-    @if $text-color != null
+    $is-suppressed: $suppress or ($bg-color == transparent or $bg-color == inherit or $text-color == transparent or $text-color == inherit)
+
+    @if $text-color != inherit and $text-color != null
         $bg-info: func-color.inspect-color($bg-color)
         $text-info: func-color.inspect-color($text-color)
 
         @if (map.get($bg-info, 'type') == 'color' or map.get($bg-info, 'is-special')) and (map.get($text-info, 'type') == 'color' or map.get($text-info, 'is-special'))
-            @include contrast.assert-contrast($text-color, $bg-color, $threshold: $threshold, $suppress: $suppress)
+            @include contrast.assert-contrast($text-color, $bg-color, $threshold: $threshold, $suppress: $is-suppressed)
+
         color: $text-color
 
-    @else if meta.type-of($bg-color) == 'color'
+    @else if meta.type-of($bg-color) == 'color' and $bg-color != transparent
         color: func-color.best-contrast-color($bg-color)
+
+    @else
+        color: inherit
+
+    background-color: $bg-color
 
 /// Applies icon font properties.
 /// @param {String} $icon-content - The unicode character for the icon.
@@ -115,7 +127,7 @@
 
             cursor: help
             text-decoration: underline dotted
-            @include background-color(transparent, $text, $suppress: true)
+            @include background-color(transparent, $text)
             
 
         code

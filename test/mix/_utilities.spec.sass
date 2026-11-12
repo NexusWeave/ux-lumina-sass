@@ -18,8 +18,8 @@
       
       @include true.expect
         .custom-bg
-          background-color: #ffffff
           color: #000000
+          background-color: #ffffff
 
   @include true.test('Automatically picks white text for dark background')
     @include true.assert
@@ -29,8 +29,8 @@
       
       @include true.expect
         .dark-bg
-          background-color: #000000
           color: base.$pure-white
+          background-color: #000000
 
   @include true.test('Automatically picks dark grey text for light background')
     @include true.assert
@@ -40,10 +40,10 @@
       
       @include true.expect
         .light-bg
-          background-color: #ffffff
           color: base.$gray-700
+          background-color: #ffffff
 
-  @include true.test('Uses default white background when no arguments passed')
+  @include true.test('Uses default transparent background and inherit color when no arguments passed')
     @include true.assert
       @include true.output
         .default-bg
@@ -51,8 +51,8 @@
       
       @include true.expect
         .default-bg
-          background-color: base.$slate-100
-          color: base.$gray-700
+          color: inherit
+          background-color: transparent
 
   @include true.test('Handles inherit background correctly')
     @include true.assert
@@ -62,6 +62,7 @@
       
       @include true.expect
         .inherit-bg
+          color: inherit
           background-color: inherit
 
   @include true.test('Handles explicit inherit and transparent values for text')
@@ -73,10 +74,10 @@
       
       @include true.expect
         .explicit-values
-          background-color: transparent
           color: inherit
-          background-color: inherit
+          background-color: transparent
           color: transparent
+          background-color: inherit
 
   @include true.test('Sets inline and block sizes with optional min/max limits')
     @include true.assert
@@ -188,8 +189,8 @@
           abbr
             cursor: help
             text-decoration: underline dotted
-            background-color: transparent
             color: base.$gray-700
+            background-color: transparent
 
           code
             padding: 0.2rem 0.4rem

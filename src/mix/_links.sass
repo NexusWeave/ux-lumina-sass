@@ -40,7 +40,7 @@
             cursor: not-allowed
             pointer-events: none
             @include typo.text-adjustments($decoration: none)
-            @include background-color($bg-color, $disabled-color, $threshold: 1, $suppress: $suppress)
+            @include background-color($bg-color, $disabled-color, $suppress: $suppress)
 
         &:active
             @include background-color($bg-color, $color-active, $suppress: $suppress)

@@ -23,23 +23,19 @@
 
     @else if $shape == 'square'
         @include utils.bo-ra(.5rem)
-    @else if $shape == 'circle'
-        @include utils.bo-ra(50%)
-    @else if $shape == 'rectangle'
-        @include utils.bo-ra(.5rem)
-
-    @if $shape == 'square'
         @include utils.aspect-ratio($shape: $shape, $inline: $inline, $block: $block)
 
     @else if $shape == 'circle'
+        @include utils.bo-ra(50%)
         @include utils.aspect-ratio($shape: 'square', $inline: $inline, $block: $block)
 
     @else if $shape == 'rectangle'
+        @include utils.bo-ra(.5rem)
         @include utils.aspect-ratio($shape: 'wide', $inline: $inline, $block: $block)
 
     @else if $shape == 'triangle'
-        @include utils.aspect-ratio($shape: 'square', $inline: $inline, $block: $block)
         clip-path: polygon(50% 0%, 0% 100%, 100% 100%)
+        @include utils.aspect-ratio($shape: 'square', $inline: $inline, $block: $block)
 
     @if $padding != null
         padding: $padding
@@ -53,4 +49,4 @@
     @if $transition != null
         @include utils.transition($transition, $behavior: null)
 
-    @include utils.background-color($bg-color, $color, $suppress: $suppress)
+    @include utils.background-color($bg-color, $color)

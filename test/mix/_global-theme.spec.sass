@@ -18,8 +18,8 @@
             
             @include true.expect
                 body
-                    background-color: c.$slate-100
                     color: func-color.best-contrast-color(c.$slate-100)
+                    background-color: c.$slate-100
 
     @include true.it('should apply custom theme colors')
         @include true.assert
@@ -29,8 +29,8 @@
             
             @include true.expect
                 body
-                    background-color: #000
                     color: #fff
+                    background-color: #000
 
     @include true.it('should apply custom font')
         @include true.assert
@@ -41,8 +41,8 @@
             @include true.expect
                 body
                     font-family: "Arial", sans-serif
-                    background-color: c.$slate-100
                     color: func-color.best-contrast-color(c.$slate-100)
+                    background-color: c.$slate-100
 
     @include true.it('should support passing nested @content')
         @include true.assert
@@ -54,7 +54,7 @@
             
             @include true.expect
                 body
-                    background-color: #000
                     color: #fff
+                    background-color: #000
                     a
                         color: red

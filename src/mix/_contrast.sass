@@ -24,18 +24,23 @@
             $reason: ""
             @if map.get($bg-dict, 'is-special') and map.get($fg-dict, 'is-special')
                 $reason: "Both text `#{$foreground}` and background `#{$background}` were specified as transparent or inherited."
+
             @else if map.get($bg-dict, 'is-special')
                 $reason: "The background was specified as `#{$background}`."
+
             @else
                 $reason: "The text color was specified as `#{$foreground}`."
 
             @warn "WCAG Accessibility Notice: #{$reason} Sass cannot evaluate contrast against transparent or inherited surfaces because the underlying color is unknown at compile time. Please specify explicit colors matching the rendered surface to guarantee WCAG compliance."
+
     @else
         $ratio: func-color.contrast-ratio($foreground, $background)
         @if $ratio < $threshold
             $level: "WCAG AA"
+
             @if $threshold >= 7
                 $level: "WCAG AAA"
+
             @warn "WCAG Accessibility Failure: The contrast ratio of #{$ratio} between #{$foreground} and #{$background} does not meet the required threshold of #{$threshold}:1 (#{$level})."
 
 /// Asserts that a class or element adheres to WCAG Level AAA (7.0:1 for normal text, 4.5:1 for large text).

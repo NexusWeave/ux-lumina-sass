@@ -29,25 +29,25 @@
                             cursor: not-allowed
                             pointer-events: none
                             text-decoration: none
-                            background-color: transparent
                             color: alerts.$disabled
-                        &:active
                             background-color: transparent
+                        &:active
                             color: $active
+                            background-color: transparent
                         &.external-link
                             text-decoration: underline
                         @media (hover: hover)
                             &:hover
                                 border-radius: 0.5em
-                                background-color: transparent
                                 color: $hover
+                                background-color: transparent
                         &:visited
-                            background-color: transparent
                             color: $color
+                            background-color: transparent
                         cursor: pointer
                         text-decoration: none
-                        background-color: transparent
                         color: $color
+                        background-color: transparent
 
     @include true.it('should not apply link color to child elements inside anchors')
         $color: c.$blue-800
@@ -66,22 +66,22 @@
                             cursor: not-allowed
                             pointer-events: none
                             text-decoration: none
-                            background-color: transparent
                             color: alerts.$disabled
-                        &:active
                             background-color: transparent
+                        &:active
                             color: $active
+                            background-color: transparent
                         &.external-link
                             text-decoration: underline
                         @media (hover: hover)
                             &:hover
                                 border-radius: 0.5em
-                                background-color: transparent
                                 color: $hover
+                                background-color: transparent
                         &:visited
-                            background-color: transparent
                             color: $color
+                            background-color: transparent
                         cursor: pointer
                         text-decoration: none
-                        background-color: transparent
                         color: $color
+                        background-color: transparent

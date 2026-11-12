@@ -41,4 +41,5 @@ This document provides a technical reference index for all mixins in the `lumina
 - [Position](./position.md)
 - [Core Theme Scaffolding](./global-theme.md)
 - [Typography](./typography.md)
+- [Vendor Prefixes](./prefixes.md)
 

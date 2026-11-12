@@ -4,10 +4,14 @@
 
 
 /// Core theme logic for body background, text color, and font
+/// @param {Color} $bg - Body background color.
+/// @param {Color} $color - Text color.
+/// @param {String|null} $font [null] - Optional font name.
+/// @param {Number} $threshold [4.5] - The minimum acceptable contrast ratio (standard WCAG AA compliance is 4.5:1).
 /// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
-=apply-theme-colors($bg, $color, $font: null, $suppress: false)
+=apply-theme-colors($bg, $color, $font: null, $threshold: 4.5, $suppress: false)
     @if $font != null
         +typo.font($font, $size: null)
 
-    +utils.background-color($bg, $color, $suppress: $suppress)
+    +utils.background-color($bg, $color, $threshold: $threshold, $suppress: $suppress)
     @content

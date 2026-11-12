@@ -8,15 +8,24 @@
 
 
 /// Renders a card with automated text contrast and optional overrides.
-/// @paramcall  {Color|null} $accent-color [null] - The accent color to derive card colors from.
-/// @param {Color} $$bg-color [c.$slate-100] - The background context to use if no accent color is provided.
-/// @param {Map} $overrides [()] - A map for overriding 'background' or 'text' colors.
+/// @param {Color} $color - Text color.
+/// @param {Color} $bg-color - Background color.
+/// @param {String|null} $border [null] - Optional border.
+/// @param {String|null} $margin [null] - Optional margin.
+/// @param {String|null} $padding [null] - Optional padding.
 /// @param {String} $shape ['square'] - Shape of the card ('square', 'circle', 'triangle', 'rectangle').
+/// @param {String|null} $box-shadow [null] - Box shadow.
+/// @param {String|null} $transition [null] - Transition.
+/// @param {Length|null} $inline [null] - Inline size.
+/// @param {Length|null} $block [null] - Block size.
+/// @param {Length|null} $radius [null] - Border radius override.
+/// @param {Number} $threshold [4.5] - The minimum acceptable contrast ratio (standard WCAG AA compliance is 4.5:1).
+/// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
 =card(
     $color, $bg-color, $border: null,
     $margin: null, $padding: null, $shape: 'square', 
     $box-shadow: null,  $transition: null, $inline: null, 
-    $block: null, $radius: null, $suppress: false)
+    $block: null, $radius: null, $threshold: 4.5, $suppress: false)
 
     @if $radius != null
         +utils.bo-ra($radius)
@@ -49,4 +58,4 @@
     @if $transition != null
         +utils.transition($transition, $behavior: null)
 
-    +utils.background-color($bg-color, $color)
+    +utils.background-color($bg-color, $color, $threshold: $threshold, $suppress: $suppress)

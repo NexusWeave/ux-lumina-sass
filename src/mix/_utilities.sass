@@ -1,13 +1,12 @@
 // Built-in Dependencies
-
 @use 'sass:map'
 @use 'sass:meta'
 
 // Internal dependencies
 @use 'size' as *
-@use 'prefixes' as pre
 @use '../color' as c
 @use 'position' as pos
+@use 'prefixes' as pre
 @use 'spacing' as space
 @use 'typography' as typo
 @use 'contrast' as contrast
@@ -26,16 +25,18 @@
 /// @param {Number} $threshold [4.5] - The contrast threshold to enforce (minimum 4.5:1 for AA, 7.0:1 for AAA).
 /// @param {Boolean} $suppress [false] - Backwards compatibility parameter. Automatically true for transparent or inherit.
 =background-color($bg-color: transparent, $text-color: inherit, $threshold: 4.5, $suppress: false)
+    @if $suppress == true
+        @warn "The $suppress parameter is deprecated and will be removed in future versions. Contrast warnings are automatically suppressed for transparent or inherit values."
+    
     // Enforce that threshold cannot be lowered below 4.5:1 (WCAG AA)
     @if $threshold < 4.5
         $threshold: 4.5
 
-    $is-suppressed: $suppress or ($bg-color == transparent or $bg-color == inherit or $text-color == transparent or $text-color == inherit)
+    $bg-info: func-color.inspect-color($bg-color)
+    $text-info: func-color.inspect-color($text-color)
+    $is-suppressed: $suppress or map.get($bg-info, 'is-special') or map.get($text-info, 'is-special') or ($bg-color == transparent or $bg-color == inherit or $text-color == transparent or $text-color == inherit)
 
     @if $text-color != inherit and $text-color != null
-        $bg-info: func-color.inspect-color($bg-color)
-        $text-info: func-color.inspect-color($text-color)
-
         @if (map.get($bg-info, 'type') == 'color' or map.get($bg-info, 'is-special')) and (map.get($text-info, 'type') == 'color' or map.get($text-info, 'is-special'))
             +contrast.assert-contrast($text-color, $bg-color, $threshold: $threshold, $suppress: $is-suppressed)
 

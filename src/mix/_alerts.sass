@@ -28,8 +28,9 @@
 /// @param {String|null} $icon [null] - Optional icon name (expects bootstrap-icons).
 /// @param {String} $inline-size [35rem] - The inline size of the alert.
 /// @param {Number} $icon-size [2rem] - The font size of the icon.
+/// @param {Number} $threshold [4.5] - The minimum acceptable contrast ratio (standard WCAG AA compliance is 4.5:1).
 /// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
-=alert($bg-color: alerts.$warning, $text-color: null, $icon: null, $inline-size: 35rem, $icon-size: 2rem, $suppress: false)
+=alert($bg-color: alerts.$warning, $text-color: null, $icon: null, $inline-size: 35rem, $icon-size: 2rem, $threshold: 4.5, $suppress: false)
 
     @if $icon != null
         display: grid
@@ -48,4 +49,4 @@
     +typo.font($weight: 800)
     +utils.margin($margin: auto)
     +utils.size($inline: $inline-size)
-    +utils.background-color($bg-color, $text-color, $suppress: $suppress)
+    +utils.background-color($bg-color, $text-color, $threshold: $threshold, $suppress: $suppress)

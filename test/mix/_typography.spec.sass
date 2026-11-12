@@ -23,13 +23,13 @@
   +true.test('Generates font styles with font smoothing enabled')
     +true.assert
       +true.output
-        +typo.font($size: 2rem, $weight: bold, $render: optimizeLegibility, $webkit-smoothing: antialiased, $moz-smoothing: grayscale)
+        +typo.font($size: 2rem, $weight: bold, $render: optimizeLegibility, $smoothing: antialiased)
       
       +true.expect
         font-family: "Nunito", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
         text-rendering: optimizeLegibility
+        -moz-osx-font-smoothing: antialiased
         -webkit-font-smoothing: antialiased
-        -moz-osx-font-smoothing: grayscale
         font-size: 2rem
         font-weight: bold
 

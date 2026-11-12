@@ -7,6 +7,7 @@
 // Internal dependencies
 @use 'color' as func-color
 @use '../map/fonts' as fonts
+@use '../map/devices-breakpoints' as bp-map
 
 
 /// Determines whether a given font size (and optional weight) qualifies as "large text" under WCAG:
@@ -128,3 +129,78 @@
 
   // Default fallback stack when font is not found
   @return ('Nunito', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif)
+
+/// Validates whether a font size meets accessible readability standards based on screen context.
+/// Under WCAG and digital accessibility standards:
+/// - Body text should be at least 16px (1rem) on standard screens, or 14px (0.875rem) on ultra-compact screens.
+/// - Secondary / caption text should never fall below 12px (0.75rem).
+/// @param {Number|Length} $size - The font size to validate (rem, px, pt, or unitless).
+/// @param {String|null} $breakpoint [null] - Optional breakpoint name ('mobile-s', 'mobile', 'tablet', 'desktop').
+/// @param {Boolean} $is-body [true] - Whether this is main reading body text (requires higher minimum) or caption/secondary.
+/// @return {Boolean} - True if the font size satisfies accessibility guidelines.
+@function validate-font-size($size, $breakpoint: null, $is-body: true)
+  @if $size == null or meta.type-of($size) != 'number'
+    @return false
+
+  $unit: math.unit($size)
+  $val: math.div($size, ($size * 0 + 1)) // strip unit
+
+  // Convert to rem scale (assuming 16px root, 12pt = 16px = 1rem)
+  $rem-val: $val
+  @if $unit == 'px'
+    $rem-val: math.div($val, 16)
+  @else if $unit == 'pt'
+    $rem-val: math.div($val, 12)
+  @else if $unit == '%'
+    $rem-val: math.div($val, 100)
+
+  // Minimum thresholds
+  $min-threshold: 1.0 // 16px default for body
+  @if not $is-body
+    $min-threshold: 0.75 // 12px for non-body captions
+  @else if $breakpoint == 'mobile-s'
+    $min-threshold: 0.875 // 14px allowed on ultra-small mobile displays
+
+  @return $rem-val >= $min-threshold
+
+/// Calculates a fluid typography clamp expression for accessible scaling between viewport widths.
+/// Uses the CSS clamp() mathematical formula: clamp(MIN, VAL, MAX).
+/// @param {Number|Length} $min-size - Minimum font size at small viewports.
+/// @param {Number|Length} $max-size - Maximum font size at large viewports.
+/// @param {String|Number|Length} $min-breakpoint ['mobile'] - Viewport width where min-size applies.
+/// @param {String|Number|Length} $max-breakpoint ['desktop'] - Viewport width where max-size applies.
+/// @return {String} - CSS clamp(...) formula for responsive fluid scaling.
+@function fluid-font-size($min-size, $max-size, $min-breakpoint: 'mobile', $max-breakpoint: 'desktop')
+  // Resolve min breakpoint
+  $min-bp-val: $min-breakpoint
+  @if meta.type-of($min-breakpoint) == 'string' and map.has-key(bp-map.$breakpoints, $min-breakpoint)
+    $min-bp-val: map.get(bp-map.$breakpoints, $min-breakpoint)
+
+  // Resolve max breakpoint
+  $max-bp-val: $max-breakpoint
+  @if meta.type-of($max-breakpoint) == 'string' and map.has-key(bp-map.$breakpoints, $max-breakpoint)
+    $max-bp-val: map.get(bp-map.$breakpoints, $max-breakpoint)
+
+  // Normalize units to rem
+  $min-val: $min-size
+  @if math.unit($min-size) == 'px'
+    $min-val: math.div($min-size, 16px) * 1rem
+
+  $max-val: $max-size
+  @if math.unit($max-size) == 'px'
+    $max-val: math.div($max-size, 16px) * 1rem
+
+  $min-bp: $min-bp-val
+  @if math.unit($min-bp-val) == 'px'
+    $min-bp: math.div($min-bp-val, 16px) * 1rem
+
+  $max-bp: $max-bp-val
+  @if math.unit($max-bp-val) == 'px'
+    $max-bp: math.div($max-bp-val, 16px) * 1rem
+
+  $slope: math.div($max-val - $min-val, $max-bp - $min-bp)
+  $y-axis-intersection: -$min-bp * $slope + $min-val
+  $vw: math.div(math.round($slope * 100 * 1000), 1000)
+
+  // Format clean clamp output
+  @return "clamp(#{$min-val}, #{$vw}vw + #{$y-axis-intersection}, #{$max-val})"

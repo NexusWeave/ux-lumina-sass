@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.14.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.13.1...v4.14.0) (2026-11-12)
+
+
+### Features
+
+* **prefixes:** introduce cross-browser vendor prefix module ([75d7d7a](https://github.com/NexusWeave/ux-lumina-sass/commit/75d7d7a0f9f40f811ba397abc2d3f0ad47744cdb))
+* **typography:** add assert-accessible-font mixin for screen-size accessibility ([47b61f3](https://github.com/NexusWeave/ux-lumina-sass/commit/47b61f3383b8afab9c6b18abf5a202052f48bf09))
+* **typography:** add validate-font-size and fluid-font-size functions ([5124a40](https://github.com/NexusWeave/ux-lumina-sass/commit/5124a40a822788e8e43b0eb1bf0d8466f3be8eff))
+
+
+### Bug Fixes
+
+* **typography:** remove duplicate comma in font mixin parameter list ([56ac682](https://github.com/NexusWeave/ux-lumina-sass/commit/56ac682d7ece451f490bf96bc5f5dbf2b936aa49))
+
 ### [4.13.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.13.0...v4.13.1) (2026-11-12)
 
 ## [4.13.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.12.2...v4.13.0) (2026-11-12)

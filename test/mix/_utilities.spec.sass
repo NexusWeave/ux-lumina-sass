@@ -6,6 +6,7 @@
 
 // Internal dependencies
 @use '../../src/color/base' as base
+@use '../../src/mix/_prefixes' as prefixes
 @use '../../src/mix/_utilities' as utilities
 
 
@@ -83,11 +84,11 @@
     +true.assert
       +true.output
         .default-backdrop
-          +utilities.backdrop()
+          +prefixes.backdrop()
         .custom-rem-backdrop
-          +utilities.backdrop(0.25rem)
+          +prefixes.backdrop(0.25rem)
         .custom-string-backdrop
-          +utilities.backdrop(blur(1rem) brightness(1.2))
+          +prefixes.backdrop(blur(1rem) brightness(1.2))
       
       +true.expect
         .default-backdrop
@@ -249,7 +250,7 @@
     +true.assert
       +true.output
         .custom-appearance
-          +utilities.appearance(none)
+          +prefixes.appearance(none)
 
       +true.expect
         .custom-appearance

@@ -80,6 +80,12 @@
     @if $render != null
         text-rendering: $render
 
+    @if $webkit-smoothing != null
+        +pre.font-smoothing($webkit-smoothing)
+    
+    @if $moz-smoothing != null
+        +pre.font-smoothing($moz-smoothing)
+
     @if $smoothing != null
         +pre.font-smoothing($smoothing)
         

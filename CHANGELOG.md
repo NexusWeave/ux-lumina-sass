@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.14.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.14.0...v4.14.1) (2026-11-12)
+
+
+### Bug Fixes
+
+* **typography:** add $webkit-smoothing & $moz-smoothing back. ([a93bab5](https://github.com/NexusWeave/ux-lumina-sass/commit/a93bab5593f6b5c2d7240a8f56a03b243abd6f73))
+
 ## [4.14.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.13.1...v4.14.0) (2026-11-12)
 
 

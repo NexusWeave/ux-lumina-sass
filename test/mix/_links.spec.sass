@@ -11,18 +11,18 @@
 @use '../../src/func/color' as func-color
 
 
-@include true.describe('elements mixin')
++true.describe('elements mixin')
 
-    @include true.it('should apply link-color styles')
+    +true.it('should apply link-color styles')
         $color: c.$blue-800
         $hover: color.adjust($color, $lightness: -13%)
         $active: color.adjust($color, $lightness: -20%)
-        @include true.assert
-            @include true.output
+        +true.assert
+            +true.output
                 .test
-                    @include mix.link-color()
+                    +mix.link-color()
             
-            @include true.expect
+            +true.expect
                 .test
                     a
                         [aria-disabled="true"]
@@ -49,17 +49,17 @@
                         color: $color
                         background-color: transparent
 
-    @include true.it('should not apply link color to child elements inside anchors')
+    +true.it('should not apply link color to child elements inside anchors')
         $color: c.$blue-800
         $hover: color.adjust($color, $lightness: -13%)
         $active: color.adjust($color, $lightness: -20%)
-        @include true.assert
-            @include true.output
+        +true.assert
+            +true.output
                 .test
-                    @include mix.link-color()
+                    +mix.link-color()
             
             // This test explicitly ensures `article` and `span` are NOT selected
-            @include true.expect
+            +true.expect
                 .test
                     a
                         [aria-disabled="true"]

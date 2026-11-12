@@ -5,31 +5,31 @@
 @use '../../src/mix/spacing' as m
 
 
-@include true.describe('Margin Utilities')
-  @include true.it('Applies shorthand and logical margin properties')
-    @include true.assert
-      @include true.output
++true.describe('Margin Utilities')
+  +true.it('Applies shorthand and logical margin properties')
+    +true.assert
+      +true.output
         .box
-          @include m.margin($block: 1rem 2rem, $inline: auto)
+          +m.margin($block: 1rem 2rem, $inline: auto)
         .header
-          @include m.margin($margin: 0 auto)
+          +m.margin($margin: 0 auto)
       
-      @include true.expect
+      +true.expect
         .box
           margin-block: 1rem 2rem
           margin-inline: auto
         .header
           margin: 0 auto
 
-  @include true.it('Applies directional logical and physical margins')
-    @include true.assert
-      @include true.output
+  +true.it('Applies directional logical and physical margins')
+    +true.assert
+      +true.output
         .article
-          @include m.margin($block-start: 2rem, $block-end: 1rem, $inline-start: 0.5rem)
+          +m.margin($block-start: 2rem, $block-end: 1rem, $inline-start: 0.5rem)
         .footer
-          @include m.margin($top: 10px, $left: 20px)
+          +m.margin($top: 10px, $left: 20px)
       
-      @include true.expect
+      +true.expect
         .article
           margin-block-start: 2rem
           margin-block-end: 1rem
@@ -38,12 +38,12 @@
           margin-top: 10px
           margin-left: 20px
 
-  @include true.it('Applies margin-center convenience helper')
-    @include true.assert
-      @include true.output
+  +true.it('Applies margin-center convenience helper')
+    +true.assert
+      +true.output
         .centered
-          @include m.margin-center()
+          +m.margin-center()
       
-      @include true.expect
+      +true.expect
         .centered
           margin-inline: auto

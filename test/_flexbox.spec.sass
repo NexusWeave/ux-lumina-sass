@@ -6,34 +6,34 @@
 @use '../src/map/flexbox' as map-flex
 
 
-@include true.test-module('Flexbox Utility Classes')
-  @include true.test('Applies .flex-row utility properties')
-    @include true.assert
-      @include true.output
++true.test-module('Flexbox Utility Classes')
+  +true.test('Applies .flex-row utility properties')
+    +true.assert
+      +true.output
         .test-row
-          @include flex.gen-flexbox('flex-row')
+          +flex.gen-flexbox('flex-row')
       
-      @include true.expect
+      +true.expect
         .test-row
           display: flex
           flex-wrap: nowrap
           flex-direction: row
 
-  @include true.test('Applies .flex-col utility properties')
-    @include true.assert
-      @include true.output
+  +true.test('Applies .flex-col utility properties')
+    +true.assert
+      +true.output
         .test-col
-          @include flex.gen-flexbox('flex-col')
+          +flex.gen-flexbox('flex-col')
       
-      @include true.expect
+      +true.expect
         .test-col
           display: flex
           flex-wrap: nowrap
           flex-direction: column
 
-  @include true.test('Applies .flex-row-items-center-justify-center utility properties')
-    @include true.assert
-      @include true.output
+  +true.test('Applies .flex-row-items-center-justify-center utility properties')
+    +true.assert
+      +true.output
         .test-composite
           display: flex
           flex-wrap: nowrap
@@ -41,7 +41,7 @@
           align-items: center
           justify-content: center
       
-      @include true.expect
+      +true.expect
         .test-composite
           display: flex
           flex-wrap: nowrap
@@ -49,26 +49,26 @@
           align-items: center
           justify-content: center
 
-  @include true.test('Applies .flex-inline-items-justify-center utility properties')
-    @include true.assert
-      @include true.output
+  +true.test('Applies .flex-inline-items-justify-center utility properties')
+    +true.assert
+      +true.output
         .test-inline-composite
           display: inline-flex
           align-items: center
           justify-content: center
       
-      @include true.expect
+      +true.expect
         .test-inline-composite
           display: inline-flex
           align-items: center
           justify-content: center
 
-  @include true.test('Applies atomic justify-content properties')
-    @include true.assert
-      @include true.output
-        @include flex.gen-flexbox-atomic('justify', 'justify-content', map-flex.$justify-content)
+  +true.test('Applies atomic justify-content properties')
+    +true.assert
+      +true.output
+        +flex.gen-flexbox-atomic('justify', 'justify-content', map-flex.$justify-content)
       
-      @include true.expect
+      +true.expect
         .justify-start
           justify-content: flex-start
         .justify-end
@@ -82,12 +82,12 @@
         .justify-evenly
           justify-content: space-evenly
 
-  @include true.test('Applies atomic align-items properties')
-    @include true.assert
-      @include true.output
-        @include flex.gen-flexbox-atomic('items', 'align-items', map-flex.$align-items)
+  +true.test('Applies atomic align-items properties')
+    +true.assert
+      +true.output
+        +flex.gen-flexbox-atomic('items', 'align-items', map-flex.$align-items)
       
-      @include true.expect
+      +true.expect
         .items-start
           align-items: flex-start
         .items-end
@@ -99,12 +99,12 @@
         .items-stretch
           align-items: stretch
 
-  @include true.test('Applies atomic align-content properties')
-    @include true.assert
-      @include true.output
-        @include flex.gen-flexbox-atomic('content', 'align-content', map-flex.$align-content)
+  +true.test('Applies atomic align-content properties')
+    +true.assert
+      +true.output
+        +flex.gen-flexbox-atomic('content', 'align-content', map-flex.$align-content)
       
-      @include true.expect
+      +true.expect
         .content-start
           align-content: flex-start
         .content-end
@@ -118,12 +118,12 @@
         .content-stretch
           align-content: stretch
 
-  @include true.test('Applies atomic align-self properties')
-    @include true.assert
-      @include true.output
-        @include flex.gen-flexbox-atomic('self', 'align-self', map-flex.$align-self)
+  +true.test('Applies atomic align-self properties')
+    +true.assert
+      +true.output
+        +flex.gen-flexbox-atomic('self', 'align-self', map-flex.$align-self)
       
-      @include true.expect
+      +true.expect
         .self-auto
           align-self: auto
         .self-start
@@ -137,12 +137,12 @@
         .self-stretch
           align-self: stretch
 
-  @include true.test('Applies atomic flex-wrap properties')
-    @include true.assert
-      @include true.output
-        @include flex.gen-flexbox-atomic('wrap', 'flex-wrap', map-flex.$flex-wrap)
+  +true.test('Applies atomic flex-wrap properties')
+    +true.assert
+      +true.output
+        +flex.gen-flexbox-atomic('wrap', 'flex-wrap', map-flex.$flex-wrap)
       
-      @include true.expect
+      +true.expect
         .wrap-nowrap
           flex-wrap: nowrap
         .wrap-wrap
@@ -150,12 +150,12 @@
         .wrap-wrap-reverse
           flex-wrap: wrap-reverse
 
-  @include true.test('Applies atomic flex-direction properties')
-    @include true.assert
-      @include true.output
-        @include flex.gen-flexbox-atomic('dir', 'flex-direction', map-flex.$flex-direction)
+  +true.test('Applies atomic flex-direction properties')
+    +true.assert
+      +true.output
+        +flex.gen-flexbox-atomic('dir', 'flex-direction', map-flex.$flex-direction)
       
-      @include true.expect
+      +true.expect
         .dir-row
           flex-direction: row
         .dir-row-reverse

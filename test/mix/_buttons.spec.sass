@@ -11,16 +11,16 @@
 @use '../../src/func/color' as func-color
 
 
-@include true.test-module('Buttons')
-  @include true.test('Applies base button styling')
++true.test-module('Buttons')
+  +true.test('Applies base button styling')
     $bg: c.$blue-450
     $text: func-color.best-contrast-color($bg)
-    @include true.assert
-      @include true.output
+    +true.assert
+      +true.output
         button
-          @include buttons.base-btn()
+          +buttons.base-btn()
       
-      @include true.expect
+      +true.expect
         button
           &:hover
             transform: scale(1.05)
@@ -50,13 +50,13 @@
           background-color: $bg
           transition: "transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s"
 
-  @include true.test('Applies reset-btn mixin')
-    @include true.assert
-      @include true.output
+  +true.test('Applies reset-btn mixin')
+    +true.assert
+      +true.output
         button.custom-btn
-          @include utils.reset($button: true)
+          +utils.reset($button: true)
       
-      @include true.expect
+      +true.expect
         button.custom-btn
           border: none
           outline: 0

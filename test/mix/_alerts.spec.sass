@@ -7,15 +7,15 @@
 @use '../../src/func/color' as func-color
 
 
-@include true.describe('alert mixin')
++true.describe('alert mixin')
 
-    @include true.it('should apply alert styles with default color')
-        @include true.assert
-            @include true.output
+    +true.it('should apply alert styles with default color')
+        +true.assert
+            +true.output
                 .alert
-                    @include mix.alert()
+                    +mix.alert()
             
-            @include true.expect
+            +true.expect
                 .alert
                     align-items: center
                     display: flex
@@ -33,13 +33,13 @@
                     color: func-color.best-contrast-color(alerts.$warning)
                     background-color: alerts.$warning
 
-    @include true.it('should apply an icon when provided')
-        @include true.assert
-            @include true.output
+    +true.it('should apply an icon when provided')
+        +true.assert
+            +true.output
                 .alert-with-icon
-                    @include mix.alert($icon: 'warning')
+                    +mix.alert($icon: 'warning')
             
-            @include true.expect
+            +true.expect
                 .alert-with-icon
                     display: grid
                     align-items: start

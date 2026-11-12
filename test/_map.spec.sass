@@ -8,23 +8,23 @@
 @use '../src/map' as map-module
 
 
-@include true.test-module('Configuration Maps')
-  @include true.test('Icons map contains expected categories')
-    @include true.assert-true(map.has-key(map-module.$icons, 'academic'))
-    @include true.assert-true(map.has-key(map-module.$icons, 'communication'))
++true.test-module('Configuration Maps')
+  +true.test('Icons map contains expected categories')
+    +true.assert-true(map.has-key(map-module.$icons, 'academic'))
+    +true.assert-true(map.has-key(map-module.$icons, 'communication'))
 
-  @include true.test('Flexbox mapping contains base entries')
-    @include true.assert-true(map.has-key(map-module.$flexbox, 'flex'))
-    @include true.assert-true(map.has-key(map-module.$flexbox, 'flex-row'))
+  +true.test('Flexbox mapping contains base entries')
+    +true.assert-true(map.has-key(map-module.$flexbox, 'flex'))
+    +true.assert-true(map.has-key(map-module.$flexbox, 'flex-row'))
 
-  @include true.test('Breakpoints map contains standard devices')
-    @include true.assert-true(map.has-key(map-module.$breakpoints, 'mobile'))
-    @include true.assert-true(map.has-key(map-module.$breakpoints, 'desktop'))
+  +true.test('Breakpoints map contains standard devices')
+    +true.assert-true(map.has-key(map-module.$breakpoints, 'mobile'))
+    +true.assert-true(map.has-key(map-module.$breakpoints, 'desktop'))
 
-  @include true.test('Fonts map contains primary categories')
-    @include true.assert-true(map.has-key(map-module.$fonts, 'mono'))
-    @include true.assert-true(map.has-key(map-module.$fonts, 'sans-serif'))
+  +true.test('Fonts map contains primary categories')
+    +true.assert-true(map.has-key(map-module.$fonts, 'mono'))
+    +true.assert-true(map.has-key(map-module.$fonts, 'sans-serif'))
 
-  @include true.test('Inputs map contains control groups')
-    @include true.assert-true(map.has-key(map-module.$inputs, 'inputControls'))
-    @include true.assert-true(map.has-key(map-module.$inputs, 'booleanControls'))
+  +true.test('Inputs map contains control groups')
+    +true.assert-true(map.has-key(map-module.$inputs, 'inputControls'))
+    +true.assert-true(map.has-key(map-module.$inputs, 'booleanControls'))

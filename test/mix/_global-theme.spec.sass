@@ -8,51 +8,51 @@
 
 
 
-@include true.describe('theme-colors mixin')
++true.describe('theme-colors mixin')
 
-    @include true.it('should apply default theme colors')
-        @include true.assert
-            @include true.output
+    +true.it('should apply default theme colors')
+        +true.assert
+            +true.output
                 body
-                    @include mix.apply-theme-colors(c.$slate-100, func-color.best-contrast-color(c.$slate-100))
+                    +mix.apply-theme-colors(c.$slate-100, func-color.best-contrast-color(c.$slate-100))
             
-            @include true.expect
+            +true.expect
                 body
                     color: func-color.best-contrast-color(c.$slate-100)
                     background-color: c.$slate-100
 
-    @include true.it('should apply custom theme colors')
-        @include true.assert
-            @include true.output
+    +true.it('should apply custom theme colors')
+        +true.assert
+            +true.output
                 body
-                    @include mix.apply-theme-colors(#000, #fff)
+                    +mix.apply-theme-colors(#000, #fff)
             
-            @include true.expect
+            +true.expect
                 body
                     color: #fff
                     background-color: #000
 
-    @include true.it('should apply custom font')
-        @include true.assert
-            @include true.output
+    +true.it('should apply custom font')
+        +true.assert
+            +true.output
                 body
-                    @include mix.apply-theme-colors(c.$slate-100, func-color.best-contrast-color(c.$slate-100), $font: 'Arial')
+                    +mix.apply-theme-colors(c.$slate-100, func-color.best-contrast-color(c.$slate-100), $font: 'Arial')
             
-            @include true.expect
+            +true.expect
                 body
                     font-family: "Arial", sans-serif
                     color: func-color.best-contrast-color(c.$slate-100)
                     background-color: c.$slate-100
 
-    @include true.it('should support passing nested @content')
-        @include true.assert
-            @include true.output
+    +true.it('should support passing nested @content')
+        +true.assert
+            +true.output
                 body
-                    @include mix.apply-theme-colors(#000, #fff)
+                    +mix.apply-theme-colors(#000, #fff)
                         a
                             color: red
             
-            @include true.expect
+            +true.expect
                 body
                     color: #fff
                     background-color: #000

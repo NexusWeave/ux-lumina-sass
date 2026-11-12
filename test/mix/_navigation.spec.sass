@@ -9,14 +9,14 @@
 @use '../../src/mix/_navigation' as nav
 
 
-@include true.describe('Navigation Mixins')
-  @include true.it('Applies nav-hamburger mixin styling')
-    @include true.assert
-      @include true.output
++true.describe('Navigation Mixins')
+  +true.it('Applies nav-hamburger mixin styling')
+    +true.assert
+      +true.output
         .hamburger-toggle
-          @include nav.nav-hamburg()
+          +nav.nav-hamburg()
       
-      @include true.expect
+      +true.expect
         .hamburger-toggle
           display: flex
 
@@ -79,13 +79,13 @@
           padding: 0.5rem 1rem
           justify-content: center
 
-  @include true.it('Applies nav-hamburg mixin with custom breakpoint value (e.g. 20rem or tablet-landscape)')
-    @include true.assert
-      @include true.output
+  +true.it('Applies nav-hamburg mixin with custom breakpoint value (e.g. 20rem or tablet-landscape)')
+    +true.assert
+      +true.output
         .hamburger-toggle-custom
-          @include nav.nav-hamburg($breakpoint: 20rem)
+          +nav.nav-hamburg($breakpoint: 20rem)
       
-      @include true.expect
+      +true.expect
         .hamburger-toggle-custom
           display: flex
 
@@ -148,13 +148,13 @@
           padding: 0.5rem 1rem
           justify-content: center
 
-  @include true.it('Applies nav-hamburg mixin with custom font-family')
-    @include true.assert
-      @include true.output
+  +true.it('Applies nav-hamburg mixin with custom font-family')
+    +true.assert
+      +true.output
         .hamburger-custom-font
-          @include nav.nav-hamburg($font-family: 'serif')
+          +nav.nav-hamburg($font-family: 'serif')
 
-      @include true.expect
+      +true.expect
         .hamburger-custom-font
           display: flex
 
@@ -217,13 +217,13 @@
           padding: 0.5rem 1rem
           justify-content: center
 
-  @include true.it('Applies flexible hamburger-is-open mixin with custom classes')
-    @include true.assert
-      @include true.output
+  +true.it('Applies flexible hamburger-is-open mixin with custom classes')
+    +true.assert
+      +true.output
         .header-nav
-          @include nav.hamburg-is-open($open-cls: 'active', $nav-bar-cls: 'custom-bar', $nav-list-cls: 'custom-list', $nav-item-cls: 'custom-item', $nav-link-cls: 'custom-link', $bg-color: #000000, $z-index: 99, $font-size: 1.5rem)
+          +nav.hamburg-is-open($open-cls: 'active', $nav-bar-cls: 'custom-bar', $nav-list-cls: 'custom-list', $nav-item-cls: 'custom-item', $nav-link-cls: 'custom-link', $bg-color: #000000, $z-index: 99, $font-size: 1.5rem)
 
-      @include true.expect
+      +true.expect
         .header-nav
           &.active
             .custom-bar

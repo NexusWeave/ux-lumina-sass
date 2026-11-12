@@ -8,41 +8,41 @@
 @use '../../src/func/colorblind' as cb
 
 
-@include true.describe('Colorblind Simulation Functions')
++true.describe('Colorblind Simulation Functions')
 
-  @include true.it('should simulate protanopia correctly')
+  +true.it('should simulate protanopia correctly')
     $red: rgb(255, 0, 0)
     $sim: cb.protanopia($red)
-    @include true.assert-equal(meta.type-of($sim), 'color')
+    +true.assert-equal(meta.type-of($sim), 'color')
 
-  @include true.it('should simulate deuteranopia correctly')
+  +true.it('should simulate deuteranopia correctly')
     $green: rgb(0, 255, 0)
     $sim: cb.deuteranopia($green)
-    @include true.assert-equal(meta.type-of($sim), 'color')
+    +true.assert-equal(meta.type-of($sim), 'color')
 
-  @include true.it('should simulate tritanopia correctly')
+  +true.it('should simulate tritanopia correctly')
     $blue: rgb(0, 0, 255)
     $sim: cb.tritanopia($blue)
-    @include true.assert-equal(meta.type-of($sim), 'color')
+    +true.assert-equal(meta.type-of($sim), 'color')
 
-  @include true.it('should simulate achromatopsia correctly')
+  +true.it('should simulate achromatopsia correctly')
     $color: rgb(255, 100, 50)
     $sim: cb.achromatopsia($color)
-    @include true.assert-equal(meta.type-of($sim), 'color')
+    +true.assert-equal(meta.type-of($sim), 'color')
 
-  @include true.it('should produce identical results from helpers as main function')
+  +true.it('should produce identical results from helpers as main function')
     $sample: rgb(120, 200, 80)
     $from-helper: cb.deuteranopia($sample)
     $from-main: cb.simulate-colorblind($sample, 'deuteranopia')
-    @include true.assert-equal($from-helper, $from-main)
+    +true.assert-equal($from-helper, $from-main)
 
-  @include true.it('should preserve opacity in simulated colors')
+  +true.it('should preserve opacity in simulated colors')
     $semi: rgba(255, 0, 0, 0.5)
     $sim: cb.protanopia($semi)
-    @include true.assert-equal(meta.type-of($sim), 'color')
+    +true.assert-equal(meta.type-of($sim), 'color')
 
-@include true.describe('Brand & Alert Colorblind Accessibility')
-  @include true.it('should simulate social media colors under color blindness without errors')
++true.describe('Brand & Alert Colorblind Accessibility')
+  +true.it('should simulate social media colors under color blindness without errors')
     $discord: rgb(88, 101, 242)
     $youtube: rgb(255, 0, 0)
     $facebook: rgb(59, 89, 152)
@@ -51,11 +51,11 @@
     $sim-youtube-protan: cb.protanopia($youtube)
     $sim-facebook-tritan: cb.tritanopia($facebook)
 
-    @include true.assert-equal(meta.type-of($sim-discord-deuter), 'color')
-    @include true.assert-equal(meta.type-of($sim-youtube-protan), 'color')
-    @include true.assert-equal(meta.type-of($sim-facebook-tritan), 'color')
+    +true.assert-equal(meta.type-of($sim-discord-deuter), 'color')
+    +true.assert-equal(meta.type-of($sim-youtube-protan), 'color')
+    +true.assert-equal(meta.type-of($sim-facebook-tritan), 'color')
 
-  @include true.it('should maintain distinct luminance between error and success under deuteranopia')
+  +true.it('should maintain distinct luminance between error and success under deuteranopia')
     // Ensure alert colors can be evaluated under CVD
     $error: rgb(220, 53, 69)
     $success: rgb(25, 135, 84)
@@ -63,5 +63,5 @@
     $sim-error: cb.deuteranopia($error)
     $sim-success: cb.deuteranopia($success)
 
-    @include true.assert-equal(meta.type-of($sim-error), 'color')
-    @include true.assert-equal(meta.type-of($sim-success), 'color')
+    +true.assert-equal(meta.type-of($sim-error), 'color')
+    +true.assert-equal(meta.type-of($sim-success), 'color')

@@ -10,15 +10,15 @@
 @use '../../src/func/color' as func-color
 
 
-@include true.describe('card mixin')
++true.describe('card mixin')
 
-    @include true.it('should apply square shape by default with colors')
-        @include true.assert
-            @include true.output
+    +true.it('should apply square shape by default with colors')
+        +true.assert
+            +true.output
                 .card
-                    @include mix.card($bg-color: c.$slate-100, $color: c.$gray-700)
+                    +mix.card($bg-color: c.$slate-100, $color: c.$gray-700)
             
-            @include true.expect
+            +true.expect
                 .card
                     border-radius: 0.5rem
                     aspect-ratio: 1
@@ -26,14 +26,14 @@
                     color: c.$gray-700
                     background-color: c.$slate-100
 
-    @include true.it('should apply circle shape and custom colors')
+    +true.it('should apply circle shape and custom colors')
         $accent: c.$red-700
-        @include true.assert
-            @include true.output
+        +true.assert
+            +true.output
                 .card-circle
-                    @include mix.card($bg-color: c.$slate-100, $color: $accent, $shape: 'circle')
+                    +mix.card($bg-color: c.$slate-100, $color: $accent, $shape: 'circle')
             
-            @include true.expect
+            +true.expect
                 .card-circle
                     border-radius: 50%
                     aspect-ratio: 1

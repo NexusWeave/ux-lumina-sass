@@ -10,13 +10,13 @@
 @use '../../src/mix/_generators' as generators
 
 
-@include true.test-module('Icon Generator')
-  @include true.test('Generates school icon class')
-    @include true.assert
-      @include true.output
-        @include generators.gen-icons('school')
++true.test-module('Icon Generator')
+  +true.test('Generates school icon class')
+    +true.assert
+      +true.output
+        +generators.gen-icons('school')
       
-      @include true.expect
+      +true.expect
         .school
           &::before
             color: rgb(64, 64, 64) !important
@@ -27,24 +27,24 @@
           font-family: 'bootstrap-icons'
           font-size: 1.2rem !important
 
-@include true.test-module('Flexbox Generator')
-  @include true.test('Generates flex-row properties')
-    @include true.assert
-      @include true.output
-        @include generators.gen-flexbox('flex-row')
++true.test-module('Flexbox Generator')
+  +true.test('Generates flex-row properties')
+    +true.assert
+      +true.output
+        +generators.gen-flexbox('flex-row')
       
-      @include true.expect
+      +true.expect
         display: flex
         flex-wrap: nowrap
         flex-direction: row
 
-@include true.test-module('Input Generator')
-  @include true.test('Generates text input type')
-    @include true.assert
-      @include true.output
-        @include generators.gen-inputs('text')
++true.test-module('Input Generator')
+  +true.test('Generates text input type')
+    +true.assert
+      +true.output
+        +generators.gen-inputs('text')
       
-      @include true.expect
+      +true.expect
         .text-input
           @each $prop, $val in inputs.$default-input-props
             #{$prop}: $val

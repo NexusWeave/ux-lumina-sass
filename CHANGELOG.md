@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.13.0](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.12.2...v4.13.0) (2026-11-12)
+
+
+### Features
+
+* **mixins:** add backdrop mixin with vendor prefix and rem support ([f9169cc](https://github.com/NexusWeave/ux-lumina-sass/commit/f9169ccd53ec48790b725e4036b5d0ad7cc78c4f))
+
+
+### Bug Fixes
+
+* **mixins:** improve background-color with automatic suppress for transparent/inherit and enforce minimum 4.5 threshold ([e6a2ff8](https://github.com/NexusWeave/ux-lumina-sass/commit/e6a2ff8e23878c9c4d14ab47a8ec7f42c29db857))
+
 ### [4.12.2](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.12.1...v4.12.2) (2026-11-11)
 
 ### [4.12.1](https://github.com/NexusWeave/ux-lumina-sass/compare/v4.12.0...v4.12.1) (2026-11-06)

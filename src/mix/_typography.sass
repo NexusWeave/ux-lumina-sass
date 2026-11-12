@@ -38,9 +38,15 @@
 =font( $font:null, $size: null,  $family: null, 
             $style: null, $weight: null, $line-height: null, 
             $variant: null, $render: null, $smoothing: null, 
-            $quiet: false,
+            $quiet: false,, $suppress: false,
             $color: null, $background: null, $contrast: null,
             $webkit-smoothing: null, $moz-smoothing: null)
+
+    @if $webkit-smoothing != null or $moz-smoothing != null
+        @warn "The $webkit-smoothing and $moz-smoothing parameters are deprecated. Use the $smoothing parameter instead. It will be removed in future major versions."
+
+    @if $quiet == true 
+        @warn "The $quiet parameter is deprecated and will be removed in future versions. Use $suppress instead."
 
     $detected-family: func-typo.font-family-of($font)
 
@@ -53,7 +59,7 @@
     @else if $family == null
         $family: $detected-family
 
-        @if $font != null and $quiet == false
+        @if $font != null and ($quiet == false or $suppress == false)
             @warn "Font '#{$font}' not found in configuration map. Defaulting to stack: '#{$font}', #{$family}."
 
     @if meta.type-of($font) == 'list'
@@ -156,3 +162,22 @@
             @warn "No parameters provided for text-adjustments mixin. Default value present."
 
         text-decoration: none
+
+/// Asserts that a font size satisfies digital accessibility guidelines for the given screen breakpoint.
+/// Issues a compile-time warning if the size is too small for readable text.
+/// @param {Number|Length} $size - The font size to evaluate.
+/// @param {String|null} $breakpoint [null] - Optional screen breakpoint ('mobile', 'desktop', etc.).
+/// @param {Boolean} $is-body [true] - Whether this is primary reading body text or secondary/caption.
+/// @param {Boolean} $suppress [false] - Suppresses the accessibility notice when intentional.
+=assert-accessible-font($size, $breakpoint: null, $is-body: true, $suppress: false)
+    $is-valid: func-typo.validate-font-size($size, $breakpoint: $breakpoint, $is-body: $is-body)
+    @if not $is-valid and not $suppress
+        $context: "body text"
+        $min: "1rem (16px)"
+        @if not $is-body
+            $context: "secondary/caption text"
+            $min: "0.75rem (12px)"
+        @else if $breakpoint == 'mobile-s'
+            $min: "0.875rem (14px)"
+
+        @warn "WCAG Font Size Notice: Font size `#{$size}` is below the recommended minimum of #{$min} for #{$context}."

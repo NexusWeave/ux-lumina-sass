@@ -42,7 +42,7 @@ Sets CSS logical dimensions (`inline-size` and `block-size`), with optional `min
 @use 'lumina-sass/src/mix/size' as l-size
 
 .card-container
-	@include l-size.size($inline: 100%, $block: 20rem, $min-inline: 20rem, $max-inline: 75rem)
+	+l-size.size($inline: 100%, $block: 20rem, $min-inline: 20rem, $max-inline: 75rem)
 ```
 
 ---
@@ -64,7 +64,7 @@ Sets logical minimum dimensions (`min-inline-size` and `min-block-size`).
 @use 'lumina-sass/src/mix/size' as l-size
 
 .card-box
-	@include l-size.min-size($inline: 15rem, $block: 8rem)
+	+l-size.min-size($inline: 15rem, $block: 8rem)
 ```
 
 ---
@@ -86,5 +86,5 @@ Sets logical maximum dimensions (`max-inline-size` and `max-block-size`).
 @use 'lumina-sass/src/mix/size' as l-size
 
 .modal-content
-	@include l-size.max-size($inline: 40rem, $block: 90vh)
+	+l-size.max-size($inline: 40rem, $block: 90vh)
 ```

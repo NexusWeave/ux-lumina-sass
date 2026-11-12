@@ -9,15 +9,15 @@ The `card` mixin renders cards with customizable shapes, padding, borders, shado
 
 // Basic card with background and text color
 .my-card
-    @include card($bg-color: #fff, $color: #333)
+    +card($bg-color: #fff, $color: #333)
 
 // Circle card with shape and padding
 .circle-card
-    @include card($bg-color: #f7f7f7, $color: #111, $shape: 'circle', $padding: 1.5rem)
+    +card($bg-color: #f7f7f7, $color: #111, $shape: 'circle', $padding: 1.5rem)
 
 // Card with custom border and shadow
 .shadow-card
-    @include card($bg-color: #fff, $color: #222, $border: 1px solid #ddd, $box-shadow: 0 4px 6px rgba(0,0,0,0.1))
+    +card($bg-color: #fff, $color: #222, $border: 1px solid #ddd, $box-shadow: 0 4px 6px rgba(0,0,0,0.1))
 ```
 
 ## Parameters

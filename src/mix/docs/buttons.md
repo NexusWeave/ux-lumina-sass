@@ -15,11 +15,11 @@ The `base-btn` mixin applies a standard button style with hover and active anima
 @use 'lumina-sass/mix' as mix
 
 .custom-button
-  @include mix.base-btn($bg-color: #0078d7, $size: 1.1em)
+  +mix.base-btn($bg-color: #0078d7, $size: 1.1em)
 
 // Custom unstyled button with clean reset
 button.reset-button
-  @include mix.reset($button: true)
+  +mix.reset($button: true)
 ```
 
 #### Parameters

@@ -23,12 +23,12 @@ These mixins are exported through `src/mix/_index.sass` and can be integrated in
 @use "lumina-sass/mix" as media;
 
 // Mobile-first implementation (min-width: 64rem)
-@include media.mobile-first('tablet-landscape') {
++media.mobile-first('tablet-landscape') {
   .example { color: red; }
 }
 
 // Explicit desktop-first helper (max-width: 63.98rem)
-@include media.desktop-first('tablet-landscape') {
++media.desktop-first('tablet-landscape') {
   .example { font-size: 3rem; }
 }
 ```

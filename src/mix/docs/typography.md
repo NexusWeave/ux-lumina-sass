@@ -24,7 +24,7 @@ If a specified `$font` identifier is not found within the configuration maps (lo
 2. **Application of the System Font Stack:** The default system font stack is assigned as the generic family fallback:
    `'Nunito', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif`
 
-*Note: You may override the fallback family for unrecognized fonts by explicitly providing the `$family` parameter (e.g., `@include font('MyCustomFont', $family: serif)`).*
+*Note: You may override the fallback family for unrecognized fonts by explicitly providing the `$family` parameter (e.g., `+font('MyCustomFont', $family: serif)`).*
 
 ### Figure Caption Styling
 The `figcaption` element can be styled directly utilizing the `font` mixin:
@@ -33,7 +33,7 @@ The `figcaption` element can be styled directly utilizing the `font` mixin:
 @use 'lumina-sass/mix' as typo
 
 figcaption
-  @include typo.font($size: 1rem, $style: italic)
+  +typo.font($size: 1rem, $style: italic)
 ```
 
 This implementation ensures that captions maintain consistent typography throughout the application.
@@ -46,7 +46,7 @@ This implementation ensures that captions maintain consistent typography through
 @use 'lumina-sass/mix' as typo
 
 h1.hero-title
-  @include typo.font($font: 'Inter', $size: 2.5rem, $weight: 700, $render: optimizeLegibility, $webkit-smoothing: antialiased, $moz-smoothing: grayscale)
+  +typo.font($font: 'Inter', $size: 2.5rem, $weight: 700, $render: optimizeLegibility, $webkit-smoothing: antialiased, $moz-smoothing: grayscale)
 ```
 
 ### Multi-Line Text Truncation
@@ -55,7 +55,7 @@ h1.hero-title
 @use 'lumina-sass/mix' as typo
 
 .card-summary
-  @include typo.webkit-line-clamp($lines: 2)
+  +typo.webkit-line-clamp($lines: 2)
   max-inline-size: 24rem
 ```
 
@@ -65,9 +65,9 @@ h1.hero-title
 @use 'lumina-sass/mix' as typo
 
 // Enable secure wrapping for all common text tags
-@include typo.text-wrap-safe($inline: 15rem)
++typo.text-wrap-safe($inline: 15rem)
 
 // Monospace code block
 pre, code
-  @include typo.monospace($weight: 500)
+  +typo.monospace($weight: 500)
 ```

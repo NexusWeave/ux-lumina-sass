@@ -29,7 +29,7 @@ The `icon-style` mixin applies icon font properties to an element, typically use
 @use 'lumina-sass/mix' as mix;
 
 .custom-icon {
-  @include mix.icon-style("\f123");
+  +mix.icon-style("\f123");
 }
 ```
 
@@ -37,10 +37,10 @@ The `icon-style` mixin applies icon font properties to an element, typically use
 
 ```sass
 // Generate utility classes for the entire icon set
-@include gen-icons();
++gen-icons();
 
 // Generate a specific "search" icon with a custom color configuration
-@include gen-icons('search', #ff6600);
++gen-icons('search', #ff6600);
 ```
 
 The mixin generates CSS classes that can be utilized directly within HTML structures:

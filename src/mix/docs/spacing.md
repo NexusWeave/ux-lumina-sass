@@ -48,11 +48,11 @@ Sets element margins using physical or logical properties.
 
 // Logical margins
 .card
-	@include l-space.margin($block: 1rem, $inline: auto)
+	+l-space.margin($block: 1rem, $inline: auto)
 
 // Directional logical margin
 .section-header
-	@include l-space.margin($block-end: 2rem)
+	+l-space.margin($block-end: 2rem)
 ```
 
 ---
@@ -73,7 +73,7 @@ Convenience helper to center an element horizontally using logical `margin-inlin
 @use 'lumina-sass/src/mix/spacing' as l-space
 
 .container
-	@include l-space.margin-center($block: 2rem)
+	+l-space.margin-center($block: 2rem)
 ```
 
 ---
@@ -104,5 +104,5 @@ Sets element padding using physical or logical properties.
 @use 'lumina-sass/src/mix/spacing' as l-space
 
 .card-body
-	@include l-space.padding($inline: 1.5rem, $block: 1rem)
+	+l-space.padding($inline: 1.5rem, $block: 1rem)
 ```

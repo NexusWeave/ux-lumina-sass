@@ -13,10 +13,10 @@ The `core` mixin configures the global page background and text color, applying 
 
 body {
     // Automatically applies theme defaults
-    @include core();
+    +core();
     
     // Custom theme configuration
-    @include core($body-bg: #1a1a1a, $accent-color: #ff6600);
+    +core($body-bg: #1a1a1a, $accent-color: #ff6600);
 }
 ```
 

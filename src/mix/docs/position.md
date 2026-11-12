@@ -15,11 +15,11 @@ The generic `position` mixin sets the position mode alongside any optional coord
 @use 'lumina-sass/mix' as *;
 
 .modal-overlay {
-  @include position(fixed, $inset: 0, $z-index: 1000);
+  +position(fixed, $inset: 0, $z-index: 1000);
 }
 
 .dropdown-menu {
-  @include position(absolute, $top: 100%, $left: 0, $z-index: 200);
+  +position(absolute, $top: 100%, $left: 0, $z-index: 200);
 }
 ```
 
@@ -47,7 +47,7 @@ For clean and readable stylesheets, dedicated convenience mixins are available:
 
 ```sass
 .badge {
-  @include absolute($top: 0.5rem, $right: 0.5rem, $z-index: 10);
+  +absolute($top: 0.5rem, $right: 0.5rem, $z-index: 10);
 }
 ```
 
@@ -55,7 +55,7 @@ For clean and readable stylesheets, dedicated convenience mixins are available:
 
 ```sass
 .navbar-fixed {
-  @include fixed($top: 0, $left: 0, $right: 0, $z-index: 500);
+  +fixed($top: 0, $left: 0, $right: 0, $z-index: 500);
 }
 ```
 
@@ -63,7 +63,7 @@ For clean and readable stylesheets, dedicated convenience mixins are available:
 
 ```sass
 .card-wrapper {
-  @include relative($top: 4px);
+  +relative($top: 4px);
 }
 ```
 
@@ -71,6 +71,6 @@ For clean and readable stylesheets, dedicated convenience mixins are available:
 
 ```sass
 .table-header {
-  @include sticky($top: 0, $z-index: 20);
+  +sticky($top: 0, $z-index: 20);
 }
 ```

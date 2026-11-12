@@ -12,11 +12,11 @@ The universal `reset` mixin resets all or specific CSS properties and HTML base 
 
 // Selective reset
 *, *::before, *::after
-	@include l-mix.reset($box-sizing: true, $margin: true, $padding: true)
+	+l-mix.reset($box-sizing: true, $margin: true, $padding: true)
 
 // Universal reset across all CSS properties and HTML elements
 .app-wrapper
-	@include l-mix.reset($all: true, $html-elements: true)
+	+l-mix.reset($all: true, $html-elements: true)
 ```
 
 #### Parameters
@@ -58,11 +58,11 @@ Sets CSS transition shorthand or granular transition properties (`property`, `du
 
 // Shorthand usage
 .interactive-card
-	@include l-mix.transition(all 0.3s ease)
+	+l-mix.transition(all 0.3s ease)
 
 // Granular sub-properties usage
 .fade-element
-	@include l-mix.transition($transition: null, $property: opacity, $duration: 250ms, $timing-function: ease-in-out)
+	+l-mix.transition($transition: null, $property: opacity, $duration: 250ms, $timing-function: ease-in-out)
 ```
 
 #### Parameters
@@ -84,15 +84,15 @@ Sets object-fit, optional dimensions (`inline`, `block`), and calculates CSS `as
 
 // Preset shape: 16:9 widescreen
 .media-container
-	@include l-mix.aspect-ratio($shape: 'wide')
+	+l-mix.aspect-ratio($shape: 'wide')
 
 // Preset shape: 1:1 square with custom inline width
 .avatar-box
-	@include l-mix.aspect-ratio($shape: 'square', $inline: 4rem)
+	+l-mix.aspect-ratio($shape: 'square', $inline: 4rem)
 
 // Custom 4:3 ratio with object-fit contain
 .thumbnail-box
-	@include l-mix.aspect-ratio($width: 4, $length: 3, $object-fit: contain)
+	+l-mix.aspect-ratio($width: 4, $length: 3, $object-fit: contain)
 ```
 
 #### Parameters
@@ -113,7 +113,7 @@ Cross-browser appearance mixin managing standard and vendor-prefixed properties 
 @use "lumina-sass/mixins" as l-mix
 
 .custom-select
-	@include l-mix.appearance(none)
+	+l-mix.appearance(none)
 ```
 
 #### Parameters
@@ -131,11 +131,11 @@ Comprehensive utility mixin for structural border, individual border properties,
 
 // Custom focus frame
 .input-focus
-	@include l-mix.frame($border-color: #0078d7, $box-shadow: 0 0 0 0.2rem rgba(0, 120, 215, 0.25))
+	+l-mix.frame($border-color: #0078d7, $box-shadow: 0 0 0 0.2rem rgba(0, 120, 215, 0.25))
 
 // Complete boundary frame
 .card-frame
-	@include l-mix.frame($border: 0.0625rem solid #ccc, $border-radius: 0.5rem, $box-shadow: 0 4px 6px rgba(0,0,0,0.1))
+	+l-mix.frame($border: 0.0625rem solid #ccc, $border-radius: 0.5rem, $box-shadow: 0 4px 6px rgba(0,0,0,0.1))
 ```
 
 #### Parameters
@@ -167,10 +167,10 @@ Utility mixin for setting border-radius using standard rem units or custom curve
 @use "lumina-sass/mixins" as l-mix
 
 .avatar
-	@include l-mix.bo-ra(50%)
+	+l-mix.bo-ra(50%)
 
 .card-box
-	@include l-mix.bo-ra(0.5rem)
+	+l-mix.bo-ra(0.5rem)
 ```
 
 #### Parameters
@@ -186,7 +186,7 @@ Utility mixin for setting box-shadow with null-safe validation.
 @use "lumina-sass/mixins" as l-mix
 
 .card-shadow
-	@include l-mix.bo-sh(0 4px 6px rgba(0, 0, 0, 0.1))
+	+l-mix.bo-sh(0 4px 6px rgba(0, 0, 0, 0.1))
 ```
 
 #### Parameters
@@ -203,15 +203,15 @@ Utility mixin for composite and granular border configuration, supporting shorth
 
 // Shorthand border with radius
 .card
-	@include l-mix.bo-props($border: 1px solid #ccc, $radius: 0.5rem)
+	+l-mix.bo-props($border: 1px solid #ccc, $radius: 0.5rem)
 
 // Granular properties from design tokens
 .badge
-	@include l-mix.bo-props($width: 1px, $style: dashed, $color: #0078d7, $radius: 9999px)
+	+l-mix.bo-props($width: 1px, $style: dashed, $color: #0078d7, $radius: 9999px)
 
 // Logical block divider
 .section-divider
-	@include l-mix.bo-props($block: 1px solid #e2e8f0)
+	+l-mix.bo-props($block: 1px solid #e2e8f0)
 ```
 
 #### Parameters
@@ -238,15 +238,15 @@ Flexible utility mixin for focus rings and accessibility outlines. Supports shor
 
 // Accessible WCAG focus indicator with offset
 .button:focus-visible
-	@include l-mix.outline($color: #0078d7, $style: solid, $width: 2px, $offset: 2px)
+	+l-mix.outline($color: #0078d7, $style: solid, $width: 2px, $offset: 2px)
 
 // Full shorthand outline
 .interactive:focus-visible
-	@include l-mix.outline($outline: 2px solid #005fcc)
+	+l-mix.outline($outline: 2px solid #005fcc)
 
 // Standalone offset adjustment
 .custom-focus
-	@include l-mix.outline($offset: 4px)
+	+l-mix.outline($offset: 4px)
 ```
 
 #### Parameters
@@ -266,10 +266,10 @@ Utility mixin for configuring CSS Grid containers and items with template column
 @use "lumina-sass/mixins" as l-mix
 
 .dashboard
-	@include l-mix.grid-layout($temp-col: 250px 1fr, $gap: 1.5rem, $temp-rows: auto 1fr auto)
+	+l-mix.grid-layout($temp-col: 250px 1fr, $gap: 1.5rem, $temp-rows: auto 1fr auto)
 
 .sidebar
-	@include l-mix.grid-layout($grid-area: 'sidebar', $temp-rows: null)
+	+l-mix.grid-layout($grid-area: 'sidebar', $temp-rows: null)
 ```
 
 #### Parameters
@@ -290,19 +290,19 @@ Sets background color and automatically calculates accessible text contrast if t
 
 // Transparent background inheriting text color (default)
 .container
-	@include l-mix.background-color()
+	+l-mix.background-color()
 
 // Solid color background with automatically calculated contrast text color
 .card
-	@include l-mix.background-color(#ffffff)
+	+l-mix.background-color(#ffffff)
 
 // Explicit background and text color meeting WCAG AA
 .badge
-	@include l-mix.background-color(#1e293b, #f8fafc)
+	+l-mix.background-color(#1e293b, #f8fafc)
 
 // Enforcing strict WCAG AAA compliance (7.0:1 threshold)
 .high-contrast-box
-	@include l-mix.background-color(#1e293b, #f8fafc, $threshold: 7.0)
+	+l-mix.background-color(#1e293b, #f8fafc, $threshold: 7.0)
 ```
 
 #### Parameters
@@ -322,15 +322,15 @@ Applies cross-browser backdrop filter effect with `-webkit-backdrop-filter` vend
 
 // Default blur of 0.5rem
 .glassmorphism
-	@include l-mix.backdrop()
+	+l-mix.backdrop()
 
 // Custom blur length in rem
 .modal-overlay
-	@include l-mix.backdrop(0.25rem)
+	+l-mix.backdrop(0.25rem)
 
 // Complex multi-filter string via alias
 .frosted-panel
-	@include l-mix.backdrop-filter(blur(1rem) brightness(1.2))
+	+l-mix.backdrop-filter(blur(1rem) brightness(1.2))
 ```
 
 #### Parameters

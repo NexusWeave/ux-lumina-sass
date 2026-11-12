@@ -14,7 +14,7 @@ Generates a responsive hamburger navigation toggle button with configurable brea
 @use 'lumina-sass/mix' as nav
 
 .hamburger-toggle
-	@include nav.nav-hamburg($breakpoint: 'tablet', $bg-color: transparent, $color: #ffffff, $top: 1rem, $right: 1rem)
+	+nav.nav-hamburg($breakpoint: 'tablet', $bg-color: transparent, $color: #ffffff, $top: 1rem, $right: 1rem)
 ```
 
 #### Parameters
@@ -41,7 +41,7 @@ Styles the mobile menu overlay when active. Fully customizable with target class
 @use 'lumina-sass/mix' as nav
 
 .header-nav
-	@include nav.hamburg-is-open($open-cls: 'is-open', $bg-color: #1a1a1a, $font-size: 1.5rem)
+	+nav.hamburg-is-open($open-cls: 'is-open', $bg-color: #1a1a1a, $font-size: 1.5rem)
 ```
 
 #### Parameters

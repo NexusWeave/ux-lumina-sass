@@ -10,7 +10,7 @@ The `alert` mixin provides a reusable, accessible alert box style that automatic
 @use 'lumina-sass/color' as alerts;
 
 .my-alert {
-    @include alert($bg-color: alerts.$warning);
+    +alert($bg-color: alerts.$warning);
 }
 ```
 

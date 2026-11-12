@@ -15,7 +15,7 @@ The `link-color` mixin applies theme-aware colors to anchor tags, handling hover
 @use 'lumina-sass/mix' as *;
 
 .my-nav {
-  @include link-color($color: #0078d7, $color-hover: #005a9e);
+  +link-color($color: #0078d7, $color-hover: #005a9e);
 }
 ```
 

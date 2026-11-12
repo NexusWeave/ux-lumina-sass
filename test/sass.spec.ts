@@ -174,4 +174,48 @@ describe('WCAG Contrast Warning Assertions', () => {
 
     expect(warnings.some(w => /WCAG Accessibility Notice/i.test(w))).toBe(false);
   });
+
+  it('emits a WCAG font size warning when assert-accessible-font fails', () => {
+    const invalidFontSass = `
+      @use 'src/mix/typography' as typo;
+      .too-small {
+        @include typo.assert-accessible-font(10px);
+      }
+    `;
+
+    const warnings: string[] = [];
+    sass.compileString(invalidFontSass, {
+      syntax: 'scss',
+      logger: { warn(message) { warnings.push(message); }},
+      loadPaths: [
+        path.resolve(__dirname, '..'),
+        path.resolve(__dirname, '../src'),
+        path.resolve(__dirname, '../node_modules')
+      ]
+    });
+
+    expect(warnings.some(w => /WCAG Font Size Notice:.*below the recommended minimum/i.test(w))).toBe(true);
+  });
+
+  it('suppresses WCAG font size warning when suppress is true', () => {
+    const suppressedFontSass = `
+      @use 'src/mix/typography' as typo;
+      .deliberately-small {
+        @include typo.assert-accessible-font(10px, $suppress: true);
+      }
+    `;
+
+    const warnings: string[] = [];
+    sass.compileString(suppressedFontSass, {
+      syntax: 'scss',
+      logger: { warn(message) { warnings.push(message); }},
+      loadPaths: [
+        path.resolve(__dirname, '..'),
+        path.resolve(__dirname, '../src'),
+        path.resolve(__dirname, '../node_modules')
+      ]
+    });
+
+    expect(warnings.some(w => /WCAG Font Size Notice/i.test(w))).toBe(false);
+  });
 });

@@ -1,15 +1,16 @@
 // Built-in Dependencies
-@use 'sass:color'
 @use 'sass:map'
 @use 'sass:meta'
 @use 'sass:list'
+@use 'sass:color'
+@use 'sass:string'
 
 // Third-party dependencies
 @use '../node_modules/sass-true' as true
 
 // Internal dependencies
-@use '../src/func' as func-module
 @use '../src/color/base' as base
+@use '../src/func' as func-module
 
 
 +true.test-module('Utility Functions')
@@ -124,3 +125,18 @@
       +true.assert-false(func-module.meets-contrast-aaa(#687280, #ffffff))
       +true.assert-true(func-module.meets-contrast-aaa(#687280, #ffffff, $size: 2rem))
       +true.assert-true(func-module.meets-contrast-aaa(#687280, #ffffff, $size: 1.25rem, $weight: 'bold'))
+
+    +true.test('Validates accessible font sizes via validate-font-size')
+      +true.assert-true(func-module.validate-font-size(1rem))
+      +true.assert-true(func-module.validate-font-size(16px))
+      +true.assert-true(func-module.validate-font-size(12pt))
+      +true.assert-false(func-module.validate-font-size(14px))
+      +true.assert-false(func-module.validate-font-size(0.875rem))
+      +true.assert-true(func-module.validate-font-size(0.875rem, $breakpoint: 'mobile-s'))
+      +true.assert-true(func-module.validate-font-size(0.75rem, $is-body: false))
+      +true.assert-false(func-module.validate-font-size(0.5rem, $is-body: false))
+
+    +true.test('Calculates fluid font size clamp via fluid-font-size')
+      $fluid: func-module.fluid-font-size(1rem, 2rem)
+      +true.assert-true(meta.type-of($fluid) == 'string')
+      +true.assert-true(string.index($fluid, 'clamp(') != null)

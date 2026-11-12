@@ -1,9 +1,7 @@
 # Lumina-Sass Mixins Index
-
 This document provides a technical reference index for all mixins in the `lumina-sass` framework.
 
 ## Available Mixins Summary
-
 - `reset`: Universal CSS reset for all CSS rules, box-sizing, typography, background, list-styles, appearance, and base HTML elements (`src/mix/_utilities.sass`).
 - `size`: Logical width (`inline-size`) and height (`block-size`) dimensions (`src/mix/_size.sass`).
 - `min-size`: Logical minimum dimensions (`min-inline-size` and `min-block-size`) (`src/mix/_size.sass`).
@@ -12,7 +10,9 @@ This document provides a technical reference index for all mixins in the `lumina
 - `margin-center`: Centering helper using logical `margin-inline: auto` (`src/mix/_spacing.sass`).
 - `padding`: Padding setter supporting physical and logical properties (`src/mix/_spacing.sass`).
 - `nav-hamburg`: Responsive hamburger navigation menu button (`src/mix/_navigation.sass`).
-- `background-color`: Automatic contrast-aware background setter (`src/mix/_utilities.sass`).
+- `background-color`: Automatic contrast-aware background setter with WCAG AA/AAA threshold support (`src/mix/_utilities.sass`).
+- `backdrop`: Cross-browser backdrop-filter mixin with `-webkit-` vendor prefix and rem support (`src/mix/_utilities.sass`).
+- `backdrop-filter`: Alias for `backdrop` (`src/mix/_utilities.sass`).
 - `aspect-ratio`: Responsive aspect-ratio setter with object-fit and sizing (`src/mix/_utilities.sass`).
 - `appearance`: Cross-browser appearance mixin managing vendor prefixes (`src/mix/_utilities.sass`).
 - `frame`: Boundary and elevation styling for border, outline, outline-color, and box-shadow (`src/mix/_utilities.sass`).
@@ -29,7 +29,6 @@ This document provides a technical reference index for all mixins in the `lumina
 - `base-input`: Standard form input base mixin with optional null parameters (`src/mix/_forms.sass`).
 
 ## Detailed Documentation Sections
-
 - [Size](./size.md)
 - [Spacing](./spacing.md)
 - [Navigation](./navigation.md)

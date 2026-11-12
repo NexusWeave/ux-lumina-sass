@@ -1,15 +1,12 @@
 # Utilities
-
 The `utilities` module provides utility mixins for common styling tasks including universal CSS resets, margins, sizing, background colors, and icon properties.
 
 ## Mixins
 
 ### reset
-
 The universal `reset` mixin resets all or specific CSS properties and HTML base elements. All parameters default to `false` for safety and require explicit activation.
 
 #### Usage
-
 ```sass
 @use 'lumina-sass/mixins' as l-mix
 
@@ -23,7 +20,6 @@ The universal `reset` mixin resets all or specific CSS properties and HTML base 
 ```
 
 #### Parameters
-
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `$all` | Boolean | `false` | Resets all supported CSS properties simultaneously. |
@@ -54,11 +50,9 @@ The universal `reset` mixin resets all or specific CSS properties and HTML base 
 > - See [Spacing Documentation](./spacing.md) for `margin`, `margin-center`, and `padding`.
 
 ### transition
-
 Sets CSS transition shorthand or granular transition properties (`property`, `duration`, `timing-function`, `delay`, `behavior`).
 
 #### Usage
-
 ```sass
 @use 'lumina-sass/mixins' as l-mix
 
@@ -72,7 +66,6 @@ Sets CSS transition shorthand or granular transition properties (`property`, `du
 ```
 
 #### Parameters
-
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `$transition` | String \| List \| null | *Required* | Full transition shorthand, or null when using sub-properties. |
@@ -83,11 +76,9 @@ Sets CSS transition shorthand or granular transition properties (`property`, `du
 | `$behavior` | String \| null | `null` | Transition behavior mode (e.g. `allow-discrete`). |
 
 ### aspect-ratio
-
 Sets object-fit, optional dimensions (`inline`, `block`), and calculates CSS `aspect-ratio` using either custom proportions or preset shape ratios (`'wide'`, `'portrait'`, `'square'`).
 
 #### Usage
-
 ```sass
 @use 'lumina-sass/mixins' as l-mix
 
@@ -105,7 +96,6 @@ Sets object-fit, optional dimensions (`inline`, `block`), and calculates CSS `as
 ```
 
 #### Parameters
-
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `$width` | Number \| null | `null` | Aspect ratio width proportion. |
@@ -116,11 +106,9 @@ Sets object-fit, optional dimensions (`inline`, `block`), and calculates CSS `as
 | `$shape` | String \| null | `null` | Predefined ratio preset (`'wide'` for 16:9, `'portrait'` for 9:16, `'square'` for 1:1, or auto). |
 
 ### appearance
-
 Cross-browser appearance mixin managing standard and vendor-prefixed properties (`appearance`, `-moz-appearance`, `-webkit-appearance`).
 
 #### Usage
-
 ```sass
 @use "lumina-sass/mixins" as l-mix
 
@@ -135,11 +123,9 @@ Cross-browser appearance mixin managing standard and vendor-prefixed properties 
 | `$appearance` | String | `none` | CSS appearance property value (`none`, `auto`, etc.). |
 
 ### frame
-
 Comprehensive utility mixin for structural border, individual border properties, accessibility outline, outline-color, and box-shadow elevation.
 
 #### Usage
-
 ```sass
 @use "lumina-sass/mixins" as l-mix
 
@@ -153,7 +139,6 @@ Comprehensive utility mixin for structural border, individual border properties,
 ```
 
 #### Parameters
-
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `$border` | String \| List \| null | `null` | CSS border shorthand. |
@@ -175,11 +160,9 @@ Comprehensive utility mixin for structural border, individual border properties,
 | `$box-shadow` | String \| List \| null | `null` | CSS box-shadow property. |
 
 ### bo-ra
-
 Utility mixin for setting border-radius using standard rem units or custom curves.
 
 #### Usage
-
 ```sass
 @use "lumina-sass/mixins" as l-mix
 
@@ -191,17 +174,14 @@ Utility mixin for setting border-radius using standard rem units or custom curve
 ```
 
 #### Parameters
-
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `$radius` | Length \| List | *Required* | CSS border radius value or list of corner radii. |
 
 ### bo-sh
-
 Utility mixin for setting box-shadow with null-safe validation.
 
 #### Usage
-
 ```sass
 @use "lumina-sass/mixins" as l-mix
 
@@ -210,17 +190,14 @@ Utility mixin for setting box-shadow with null-safe validation.
 ```
 
 #### Parameters
-
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `$box-shadow` | String \| List | *Required* | CSS box-shadow definition. |
 
 ### bo-props
-
 Utility mixin for composite and granular border configuration, supporting shorthand, individual sides, logical properties, and border-radius.
 
 #### Usage
-
 ```sass
 @use "lumina-sass/mixins" as l-mix
 
@@ -238,7 +215,6 @@ Utility mixin for composite and granular border configuration, supporting shorth
 ```
 
 #### Parameters
-
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `$border` | String \| List \| null | `null` | Full border shorthand. |
@@ -254,11 +230,9 @@ Utility mixin for composite and granular border configuration, supporting shorth
 | `$inline` | String \| List \| null | `null` | Logical inline border property. |
 
 ### outline
-
 Flexible utility mixin for focus rings and accessibility outlines. Supports shorthand, individual sub-properties (`$color`, `$style`, `$width`, `$offset`), or hybrid combinations.
 
 #### Usage
-
 ```sass
 @use "lumina-sass/mixins" as l-mix
 
@@ -276,7 +250,6 @@ Flexible utility mixin for focus rings and accessibility outlines. Supports shor
 ```
 
 #### Parameters
-
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `$outline` | String \| List \| null | `null` | Full outline shorthand. |
@@ -286,11 +259,9 @@ Flexible utility mixin for focus rings and accessibility outlines. Supports shor
 | `$offset` | Length \| String \| null | `null` | Outline offset spacing. |
 
 ### grid-layout
-
 Utility mixin for configuring CSS Grid containers and items with template columns, rows, template areas, gaps, and padding.
 
 #### Usage
-
 ```sass
 @use "lumina-sass/mixins" as l-mix
 
@@ -302,7 +273,6 @@ Utility mixin for configuring CSS Grid containers and items with template column
 ```
 
 #### Parameters
-
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `$temp-area` | String \| null | `null` | Grid template areas (`grid-template-areas`). |
@@ -310,3 +280,60 @@ Utility mixin for configuring CSS Grid containers and items with template column
 | `$temp-rows` | String \| Length \| null | `100%` | Grid template rows (`grid-template-rows`). |
 | `$gap` | Length \| null | `null` | Track gap (`gap`). |
 | `$grid-area` | String \| null | `null` | Grid item placement area (`grid-area`). |
+
+### background-color
+Sets background color and automatically calculates accessible text contrast if text color is not provided. Enforces at least `4.5:1` (WCAG AA) as minimum threshold, allowing higher values such as `7.0` for WCAG AAA. Automatically suppresses accessibility warnings for `transparent` and `inherit` values.
+
+#### Usage
+```sass
+@use "lumina-sass/mixins" as l-mix
+
+// Transparent background inheriting text color (default)
+.container
+	@include l-mix.background-color()
+
+// Solid color background with automatically calculated contrast text color
+.card
+	@include l-mix.background-color(#ffffff)
+
+// Explicit background and text color meeting WCAG AA
+.badge
+	@include l-mix.background-color(#1e293b, #f8fafc)
+
+// Enforcing strict WCAG AAA compliance (7.0:1 threshold)
+.high-contrast-box
+	@include l-mix.background-color(#1e293b, #f8fafc, $threshold: 7.0)
+```
+
+#### Parameters
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$bg-color` | Color \| String | `transparent` | Background color to apply. |
+| `$text-color` | Color \| String | `inherit` | Optional text color. Calculated based on contrast if `$bg-color` is a color. |
+| `$threshold` | Number | `4.5` | Minimum contrast ratio (enforces at least `4.5:1` for AA, allows `7.0` for AAA). |
+| `$suppress` | Boolean | `false` | Backwards compatibility parameter. Notices are automatically suppressed for `transparent` or `inherit`. |
+
+### backdrop / backdrop-filter
+Applies cross-browser backdrop filter effect with `-webkit-backdrop-filter` vendor prefix for Safari compatibility alongside standard `backdrop-filter`. Accepts blur lengths in `rem` or complete filter definitions.
+
+#### Usage
+```sass
+@use "lumina-sass/mixins" as l-mix
+
+// Default blur of 0.5rem
+.glassmorphism
+	@include l-mix.backdrop()
+
+// Custom blur length in rem
+.modal-overlay
+	@include l-mix.backdrop(0.25rem)
+
+// Complex multi-filter string via alias
+.frosted-panel
+	@include l-mix.backdrop-filter(blur(1rem) brightness(1.2))
+```
+
+#### Parameters
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `$filter` | Length \| String | `0.5rem` | Blur amount in rem or complete CSS backdrop-filter expression. |

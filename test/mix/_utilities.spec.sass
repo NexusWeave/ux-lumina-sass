@@ -79,6 +79,27 @@
           color: transparent
           background-color: inherit
 
+  @include true.test('Applies backdrop mixin with rem blur and custom filter')
+    @include true.assert
+      @include true.output
+        .default-backdrop
+          @include utilities.backdrop()
+        .custom-rem-backdrop
+          @include utilities.backdrop(0.25rem)
+        .custom-string-backdrop
+          @include utilities.backdrop(blur(1rem) brightness(1.2))
+      
+      @include true.expect
+        .default-backdrop
+          backdrop-filter: blur(0.5rem)
+          -webkit-backdrop-filter: blur(0.5rem)
+        .custom-rem-backdrop
+          backdrop-filter: blur(0.25rem)
+          -webkit-backdrop-filter: blur(0.25rem)
+        .custom-string-backdrop
+          backdrop-filter: blur(1rem) brightness(1.2)
+          -webkit-backdrop-filter: blur(1rem) brightness(1.2)
+
   @include true.test('Sets inline and block sizes with optional min/max limits')
     @include true.assert
       @include true.output

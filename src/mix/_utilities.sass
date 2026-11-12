@@ -48,6 +48,16 @@
 
     background-color: $bg-color
 
+/// Applies backdrop-filter with vendor prefixes (Safari WebKit and standard).
+/// Accepts either a blur length in rem (default 0.5rem) or a full filter string.
+/// @param {Length|String} $filter [0.5rem] - Blur amount in rem or complete backdrop-filter string.
+@mixin backdrop($filter: .5rem)
+    @if meta.type-of($filter) == 'number'
+        $filter: blur($filter)
+
+    backdrop-filter: #{$filter}
+    -webkit-backdrop-filter: #{$filter}
+
 /// Applies icon font properties.
 /// @param {String} $icon-content - The unicode character for the icon.
 /// @param {String} $font-family ['icons'] - The font family to use.

@@ -1,38 +1,38 @@
 // Internal dependencies
 @use '../mix/index' as mix
 .flex-row
-    @include mix.gen-flexbox('flex-row')
+    +mix.gen-flexbox('flex-row')
 
 .flex-row-items-center
     align-items: center
-    @include mix.gen-flexbox('flex-row')
+    +mix.gen-flexbox('flex-row')
 
 .flex-items-center
     align-items: center
-    @include mix.gen-flexbox('flex')
+    +mix.gen-flexbox('flex')
 .flex-inline-flex-row
-    @include mix.gen-flexbox('inline-flex-row')
+    +mix.gen-flexbox('inline-flex-row')
 
 .flex-row-justify-between
     justify-content: space-between
-    @include mix.gen-flexbox('flex-row')
+    +mix.gen-flexbox('flex-row')
 
 .flex-row-items-flex-end-justify-center
     align-items: flex-end 
     justify-content: center
-    @include mix.gen-flexbox('flex-row')
+    +mix.gen-flexbox('flex-row')
 
 .flex-row-items-center-justify-content-between
     align-items: center
     justify-content: space-between
-    @include mix.gen-flexbox('flex-row')
+    +mix.gen-flexbox('flex-row')
 
 .flex-row-justify-center
     justify-content: center
-    @include mix.gen-flexbox('flex-row')
+    +mix.gen-flexbox('flex-row')
 
 
 .flex-row-items-center-justify-center
     align-items: center
     justify-content: center
-    @include mix.gen-flexbox('flex-row')
+    +mix.gen-flexbox('flex-row')

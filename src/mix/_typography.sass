@@ -13,7 +13,7 @@
 
 /// Secure line wrapping and hyphenation for textual tags.
 /// @param {Length|null} $inline [null] - Optional minimum inline size.
-@mixin text-wrap-safe($inline: null)
+=text-wrap-safe($inline: null)
     p, h1, h2, h3, h4, h5, h6, figcaption, a, li
         hyphens: auto
         word-wrap: anywhere
@@ -21,7 +21,7 @@
         overflow-wrap: anywhere
 
         @if $inline != null and $inline != 0
-            @include size.min-size($inline)
+            +size.min-size($inline)
 
 
 /// Shorthand typography setter for font-family, sizes, weights, and rendering quality.
@@ -34,7 +34,7 @@
 /// @param {Color|null} $color [null] - Optional text color to output.
 /// @param {Color|null} $background [null] - Optional background color. When provided along with $color, validates WCAG contrast.
 /// @param {String|Number|null} $contrast [null] - Contrast level ('AA', 'AAA', or a numeric ratio). Defaults to 'AA' (or 4.5/7.0 based on $level) if $background is provided.
-@mixin font( $font:null, $size: null,  $family: null, 
+=font( $font:null, $size: null,  $family: null, 
             $style: null, $weight: null, $line-height: null, 
             $variant: null, $render: null, $moz-smoothing: null, 
             $webkit-smoothing: null, $quiet: false,
@@ -98,50 +98,50 @@
 
         @if $background != null
             @if $contrast == 'AAA' or $contrast == 7 or $contrast == 7.0
-                @include contrast.assert-contrast-aaa($color, $background, $size: $size, $weight: $weight)
+                +contrast.assert-contrast-aaa($color, $background, $size: $size, $weight: $weight)
 
             @else if meta.type-of($contrast) == 'number'
-                @include contrast.assert-contrast($color, $background, $threshold: $contrast)
+                +contrast.assert-contrast($color, $background, $threshold: $contrast)
 
             @else
-                @include contrast.assert-contrast($color, $background, $threshold: 4.5)
+                +contrast.assert-contrast($color, $background, $threshold: 4.5)
 
 /// Applies sans-serif typography stack.
 /// @param {String|null} $font [null] - Specific font or fallback stack.
 /// @param {Length|null} $size [null] - Font size.
 /// @param {String|Number|null} $weight [null] - Font weight.
 /// @param {String|null} $style [null] - Font style.
-@mixin sans-serif($font: null, $size: null, $weight: null, $style: null)
+=sans-serif($font: null, $size: null, $weight: null, $style: null)
     @if $font == null
         $font: func-typo.get-default-stack('sans-serif')
 
-    @include font($font: $font, $size: $size, $family: sans-serif, $style: $style, $weight: $weight)
+    +font($font: $font, $size: $size, $family: sans-serif, $style: $style, $weight: $weight)
 
 /// Applies serif typography stack.
 /// @param {String|null} $font [null] - Specific font or fallback stack.
 /// @param {Length|null} $size [null] - Font size.
 /// @param {String|Number|null} $weight [null] - Font weight.
 /// @param {String|null} $style [null] - Font style.
-@mixin serif($font: null, $size: null, $weight: null, $style: null)
+=serif($font: null, $size: null, $weight: null, $style: null)
     @if $font == null
         $font: func-typo.get-default-stack('serif')
 
-    @include font($font: $font, $size: $size, $family: serif, $style: $style, $weight: $weight)
+    +font($font: $font, $size: $size, $family: serif, $style: $style, $weight: $weight)
 
 /// Applies monospace typography stack.
 /// @param {String|null} $font [null] - Specific font or fallback stack.
 /// @param {Length|null} $size [null] - Font size.
 /// @param {String|Number|null} $weight [null] - Font weight.
 /// @param {String|null} $style [null] - Font style.
-@mixin monospace($font: null, $size: null, $weight: null, $style: null)
+=monospace($font: null, $size: null, $weight: null, $style: null)
     @if $font == null
         $font: func-typo.get-default-stack('mono')
 
-    @include font($font: $font, $size: $size, $family: monospace, $style: $style, $weight: $weight)
+    +font($font: $font, $size: $size, $family: monospace, $style: $style, $weight: $weight)
 
 /// @param {Number} $lines [3] - Number of lines before truncation.
 /// @param {String} $box-orient [vertical] - Box orientation.
-@mixin line-clamp($lines: 3, $box-orient: vertical)
+=line-clamp($lines: 3, $box-orient: vertical)
     overflow: hidden
     display: -webkit-box
     -webkit-line-clamp: $lines
@@ -150,7 +150,7 @@
 /// Adjusts text alignment and text decoration with fallback defaults.
 /// @param {String|null} $alignment [null] - text-align property.
 /// @param {String|null} $decoration [null] - text-decoration property.
-@mixin text-adjustments($alignment: null, $decoration: null, $quiet: false)
+=text-adjustments($alignment: null, $decoration: null, $quiet: false)
     @if $alignment != null
         text-align: $alignment
 

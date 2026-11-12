@@ -16,16 +16,16 @@
 /// @param {Length} $size [1em] - Text font size.
 /// @param {String|Number} $weight [bold] - Text font weight.
 /// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
-@mixin base-btn($bg-color: c.$blue-450, $text-color: null, $border-color: null, $size: 1em, $weight: bold, $suppress: false)
+=base-btn($bg-color: c.$blue-450, $text-color: null, $border-color: null, $size: 1em, $weight: bold, $suppress: false)
     &:hover
         transform: scale(1.05)
         $hover-bg: color.adjust($bg-color, $lightness: -5%)
 
-        @include utils.background-color($hover-bg, $suppress: $suppress)
+        +utils.background-color($hover-bg, $suppress: $suppress)
         
     &:active
         transform: scale(0.95)
-        @include utils.background-color(color.adjust($bg-color, $lightness: -10%), $text-color, $suppress: $suppress)
+        +utils.background-color(color.adjust($bg-color, $lightness: -10%), $text-color, $suppress: $suppress)
 
     &:disabled
         opacity: 0.3
@@ -35,12 +35,12 @@
     cursor: pointer
     display: inline-block
     padding: 0.5rem 1.5rem
-    @include pos.relative()
-    @include utils.bo-ra(.5rem)
-    @include utils.margin(.5rem)
-    @include typo.font($size: $size, $weight: $weight)
-    @include utils.background-color($bg-color, $text-color, $suppress: $suppress)
-    @include utils.transition('transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s')
+    +pos.relative()
+    +utils.bo-ra(.5rem)
+    +utils.margin(.5rem)
+    +typo.font($size: $size, $weight: $weight)
+    +utils.background-color($bg-color, $text-color, $suppress: $suppress)
+    +utils.transition('transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s')
 
     @if $border-color != null
-        @include utils.bo-props($border: 0.0625rem solid $border-color)
+        +utils.bo-props($border: 0.0625rem solid $border-color)

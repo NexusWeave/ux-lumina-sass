@@ -11,18 +11,18 @@
 
 
 /// Bootstraps the entire theme start by orchestrating the sub-modules
-@mixin apply-global-theme($body-bg: c.$slate-100, $text-color: null, $accent-color: null, $custom-colors: (), $font: null)
+=apply-global-theme($body-bg: c.$slate-100, $text-color: null, $accent-color: null, $custom-colors: (), $font: null)
     $colors: func-color.theme-colors($body-bg, $text-color, $accent-color, $custom-colors)
     $bg: map.get($colors, 'body-bg')
     $text: map.get($colors, 'text')
 
-    @include utils.reset($html-elements: true, $text: $text, $colors: $colors)
-    @include theme-colors.apply-theme-colors($bg, $text, $font)
+    +utils.reset($html-elements: true, $text: $text, $colors: $colors)
+    +theme-colors.apply-theme-colors($bg, $text, $font)
 
-    @include forms.style-forms($bg, $text, $accent-color)
+    +forms.style-forms($bg, $text, $accent-color)
 
     $link-color: map.get($colors, 'anchor')
     $color-hover: func-color.best-contrast-color($bg, $light: $link-color, $dark: $link-color)
-    @include links.link-color($color: $link-color, $color-hover: $color-hover)
+    +links.link-color($color: $link-color, $color-hover: $color-hover)
 
     

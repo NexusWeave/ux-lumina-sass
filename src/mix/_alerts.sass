@@ -11,14 +11,14 @@
 
 
 /// Mixin for alert icons
-@mixin _alert-icon($icon, $size: 1.5rem)
+=_alert-icon($icon, $size: 1.5rem)
     $icon-props: func-icons.find($icon)
     @if $icon-props
         &::before
             grid-row: 1
             grid-column: 1
 
-        @include utils.icon-style(map.get($icon-props, icon), $size: $size)
+        +utils.icon-style(map.get($icon-props, icon), $size: $size)
     @else
         @warn "Icon '#{$icon}' not found in icon mapping."
 
@@ -29,23 +29,23 @@
 /// @param {String} $inline-size [35rem] - The inline size of the alert.
 /// @param {Number} $icon-size [2rem] - The font size of the icon.
 /// @param {Boolean} $suppress [false] - When true, suppresses accessibility notice for transparent or inherit backgrounds.
-@mixin alert($bg-color: alerts.$warning, $text-color: null, $icon: null, $inline-size: 35rem, $icon-size: 2rem, $suppress: false)
+=alert($bg-color: alerts.$warning, $text-color: null, $icon: null, $inline-size: 35rem, $icon-size: 2rem, $suppress: false)
 
     @if $icon != null
         display: grid
         align-items: start
         grid-template-columns: auto 1fr
-        @include _alert-icon($icon, $size: $icon-size)
+        +_alert-icon($icon, $size: $icon-size)
 
     @else
         align-items: center
-        @include gen.gen-flexbox('flex-col')
+        +gen.gen-flexbox('flex-col')
 
     gap: 1rem
     padding: .5rem
-    @include utils.bo-ra(.5rem)
-    @include utils.bo-props($border: .0625rem solid rgba(0, 0, 0, 0.1))
-    @include typo.font($weight: 800)
-    @include utils.margin($margin: auto)
-    @include utils.size($inline: $inline-size)
-    @include utils.background-color($bg-color, $text-color, $suppress: $suppress)
+    +utils.bo-ra(.5rem)
+    +utils.bo-props($border: .0625rem solid rgba(0, 0, 0, 0.1))
+    +typo.font($weight: 800)
+    +utils.margin($margin: auto)
+    +utils.size($inline: $inline-size)
+    +utils.background-color($bg-color, $text-color, $suppress: $suppress)

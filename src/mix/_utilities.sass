@@ -24,7 +24,7 @@
 /// @param {Color|String} $text-color [inherit] - Optional text color. If not provided or inherit, calculated based on contrast if bg is a color.
 /// @param {Number} $threshold [4.5] - The contrast threshold to enforce (minimum 4.5:1 for AA, 7.0:1 for AAA).
 /// @param {Boolean} $suppress [false] - Backwards compatibility parameter. Automatically true for transparent or inherit.
-@mixin background-color($bg-color: transparent, $text-color: inherit, $threshold: 4.5, $suppress: false)
+=background-color($bg-color: transparent, $text-color: inherit, $threshold: 4.5, $suppress: false)
     // Enforce that threshold cannot be lowered below 4.5:1 (WCAG AA)
     @if $threshold < 4.5
         $threshold: 4.5
@@ -36,7 +36,7 @@
         $text-info: func-color.inspect-color($text-color)
 
         @if (map.get($bg-info, 'type') == 'color' or map.get($bg-info, 'is-special')) and (map.get($text-info, 'type') == 'color' or map.get($text-info, 'is-special'))
-            @include contrast.assert-contrast($text-color, $bg-color, $threshold: $threshold, $suppress: $is-suppressed)
+            +contrast.assert-contrast($text-color, $bg-color, $threshold: $threshold, $suppress: $is-suppressed)
 
         color: $text-color
 
@@ -51,7 +51,7 @@
 /// Applies backdrop-filter with vendor prefixes (Safari WebKit and standard).
 /// Accepts either a blur length in rem (default 0.5rem) or a full filter string.
 /// @param {Length|String} $filter [0.5rem] - Blur amount in rem or complete backdrop-filter string.
-@mixin backdrop($filter: .5rem)
+=backdrop($filter: .5rem)
     @if meta.type-of($filter) == 'number'
         $filter: blur($filter)
 
@@ -62,24 +62,24 @@
 /// @param {String} $icon-content - The unicode character for the icon.
 /// @param {String} $font-family ['icons'] - The font family to use.
 /// @param {Number} $size [1rem] - The font size of the icon.
-@mixin icon-style($icon-content, $font-family: 'icons', $size: 1rem)
+=icon-style($icon-content, $font-family: 'icons', $size: 1rem)
     &::before
         content: $icon-content
-        @include typo.font($font-family, $size: $size)
+        +typo.font($font-family, $size: $size)
 
 
 
 /// Comprehensive universal CSS reset mixin for all CSS rules.
 /// All parameters default to false for safety and require explicit activation.
-@mixin reset($all: false, $box-sizing: false, $margin: false, $padding: false, $border: false, $outline: false, $font: false, $color: false, $background: false, $button: false, $list-style: false, $text-decoration: false, $size: false, $appearance: false, $vertical-align: false, $user-select: false, $cursor: false, $position: false, $html-elements: false, $text: c.$gray-700, $colors: ())
+=reset($all: false, $box-sizing: false, $margin: false, $padding: false, $border: false, $outline: false, $font: false, $color: false, $background: false, $button: false, $list-style: false, $text-decoration: false, $size: false, $appearance: false, $vertical-align: false, $user-select: false, $cursor: false, $position: false, $html-elements: false, $text: c.$gray-700, $colors: ())
     @if $all or $box-sizing
         box-sizing: border-box
 
     @if $all or $margin
-        @include space.margin($margin: 0, $block: 0, $inline: 0)
+        +space.margin($margin: 0, $block: 0, $inline: 0)
 
     @if $all or $padding
-        @include space.padding($padding: 0, $block: 0, $inline: 0)
+        +space.padding($padding: 0, $block: 0, $inline: 0)
 
     @if $all or $border or $button
         border: none
@@ -113,10 +113,10 @@
         text-decoration: none
 
     @if $all or $size
-        @include size($inline: auto, $block: auto, $max-inline: 100%, $max-block: 100%)
+        +size($inline: auto, $block: auto, $max-inline: 100%, $max-block: 100%)
 
     @if $all or $appearance or $button
-        @include appearance(none)
+        +appearance(none)
     
     @if $all or $vertical-align
         vertical-align: baseline
@@ -128,7 +128,7 @@
         cursor: auto
     
     @if $all or $position
-        @include pos.position($position: static, $top: auto, $right: auto, $bottom: auto, $left: auto, $z-index: auto, $inset-block: auto, $inset-inline: auto)
+        +pos.position($position: static, $top: auto, $right: auto, $bottom: auto, $left: auto, $z-index: auto, $inset-block: auto, $inset-inline: auto)
 
     @if $all or $html-elements
         abbr
@@ -137,16 +137,16 @@
 
             cursor: help
             text-decoration: underline dotted
-            @include background-color(transparent, $text)
+            +background-color(transparent, $text)
             
 
         code
             @if map.has-key($colors, 'code-bg')
-                @include background-color(map.get($colors, 'code-bg'))
+                +background-color(map.get($colors, 'code-bg'))
 
             padding: 0.2rem 0.4rem
-            @include bo-ra(0.3rem)
-            @include typo.monospace($size: null)
+            +bo-ra(0.3rem)
+            +typo.monospace($size: null)
 
 /// Sets CSS transition shorthand or granular transition properties.
 /// @param {String|List|null} $transition - Full transition shorthand or null when using individual properties.
@@ -155,7 +155,7 @@
 /// @param {String|null} $timing-function [null] - Transition timing function curve.
 /// @param {Length|String|null} $delay [null] - Transition start delay.
 /// @param {String|null} $behavior [null] - Transition behavior mode.
-@mixin transition($transition: null, $property: null, $duration: null, $timing-function: null, $delay: null, $behavior: null)
+=transition($transition: null, $property: null, $duration: null, $timing-function: null, $delay: null, $behavior: null)
     @if $transition == null and $property == null and $duration == null and $timing-function == null and $delay == null and $behavior == null
         @warn "No valid properties provided to transition mixin."
 
@@ -183,7 +183,7 @@
 /// @param {String} $object-fit [cover] - CSS object-fit value (e.g. cover, contain).
 /// @param {Length|null} $inline [null] - Optional inline-size (width).
 /// @param {String|null} $shape [null] - Predefined ratio preset ('wide', 'portrait', 'auto').
-@mixin aspect-ratio($width: null, $length: null, $object-fit: cover, $inline: null, $block: null, $shape: null)
+=aspect-ratio($width: null, $length: null, $object-fit: cover, $inline: null, $block: null, $shape: null)
     @if $width != null and $length != null
         aspect-ratio: calc($width / $length)
 
@@ -201,16 +201,16 @@
             aspect-ratio: auto !important
 
     @if $inline != null
-        @include size($inline: $inline)
+        +size($inline: $inline)
 
     @if $block != null
-        @include size($block: $block)
+        +size($block: $block)
 
     object-fit: $object-fit
 
 /// Resets or sets element appearance across browsers.
 /// @param {String} $appearance [none] - CSS appearance value.
-@mixin appearance($appearance: none)
+=appearance($appearance: none)
     appearance: $appearance
     -moz-appearance: $appearance
     -webkit-appearance: $appearance
@@ -233,7 +233,7 @@
 /// @param {Length|String|null} $outline-width [null] - Outline width.
 /// @param {Length|String|null} $outline-offset [null] - Outline offset spacing.
 /// @param {String|List|null} $box-shadow [null] - Box shadow value.
-@mixin frame(
+=frame(
     $border: null, $border-color: null,  $border-width: null, 
     $border-style: null, $border-radius: null, $border-top: null, 
     $border-right: null, $border-bottom: null, $border-left: null, 
@@ -294,9 +294,9 @@
 
 /// Utility mixin for box-shadow
 /// @param {String|List} $box-shadow - The box-shadow value to apply.
-@mixin bo-sh($box-shadow)
+=bo-sh($box-shadow)
     @if $box-shadow != null
-        @include frame($box-shadow: $box-shadow)
+        +frame($box-shadow: $box-shadow)
 
 /// Utility mixin for composite and granular border properties with optional radius.
 /// @param {String|List|null} $border [null] - Full border shorthand (e.g. 1px solid #000).
@@ -310,9 +310,9 @@
 /// @param {String|List|null} $left [null] - Border left property.
 /// @param {String|List|null} $block [null] - Logical border block property.
 /// @param {String|List|null} $inline [null] - Logical border inline property.
-@mixin bo-props($border: null, $color: null, $width: null, $style: null, $radius: null, $top: null, $right: null, $bottom: null, $left: null, $block: null, $inline: null)
+=bo-props($border: null, $color: null, $width: null, $style: null, $radius: null, $top: null, $right: null, $bottom: null, $left: null, $block: null, $inline: null)
     @if $border != null or $color != null or $width != null or $style != null or $radius != null or $top != null or $right != null or $bottom != null or $left != null or $block != null or $inline != null
-        @include frame(
+        +frame(
             $border: $border,
             $border-top: $top,
             $border-left: $left,
@@ -332,9 +332,9 @@
 /// @param {String|null} $style [null] - Outline style (e.g. solid, dashed).
 /// @param {Length|String|null} $width [null] - Outline width.
 /// @param {Length|String|null} $offset [null] - Outline offset spacing.
-@mixin outline($outline: null, $color: null, $style: null, $width: null, $offset: null)
+=outline($outline: null, $color: null, $style: null, $width: null, $offset: null)
     @if $outline != null or $color != null or $style != null or $width != null or $offset != null
-        @include frame(
+        +frame(
             $outline: $outline,
             $outline-color: $color,
             $outline-style: $style,
@@ -344,9 +344,9 @@
 
 /// Utility mixin for border-radius.
 /// @param {Length|List} $radius - The border radius value or list of corner radii.
-@mixin bo-ra($radius)
+=bo-ra($radius)
     @if $radius != null
-        @include frame($border-radius: $radius)
+        +frame($border-radius: $radius)
 
 /// Utility mixin for CSS grid layouts.
 /// @param {String|null} $temp-area [null] - Grid template areas definition.
@@ -354,7 +354,7 @@
 /// @param {String|Length|null} $temp-rows [100%] - Grid template rows definition.
 /// @param {Length|null} $gap [null] - Gap between grid tracks.
 /// @param {String|null} $grid-area [null] - Grid area assignment for items.
-@mixin grid-layout($temp-area: null, $temp-col: null, $temp-rows: 100%, $gap: null, $grid-area: null)
+=grid-layout($temp-area: null, $temp-col: null, $temp-rows: 100%, $gap: null, $grid-area: null)
     @if $grid-area
         grid-area: $grid-area
     

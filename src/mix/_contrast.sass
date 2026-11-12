@@ -13,7 +13,7 @@
 /// @param {Color} $background - The background color against which contrast is measured.
 /// @param {Number} $threshold [4.5] - The minimum acceptable contrast ratio (standard WCAG AA compliance is 4.5:1).
 /// @param {Boolean} $suppress [false] - When true, suppresses the accessibility notice for transparent or inherit backgrounds.
-@mixin assert-contrast($foreground, $background, $threshold: 4.5, $suppress: false)
+=assert-contrast($foreground, $background, $threshold: 4.5, $suppress: false)
     $fg-dict: func-color.inspect-color($foreground)
     $bg-dict: func-color.inspect-color($background)
 
@@ -50,9 +50,9 @@
 /// @param {Number|Length|null} $size [null] - Optional font size (e.g. 1.5rem, 24px) for large text evaluation.
 /// @param {String|Number|null} $weight [null] - Optional font weight (e.g. 'bold', 700).
 /// @param {Boolean} $suppress [false] - Suppresses notice for transparent/inherit surfaces.
-@mixin assert-contrast-aaa($foreground, $background, $size: null, $weight: null, $suppress: false)
+=assert-contrast-aaa($foreground, $background, $size: null, $weight: null, $suppress: false)
     $threshold: 7.0
     @if func-typo.is-large-font($size, $weight)
         $threshold: 4.5
 
-    @include assert-contrast($foreground, $background, $threshold: $threshold, $suppress: $suppress)
+    +assert-contrast($foreground, $background, $threshold: $threshold, $suppress: $suppress)

@@ -14,7 +14,7 @@
 @use '../map/flexbox' as flexbox-mapping
 
 
-@mixin _icon-base($name, $color, $font-family, $debug: false, $silent: false, $map: icon-map.$icons, $include-content: true)
+=_icon-base($name, $color, $font-family, $debug: false, $silent: false, $map: icon-map.$icons, $include-content: true)
   $props: func-icons.find($name, $map)
 
   @if $props
@@ -30,7 +30,7 @@
 
       gap:0.5rem
       display: inline-flex
-      @include typo.font($font-family, $size: 1.2rem !important)
+      +typo.font($font-family, $size: 1.2rem !important)
 
   @else
     @if not $silent
@@ -40,7 +40,7 @@
 /// @param {String|List|null} $name [null] - Single icon name, list of names, or null for all.
 /// @param {Color} $color [base.$gray-700] - Icon text color.
 /// @param {String} $font-family ['bootstrap-icons'] - Icon font-family name.
-@mixin gen-icons($name: null, $color: base.$gray-700, $font-family: 'bootstrap-icons', $debug: false, $silent: false, $map: icon-map.$icons, $include-content: true)
+=gen-icons($name: null, $color: base.$gray-700, $font-family: 'bootstrap-icons', $debug: false, $silent: false, $map: icon-map.$icons, $include-content: true)
   @if $map
     @if $name == null
       @if $debug
@@ -50,11 +50,11 @@
         @if meta.type-of($value) == 'map'
 
           @if map.has-key($value, 'icon') // Flat structure: icon-name -> (icon: value)
-            @include _icon-base($key, $color, $font-family, $debug, $silent, $map, $include-content) 
+            +_icon-base($key, $color, $font-family, $debug, $silent, $map, $include-content) 
           @else
 
             @each $icon, $props in $value // Nested structure: category -> (icon-name -> (icon: value))
-              @include _icon-base($icon, $color, $font-family, $debug, $silent, $map, $include-content)
+              +_icon-base($icon, $color, $font-family, $debug, $silent, $map, $include-content)
               
     @else
       $names: $name
@@ -62,7 +62,7 @@
         $names: ($name)
 
       @each $single in $names
-        @include _icon-base($single, $color, $font-family, $debug, $silent, $map, $include-content)
+        +_icon-base($single, $color, $font-family, $debug, $silent, $map, $include-content)
   @else
     @if not $silent
       @warn "gen-icons: Icon mapping not found."
@@ -70,7 +70,7 @@
 
 /// Generates flexbox properties based on registered flexbox mapping.
 /// @param {String} $name - Flexbox layout configuration key.
-@mixin gen-flexbox($name, $silent: false)
+=gen-flexbox($name, $silent: false)
   $props: map.get(flexbox-mapping.$flexbox, $name)
   @if $props
     @each $property, $value in $props
@@ -84,7 +84,7 @@
 /// @param {String} $prefix - Class name prefix.
 /// @param {String} $property - Target CSS property name.
 /// @param {Map} $map - Values mapping.
-@mixin gen-flexbox-atomic($prefix, $property, $map)
+=gen-flexbox-atomic($prefix, $property, $map)
   @each $key, $value in $map
     .#{$prefix}-#{$key}
       #{$property}: $value
@@ -93,7 +93,7 @@
 /// @param {String|null} $name [null] - Specific input type name or null for all.
 /// @param {Color|null} $placeholder-color [null] - Optional placeholder text color.
 /// @param {Map} $custom [()] - Custom property overrides.
-@mixin gen-inputs($name: null, $placeholder-color: null, $custom: (), $debug: false, $silent: false)
+=gen-inputs($name: null, $placeholder-color: null, $custom: (), $debug: false, $silent: false)
   $props: map.merge(inputs.$default-input-props, $custom)
 
   // Determine focus outline (custom overrides default)
@@ -145,11 +145,11 @@
   // Ensure custom pseudo-elements are applied properly
   @if $name == 'range' or $name == null
     .range-input
-      @include gen-range-slider($custom)
+      +gen-range-slider($custom)
 
 /// Generates highly flexible styles for range sliders (tracks and thumbs).
 /// @param {Map} $custom - Custom overrides for the track and thumb properties.
-@mixin gen-range-slider($custom: ())
+=gen-range-slider($custom: ())
   $default-range-props: (
     'track-color': base.$gray-300,
     'track-block-size': 0.4rem,
@@ -172,21 +172,21 @@
   background: transparent
   inline-size: map.get($props, 'inline-size')
 
-  @include utils.appearance(none)
+  +utils.appearance(none)
 
   // The Track
   &::-webkit-slider-runnable-track,
   &::-moz-range-track
     background: map.get($props, 'track-color')
-    @include utils.bo-ra(map.get($props, 'track-radius'))
+    +utils.bo-ra(map.get($props, 'track-radius'))
 
-    @include utils.size($block: $track-block-size)
+    +utils.size($block: $track-block-size)
   // The Thumb
   &::-webkit-slider-thumb,
   &::-moz-range-thumb
     background: map.get($props, 'thumb-color')
-    @include utils.bo-ra(map.get($props, 'thumb-radius'))
+    +utils.bo-ra(map.get($props, 'thumb-radius'))
 
-    @include utils.appearance(none)
-    @include utils.margin($block-start: $thumb-margin)
-    @include utils.size($inline: $thumb-size, $block: $thumb-size)
+    +utils.appearance(none)
+    +utils.margin($block-start: $thumb-margin)
+    +utils.size($inline: $thumb-size, $block: $thumb-size)

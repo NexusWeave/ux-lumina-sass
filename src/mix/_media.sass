@@ -11,7 +11,7 @@
 /// @param {String} $attachment [null] - The value for background-attachment (optional).
 /// @param {String} $clip [null] - The value for background-clip (optional).
 /// @param {String} $origin [null] - The value for background-origin (optional).
-@mixin background-image($path, $size: cover, $repeat: no-repeat, $position: center, $attachment: null, $clip: null, $origin: null)
+=background-image($path, $size: cover, $repeat: no-repeat, $position: center, $attachment: null, $clip: null, $origin: null)
     background-size: $size
     background-repeat: $repeat
     background-image: url($path)
@@ -26,7 +26,7 @@
     @if $origin != null
         background-origin: $origin
 
-@mixin video-wrapper($feeback-overlay, $feedback-color, $section-trans-overlay, $input-accent-color, $accent-color, $icon-color, $bg-color: transparent)
+=video-wrapper($feeback-overlay, $feedback-color, $section-trans-overlay, $input-accent-color, $accent-color, $icon-color, $bg-color: transparent)
     .video-wrapper
 
         &:hover
@@ -38,7 +38,7 @@
             display: block
             grid-area: media
             object-fit: cover
-            @include utils.size($inline: 100%)
+            +utils.size($inline: 100%)
 
         button.video-feedback
             cursor: pointer
@@ -63,9 +63,9 @@
             font-size: 5.5rem
             place-self: center
             pointer-events: none
-            @include utils.bo-ra(100%)
-            @include utils.transition('opacity 0.25s ease, transform 0.2s ease, background 0.2s ease')
-            @include utils.background-color(rgba($feeback-overlay, 0.3) !important, rgba($feedback-color, 0.95))
+            +utils.bo-ra(100%)
+            +utils.transition('opacity 0.25s ease, transform 0.2s ease, background 0.2s ease')
+            +utils.background-color(rgba($feeback-overlay, 0.3) !important, rgba($feedback-color, 0.95))
         > section
             margin: 0
             z-index: 1
@@ -95,8 +95,8 @@
                     // (gen-icons hardcodes font-size: 1rem on ::before)
                     span
                         &::before
-                            @include typo.font($font:'bootstrap', $size: 2.8rem)
-                        @include typo.font($font:'bootstrap', $size: 2.8rem)
+                            +typo.font($font:'bootstrap', $size: 2.8rem)
+                        +typo.font($font:'bootstrap', $size: 2.8rem)
 
                     &:hover, &:focus
                         outline: none
@@ -105,17 +105,17 @@
                         color: $accent-color
 
                     padding: 0
-                    @include utils.frame($border: none, $outline: none, $border-radius: 0)
+                    +utils.frame($border: none, $outline: none, $border-radius: 0)
                     line-height: 1
                     cursor: pointer
                     color: transparent
                     background: transparent
-                    @include typo.font($size: 2.8rem)
+                    +typo.font($size: 2.8rem)
 
                 pre
                     color: $accent-color
                     font-family: monospace
-                    @include typo.font($size: 0.9rem)
+                    +typo.font($size: 0.9rem)
 
             .icon
                 color: rgba($icon-color, 0.8)
@@ -128,6 +128,6 @@
         display: grid
         cursor: pointer
         overflow: hidden
-        @include utils.bo-ra(1rem)
+        +utils.bo-ra(1rem)
         background-color: $bg-color
         grid-template-areas: "media"

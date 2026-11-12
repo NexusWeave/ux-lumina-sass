@@ -12,41 +12,41 @@
 /// @param {Color} $$bg-color [c.$slate-100] - The background context to use if no accent color is provided.
 /// @param {Map} $overrides [()] - A map for overriding 'background' or 'text' colors.
 /// @param {String} $shape ['square'] - Shape of the card ('square', 'circle', 'triangle', 'rectangle').
-@mixin card(
+=card(
     $color, $bg-color, $border: null,
     $margin: null, $padding: null, $shape: 'square', 
     $box-shadow: null,  $transition: null, $inline: null, 
     $block: null, $radius: null, $suppress: false)
 
     @if $radius != null
-        @include utils.bo-ra($radius)
+        +utils.bo-ra($radius)
 
     @else if $shape == 'square'
-        @include utils.bo-ra(.5rem)
-        @include utils.aspect-ratio($shape: $shape, $inline: $inline, $block: $block)
+        +utils.bo-ra(.5rem)
+        +utils.aspect-ratio($shape: $shape, $inline: $inline, $block: $block)
 
     @else if $shape == 'circle'
-        @include utils.bo-ra(50%)
-        @include utils.aspect-ratio($shape: 'square', $inline: $inline, $block: $block)
+        +utils.bo-ra(50%)
+        +utils.aspect-ratio($shape: 'square', $inline: $inline, $block: $block)
 
     @else if $shape == 'rectangle'
-        @include utils.bo-ra(.5rem)
-        @include utils.aspect-ratio($shape: 'wide', $inline: $inline, $block: $block)
+        +utils.bo-ra(.5rem)
+        +utils.aspect-ratio($shape: 'wide', $inline: $inline, $block: $block)
 
     @else if $shape == 'triangle'
         clip-path: polygon(50% 0%, 0% 100%, 100% 100%)
-        @include utils.aspect-ratio($shape: 'square', $inline: $inline, $block: $block)
+        +utils.aspect-ratio($shape: 'square', $inline: $inline, $block: $block)
 
     @if $padding != null
         padding: $padding
 
     @if $margin != null
-        @include utils.margin($margin: $margin)
+        +utils.margin($margin: $margin)
 
     @if $border != null or $box-shadow != null
-        @include utils.frame($border: $border, $box-shadow: $box-shadow)
+        +utils.frame($border: $border, $box-shadow: $box-shadow)
 
     @if $transition != null
-        @include utils.transition($transition, $behavior: null)
+        +utils.transition($transition, $behavior: null)
 
-    @include utils.background-color($bg-color, $color)
+    +utils.background-color($bg-color, $color)

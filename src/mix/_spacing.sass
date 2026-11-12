@@ -1,5 +1,5 @@
 /// Sets element margins using logical and physical properties.
-@mixin margin($margin: null, $block: null, $inline: null, $block-start: null, $block-end: null, $inline-start: null, $inline-end: null, $top: null, $right: null, $bottom: null, $left: null)
+=margin($margin: null, $block: null, $inline: null, $block-start: null, $block-end: null, $inline-start: null, $inline-end: null, $top: null, $right: null, $bottom: null, $left: null)
     @if $margin != null
         margin: $margin
 
@@ -35,14 +35,14 @@
 
 
 /// Convenience helper to center an element horizontally using logical margin-inline.
-@mixin margin-center($block: null)
-    @include margin($inline: auto)
+=margin-center($block: null)
+    +margin($inline: auto)
 
     @if $block != null
-        @include margin($block: $block)
+        +margin($block: $block)
 
 
-@mixin padding($padding: null, $block: null, $inline: null, $block-start: null, $block-end: null, $inline-start: null, $inline-end: null, $top: null, $right: null, $bottom: null, $left: null)
+=padding($padding: null, $block: null, $inline: null, $block-start: null, $block-end: null, $inline-start: null, $inline-end: null, $top: null, $right: null, $bottom: null, $left: null)
     @if $padding != null
         padding: $padding
 

@@ -8,7 +8,7 @@
 /// @param {Length|String} $inset-block [null] - Logical inset block offset.
 /// @param {Length|String} $inset-inline [null] - Logical inset inline offset.
 /// @param {Number|String} $z-index [null] - Layering index.
-@mixin position($position: null, $top: null, $right: null, $bottom: null, $left: null, $inset: null, $inset-block: null, $inset-inline: null, $z-index: null)
+=position($position: null, $top: null, $right: null, $bottom: null, $left: null, $inset: null, $inset-block: null, $inset-inline: null, $z-index: null)
     @if $position != null
         position: $position
 
@@ -37,17 +37,17 @@
         z-index: $z-index
 
 /// Convenience mixin for absolute positioning.
-@mixin absolute($top: null, $right: null, $bottom: null, $left: null, $inset: null, $inset-block: null, $inset-inline: null, $z-index: null)
-    @include position(absolute, $top: $top, $right: $right, $bottom: $bottom, $left: $left, $inset: $inset, $inset-block: $inset-block, $inset-inline: $inset-inline, $z-index: $z-index)
+=absolute($top: null, $right: null, $bottom: null, $left: null, $inset: null, $inset-block: null, $inset-inline: null, $z-index: null)
+    +position(absolute, $top: $top, $right: $right, $bottom: $bottom, $left: $left, $inset: $inset, $inset-block: $inset-block, $inset-inline: $inset-inline, $z-index: $z-index)
 
 /// Convenience mixin for fixed positioning.
-@mixin fixed($top: null, $right: null, $bottom: null, $left: null, $inset: null, $inset-block: null, $inset-inline: null, $z-index: null)
-    @include position(fixed, $top: $top, $right: $right, $bottom: $bottom, $left: $left, $inset: $inset, $inset-block: $inset-block, $inset-inline: $inset-inline, $z-index: $z-index)
+=fixed($top: null, $right: null, $bottom: null, $left: null, $inset: null, $inset-block: null, $inset-inline: null, $z-index: null)
+    +position(fixed, $top: $top, $right: $right, $bottom: $bottom, $left: $left, $inset: $inset, $inset-block: $inset-block, $inset-inline: $inset-inline, $z-index: $z-index)
 
 /// Convenience mixin for relative positioning.
-@mixin relative($top: null, $right: null, $bottom: null, $left: null, $inset: null, $inset-block: null, $inset-inline: null, $z-index: null)
-    @include position(relative, $top: $top, $right: $right, $bottom: $bottom, $left: $left, $inset: $inset, $inset-block: $inset-block, $inset-inline: $inset-inline, $z-index: $z-index)
+=relative($top: null, $right: null, $bottom: null, $left: null, $inset: null, $inset-block: null, $inset-inline: null, $z-index: null)
+    +position(relative, $top: $top, $right: $right, $bottom: $bottom, $left: $left, $inset: $inset, $inset-block: $inset-block, $inset-inline: $inset-inline, $z-index: $z-index)
 
 /// Convenience mixin for sticky positioning.
-@mixin sticky($top: null, $right: null, $bottom: null, $left: null, $inset: null, $inset-block: null, $inset-inline: null, $z-index: null)
-    @include position(sticky, $top: $top, $right: $right, $bottom: $bottom, $left: $left, $inset: $inset, $inset-block: $inset-block, $inset-inline: $inset-inline, $z-index: $z-index)
+=sticky($top: null, $right: null, $bottom: null, $left: null, $inset: null, $inset-block: null, $inset-inline: null, $z-index: null)
+    +position(sticky, $top: $top, $right: $right, $bottom: $bottom, $left: $left, $inset: $inset, $inset-block: $inset-block, $inset-inline: $inset-inline, $z-index: $z-index)

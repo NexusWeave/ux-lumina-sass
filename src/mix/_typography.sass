@@ -7,6 +7,7 @@
 // Internal dependencies
 @use 'size'
 @use 'contrast'
+@use 'prefixes' as pre
 @use '../map/fonts' as fonts
 @use '../func/typography' as func-typo
 
@@ -15,10 +16,10 @@
 /// @param {Length|null} $inline [null] - Optional minimum inline size.
 =text-wrap-safe($inline: null)
     p, h1, h2, h3, h4, h5, h6, figcaption, a, li
-        hyphens: auto
         word-wrap: anywhere
         white-space: pre-wrap
         overflow-wrap: anywhere
+        +pre.hyphens($val: auto)
 
         @if $inline != null and $inline != 0
             +size.min-size($inline)
@@ -36,9 +37,10 @@
 /// @param {String|Number|null} $contrast [null] - Contrast level ('AA', 'AAA', or a numeric ratio). Defaults to 'AA' (or 4.5/7.0 based on $level) if $background is provided.
 =font( $font:null, $size: null,  $family: null, 
             $style: null, $weight: null, $line-height: null, 
-            $variant: null, $render: null, $moz-smoothing: null, 
-            $webkit-smoothing: null, $quiet: false,
-            $color: null, $background: null, $contrast: null)
+            $variant: null, $render: null, $smoothing: null, 
+            $quiet: false,
+            $color: null, $background: null, $contrast: null,
+            $webkit-smoothing: null, $moz-smoothing: null)
 
     $detected-family: func-typo.font-family-of($font)
 
@@ -72,11 +74,9 @@
     @if $render != null
         text-rendering: $render
 
-    @if $webkit-smoothing != null
-        -webkit-font-smoothing: $webkit-smoothing
-
-    @if $moz-smoothing != null
-        -moz-osx-font-smoothing: $moz-smoothing
+    @if $smoothing != null
+        +pre.font-smoothing($smoothing)
+        
 
     @if $size != null
         font-size: $size
@@ -139,13 +139,7 @@
 
     +font($font: $font, $size: $size, $family: monospace, $style: $style, $weight: $weight)
 
-/// @param {Number} $lines [3] - Number of lines before truncation.
-/// @param {String} $box-orient [vertical] - Box orientation.
-=line-clamp($lines: 3, $box-orient: vertical)
-    overflow: hidden
-    display: -webkit-box
-    -webkit-line-clamp: $lines
-    -webkit-box-orient: $box-orient
+
 
 /// Adjusts text alignment and text decoration with fallback defaults.
 /// @param {String|null} $alignment [null] - text-align property.

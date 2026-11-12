@@ -4,6 +4,7 @@
 @use "sass:meta" as meta
 
 // Internal dependencies
+@use 'prefixes' as pre
 @use 'typography' as typo
 @use 'utilities' as utils
 @use '../color/base' as base
@@ -172,7 +173,7 @@
   background: transparent
   inline-size: map.get($props, 'inline-size')
 
-  +utils.appearance(none)
+  +pre.appearance(none)
 
   // The Track
   &::-webkit-slider-runnable-track,
@@ -187,6 +188,6 @@
     background: map.get($props, 'thumb-color')
     +utils.bo-ra(map.get($props, 'thumb-radius'))
 
-    +utils.appearance(none)
+    +pre.appearance(none)
     +utils.margin($block-start: $thumb-margin)
     +utils.size($inline: $thumb-size, $block: $thumb-size)

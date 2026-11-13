@@ -240,8 +240,10 @@
 
     @else if $type == 'checkbox' or $type == 'radio'
         $check-color: c.$teal-500
+
         @if $color != null
             $check-color: $color
+
         input[type="#{$type}"]
             +input-check($accent: $check-color)
 
@@ -251,8 +253,10 @@
 
     @else if $type == 'file'
         $file-btn: c.$teal-500
+
         @if $color != null
             $file-btn: $color
+
         input[type="file"]
             +input-file($btn-bg: $file-btn)
 
@@ -270,7 +274,7 @@
 /// @param {Color|null} $accent-color [null] - The accent color for focus/hover outlines.
 =style-forms($bg: c.$slate-100, $text: c.$gray-700, $accent-color: null)
     $input-bg: func-color.best-contrast-color($bg, $light: c.$pure-white, $dark: c.$slate-100)
-    
+
     // Core input elements
     input, textarea, select, button, datalist, optgroup, option
         &:hover

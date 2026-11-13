@@ -16,178 +16,180 @@
 
 
 =_icon-base($name, $color, $font-family, $debug: false, $silent: false, $map: icon-map.$icons, $include-content: true)
-  $props: func-icons.find($name, $map)
+    $props: func-icons.find($name, $map)
 
-  @if $props
-    @if $debug
-      @debug "gen-icons: Generating icon .#{$name}"
+    @if $props
+        @if $debug
+            @debug "gen-icons: Generating icon .#{$name}"
 
-    .#{$name}
-      &::before
-        color: $color !important
+        .#{$name}
+            &::before
+                color: $color !important
 
-        @if $include-content
-          content: map.get($props, icon)
+                @if $include-content
+                    content: map.get($props, icon)
 
-      gap:0.5rem
-      display: inline-flex
-      +typo.font($font-family, $size: 1.2rem !important)
+            gap: 0.5rem
+            display: inline-flex
+            +typo.font($font-family, $size: 1.2rem !important)
 
-  @else
-    @if not $silent
-      @warn "gen-icons: Icon '#{$name}' not found in icon mapping."
+    @else
+        @if not $silent
+            @warn "gen-icons: Icon '#{$name}' not found in icon mapping."
 
 /// Generates icon utility classes with pseudo-element glyphs.
 /// @param {String|List|null} $name [null] - Single icon name, list of names, or null for all.
 /// @param {Color} $color [base.$gray-700] - Icon text color.
 /// @param {String} $font-family ['bootstrap-icons'] - Icon font-family name.
 =gen-icons($name: null, $color: base.$gray-700, $font-family: 'bootstrap-icons', $debug: false, $silent: false, $map: icon-map.$icons, $include-content: true)
-  @if $map
-    @if $name == null
-      @if $debug
-        @debug "gen-icons: Generating all icons..."
+    @if $map
+        @if $name == null
+            @if $debug
+                @debug "gen-icons: Generating all icons..."
 
-      @each $key, $value in $map
-        @if meta.type-of($value) == 'map'
+            @each $key, $value in $map
+                @if meta.type-of($value) == 'map'
+                    @if map.has-key($value, 'icon') // Flat structure: icon-name -> (icon: value)
+                        +_icon-base($key, $color, $font-family, $debug, $silent, $map, $include-content) 
+                    @else
+                        @each $icon, $props in $value // Nested structure: category -> (icon-name -> (icon: value))
+                            +_icon-base($icon, $color, $font-family, $debug, $silent, $map, $include-content)
+                
+        @else
+            $names: $name
 
-          @if map.has-key($value, 'icon') // Flat structure: icon-name -> (icon: value)
-            +_icon-base($key, $color, $font-family, $debug, $silent, $map, $include-content) 
-          @else
+            @if meta.type-of($name) != 'list'
+                $names: ($name)
 
-            @each $icon, $props in $value // Nested structure: category -> (icon-name -> (icon: value))
-              +_icon-base($icon, $color, $font-family, $debug, $silent, $map, $include-content)
-              
+            @each $single in $names
+                +_icon-base($single, $color, $font-family, $debug, $silent, $map, $include-content)
+
     @else
-      $names: $name
-      @if meta.type-of($name) != 'list'
-        $names: ($name)
-
-      @each $single in $names
-        +_icon-base($single, $color, $font-family, $debug, $silent, $map, $include-content)
-  @else
-    @if not $silent
-      @warn "gen-icons: Icon mapping not found."
-
+        @if not $silent
+            @warn "gen-icons: Icon mapping not found."
 
 /// Generates flexbox properties based on registered flexbox mapping.
 /// @param {String} $name - Flexbox layout configuration key.
 =gen-flexbox($name, $silent: false)
-  $props: map.get(flexbox-mapping.$flexbox, $name)
-  @if $props
-    @each $property, $value in $props
-      #{$property}: $value
-  @else
+    $props: map.get(flexbox-mapping.$flexbox, $name)
+    @if $props
+        @each $property, $value in $props
+            #{$property}: $value
 
-    @if not $silent
-      @warn "#{$name} not found in flexbox mapping."
+    @else
+        @if not $silent
+            @warn "#{$name} not found in flexbox mapping."
 
 /// Generates atomic utility classes for flexbox properties.
 /// @param {String} $prefix - Class name prefix.
 /// @param {String} $property - Target CSS property name.
 /// @param {Map} $map - Values mapping.
 =gen-flexbox-atomic($prefix, $property, $map)
-  @each $key, $value in $map
-    .#{$prefix}-#{$key}
-      #{$property}: $value
+    @each $key, $value in $map
+        .#{$prefix}-#{$key}
+            #{$property}: $value
 
 /// Generates styled input classes with placeholder and focus states.
 /// @param {String|null} $name [null] - Specific input type name or null for all.
 /// @param {Color|null} $placeholder-color [null] - Optional placeholder text color.
 /// @param {Map} $custom [()] - Custom property overrides.
 =gen-inputs($name: null, $placeholder-color: null, $custom: (), $debug: false, $silent: false)
-  $props: map.merge(inputs.$default-input-props, $custom)
+    $props: map.merge(inputs.$default-input-props, $custom)
 
-  // Determine focus outline (custom overrides default)
-  $focus-outline: map.get($custom, 'focus-outline') or base.$blue-510
+    // Determine focus outline (custom overrides default)
+    $focus-outline: map.get($custom, 'focus-outline') or base.$blue-510
 
-  @if $name == null
-    @if $debug
-      @debug "gen-inputs: Generating all input utility classes..."
+    @if $name == null
+        @if $debug
+            @debug "gen-inputs: Generating all input utility classes..."
 
-    @each $cat, $list in inputs.$inputs
-      @each $input in $list
+        @each $cat, $list in inputs.$inputs
+            @each $input in $list
+                .#{$input}-input
+                    @each $prop, $val in $props
+                        #{$prop}: $val
 
-        .#{$input}-input
-          @each $prop, $val in $props
-            #{$prop}: $val
-          @if $placeholder-color != null
-            &::placeholder
-              color: $placeholder-color
+                    @if $placeholder-color != null
+                        &::placeholder
+                            color: $placeholder-color
 
-          &::focus
-            outline: $focus-outline
-  @else
-    $category: null
-    @each $cat, $list in inputs.$inputs
-      @if list.index($list, $name)
-        $category: $cat
+                    &::focus
+                        outline: $focus-outline
+    @else
+        $category: null
 
-    @if $category == null and meta.type-of($name) == 'string'
-      @if $silent
-        @warn "gen-inputs: Input '#{$name}' not found in inputs map."
-      @else
-        @error "gen-inputs: Fatal error! Input '#{$name}' not found in inputs map. Check inputs/_inputs.sass for valid names."
+        @each $cat, $list in inputs.$inputs
+            @if list.index($list, $name)
+                $category: $cat
 
-    @if $debug
-      @debug "gen-inputs: Generating specific input class .#{$name}-input"
+        @if $category == null and meta.type-of($name) == 'string'
+            @if $silent
+                @warn "gen-inputs: Input '#{$name}' not found in inputs map."
+            @else
+                @error "gen-inputs: Fatal error! Input '#{$name}' not found in inputs map. Check inputs/_inputs.sass for valid names."
 
-    .#{$name}-input
-      @each $prop, $val in $props
-        #{$prop}: $val
+        @if $debug
+            @debug "gen-inputs: Generating specific input class .#{$name}-input"
 
-      @if $placeholder-color != null
-        &::placeholder
-          color: $placeholder-color
-  
-      @if $focus-outline != null
-        &::focus
-          outline: $focus-outline
+        .#{$name}-input
+            @each $prop, $val in $props
+                #{$prop}: $val
 
-  // Ensure custom pseudo-elements are applied properly
-  @if $name == 'range' or $name == null
-    .range-input
-      +gen-range-slider($custom)
+            @if $placeholder-color != null
+                &::placeholder
+                    color: $placeholder-color
+        
+            @if $focus-outline != null
+                &::focus
+                    outline: $focus-outline
+
+    // Ensure custom pseudo-elements are applied properly
+    @if $name == 'range' or $name == null
+        .range-input
+            +gen-range-slider($custom)
 
 /// Generates highly flexible styles for range sliders (tracks and thumbs).
 /// @param {Map} $custom - Custom overrides for the track and thumb properties.
 =gen-range-slider($custom: ())
-  $default-range-props: (
-    'track-color': base.$gray-300,
-    'track-block-size': 0.4rem,
-    'track-radius': 0.2rem,
-    'thumb-color': base.$blue-510,
-    'thumb-size': 1.2rem,
-    'thumb-radius': 50%,
-    'inline-size': 100%
-  )
-  $props: map.merge($default-range-props, $custom)
+    $default-range-props: (
+        'track-color': base.$gray-300,
+        'track-block-size': 0.4rem,
+        'track-radius': 0.2rem,
+        'thumb-color': base.$blue-510,
+        'thumb-size': 1.2rem,
+        'thumb-radius': 50%,
+        'inline-size': 100%
+    )
 
-  $thumb-size: map.get($props, 'thumb-size')
-  $track-block-size: map.get($props, 'track-block-size')
+    $props: map.merge($default-range-props, $custom)
 
-  // Calculate margin to perfectly center the thumb on the track in Webkit
-  $thumb-margin: calc((#{$track-block-size} - #{$thumb-size}) / 2)
+    $thumb-size: map.get($props, 'thumb-size')
+    $track-block-size: map.get($props, 'track-block-size')
 
-  // Target the range input itself
-  cursor: pointer
-  background: transparent
-  inline-size: map.get($props, 'inline-size')
+    // Calculate margin to perfectly center the thumb on the track in Webkit
+    $thumb-margin: calc((#{$track-block-size} - #{$thumb-size}) / 2)
 
-  +pre.appearance(none)
-
-  // The Track
-  &::-webkit-slider-runnable-track,
-  &::-moz-range-track
-    background: map.get($props, 'track-color')
-    +utils.bo-ra(map.get($props, 'track-radius'))
-
-    +utils.size($block: $track-block-size)
-  // The Thumb
-  &::-webkit-slider-thumb,
-  &::-moz-range-thumb
-    background: map.get($props, 'thumb-color')
-    +utils.bo-ra(map.get($props, 'thumb-radius'))
+    // Target the range input itself
+    cursor: pointer
+    background: transparent
+    inline-size: map.get($props, 'inline-size')
 
     +pre.appearance(none)
-    +utils.margin($block-start: $thumb-margin)
-    +utils.size($inline: $thumb-size, $block: $thumb-size)
+
+    // The Track
+    &::-webkit-slider-runnable-track,
+    &::-moz-range-track
+        background: map.get($props, 'track-color')
+        +utils.bo-ra(map.get($props, 'track-radius'))
+
+        +utils.size($block: $track-block-size)
+
+    // The Thumb
+    &::-webkit-slider-thumb,
+    &::-moz-range-thumb
+        background: map.get($props, 'thumb-color')
+        +utils.bo-ra(map.get($props, 'thumb-radius'))
+
+        +pre.appearance(none)
+        +utils.margin($block-start: $thumb-margin)
+        +utils.size($inline: $thumb-size, $block: $thumb-size)

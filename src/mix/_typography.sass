@@ -82,13 +82,12 @@
 
     @if $webkit-smoothing != null
         +pre.font-smoothing($webkit-smoothing)
-    
+
     @if $moz-smoothing != null
         +pre.font-smoothing($moz-smoothing)
 
     @if $smoothing != null
         +pre.font-smoothing($smoothing)
-        
 
     @if $size != null
         font-size: $size
@@ -178,11 +177,13 @@
 =assert-accessible-font($size, $breakpoint: null, $is-body: true, $suppress: false)
     $is-valid: func-typo.validate-font-size($size, $breakpoint: $breakpoint, $is-body: $is-body)
     @if not $is-valid and not $suppress
-        $context: "body text"
         $min: "1rem (16px)"
+        $context: "body text"
+
         @if not $is-body
-            $context: "secondary/caption text"
             $min: "0.75rem (12px)"
+            $context: "secondary/caption text"
+
         @else if $breakpoint == 'mobile-s'
             $min: "0.875rem (14px)"
 

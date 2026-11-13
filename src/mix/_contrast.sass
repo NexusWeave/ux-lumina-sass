@@ -35,6 +35,7 @@
 
     @else
         $ratio: func-color.contrast-ratio($foreground, $background)
+
         @if $ratio < $threshold
             $level: "WCAG AA"
 
@@ -52,6 +53,7 @@
 /// @param {Boolean} $suppress [false] - Suppresses notice for transparent/inherit surfaces.
 =assert-contrast-aaa($foreground, $background, $size: null, $weight: null, $suppress: false)
     $threshold: 7.0
+
     @if func-typo.is-large-font($size, $weight)
         $threshold: 4.5
 
